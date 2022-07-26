@@ -1,0 +1,13 @@
+.feed {
+  display: grid;
+  grid-template-areas: 'left-side-bar posts  right-side-bar';
+  grid-template-columns: minmax(0, 5fr) minmax(0, 13fr) minmax(300px, 7fr);
+  margin-top: 50px;
+  padding-top: 10px;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 2.4em;
+  grid-area: content;
+  grid-template-rows: auto;
+  row-gap: 2.4em;
+}

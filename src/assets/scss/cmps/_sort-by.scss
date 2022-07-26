@@ -1,0 +1,14 @@
+.sort-by {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .divider {
+    display: inline-block;
+    margin: 15px 0;
+    color: $border;
+    width: 80%;
+  }
+
+  color: #00000099;
+}

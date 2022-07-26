@@ -1,0 +1,62 @@
+.nav {
+  width: 645px;
+  display: flex;
+  height: 100%;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    list-style-type: none;
+
+    li {
+      height: 100%;
+      color: #666666;
+
+      &.current-btn {
+        border-bottom: 2px solid;
+        color: black;
+      }
+    }
+
+    p {
+      display: flex;
+      font-size: 14px;
+      min-width: 80px;
+      justify-content: center;
+      height: 100%;
+      align-items: center;
+      flex-direction: column;
+
+      .nav-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .me-btn {
+      border-right: 1px solid $border;
+
+      p {
+        .profile-icon {
+          width: 25px;
+          height: 25px;
+          background-color: burlywood;
+          border-radius: 50%;
+        }
+
+        span {
+          display: flex;
+          align-items: center;
+          .down-icon {
+            padding-left: 3px;
+          }
+        }
+      }
+    }
+  }
+}

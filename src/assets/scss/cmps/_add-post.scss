@@ -1,0 +1,99 @@
+.add-post {
+  background-color: white;
+  border: 2px solid $border;
+  border-radius: 10px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 70px;
+    margin: 8px 16px;
+
+    .img-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 10%;
+      .icon {
+        width: 48px;
+        height: 48px;
+        background-color: lightsalmon;
+        border-radius: 50%;
+      }
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 85%;
+      height: 60px;
+      height: 100%;
+      border-radius: 35px;
+      margin: 0.4rem 0;
+      // border: none;
+      padding: 5px 5px 5px 15px;
+      background-color: white;
+      border: 1px solid #b2b2b2;
+
+      span {
+        color: #b2b2b2;
+      }
+
+      input {
+        width: 95%;
+      }
+    }
+  }
+
+  .btns-container {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    button {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      color: #b2b2b2;
+      padding: 10px;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: #00000014;
+      }
+
+      .icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .video {
+        color: #5f9b41;
+      }
+
+      .calendar {
+        color: #c37d16;
+      }
+
+      .newspaper {
+        color: #e16745;
+      }
+
+      .photo {
+        color: #378fe9;
+      }
+
+      span {
+        margin-left: 8px;
+      }
+    }
+  }
+}

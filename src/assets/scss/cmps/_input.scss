@@ -1,0 +1,29 @@
+.input {
+  width: 430px;
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    transform: translate(50%, 50%);
+    color: #666666;
+  }
+
+  input {
+    width: 280px;
+    border-radius: 0.4rem;
+    border: none;
+    background-color: #eef3f8;
+    padding: 0 0.8rem 0 40px;
+    line-height: 1.75;
+    font-weight: 400;
+    font-size: 14px;
+    height: 34px;
+
+    transition: width 0.3s;
+
+    &:focus {
+      width: 380px;
+    }
+  }
+  //   position: relative;
+}

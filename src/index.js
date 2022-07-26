@@ -5,6 +5,47 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 // import { store } from './store'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import {
+  faCheckSquare,
+  faCoffee,
+  faHomeLgAlt,
+  faUserFriends,
+  faSuitcase,
+  faSearch,
+  faComment,
+  faBell,
+  faSortDown,
+  faTh,
+  faPlus,
+  faImage,
+  faVideo,
+  faCalendarDays,
+  faNewspaper,
+  faEllipsis,
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+  fab,
+  faCheckSquare,
+  faCoffee,
+  faHomeLgAlt,
+  faUserFriends,
+  faSuitcase,
+  faSearch,
+  faComment,
+  faBell,
+  faSortDown,
+  faTh,
+  faPlus,
+  faImage,
+  faVideo,
+  faCalendarDays,
+  faNewspaper,
+  faEllipsis
+)
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>

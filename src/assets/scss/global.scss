@@ -1,0 +1,52 @@
+// Externals
+
+// Setup
+@import 'setup/variables';
+@import 'setup/functions';
+@import 'setup/mixins';
+
+// Basics
+@import 'basics/typography';
+@import 'basics/base';
+@import 'basics/helpers';
+@import 'basics/layout';
+@import 'basics/modals';
+@import 'basics/animations';
+
+// Pages
+@import 'pages/about';
+@import 'pages/home';
+@import 'pages/main';
+
+// Components
+
+@import 'cmps/feed';
+@import 'cmps/header';
+@import 'cmps/left-side-bar';
+@import 'cmps/right-side-bar';
+@import 'cmps/posts';
+@import 'cmps/input';
+@import 'cmps/nav';
+@import 'cmps/add-post';
+@import 'cmps/sort-by';
+@import 'cmps/posts-list';
+@import 'cmps/post-preview';
+
+.app {
+  background-color: $main-background;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+  }
+}
