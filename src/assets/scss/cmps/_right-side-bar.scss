@@ -1,4 +1,10 @@
 .right-side-bar {
-  border: 1px solid;
-  grid-area: right-side-bar;
+  div {
+    height: 300px;
+    border: 1px solid $border;
+    grid-area: right-side-bar;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
 }

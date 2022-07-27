@@ -1,0 +1,65 @@
+.comment-preview {
+  margin: 10px 15px;
+  display: flex;
+  align-items: flex-start;
+
+  .img-profile {
+    border-radius: 50%;
+    background-color: lightskyblue;
+    width: 35px;
+    height: 35px;
+  }
+
+  .container {
+    width: 100%;
+
+    margin: 0 5px;
+    min-height: 50px;
+    padding: 3px;
+
+    .comment-header {
+      background-color: #f2f2f2;
+      padding: 10px 5px;
+      border-radius: 7px;
+
+      .comment-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .name {
+          h3 {
+            color: black;
+          }
+        }
+
+        .dots-icon {
+          margin: 0 7px;
+        }
+      }
+
+      .comment-text {
+        margin: 5px 0 0 0;
+      }
+    }
+    .comment-action {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      margin: 5px 0;
+
+      button {
+        border: none;
+        background-color: unset;
+        margin: 0 3px;
+        padding: 5px;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+  }
+}

@@ -32,6 +32,10 @@
       align-items: center;
       flex-direction: column;
 
+      &:hover {
+        color: #000000e6;
+      }
+
       .nav-icon {
         width: 25px;
         height: 25px;

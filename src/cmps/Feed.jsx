@@ -9,8 +9,7 @@ export function Feed() {
     <section className="feed">
       <LeftSideBar />
       <Posts />
-
-      <RightSideBar></RightSideBar>
+      <RightSideBar />
     </section>
   )
 }

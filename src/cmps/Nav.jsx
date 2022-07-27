@@ -36,7 +36,7 @@ export const Nav = () => {
         </li>
         <li className="me-btn">
           <p>
-            <div className="profile-icon"></div>
+            <span className="profile-icon"></span>
             <span>
               Me
               <FontAwesomeIcon className="down-icon" icon="fas fa-sort-down" />

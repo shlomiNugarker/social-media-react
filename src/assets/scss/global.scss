@@ -17,6 +17,7 @@
 @import 'pages/about';
 @import 'pages/home';
 @import 'pages/main';
+@import 'pages/signup';
 
 // Components
 
@@ -31,6 +32,16 @@
 @import 'cmps/sort-by';
 @import 'cmps/posts-list';
 @import 'cmps/post-preview';
+@import 'cmps/post-header';
+@import 'cmps/post-body';
+@import 'cmps/social-details';
+@import 'cmps/post-actions';
+@import 'cmps/comments';
+@import 'cmps/input-comment';
+@import 'cmps/list-comments';
+@import 'cmps/comment-preview';
+@import 'cmps/feed-identity-module';
+@import 'cmps/community-panel';
 
 .app {
   background-color: $main-background;

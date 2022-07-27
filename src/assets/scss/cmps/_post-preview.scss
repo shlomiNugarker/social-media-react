@@ -1,12 +1,16 @@
 .post-preview {
   border: 2px solid $border;
-  height: 300px;
+  min-height: 100px;
   background-color: white;
   border-radius: 10px;
   width: 100%;
   color: $clr4;
+  margin: 15px 0;
+  padding: 0 0 5px 0;
 
-  //   display: flex;
+  hr {
+    color: $border;
+  }
 
   .menu {
     position: relative;
@@ -16,35 +20,6 @@
       right: 0;
       top: 0;
       font-size: 25px;
-    }
-  }
-
-  .post-header {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 15px 20px 0 20px;
-    .img-actor {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .img {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background-color: lightskyblue;
-      }
-    }
-
-    .details {
-      //   display: flex;
-      margin-left: 5px;
-    }
-    .follow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100px;
     }
   }
 }

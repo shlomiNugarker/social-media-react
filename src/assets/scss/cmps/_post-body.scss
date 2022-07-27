@@ -1,0 +1,15 @@
+.post-body {
+  padding: 10px 15px 0 15px;
+  .post-text {
+    p {
+      margin: 10px 0;
+    }
+  }
+
+  .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+}

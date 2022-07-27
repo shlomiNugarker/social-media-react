@@ -1,0 +1,73 @@
+.home-page {
+  background-color: white;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 15px 30px;
+
+  .home-header {
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .home-nav {
+      ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+
+        .divider {
+          width: 1px;
+          height: 40px;
+          background-color: $clr4;
+          margin: 0 5px;
+        }
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 5px;
+          button {
+            color: $clr3;
+            background-color: unset;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+              color: black;
+            }
+
+            span {
+            }
+          }
+
+          .join-now-btn {
+            padding: 15px 15px;
+            border-radius: 25px;
+
+            &:hover {
+              background-color: #00000014;
+            }
+          }
+          .sign-in-btn {
+            color: #0073b1;
+            border: 1px solid #0073b1;
+
+            padding: 15px 15px;
+            border-radius: 25px;
+
+            &:hover {
+              background-color: #56565614;
+            }
+          }
+        }
+      }
+    }
+  }
+}

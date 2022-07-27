@@ -1,0 +1,28 @@
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5px;
+
+  button {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: #b2b2b2;
+    padding: 10px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #00000014;
+      color: #000000e6;
+    }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
+  }
+}
