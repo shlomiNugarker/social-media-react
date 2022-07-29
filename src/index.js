@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-// import { store } from './store'
+import { store } from './store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -61,9 +61,9 @@ library.add(
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>
-  // <Provider store={store}>
-  <App />
-  // </Provider>
+  <Provider store={store}>
+    <App />
+  </Provider>
   // </React.StrictMode>
 )
 

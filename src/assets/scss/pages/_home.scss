@@ -2,13 +2,24 @@
   background-color: white;
   min-height: 100vh;
   width: 100vw;
-  padding: 15px 30px;
+  padding: 15px 0px;
+  font-size: 18px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 
   .home-header {
-    display: flex;
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 5px 95px;
+    margin: 5px 95px;
 
     .home-nav {
       ul {
@@ -69,5 +80,194 @@
         }
       }
     }
+  }
+
+  .welcome-signin-container {
+    background-color: white;
+    min-height: 500px;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    padding: 60px;
+    justify-content: center;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+
+      input {
+        background-color: white;
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid $clr3;
+      }
+
+      a {
+        margin: 10px 0;
+      }
+
+      div {
+        button {
+          width: 100%;
+          background-color: #0073b1;
+          border: none;
+          border-radius: 30px;
+          color: white;
+          font-size: 28px;
+          padding: 10px;
+          margin: 10px 0;
+        }
+      }
+
+      .title {
+        font-size: 45px;
+      }
+    }
+  }
+
+  div.explore {
+    background-color: #f3f2f0;
+  }
+
+  div.find {
+    background-color: white;
+  }
+  div.post {
+    background-color: #f1ece5;
+  }
+  div.meet {
+    background-color: #f3f2f0;
+  }
+
+  .explore,
+  .find,
+  .post,
+  .meet {
+    width: 100%;
+    min-height: 250px;
+    background-color: $border;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+
+    .title-container {
+      margin: 0 70px 0 0;
+      width: 50%;
+      .title {
+        font-size: 45px;
+      }
+
+      p {
+        // width: 50%;
+        margin: 15px 0 0 0;
+      }
+    }
+
+    .btns-container {
+      h2 {
+        margin: 0 0 20px 0;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        li {
+          border: 1px solid $clr3;
+
+          margin: 5px 5px 10px 5px;
+          border-radius: 20px;
+          padding: 15px;
+
+          &:hover {
+            background-color: #00000014;
+          }
+          a {
+            padding: 15px;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .container-r-side {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .img-container {
+        width: 400px;
+        height: 400px;
+        .img {
+          border-radius: 50%;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .connect-learn {
+    display: flex;
+    padding: 60px;
+    width: 100%;
+
+    .connect,
+    .learn {
+      width: 50%;
+
+      h1 {
+        font-size: 45px;
+        margin: 15px 0 30px 0;
+      }
+
+      a {
+        border: 1px solid $clr3;
+        padding: 10px;
+        border-radius: 20px;
+
+        &:hover {
+          background-color: #00000014;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .join {
+    padding: 60px;
+    width: 100%;
+    background-color: lightsteelblue;
+    div {
+      h1 {
+        font-size: 45px;
+      }
+
+      .get-started-container {
+        margin: 15px 0 0 0;
+        .get-started-btn {
+          border: none;
+          padding: 15px;
+          border-radius: 30px;
+          background-color: #0a66c2;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .footer-home {
+    width: 100%;
+    padding: 0 60px;
+    display: flex;
+    height: 90px;
+    align-items: center;
   }
 }

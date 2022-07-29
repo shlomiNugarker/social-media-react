@@ -1,6 +1,6 @@
-import { Posts } from './Posts'
-import { RightSideBar } from './RightSideBar'
-import { LeftSideBar } from './LeftSideBar'
+import { Posts } from '../cmps/Posts'
+import { RightSideBar } from '../cmps/RightSideBar'
+import { LeftSideBar } from '../cmps/LeftSideBar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

@@ -18,10 +18,10 @@
 @import 'pages/home';
 @import 'pages/main';
 @import 'pages/signup';
+@import 'pages/feed';
 
 // Components
 
-@import 'cmps/feed';
 @import 'cmps/header';
 @import 'cmps/left-side-bar';
 @import 'cmps/right-side-bar';
@@ -45,6 +45,7 @@
 
 .app {
   background-color: $main-background;
+  // overflow-x: hidden;
 }
 
 .logo {
