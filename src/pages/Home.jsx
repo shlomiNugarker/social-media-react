@@ -1,6 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { login, signup } from '../store/actions/userActions'
+import { useForm } from '../hooks/useForm'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const Home = () => {
+  const dispatch = useDispatch()
+
+  const [cred, setCred] = useState({
+    username: 'bbb',
+    password: '1234',
+    fullname: '',
+  })
+
+  const handleChange = async ({ target }) => {
+    console.log('handle')
+    const field = target.name
+    let value = target.type === 'number' ? +target.value || '' : target.value
+    setCred((prevCred) => ({ ...prevCred, [field]: value }))
+  }
+
+  const doLogin = async () => {
+    dispatch(login(cred))
+    setCred(() => ({ username: '', password: '', fullname: '' }))
+  }
+
   return (
     <section className="home-page">
       <header className="home-header">
@@ -49,12 +73,32 @@ export const Home = () => {
       </header>
 
       <div className="welcome-signin-container">
-        <form className="form">
+        <form
+          onSubmit={(ev) => {
+            ev.preventDefault()
+            doLogin()
+          }}
+          className="form"
+        >
           <h1 className="title">
             Welcome to your <br /> professional community
           </h1>
-          <input type="text" placeholder="Email or phone number" />
-          <input type="text" placeholder="Passsword" />
+          <input
+            onChange={handleChange}
+            type="text"
+            id="username"
+            name="username"
+            value={cred.username}
+            placeholder="Email or phone number"
+          />
+          <input
+            onChange={handleChange}
+            type="text"
+            id="password"
+            name="password"
+            value={cred.password}
+            placeholder="Passsword"
+          />
           <a href="">Forgot password?</a>
           <div>
             <button>Sign in</button>

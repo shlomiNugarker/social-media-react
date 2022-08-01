@@ -5,6 +5,7 @@
       "firstName": "Terry",
       "lastName": "Medhurst",
       "age": 50,
+      "connection": [{ "userId": "userId", "name": "User name" }],
       "gender": "male",
       "email": "atuny0@sohu.com",
       "phone": "+63 791 675 8914",

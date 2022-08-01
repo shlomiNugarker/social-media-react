@@ -5,11 +5,27 @@ import { Home } from './pages/Home'
 import { Main } from './pages/Main'
 import { About } from './pages/About'
 import { Signup } from './pages/Signup'
+import { getLoggedinUser } from '../src/store/actions/userActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    console.log('use effect')
+    dispatch(getLoggedinUser())
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <Router>
       <div className="app">
+        <div className="temp-div">
+          <Link to="/home">Home</Link>|<Link to="/signup">signup</Link>|
+          <Link to="/main/feed">feed</Link>|
+        </div>
         <main className="">
           <Switch>
             <Route path="/signup" component={Signup} />

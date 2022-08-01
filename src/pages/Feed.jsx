@@ -1,12 +1,14 @@
 import { Posts } from '../cmps/Posts'
 import { RightSideBar } from '../cmps/RightSideBar'
 import { LeftSideBar } from '../cmps/LeftSideBar'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+export const Feed = () => {
+  const { loggedInUser } = useSelector((state) => state.userModule)
 
-export function Feed() {
   return (
     <section className="feed">
+      {/* <p>loggedin user: {loggedInUser?.fullname}</p> */}
       <LeftSideBar />
       <Posts />
       <RightSideBar />

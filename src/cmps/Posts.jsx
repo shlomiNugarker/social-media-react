@@ -12,16 +12,17 @@ export const Posts = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('use effect')
     dispatch(loadPosts())
     // eslint-disable-next-line
   }, [])
+
+  const { posts } = useSelector((state) => state.postModule)
 
   return (
     <section className="posts">
       <AddPost />
       <SortBy />
-      <PostsList />
+      <PostsList posts={posts} />
     </section>
   )
 }

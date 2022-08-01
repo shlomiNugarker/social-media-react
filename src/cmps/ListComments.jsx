@@ -1,9 +1,11 @@
 import { CommentPreview } from './CommentPreview'
 
-export const ListComments = () => {
+export const ListComments = ({ comments }) => {
   return (
     <section className="list-comments">
-      <CommentPreview />
+      {comments.map((comment) => (
+        <CommentPreview key={comment._id} comment={comment} />
+      ))}
     </section>
   )
 }

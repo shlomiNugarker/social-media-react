@@ -95,6 +95,7 @@ function getLoremIpsum(length = 5) {
     sentence += words[getRandomInt(0, words.length - 1)] + ' '
     length--
   }
+  sentence += '.'
   return sentence.trim()
 }
 

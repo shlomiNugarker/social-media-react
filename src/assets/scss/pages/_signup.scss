@@ -1,9 +1,105 @@
-.sighnup {
-  background-color: $main-background;
+.sign-up {
+  padding: 15px 95px;
   height: 100vh;
-  .header {
-    background-color: $main-background;
-    border: none;
+  background-color: white;
+  .logo-container {
+    height: 10%;
     display: flex;
+    align-items: center;
+    p {
+    }
+  }
+
+  .form-container {
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 15px;
+      min-height: min-content;
+
+      box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+      border-radius: 8px;
+      h1 {
+        font-size: 40px;
+      }
+      p {
+        margin: 15px 0;
+      }
+      input {
+        margin: 10px 0;
+        padding: 7px;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid;
+      }
+
+      a {
+        margin: 15px 0;
+        font-size: 18px;
+        color: #0073b1;
+      }
+
+      .sign-in-btn {
+        background-color: #0073b1;
+        font-size: 20px;
+        color: white;
+        margin: 15px 0;
+        width: 100%;
+        border-radius: 30px;
+        padding: 10px;
+      }
+      .sign-in-apple-btn {
+        background-color: unset;
+        font-size: 20px;
+        margin: 15px 0;
+        width: 100%;
+        border-radius: 30px;
+        padding: 10px;
+      }
+
+      .divider-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        :first-child {
+          width: 50%;
+          height: 1px;
+          background-color: black;
+        }
+        :nth-child(1) {
+          padding: 0 3px;
+        }
+        :last-child {
+          width: 50%;
+          height: 1px;
+          background-color: black;
+        }
+      }
+    }
+    .to-sign-up-container {
+      margin: 20px 0;
+      display: flex;
+
+      p {
+        a {
+        }
+      }
+    }
+  }
+
+  .footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
   }
 }

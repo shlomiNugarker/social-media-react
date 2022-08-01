@@ -77,18 +77,7 @@ function getEmptyComment(
 function _createPosts() {
   let posts = utilService.loadFromStorage(KEY)
   if (!posts || !posts.length) {
-    posts = [
-      _createPost('Post-1'),
-      _createPost('Post-2'),
-      _createPost('Post-4'),
-      _createPost('Post-5'),
-      _createPost('Post-6'),
-      _createPost('Post-7'),
-      _createPost('Post-8'),
-      _createPost('Post-9'),
-      _createPost('Post-10'),
-      _createPost('Post-11'),
-    ]
+    posts = []
     utilService.saveToStorage(KEY, posts)
   }
   return posts
@@ -98,22 +87,24 @@ function _createPost(title) {
   return {
     _id: 'p-' + utilService.makeId(),
     title,
-    body: "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
+    body: utilService.getLoremIpsum(25),
     userId: 9,
     tags: ['history', 'american', 'crime'],
     reactions: 2,
     createdAt: new Date().getTime(),
+    imgUrl: 'https://picsum.photos/300/300',
+    name: 'Temp name',
     comments: {
-      comments: [_createComment('This is some awesome comment')],
+      comments: [_createComment()],
       total: 1,
     },
   }
 }
 
-function _createComment(body) {
+function _createComment(body = '') {
   return {
     _id: 'c-' + utilService.makeId(),
-    body,
+    body: utilService.getLoremIpsum(10),
     userId: 'userId',
     createdAt: new Date().getTime(),
     user: {
@@ -123,11 +114,9 @@ function _createComment(body) {
   }
 }
 
-console.log('adfaf')
+// ;(async () => {
+//   var posts = await storageService.query('post')
 
-;(async () => {
-  var posts = await storageService.query('post')
-
-  console.log(posts)
-  console.log('posts')
-})()
+//   console.log(posts)
+//   console.log('posts')
+// })()

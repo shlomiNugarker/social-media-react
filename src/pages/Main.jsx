@@ -1,4 +1,4 @@
-import { Feed } from './Feed'
+import { Feed } from '../pages/Feed'
 import { Header } from '../cmps/Header'
 import { Switch, Route } from 'react-router-dom'
 

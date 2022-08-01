@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const PostHeader = () => {
+export const PostHeader = ({ post }) => {
   return (
     <section className="post-header">
       <div className="img-actor">
-        <div className="img"></div>
+        <img src={`https://robohash.org/${post._id}`} className="img"></img>
       </div>
       <div className="details">
         <div className="name">

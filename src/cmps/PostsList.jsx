@@ -1,9 +1,14 @@
 import { PostPreview } from './PostPreview'
 
-export const PostsList = () => {
+export const PostsList = ({ posts }) => {
+  if (!posts) return <div>Loading...</div>
+  console.log(posts)
+
   return (
     <section className="posts-list">
-      <PostPreview />
+      {posts.map((post) => (
+        <PostPreview key={post._id} post={post} />
+      ))}
     </section>
   )
 }
