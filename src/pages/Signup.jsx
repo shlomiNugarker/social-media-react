@@ -1,18 +1,107 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { login, signup, logout } from '../store/actions/userActions'
+
 export const Signup = () => {
+  const { loggedInUser } = useSelector((state) => state.userModule)
+
+  const dispatch = useDispatch()
+
+  const [signin, setIsSignin] = useState(false)
+
+  const [cred, setCred] = useState({
+    username: '',
+    password: '',
+    fullname: '',
+  })
+
+  const handleChange = async ({ target }) => {
+    const field = target.name
+    let value = target.type === 'number' ? +target.value || '' : target.value
+    setCred((prevCred) => ({ ...prevCred, [field]: value }))
+  }
+
+  const doLogin = async () => {
+    dispatch(login(cred))
+    setCred(() => ({ username: '', password: '', fullname: '' }))
+  }
+  const doLogout = async () => {
+    dispatch(logout())
+    setCred(() => ({ username: '', password: '', fullname: '' }))
+  }
+  const doSignup = async () => {
+    dispatch(signup(cred))
+    setCred(() => ({ username: '', password: '', fullname: '' }))
+  }
+
+  const doSubmit = () => {
+    if (signin) doLogin()
+    else {
+      doSignup()
+    }
+  }
+
+  const tooggle = () => {
+    setIsSignin((prevVal) => !prevVal)
+  }
+
+  if (loggedInUser) {
+    return (
+      <section className="sign-up">
+        <p>loggedInUser: {loggedInUser.fullname}</p>
+        <button onClick={doLogout}>Logout</button>
+      </section>
+    )
+  }
+
   return (
     <section className="sign-up">
       <div className="logo-container">
         <p>linkedin</p>
       </div>
       <div className="form-container">
-        <form onSubmit={console.log('')}>
-          <h1>Sign in</h1>
+        <form
+          onSubmit={(ev) => {
+            ev.preventDefault()
+            doSubmit()
+          }}
+        >
+          <h1>{signin ? 'Sign in' : 'Sign up'}</h1>
           <p>Stay updated on your professional world</p>
-          <input type="text" />
-          <input type="text" />
+          {!signin && (
+            <input
+              required
+              onChange={handleChange}
+              type="text"
+              placeholder="Fullname"
+              id="fullname"
+              name="fullname"
+              value={cred.fullname}
+            />
+          )}
+          <input
+            onChange={handleChange}
+            type="text"
+            id="username"
+            name="username"
+            value={cred.username}
+            placeholder="Username"
+            required
+          />
+          <input
+            onChange={handleChange}
+            type="text"
+            id="password"
+            name="password"
+            value={cred.password}
+            placeholder="Passsword"
+            required
+          />
           <a href="">Forgot password?</a>
 
-          <button className="sign-in-btn">Sign in</button>
+          <button className="sign-in-btn">
+            {signin ? 'Sign in' : 'Sign up'}
+          </button>
           <div className="divider-container">
             <span></span>
             <span>or</span>
@@ -22,14 +111,24 @@ export const Signup = () => {
         </form>
         <div className="to-sign-up-container">
           <p>
-            New to LinkedIn? <a href="">Join now</a>
+            <a
+              onClick={(ev) => {
+                ev.preventDefault()
+                tooggle()
+              }}
+              href=""
+            >
+              {signin
+                ? ' New to LinkedIn? Join now'
+                : 'Already on LinkedIn? Sign in'}
+            </a>
           </p>
         </div>
       </div>
 
-      <footer className="footer-container">
+      {/* <footer className="footer-container">
         <div className="footer">footer</div>
-      </footer>
+      </footer> */}
     </section>
   )
 }

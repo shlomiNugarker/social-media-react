@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { login, signup } from '../store/actions/userActions'
-import { useForm } from '../hooks/useForm'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -90,6 +89,7 @@ export const Home = () => {
             name="username"
             value={cred.username}
             placeholder="Email or phone number"
+            required
           />
           <input
             onChange={handleChange}
@@ -98,6 +98,7 @@ export const Home = () => {
             name="password"
             value={cred.password}
             placeholder="Passsword"
+            required
           />
           <a href="">Forgot password?</a>
           <div>

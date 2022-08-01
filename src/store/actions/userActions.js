@@ -2,34 +2,52 @@ import { userService } from '../../services/user/userService'
 
 export function getUsers() {
   return async (dispatch) => {
-    const users = await userService.getUsers()
-    dispatch({ type: 'GET_USERS', users })
+    try {
+      const users = await userService.getUsers()
+      dispatch({ type: 'GET_USERS', users })
+    } catch (err) {
+      console.log('cannot get users:', err)
+    }
   }
 }
 export function login(userCred) {
   return async (dispatch) => {
-    const user = await userService.login(userCred)
-    dispatch({ type: 'LOGIN', user })
+    try {
+      const user = await userService.login(userCred)
+      dispatch({ type: 'LOGIN', user })
+    } catch (err) {
+      console.log("can't do login:", err)
+    }
   }
 }
 export function getLoggedinUser() {
-  console.log('getLoggedinUser')
   return async (dispatch) => {
-    const user = await userService.getLoggedinUser()
-    console.log(user)
-    dispatch({ type: 'GET_LOGGEDIN_USER', user })
+    try {
+      const user = await userService.getLoggedinUser()
+      dispatch({ type: 'GET_LOGGEDIN_USER', user })
+    } catch (err) {
+      console.log('cannot getLoggedinUser:', err)
+    }
   }
 }
 export function signup(userCred) {
   return async (dispatch) => {
-    const user = await userService.signup(userCred)
-    dispatch({ type: 'SIGNUP', user })
+    try {
+      const user = await userService.signup(userCred)
+      dispatch({ type: 'SIGNUP', user })
+    } catch (err) {
+      console.log('cannot signup:', err)
+    }
   }
 }
-export function logout(userCred) {
+export function logout() {
   return async (dispatch) => {
-    await userService.logout(userCred)
-    dispatch({ type: 'LOGOUT' })
+    try {
+      await userService.logout()
+      dispatch({ type: 'LOGOUT' })
+    } catch (err) {
+      console.log('cannot logout:', err)
+    }
   }
 }
 
@@ -42,14 +60,22 @@ export function updateUser(user) {
 
 export function removeUser(userId) {
   return async (dispatch) => {
-    await userService.remove(userId)
-    dispatch({ type: 'REMOVE_USER', userId })
+    try {
+      await userService.remove(userId)
+      dispatch({ type: 'REMOVE_USER', userId })
+    } catch (err) {
+      console.log('cannot remove user', err)
+    }
   }
 }
 
 export function getById(userId) {
   return async (dispatch) => {
-    const user = await userService.getById(userId)
-    // dispatch({ type: 'GET_BY_ID', userId })
+    try {
+      const user = await userService.getById(userId)
+      // dispatch({ type: 'GET_BY_ID', userId })
+    } catch (err) {
+      console.log('cannot getByIdL:', err)
+    }
   }
 }
