@@ -14,31 +14,30 @@ export const userService = {
   getById,
   remove,
   update,
-  changeScore,
 }
 
 // Debug technique
 window.userService = userService
 
-function getUsers() {
-  return storageService.query('user')
-  // return httpService.get(`user`)
+async function getUsers() {
+  // return storageService.query('user')
+  return await httpService.get(`user`)
 }
 
 async function getById(userId) {
-  const user = await storageService.get('user', userId)
-  // const user = await httpService.get(`user/${userId}`)
+  // const user = await storageService.get('user', userId)
+  const user = await httpService.get(`user/${userId}`)
   gWatchedUser = user
   return user
 }
 function remove(userId) {
-  return storageService.remove('user', userId)
-  // return httpService.delete(`user/${userId}`)
+  // return storageService.remove('user', userId)
+  return httpService.delete(`user/${userId}`)
 }
 
 async function update(user) {
-  await storageService.put('user', user)
-  // user = await httpService.put(`user/${user._id}`, user)
+  // await storageService.put('user', user)
+  user = await httpService.put(`user/${user._id}`, user)
   // Handle case in which admin updates other user's details
   if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
   return user
@@ -65,14 +64,6 @@ async function logout() {
   return await httpService.post('auth/logout')
 }
 
-async function changeScore(by) {
-  const user = getLoggedinUser()
-  if (!user) throw new Error('Not loggedin')
-  user.score = user.score + by || by
-  await update(user)
-  return user.score
-}
-
 function _saveLocalUser(user) {
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
@@ -81,7 +72,17 @@ function _saveLocalUser(user) {
 function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
-console.log('user servics')
+
+// ;(async () => {
+//   console.log('IFI !')
+//   const users = await signup({
+//     username: 'shlominnn',
+//     password: 12345,
+//     fullname: 'shlomi',
+//   })
+
+//   console.log('users: ', users)
+// })()
 
 // ;(async () => {
 //   await userService.signup({

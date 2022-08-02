@@ -1,6 +1,7 @@
 import { CommentPreview } from './CommentPreview'
 
 export const ListComments = ({ comments }) => {
+  if (!comments) return
   return (
     <section className="list-comments">
       {comments.map((comment) => (

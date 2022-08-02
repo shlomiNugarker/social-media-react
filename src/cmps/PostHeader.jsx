@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const PostHeader = ({ post }) => {
+export const PostHeader = ({ post, fullname }) => {
+  console.log(post)
   return (
     <section className="post-header">
       <div className="img-actor">
@@ -8,13 +9,13 @@ export const PostHeader = ({ post }) => {
       </div>
       <div className="details">
         <div className="name">
-          <h3>Shlomi</h3>
+          <h3>{fullname}</h3>
         </div>
         <div className="description">
           <p>description Lorem, ipsum dolor s</p>
         </div>
         <div className="time">
-          <p>24m</p>
+          <p>{post.createdAt}</p>
         </div>
       </div>
       <div className="follow">

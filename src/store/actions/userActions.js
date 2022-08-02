@@ -74,6 +74,7 @@ export function getById(userId) {
     try {
       const user = await userService.getById(userId)
       // dispatch({ type: 'GET_BY_ID', userId })
+      return user
     } catch (err) {
       console.log('cannot getByIdL:', err)
     }

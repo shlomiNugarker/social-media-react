@@ -1,12 +1,10 @@
 import { utilService } from '../utilService'
-// import { httpService } from '../httpService'
-import { storageService } from '../asyncStorageService'
+import { httpService } from '../httpService'
+// import { storageService } from '../asyncStorageService'
 
 const KEY = 'post_db'
 
 const ENDPOINT = 'post'
-// const BASE_URL =
-//   process.env.NODE_ENV !== 'development' ? '/api/post' : '//localhost:3030/api/post/'
 
 export const postService = {
   query,
@@ -20,27 +18,21 @@ export const postService = {
 const gPosts = _createPosts()
 
 async function query(filterBy = {}) {
-  // return await httpService.get(ENDPOINT, filterBy)
-  return storageService.query(KEY)
+  return await httpService.get(ENDPOINT, filterBy)
 }
 
 async function getById(id) {
-  // return await httpService.get(`${ENDPOINT}/${id}`)
-  return storageService.getById(KEY, id)
+  return await httpService.get(`${ENDPOINT}/${id}`)
 }
 
 async function remove(id) {
-  // return await httpService.delete(`${ENDPOINT}/${id}`)
-  return storageService.remove(KEY, id)
+  return await httpService.delete(`${ENDPOINT}/${id}`)
 }
 
 async function save(post) {
-  // return post._id
-  //   ? await httpService.put(`${ENDPOINT}/${post._id}`, post)
-  //   : await httpService.post(ENDPOINT, post)
   return post._id
-    ? storageService.put(KEY, post)
-    : storageService.post(KEY, post)
+    ? await httpService.put(`${ENDPOINT}/${post._id}`, post)
+    : await httpService.post(ENDPOINT, post)
 }
 
 function getEmptyPost(title = '', userId = 'userId', body = '', tags = null) {
@@ -115,8 +107,8 @@ function _createComment(body = '') {
 }
 
 // ;(async () => {
-//   var posts = await storageService.query('post')
+//   console.log('IFI !')
+//   const posts = await query()
 
-//   console.log(posts)
-//   console.log('posts')
+//   console.log('posts: ', posts)
 // })()

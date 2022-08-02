@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const CommentPreview = ({ comment }) => {
+  console.log(comment)
   return (
     <section className="comment-preview">
       <div className="img-container">
@@ -10,7 +11,7 @@ export const CommentPreview = ({ comment }) => {
         <div className="comment-header">
           <div className="comment-details">
             <div className="name">
-              <h3>Adiel</h3>
+              <h3>{comment.user.username}</h3>
               <p>Profetion</p>
             </div>
             <div>
@@ -22,12 +23,7 @@ export const CommentPreview = ({ comment }) => {
             </div>
           </div>
           <div className="comment-text">
-            <p>
-              {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum
-              laboriosam et nulecessitatibus dignissimos maiores minima commodi
-              corporis magnam veritatis? Aperiam! */}
-              {comment.body}
-            </p>
+            <p>{comment.body}</p>
           </div>
         </div>
         <div className="comment-action">

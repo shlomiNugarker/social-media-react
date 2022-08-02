@@ -5,19 +5,19 @@ import { PostBody } from './PostBody'
 import { PostHeader } from './PostHeader'
 import { SocialDetails } from './SocialDetails'
 
-export const PostPreview = ({ post }) => {
-  const { name, body, comments, imgUrl } = post
+export const PostPreview = ({ post, fullname }) => {
+  const { name, body, comments, imgBodyUrl } = post
   return (
     <section className="post-preview">
       <div className="menu">
         <FontAwesomeIcon className="dots-icon" icon="fa-solid fa-ellipsis" />
       </div>
-      <PostHeader post={post} />
-      <PostBody body={body} imgUrl={imgUrl} />
+      <PostHeader post={post} fullname={fullname} />
+      <PostBody body={body} imgUrl={imgBodyUrl} />
       <SocialDetails />
       <hr />
       <PostActions />
-      <Comments comments={comments.comments} />
+      <Comments comments={comments} />
     </section>
   )
 }

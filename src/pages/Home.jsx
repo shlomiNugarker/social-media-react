@@ -3,7 +3,7 @@ import { login, signup } from '../store/actions/userActions'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-export const Home = () => {
+export const Home = (props) => {
   const dispatch = useDispatch()
 
   const [cred, setCred] = useState({
@@ -22,6 +22,7 @@ export const Home = () => {
   const doLogin = async () => {
     dispatch(login(cred))
     setCred(() => ({ username: '', password: '', fullname: '' }))
+    props.history.push('/main/feed')
   }
 
   return (
@@ -202,7 +203,7 @@ export const Home = () => {
         <div className="title-container">
           <div>
             <h1 className="title">
-              Let the right people know <br /> you’re open to work
+              Let the right people know <br /> you're open to work
             </h1>
             <p>
               With the Open To Work feature, you can privately tell recruiters
@@ -250,7 +251,14 @@ export const Home = () => {
           </h1>
 
           <div className="get-started-container">
-            <button className="get-started-btn">Get Started</button>
+            <button
+              onClick={() => {
+                props.history.push('/signup')
+              }}
+              className="get-started-btn"
+            >
+              Get Started
+            </button>
           </div>
         </div>
 

@@ -10,20 +10,13 @@ export function postReducer(state = INITIAL_STATE, action) {
         ...state,
         posts: action.posts,
       }
-
-    case 'ADD_POST':
-      return {
-        ...state,
-        posts: [...state.posts, action.post],
-      }
-
     case 'REMOVE_POST':
       return {
         ...state,
         posts: state.posts.filter((post) => post._id !== action.postId),
       }
 
-    case 'UPDATE_POST':
+    case 'SAVE_POST':
       return {
         ...state,
         posts: state.posts.map((post) =>

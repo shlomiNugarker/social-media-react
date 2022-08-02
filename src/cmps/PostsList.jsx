@@ -2,13 +2,17 @@ import { PostPreview } from './PostPreview'
 
 export const PostsList = ({ posts }) => {
   if (!posts) return <div>Loading...</div>
-  console.log(posts)
-
   return (
     <section className="posts-list">
-      {posts.map((post) => (
-        <PostPreview key={post._id} post={post} />
-      ))}
+      {posts.map((post) =>
+        post.posts.map((innerPost) => (
+          <PostPreview
+            key={post._id}
+            post={innerPost}
+            fullname={post.fullname}
+          />
+        ))
+      )}
     </section>
   )
 }

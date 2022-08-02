@@ -5,6 +5,7 @@ export function loadPosts() {
     try {
       const { filterBy } = getState().postModule
       const posts = await postService.query(filterBy)
+      console.log(posts)
       dispatch({ type: 'SET_POSTS', posts })
     } catch (err) {
       console.log('err:', err)
@@ -17,6 +18,17 @@ export function removePost(postId) {
     try {
       await postService.remove(postId)
       dispatch({ type: 'REMOVE_POST', postId })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function savePost(post) {
+  return async (dispatch) => {
+    try {
+      await postService.save()
+      dispatch({ type: 'SAVE_POST', post })
     } catch (err) {
       console.log('err:', err)
     }

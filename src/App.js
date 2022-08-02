@@ -14,7 +14,6 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('use effect')
     dispatch(getLoggedinUser())
     // eslint-disable-next-line
   }, [])

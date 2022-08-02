@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, signup, logout } from '../store/actions/userActions'
 
-export const Signup = () => {
+export const Signup = ({ history }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   const dispatch = useDispatch()
@@ -32,6 +32,7 @@ export const Signup = () => {
   const doSignup = async () => {
     dispatch(signup(cred))
     setCred(() => ({ username: '', password: '', fullname: '' }))
+    history.push('/main/feed')
   }
 
   const doSubmit = () => {
