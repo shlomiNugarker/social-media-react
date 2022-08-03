@@ -12,7 +12,6 @@ export const Posts = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('loadPosts')
     dispatch(loadPosts())
     // eslint-disable-next-line
   }, [])

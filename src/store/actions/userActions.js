@@ -69,7 +69,7 @@ export function removeUser(userId) {
   }
 }
 
-export function getById(userId) {
+export function getUserById(userId) {
   return async (dispatch) => {
     try {
       const user = await userService.getById(userId)

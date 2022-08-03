@@ -1,11 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const AddPost = () => {
+  const { loggedInUser } = useSelector((state) => state.userModule)
+  console.log(loggedInUser)
+  const { imgUrl } = loggedInUser
   return (
     <section className="add-post">
       <section className="top">
         <div className="img-container">
-          <p className="icon"></p>
+          <img src={imgUrl} alt="" className="icon" />
         </div>
         <button className="input-container">
           <span>Start a post</span>

@@ -22,6 +22,7 @@ export const Signup = ({ history }) => {
   }
 
   const doLogin = async () => {
+    console.log('doLogin')
     dispatch(login(cred))
     setCred(() => ({ username: '', password: '', fullname: '' }))
   }
@@ -30,6 +31,7 @@ export const Signup = ({ history }) => {
     setCred(() => ({ username: '', password: '', fullname: '' }))
   }
   const doSignup = async () => {
+    console.log('doSignup')
     dispatch(signup(cred))
     setCred(() => ({ username: '', password: '', fullname: '' }))
     history.push('/main/feed')

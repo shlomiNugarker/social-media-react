@@ -5,7 +5,6 @@ export function loadPosts() {
     try {
       const { filterBy } = getState().postModule
       const posts = await postService.query(filterBy)
-      console.log(posts)
       dispatch({ type: 'SET_POSTS', posts })
     } catch (err) {
       console.log('err:', err)

@@ -8,6 +8,7 @@
     background-color: lightskyblue;
     width: 35px;
     height: 35px;
+    object-fit: cover;
   }
 
   .container {
@@ -30,6 +31,9 @@
         .name {
           h3 {
             color: black;
+          }
+          p {
+            font-size: 14px;
           }
         }
 

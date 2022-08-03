@@ -1,15 +1,16 @@
-export function SocialDetails() {
+export function SocialDetails({ comments, shares, reactions }) {
+  if (!comments) return
   return (
     <section className="social-details">
       <div className="likes-count">
-        <span>28</span>
+        <span>{reactions?.length || ''}</span>
       </div>
       <div className="share-comment">
         <div className="comment-count">
-          <p>1 comment</p>
+          <p>{comments.length || ''} comment</p>
         </div>
         <div className="share-count">
-          <p>2 shares</p>
+          <p>{shares?.length || ''} shares</p>
         </div>
       </div>
     </section>

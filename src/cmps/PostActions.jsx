@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const PostActions = () => {
+export const PostActions = ({ post }) => {
   return (
     <section className="post-actions">
       <button className="like">

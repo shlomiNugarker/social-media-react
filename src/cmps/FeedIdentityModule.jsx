@@ -1,18 +1,34 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { getLoggedinUser } from '../store/actions/userActions'
+import { useEffect, useState } from 'react'
+
 export const FeedIdentityModule = (props) => {
+  const dispatch = useDispatch()
+
+  const { loggedInUser } = useSelector((state) => state.userModule)
+
+  if (!loggedInUser)
+    return <section className="feed-identity-module">Loading</section>
+
+  const { fullname, imgUrl, profession } = loggedInUser
+
   return (
     <section className="feed-identity-module">
       <div className="">
         <div className="bg">
           <div className="profile-container">
-            <div className="img"></div>
+            {/* <div className="img"></div> */}
+            <img src={imgUrl} alt="" className="img" />
           </div>
         </div>
 
         <div className="profile-name">
           <h1>
-            Shlomi <br /> Nugarker
+            {fullname}
+            {/* Shlomi <br /> Nugarker */}
           </h1>
-          <p className="professional">Full-Stack Developer</p>
+          <p className="professional">{profession}</p>
         </div>
 
         <div className="views">

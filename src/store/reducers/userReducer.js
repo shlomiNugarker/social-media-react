@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  loggedInUser: 'Shlomi',
+  loggedInUser: null,
   users: null,
 }
 

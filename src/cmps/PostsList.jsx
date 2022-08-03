@@ -10,6 +10,7 @@ export const PostsList = ({ posts }) => {
             key={post._id}
             post={innerPost}
             fullname={post.fullname}
+            userId={post.userId}
           />
         ))
       )}

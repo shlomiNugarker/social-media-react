@@ -7,7 +7,7 @@ export const Home = (props) => {
   const dispatch = useDispatch()
 
   const [cred, setCred] = useState({
-    username: 'bbb',
+    username: 'shlomi123',
     password: '1234',
     fullname: '',
   })
