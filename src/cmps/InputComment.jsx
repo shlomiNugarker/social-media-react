@@ -1,10 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const InputComment = () => {
+  const { loggedInUser } = useSelector((state) => state.userModule)
+  const { imgUrl } = loggedInUser
   return (
     <section className="input-comment">
       <div className="img-profile">
-        <div className="img"></div>
+        <img src={imgUrl} alt="" className="img" />
       </div>
 
       <div className="input-container">

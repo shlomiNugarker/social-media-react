@@ -1,4 +1,9 @@
-export function SocialDetails({ comments, shares, reactions }) {
+export function SocialDetails({
+  comments,
+  shares,
+  reactions,
+  toggleShowComment,
+}) {
   if (!comments) return
   return (
     <section className="social-details">
@@ -6,7 +11,7 @@ export function SocialDetails({ comments, shares, reactions }) {
         <span>{reactions?.length || ''}</span>
       </div>
       <div className="share-comment">
-        <div className="comment-count">
+        <div className="comment-count" onClick={toggleShowComment}>
           <p>{comments.length || ''} comment</p>
         </div>
         <div className="share-count">

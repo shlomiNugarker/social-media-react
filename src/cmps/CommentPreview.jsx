@@ -4,7 +4,6 @@ import { userService } from '../services/user/userService'
 
 export const CommentPreview = ({ comment }) => {
   const { user, createdAt, postId, reactions } = comment
-  console.log(user)
 
   const [userComment, setUserComment] = useState(null)
 
@@ -20,7 +19,7 @@ export const CommentPreview = ({ comment }) => {
   }, [])
 
   if (!userComment) return
-  console.log(userComment)
+
   const { profession, imgUrl } = userComment
 
   return (

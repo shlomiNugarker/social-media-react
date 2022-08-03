@@ -4,18 +4,24 @@ import { PostActions } from './PostActions'
 import { PostBody } from './PostBody'
 import { PostHeader } from './PostHeader'
 import { SocialDetails } from './SocialDetails'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/user/userService'
 
 export const PostPreview = ({ post, fullname, userId }) => {
   const { body, comments, imgBodyUrl } = post
   const [userPost, setUserPost] = useState(null)
+  const [isShowComments, setIsShowComments] = useState(false)
 
   const loadUserPost = async (userId) => {
     if (!post) return
     const userPost = await userService.getById(userId)
     setUserPost(userPost)
+  }
+
+  const toggleShowComment = () => {
+    console.log('toggle')
+    setIsShowComments((prev) => !prev)
   }
 
   useEffect(() => {
@@ -30,10 +36,13 @@ export const PostPreview = ({ post, fullname, userId }) => {
       </div>
       <PostHeader post={post} userPost={userPost} />
       <PostBody body={body} imgUrl={imgBodyUrl} />
-      <SocialDetails comments={comments} />
+      <SocialDetails
+        comments={comments}
+        toggleShowComment={toggleShowComment}
+      />
       <hr />
       <PostActions post={post} />
-      <Comments comments={comments} />
+      {isShowComments && <Comments comments={comments} />}
     </section>
   )
 }
