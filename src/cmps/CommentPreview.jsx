@@ -25,7 +25,6 @@ export const CommentPreview = ({ comment }) => {
   return (
     <section className="comment-preview">
       <div className="img-container">
-        {/* <p className="img-profile"></p> */}
         <img src={imgUrl} alt="" className="img-profile" />
       </div>
       <div className="container">

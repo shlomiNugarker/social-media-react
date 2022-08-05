@@ -25,7 +25,7 @@ const App = () => {
           <Link to="/home">Home</Link>|<Link to="/signup">signup</Link>|
           <Link to="/main/feed">feed</Link>|
         </div>
-        <main className="">
+        <main>
           <Switch>
             <Route path="/signup" component={Signup} />
             <Route path="/main" component={Main} />

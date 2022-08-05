@@ -3,9 +3,16 @@
   position: fixed;
   z-index: 5;
   inset: 50px 0 0 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+
+  &.hide {
+    transition: opacity 0.2s;
+    opacity: 0;
+    visibility: hidden;
+  }
 
   .container {
-    // padding: 10px;
     position: absolute;
     background-color: white;
     overflow-y: auto;
@@ -25,6 +32,11 @@
       border-bottom: 1px solid $border;
       h1 {
         font-size: 26px;
+      }
+
+      .close-icon {
+        cursor: pointer;
+        padding: 3px;
       }
     }
 
@@ -70,6 +82,14 @@
 
       bottom: 0;
       padding: 5px;
+
+      .post-btn,
+      button {
+        border-radius: 15px;
+        padding: 7px 7px;
+        border: none;
+        font-size: 24px;
+      }
     }
   }
 }

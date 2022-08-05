@@ -2,16 +2,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreatePostModal } from './CreatePostModal'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
+import { savePost } from '../store/actions/postActions'
 
 export const AddPost = () => {
-  const { loggedInUser } = useSelector((state) => state.userModule)
-  const { imgUrl } = loggedInUser
+  const dispatch = useDispatch()
 
+  const { loggedInUser } = useSelector((state) => state.userModule)
+  const { imgUrl, _id, username } = loggedInUser
   const [isShowCreatePost, setIsShowCreatePost] = useState(false)
 
   const toggleShowCreatePost = () => {
-    console.log('toggle')
     setIsShowCreatePost((prev) => !prev)
+  }
+
+  const onAddPost = (post) => {
+    const postToAdd = { ...post, userId: _id }
+    dispatch(savePost(postToAdd))
   }
 
   return (
@@ -49,8 +55,14 @@ export const AddPost = () => {
           <span>Write article</span>
         </button>
       </section>
-
-      {isShowCreatePost && <CreatePostModal />}
+      {
+        <CreatePostModal
+          isShowCreatePost={isShowCreatePost}
+          toggleShowCreatePost={toggleShowCreatePost}
+          onAddPost={onAddPost}
+          loggedInUser={loggedInUser}
+        />
+      }
     </section>
   )
 }

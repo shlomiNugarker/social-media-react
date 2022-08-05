@@ -12,10 +12,22 @@ export function SocialDetails({
       </div>
       <div className="share-comment">
         <div className="comment-count" onClick={toggleShowComment}>
-          <p>{comments.length || ''} comment</p>
+          <p>
+            {!comments?.length
+              ? ''
+              : comments?.length > 1
+              ? comments?.length + ' comments'
+              : '1 comment'}
+          </p>
         </div>
         <div className="share-count">
-          <p>{shares?.length || ''} shares</p>
+          <p>
+            {!shares?.length
+              ? ''
+              : shares?.length > 1
+              ? shares?.length + ' shares'
+              : '1 share'}
+          </p>
         </div>
       </div>
     </section>

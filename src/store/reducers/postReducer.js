@@ -16,7 +16,14 @@ export function postReducer(state = INITIAL_STATE, action) {
         posts: state.posts.filter((post) => post._id !== action.postId),
       }
 
-    case 'SAVE_POST':
+    case 'ADD_ROBOT':
+      console.log(action.post)
+      return {
+        ...state,
+        posts: [action.post, ...state.posts],
+      }
+
+    case 'UPDATE_POST':
       return {
         ...state,
         posts: state.posts.map((post) =>

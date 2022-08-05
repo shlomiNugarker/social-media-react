@@ -18,16 +18,12 @@ export const FeedIdentityModule = (props) => {
       <div className="">
         <div className="bg">
           <div className="profile-container">
-            {/* <div className="img"></div> */}
             <img src={imgUrl} alt="" className="img" />
           </div>
         </div>
 
         <div className="profile-name">
-          <h1>
-            {fullname}
-            {/* Shlomi <br /> Nugarker */}
-          </h1>
+          <h1>{fullname}</h1>
           <p className="professional">{profession}</p>
         </div>
 

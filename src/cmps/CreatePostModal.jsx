@@ -1,35 +1,84 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
-export const CreatePostModal = () => {
+export const CreatePostModal = ({
+  toggleShowCreatePost,
+  onAddPost,
+  isShowCreatePost,
+  loggedInUser,
+}) => {
+  const [newPost, setNewPost] = useState({
+    body: '',
+    imgBodyUrl: '',
+    title: '',
+  })
+
+  const handleChange = async ({ target }) => {
+    const field = target.name
+    let value = target.type === 'number' ? +target.value || '' : target.value
+    setNewPost((prevCred) => ({ ...prevCred, [field]: value }))
+  }
+
+  const doSubmit = () => {
+    onAddPost(newPost)
+  }
+
+  const inputRef = (elInput) => {
+    if (elInput) elInput.focus()
+  }
+
   return (
-    <section className="create-post-modal">
-      <div className="container">
+    <section
+      className={
+        isShowCreatePost ? ' create-post-modal' : 'hide create-post-modal'
+      }
+      onClick={(ev) => {
+        ev.stopPropagation()
+        toggleShowCreatePost()
+      }}
+    >
+      <form
+        className="container"
+        onSubmit={(ev) => {
+          ev.preventDefault()
+          doSubmit()
+        }}
+        onClick={(ev) => {
+          ev.stopPropagation()
+        }}
+      >
         <div className="title">
           <h1>Create a post</h1>
-          <FontAwesomeIcon icon="fa-solid fa-x" />
+          <span className="close-icon" onClick={toggleShowCreatePost}>
+            <FontAwesomeIcon icon="fa-solid fa-x" />
+          </span>
         </div>
 
         <div className="name-container">
           <div className="img-container">
-            <img src="" alt="" className="img-profile" />
+            <img src={loggedInUser.imgUrl} alt="" className="img-profile" />
           </div>
           <div className="name">
             <h2>Shlomi Nugarker</h2>
           </div>
         </div>
         <div className="input-container">
-          {/* <input type="text" placeholder="What do you want to talk about?" /> */}
           <textarea
-            name=""
-            id=""
+            required
+            ref={inputRef}
+            onChange={handleChange}
+            type="text"
+            id="body"
+            name="body"
+            value={newPost.txt}
             placeholder="What do you want to talk about?"
           ></textarea>
         </div>
 
         <div className="btns-add-container">
-          <button>Post</button>
+          <button className="post-btn">Post</button>
         </div>
-      </div>
+      </form>
     </section>
   )
 }

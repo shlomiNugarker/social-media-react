@@ -1,8 +1,8 @@
 import { httpService } from '../httpService'
 
-const ENDPOINT = 'post'
+const ENDPOINT = 'comment'
 
-export const postService = {
+export const commentService = {
   query,
   getById,
   remove,
@@ -21,15 +21,15 @@ async function remove(id) {
   return await httpService.delete(`${ENDPOINT}/${id}`)
 }
 
-async function save(post) {
-  return post._id
-    ? await httpService.put(`${ENDPOINT}/${post._id}`, post)
-    : await httpService.post(ENDPOINT, post)
+async function save(comment) {
+  return comment._id
+    ? await httpService.put(`${ENDPOINT}/${comment._id}`, comment)
+    : await httpService.comment(ENDPOINT, comment)
 }
 
 // ;(async () => {
 //   console.log('IFI !')
-//   const posts = await query()
+//   const comments = await query()
 
-//   console.log('posts: ', posts)
+//   console.log('comments: ', comments)
 // })()

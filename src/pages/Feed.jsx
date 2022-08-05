@@ -15,7 +15,6 @@ export const Feed = () => {
 
   return (
     <section className="feed">
-      {/* <p>loggedin user: {loggedInUser?.fullname}</p> */}
       <LeftSideBar />
       <Posts />
       <RightSideBar />

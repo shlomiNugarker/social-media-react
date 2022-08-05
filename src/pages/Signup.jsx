@@ -21,20 +21,26 @@ export const Signup = ({ history }) => {
     setCred((prevCred) => ({ ...prevCred, [field]: value }))
   }
 
+  const cleanFields = () =>
+    setCred(() => ({ username: '', password: '', fullname: '' }))
+
   const doLogin = async () => {
     console.log('doLogin')
     dispatch(login(cred))
-    setCred(() => ({ username: '', password: '', fullname: '' }))
+    cleanFields()
+    // setCred(() => ({ username: '', password: '', fullname: '' }))
   }
   const doLogout = async () => {
     dispatch(logout())
-    setCred(() => ({ username: '', password: '', fullname: '' }))
+    cleanFields()
+    // setCred(() => ({ username: '', password: '', fullname: '' }))
   }
   const doSignup = async () => {
     console.log('doSignup')
     dispatch(signup(cred))
-    setCred(() => ({ username: '', password: '', fullname: '' }))
-    history.push('/main/feed')
+    cleanFields()
+    // setCred(() => ({ username: '', password: '', fullname: '' }))
+    // history.push('/main/feed')
   }
 
   const doSubmit = () => {

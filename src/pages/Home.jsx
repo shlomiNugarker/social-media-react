@@ -2,26 +2,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { login, signup } from '../store/actions/userActions'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
 
 export const Home = (props) => {
   const dispatch = useDispatch()
 
-  const [cred, setCred] = useState({
+  const [creds, setCreds] = useState({
     username: 'shlomi123',
     password: '1234',
-    fullname: '',
   })
 
   const handleChange = async ({ target }) => {
-    console.log('handle')
     const field = target.name
     let value = target.type === 'number' ? +target.value || '' : target.value
-    setCred((prevCred) => ({ ...prevCred, [field]: value }))
+    setCreds((prevCred) => ({ ...prevCred, [field]: value }))
   }
 
   const doLogin = async () => {
-    dispatch(login(cred))
-    setCred(() => ({ username: '', password: '', fullname: '' }))
+    dispatch(login(creds))
+    setCreds(() => ({ username: '', password: '' }))
     props.history.push('/main/feed')
   }
 
@@ -88,7 +87,7 @@ export const Home = (props) => {
             type="text"
             id="username"
             name="username"
-            value={cred.username}
+            value={creds.username}
             placeholder="Email or phone number"
             required
           />
@@ -97,7 +96,7 @@ export const Home = (props) => {
             type="text"
             id="password"
             name="password"
-            value={cred.password}
+            value={creds.password}
             placeholder="Passsword"
             required
           />

@@ -9,18 +9,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/user/userService'
 
 export const PostPreview = ({ post, fullname, userId }) => {
-  const { body, comments, imgBodyUrl } = post
+  const { body, comments, imgBodyUrl, _id } = post
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
 
-  const loadUserPost = async (userId) => {
+  const loadUserPost = async (id) => {
     if (!post) return
-    const userPost = await userService.getById(userId)
-    setUserPost(userPost)
+    const userPost = await userService.getById(id)
+    setUserPost(() => userPost)
   }
 
   const toggleShowComment = () => {
-    console.log('toggle')
     setIsShowComments((prev) => !prev)
   }
 
@@ -41,8 +40,9 @@ export const PostPreview = ({ post, fullname, userId }) => {
         toggleShowComment={toggleShowComment}
       />
       <hr />
-      <PostActions post={post} />
-      {isShowComments && <Comments comments={comments} />}
+      <PostActions post={post} toggleShowComment={toggleShowComment} />
+
+      {isShowComments && <Comments comments={comments} postId={_id} />}
     </section>
   )
 }

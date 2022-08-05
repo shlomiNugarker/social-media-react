@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 
-export const InputComment = () => {
+export const InputComment = ({ onAddComment }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { imgUrl } = loggedInUser
+
+  const inputRef = (elInput) => {
+    if (elInput) elInput.focus()
+  }
   return (
     <section className="input-comment">
       <div className="img-profile">
@@ -11,7 +15,7 @@ export const InputComment = () => {
       </div>
 
       <div className="input-container">
-        <input type="text" placeholder="Add a Comment.." />
+        <input ref={inputRef} type="text" placeholder="Add a Comment.." />
         <span>
           <FontAwesomeIcon
             className="smile icon"

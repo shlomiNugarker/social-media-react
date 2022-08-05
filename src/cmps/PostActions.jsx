@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const PostActions = ({ post }) => {
+export const PostActions = ({ post, toggleShowComment }) => {
   return (
     <section className="post-actions">
       <button className="like">
@@ -10,7 +10,7 @@ export const PostActions = ({ post }) => {
         />
         <span>Like</span>
       </button>
-      <button className="comment">
+      <button className="comment" onClick={toggleShowComment}>
         <FontAwesomeIcon
           className="comment-icon icon"
           icon="fa-solid fa-comment"
