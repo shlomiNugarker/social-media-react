@@ -3,18 +3,18 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 
 export const CommentPreview = ({ comment }) => {
-  const { user, createdAt, postId, reactions } = comment
+  const { userId, createdAt, postId, reactions } = comment
 
   const [userComment, setUserComment] = useState(null)
 
   const loadUserComment = async (userId) => {
-    if (!user) return
+    if (!userId) return
     const userComment = await userService.getById(userId)
     setUserComment(userComment)
   }
 
   useEffect(() => {
-    loadUserComment(user._id)
+    loadUserComment(userId)
     // eslint-disable-next-line
   }, [])
 
@@ -31,7 +31,7 @@ export const CommentPreview = ({ comment }) => {
         <div className="comment-header">
           <div className="comment-details">
             <div className="name">
-              <h3>{comment.user.username}</h3>
+              <h3>{userComment.fullname}</h3>
               <p>{profession}</p>
             </div>
             <div>
@@ -43,7 +43,7 @@ export const CommentPreview = ({ comment }) => {
             </div>
           </div>
           <div className="comment-text">
-            <p>{comment.body}</p>
+            <p>{comment.txt}</p>
           </div>
         </div>
         <div className="comment-action">

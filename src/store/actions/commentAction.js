@@ -1,11 +1,10 @@
 import { commentService } from '../../services/comment/commentService'
 
-export function loadComment() {
+export function loadComments(postId) {
   return async (dispatch, getState) => {
     try {
-      const { filterBy } = getState().commentModule
-      const comments = await commentService.query(filterBy)
-      dispatch({ type: 'SET_COMMENTS', comments })
+      const comments = await commentService.getById(postId)
+      dispatch({ type: 'ADD_COMMENTS', comments })
     } catch (err) {
       console.log('err:', err)
     }
@@ -33,11 +32,5 @@ export function saveComment(comment) {
     } catch (err) {
       console.log('err:', err)
     }
-  }
-}
-
-export function setFilterBy(filterBy) {
-  return async (dispatch) => {
-    dispatch({ type: 'SET_FILTER_BY', filterBy })
   }
 }

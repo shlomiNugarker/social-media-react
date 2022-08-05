@@ -7,13 +7,12 @@ import { loadPosts } from '../store/actions/postActions'
 
 export const Posts = () => {
   const dispatch = useDispatch()
+  const { posts } = useSelector((state) => state.postModule)
 
   useEffect(() => {
     dispatch(loadPosts())
     // eslint-disable-next-line
-  }, [])
-
-  const { posts } = useSelector((state) => state.postModule)
+  }, [posts])
 
   return (
     <section className="posts">

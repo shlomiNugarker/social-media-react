@@ -9,10 +9,8 @@ export const Comments = ({ comments, postId }) => {
   const onAddComment = (comment) => {
     const commentToAdd = { ...comment, postId }
 
-    dispatch(saveComment())
-    // dispatch(saveComment(commentToAdd))
+    dispatch(saveComment(commentToAdd))
   }
-  /// TODO: ADD COMMENT STORE
   return (
     <section className="comments">
       <InputComment onAddComment={onAddComment} />

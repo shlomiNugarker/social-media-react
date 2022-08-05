@@ -24,7 +24,7 @@ async function remove(id) {
 async function save(comment) {
   return comment._id
     ? await httpService.put(`${ENDPOINT}/${comment._id}`, comment)
-    : await httpService.comment(ENDPOINT, comment)
+    : await httpService.post(ENDPOINT, comment)
 }
 
 // ;(async () => {

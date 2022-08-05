@@ -28,8 +28,8 @@ export function savePost(post) {
     try {
       const addedPost = await postService.save(post)
       post._id
-        ? dispatch({ type: 'UPDATE_POST', addedPost })
-        : dispatch({ type: 'ADD_POST', addedPost })
+        ? dispatch({ type: 'UPDATE_POST', post: addedPost })
+        : dispatch({ type: 'ADD_POST', post: addedPost })
     } catch (err) {
       console.log('err:', err)
     }

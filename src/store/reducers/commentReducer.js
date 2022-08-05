@@ -1,6 +1,5 @@
 const INITIAL_STATE = {
-  comments: null,
-  filterBy: null,
+  comments: [],
 }
 
 export function commentReducer(state = INITIAL_STATE, action) {
@@ -18,10 +17,10 @@ export function commentReducer(state = INITIAL_STATE, action) {
         ),
       }
 
-    case 'ADD_ROBOT':
+    case 'ADD_COMMENTS':
       return {
         ...state,
-        comments: [action.comment, ...state.comments],
+        comments: [...action.comments, ...state.comments],
       }
 
     case 'UPDATE_COMMENT':
@@ -31,12 +30,6 @@ export function commentReducer(state = INITIAL_STATE, action) {
           comment._id === action.comment._id ? action.comment : comment
         ),
       }
-    case 'SET_FILTER_BY':
-      return {
-        ...state,
-        filterBy: { ...action.filterBy },
-      }
-
     default:
       return state
   }

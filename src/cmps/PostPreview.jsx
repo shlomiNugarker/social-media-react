@@ -7,17 +7,23 @@ import { SocialDetails } from './SocialDetails'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/user/userService'
+import { loadComments } from '../store/actions/commentAction'
 
-export const PostPreview = ({ post, fullname, userId }) => {
-  const { body, comments, imgBodyUrl, _id } = post
+export const PostPreview = ({ post, userId }) => {
+  const { body, imgBodyUrl, _id } = post
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
+
+  const { comments } = useSelector((state) => state.commentModule)
+
+  const postComments = comments.filter((comment) => comment.postId === post._id)
 
   const loadUserPost = async (id) => {
     if (!post) return
     const userPost = await userService.getById(id)
     setUserPost(() => userPost)
   }
+  const dispatch = useDispatch()
 
   const toggleShowComment = () => {
     setIsShowComments((prev) => !prev)
@@ -25,6 +31,7 @@ export const PostPreview = ({ post, fullname, userId }) => {
 
   useEffect(() => {
     loadUserPost(userId)
+    dispatch(loadComments(_id))
     // eslint-disable-next-line
   }, [])
 
@@ -36,13 +43,13 @@ export const PostPreview = ({ post, fullname, userId }) => {
       <PostHeader post={post} userPost={userPost} />
       <PostBody body={body} imgUrl={imgBodyUrl} />
       <SocialDetails
-        comments={comments}
+        comments={postComments}
         toggleShowComment={toggleShowComment}
       />
       <hr />
       <PostActions post={post} toggleShowComment={toggleShowComment} />
 
-      {isShowComments && <Comments comments={comments} postId={_id} />}
+      {isShowComments && <Comments comments={postComments} postId={_id} />}
     </section>
   )
 }
