@@ -22,6 +22,7 @@ export const CommentPreview = ({ comment }) => {
 
   const { profession, imgUrl } = userComment
 
+  console.log('render CommentPreview')
   return (
     <section className="comment-preview">
       <div className="img-container">

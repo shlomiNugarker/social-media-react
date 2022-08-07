@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  comments: [],
+  comments: {},
 }
 
 export function commentReducer(state = INITIAL_STATE, action) {
@@ -7,29 +7,41 @@ export function commentReducer(state = INITIAL_STATE, action) {
     case 'SET_COMMENTS':
       return {
         ...state,
-        comments: action.comments,
+        comments: {
+          ...state.comments,
+          [action.postId]: action.comments.sort(
+            (a, b) => b.createdAt - a.createdAt
+          ),
+        },
       }
-    case 'REMOVE_COMMENT':
-      return {
-        ...state,
-        comments: state.comments.filter(
-          (comment) => comment._id !== action.commentId
-        ),
-      }
+    // case 'REMOVE_COMMENT':
+    //   return {
+    //     ...state,
+    //     comments: state.comments.filter(
+    //       (comment) => comment._id !== action.commentId
+    //     ),
+    //   }
 
     case 'ADD_COMMENTS':
       return {
         ...state,
-        comments: [...action.comments, ...state.comments],
+        comments: {
+          ...state.comments,
+          // the key to add inside the comments:
+          [action.comment.postId]: [
+            ...state.comments[action.comment.postId], // <= array of the comments in this key
+            action.comment, // new comment
+          ],
+        },
       }
 
-    case 'UPDATE_COMMENT':
-      return {
-        ...state,
-        comments: state.comments.map((comment) =>
-          comment._id === action.comment._id ? action.comment : comment
-        ),
-      }
+    // case 'UPDATE_COMMENT':
+    //   return {
+    //     ...state,
+    //     comments: state.comments.map((comment) =>
+    //       comment._id === action.comment._id ? action.comment : comment
+    //     ),
+    //   }
     default:
       return state
   }

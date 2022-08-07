@@ -8,33 +8,55 @@ import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/user/userService'
 import { loadComments } from '../store/actions/commentAction'
+import { savePost, loadPosts } from '../store/actions/postActions'
 
 export const PostPreview = ({ post, userId }) => {
-  const { body, imgBodyUrl, _id } = post
+  const dispatch = useDispatch()
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
 
+  const { loggedInUser } = useSelector((state) => state.userModule)
   const { comments } = useSelector((state) => state.commentModule)
 
-  const postComments = comments.filter((comment) => comment.postId === post._id)
+  const { body, imgBodyUrl, _id } = post
 
   const loadUserPost = async (id) => {
     if (!post) return
     const userPost = await userService.getById(id)
     setUserPost(() => userPost)
   }
-  const dispatch = useDispatch()
 
-  const toggleShowComment = () => {
+  const onToggleShowComment = () => {
     setIsShowComments((prev) => !prev)
+  }
+
+  const onLikePost = () => {
+    const postToSave = JSON.parse(JSON.stringify(post))
+    const isAlreadyLike = postToSave.reactions.some(
+      (reaction) => reaction.userId === loggedInUser._id
+    )
+    if (isAlreadyLike) {
+      postToSave.reactions = postToSave.reactions.filter(
+        (reaction) => reaction.userId !== loggedInUser._id
+      )
+    }
+    //
+    else if (!isAlreadyLike) {
+      postToSave.reactions.push({
+        userId: loggedInUser._id,
+        fullname: loggedInUser.fullname,
+      })
+    }
+    dispatch(savePost(postToSave))
+    dispatch(loadPosts())
   }
 
   useEffect(() => {
     loadUserPost(userId)
     dispatch(loadComments(_id))
-    // eslint-disable-next-line
   }, [])
 
+  console.log('render PostPreview')
   return (
     <section className="post-preview">
       <div className="menu">
@@ -43,13 +65,21 @@ export const PostPreview = ({ post, userId }) => {
       <PostHeader post={post} userPost={userPost} />
       <PostBody body={body} imgUrl={imgBodyUrl} />
       <SocialDetails
-        comments={postComments}
-        toggleShowComment={toggleShowComment}
+        comments={comments[post._id]}
+        post={post}
+        onToggleShowComment={onToggleShowComment}
       />
       <hr />
-      <PostActions post={post} toggleShowComment={toggleShowComment} />
+      <PostActions
+        post={post}
+        onToggleShowComment={onToggleShowComment}
+        onLikePost={onLikePost}
+        loggedInUser={loggedInUser}
+      />
 
-      {isShowComments && <Comments comments={postComments} postId={_id} />}
+      {isShowComments && (
+        <Comments comments={comments[post._id]} postId={_id} />
+      )}
     </section>
   )
 }

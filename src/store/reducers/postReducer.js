@@ -10,16 +10,16 @@ export function postReducer(state = INITIAL_STATE, action) {
         ...state,
         posts: action.posts,
       }
-    case 'REMOVE_POST':
-      return {
-        ...state,
-        posts: state.posts.filter((post) => post._id !== action.postId),
-      }
+    // case 'REMOVE_POST':
+    //   return {
+    //     ...state,
+    //     posts: state.posts.filter((post) => post._id !== action.postId),
+    //   }
 
     case 'ADD_POST':
       return {
         ...state,
-        posts: [action.post, ...state.posts],
+        posts: [...state.posts, action.post],
       }
 
     case 'UPDATE_POST':
@@ -28,11 +28,6 @@ export function postReducer(state = INITIAL_STATE, action) {
         posts: state.posts.map((post) =>
           post._id === action.post._id ? action.post : post
         ),
-      }
-    case 'SET_FILTER_BY':
-      return {
-        ...state,
-        filterBy: { ...action.filterBy },
       }
 
     default:

@@ -4,7 +4,7 @@ export function loadComments(postId) {
   return async (dispatch, getState) => {
     try {
       const comments = await commentService.getById(postId)
-      dispatch({ type: 'ADD_COMMENTS', comments })
+      dispatch({ type: 'SET_COMMENTS', comments, postId })
     } catch (err) {
       console.log('err:', err)
     }
@@ -25,10 +25,10 @@ export function removeComment(commentId) {
 export function saveComment(comment) {
   return async (dispatch) => {
     try {
-      const addedComment = await commentService.save(comment)
+      const savedComment = await commentService.save(comment)
       comment._id
-        ? dispatch({ type: 'UPDATE_COMMENT', addedComment })
-        : dispatch({ type: 'ADD_COMMENT', addedComment })
+        ? dispatch({ type: 'UPDATE_COMMENT', comment: savedComment })
+        : dispatch({ type: 'ADD_COMMENT', comment: savedComment })
     } catch (err) {
       console.log('err:', err)
     }

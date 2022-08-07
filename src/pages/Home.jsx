@@ -18,10 +18,11 @@ export const Home = (props) => {
     setCreds((prevCred) => ({ ...prevCred, [field]: value }))
   }
 
-  const doLogin = async () => {
-    dispatch(login(creds))
-    setCreds(() => ({ username: '', password: '' }))
-    props.history.push('/main/feed')
+  const doLogin = () => {
+    dispatch(login(creds)).then(() => {
+      setCreds(() => ({ username: '', password: '' }))
+      props.history.push('/main/feed')
+    })
   }
 
   return (

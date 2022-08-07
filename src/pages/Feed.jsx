@@ -12,7 +12,7 @@ export const Feed = () => {
         <div className="loading">Loading...</div>
       </section>
     )
-
+  console.log('render Feed')
   return (
     <section className="feed">
       <LeftSideBar />

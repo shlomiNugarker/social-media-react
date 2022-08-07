@@ -19,6 +19,7 @@ export const InputComment = ({ onAddComment }) => {
 
   const doSubmit = () => {
     onAddComment(newComment)
+    setNewComment(() => ({ txt: '', userId: _id }))
   }
 
   const inputRef = (elInput) => {

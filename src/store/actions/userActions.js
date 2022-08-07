@@ -1,15 +1,15 @@
 import { userService } from '../../services/user/userService'
 
-export function getUsers() {
-  return async (dispatch) => {
-    try {
-      const users = await userService.getUsers()
-      dispatch({ type: 'GET_USERS', users })
-    } catch (err) {
-      console.log('cannot get users:', err)
-    }
-  }
-}
+// export function getUsers() {
+//   return async (dispatch) => {
+//     try {
+//       const users = await userService.getUsers()
+//       dispatch({ type: 'GET_USERS', users })
+//     } catch (err) {
+//       console.log('cannot get users:', err)
+//     }
+//   }
+// }
 export function login(userCred) {
   return async (dispatch) => {
     try {
@@ -51,12 +51,12 @@ export function logout() {
   }
 }
 
-export function updateUser(user) {
-  return async (dispatch) => {
-    await userService.update(user)
-    dispatch({ type: 'UPDATE_USER', user })
-  }
-}
+// export function updateUser(user) {
+//   return async (dispatch) => {
+//     await userService.update(user)
+//     dispatch({ type: 'UPDATE_USER', user })
+//   }
+// }
 
 export function removeUser(userId) {
   return async (dispatch) => {
@@ -73,10 +73,9 @@ export function getUserById(userId) {
   return async (dispatch) => {
     try {
       const user = await userService.getById(userId)
-      // dispatch({ type: 'GET_BY_ID', userId })
       return user
     } catch (err) {
-      console.log('cannot getByIdL:', err)
+      console.log('cannot getUserById:', err)
     }
   }
 }

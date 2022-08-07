@@ -12,16 +12,16 @@ export function loadPosts() {
   }
 }
 
-export function removePost(postId) {
-  return async (dispatch) => {
-    try {
-      await postService.remove(postId)
-      dispatch({ type: 'REMOVE_POST', postId })
-    } catch (err) {
-      console.log('err:', err)
-    }
-  }
-}
+// export function removePost(postId) {
+//   return async (dispatch) => {
+//     try {
+//       await postService.remove(postId)
+//       dispatch({ type: 'REMOVE_POST', postId })
+//     } catch (err) {
+//       console.log('err:', err)
+//     }
+//   }
+// }
 
 export function savePost(post) {
   return async (dispatch) => {

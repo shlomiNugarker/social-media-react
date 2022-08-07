@@ -17,7 +17,7 @@ export const AddPost = () => {
 
   const onAddPost = (post) => {
     const postToAdd = { ...post, userId: _id }
-    dispatch(savePost(postToAdd))
+    dispatch(savePost(postToAdd)).then(() => toggleShowCreatePost()) // TODO: CLOSE MODAL AFTER POST ADDED
   }
 
   return (
