@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 
 export const PostActions = ({
@@ -8,11 +9,9 @@ export const PostActions = ({
   onLikePost,
   loggedInUser,
 }) => {
-  const isLogedInUserLikePost = post.reactions.some((reaction) => {
+  const isLogedInUserLikePost = post?.reactions.some((reaction) => {
     return loggedInUser._id === reaction.userId
   })
-
-  const { comments } = useSelector((state) => state.commentModule)
 
   const likeBtnStyle = isLogedInUserLikePost ? 'liked' : ''
   return (

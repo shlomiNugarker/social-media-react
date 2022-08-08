@@ -8,7 +8,7 @@ export const AddPost = () => {
   const dispatch = useDispatch()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
-  const { imgUrl, _id, username } = loggedInUser
+
   const [isShowCreatePost, setIsShowCreatePost] = useState(false)
 
   const toggleShowCreatePost = () => {
@@ -16,15 +16,15 @@ export const AddPost = () => {
   }
 
   const onAddPost = (post) => {
-    const postToAdd = { ...post, userId: _id }
-    dispatch(savePost(postToAdd)).then(() => toggleShowCreatePost()) // TODO: CLOSE MODAL AFTER POST ADDED
+    const postToAdd = { ...post, userId: loggedInUser._id }
+    dispatch(savePost(postToAdd)).then(() => toggleShowCreatePost())
   }
 
   return (
     <section className="add-post">
       <section className="top">
         <div className="img-container">
-          <img src={imgUrl} alt="" className="icon" />
+          <img src={loggedInUser.imgUrl} alt="" className="icon" />
         </div>
         <button className="input-container" onClick={toggleShowCreatePost}>
           <span>Start a post</span>

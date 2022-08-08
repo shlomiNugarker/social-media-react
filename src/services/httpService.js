@@ -7,6 +7,8 @@ var axios = Axios.create({
   withCredentials: true,
 })
 
+// //localhost:3030/api/user
+
 export const httpService = {
   get(endpoint, data) {
     return ajax(endpoint, 'GET', data)

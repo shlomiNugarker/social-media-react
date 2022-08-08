@@ -7,18 +7,15 @@ import { SocialDetails } from './SocialDetails'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../services/user/userService'
-import { loadComments } from '../store/actions/commentAction'
 import { savePost, loadPosts } from '../store/actions/postActions'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
 
-export const PostPreview = ({ post, userId }) => {
+export const PostPreview = ({ post }) => {
   const dispatch = useDispatch()
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
 
   const { loggedInUser } = useSelector((state) => state.userModule)
-  const { comments } = useSelector((state) => state.commentModule)
-
-  const { body, imgBodyUrl, _id } = post
 
   const loadUserPost = async (id) => {
     if (!post) return
@@ -36,25 +33,26 @@ export const PostPreview = ({ post, userId }) => {
       (reaction) => reaction.userId === loggedInUser._id
     )
     if (isAlreadyLike) {
+      console.log('isAlreadyLike')
       postToSave.reactions = postToSave.reactions.filter(
         (reaction) => reaction.userId !== loggedInUser._id
       )
-    }
-    //
-    else if (!isAlreadyLike) {
+    } else if (!isAlreadyLike) {
+      console.log('!isAlreadyLike')
       postToSave.reactions.push({
         userId: loggedInUser._id,
         fullname: loggedInUser.fullname,
+        reaction: 'like',
       })
     }
+    // console.log(postToSave)
     dispatch(savePost(postToSave))
-    dispatch(loadPosts())
   }
-
   useEffect(() => {
-    loadUserPost(userId)
-    dispatch(loadComments(_id))
+    loadUserPost(post.userId)
   }, [])
+
+  useEffectUpdate(() => {}, [])
 
   console.log('render PostPreview')
   return (
@@ -63,9 +61,9 @@ export const PostPreview = ({ post, userId }) => {
         <FontAwesomeIcon className="dots-icon" icon="fa-solid fa-ellipsis" />
       </div>
       <PostHeader post={post} userPost={userPost} />
-      <PostBody body={body} imgUrl={imgBodyUrl} />
+      <PostBody body={post.body} imgUrl={post.imgBodyUrl} />
       <SocialDetails
-        comments={comments[post._id]}
+        comments={post.comments}
         post={post}
         onToggleShowComment={onToggleShowComment}
       />
@@ -78,7 +76,7 @@ export const PostPreview = ({ post, userId }) => {
       />
 
       {isShowComments && (
-        <Comments comments={comments[post._id]} postId={_id} />
+        <Comments comments={post.comments} postId={post._id} />
       )}
     </section>
   )

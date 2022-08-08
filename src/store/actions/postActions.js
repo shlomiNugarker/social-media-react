@@ -1,4 +1,5 @@
 import { postService } from '../../services/posts/postService'
+import { commentService } from '../../services/comment/commentService'
 
 export function loadPosts() {
   return async (dispatch, getState) => {
@@ -11,17 +12,6 @@ export function loadPosts() {
     }
   }
 }
-
-// export function removePost(postId) {
-//   return async (dispatch) => {
-//     try {
-//       await postService.remove(postId)
-//       dispatch({ type: 'REMOVE_POST', postId })
-//     } catch (err) {
-//       console.log('err:', err)
-//     }
-//   }
-// }
 
 export function savePost(post) {
   return async (dispatch) => {
@@ -36,8 +26,15 @@ export function savePost(post) {
   }
 }
 
-export function setFilterBy(filterBy) {
+export function saveComment(comment) {
   return async (dispatch) => {
-    dispatch({ type: 'SET_FILTER_BY', filterBy })
+    try {
+      const savedComment = await commentService.save(comment)
+      comment._id
+        ? dispatch({ type: 'UPDATE_COMMENT', commret: savedComment })
+        : dispatch({ type: 'ADD_COMMENT', comment: savedComment })
+    } catch (err) {
+      console.log('err:', err)
+    }
   }
 }

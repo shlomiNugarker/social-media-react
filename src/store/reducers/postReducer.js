@@ -17,17 +17,32 @@ export function postReducer(state = INITIAL_STATE, action) {
     //   }
 
     case 'ADD_POST':
+      console.log('add post reducer')
       return {
         ...state,
         posts: [...state.posts, action.post],
+      }
+    case 'ADD_COMMENT':
+      const { comment } = action
+      console.log('add comment reducer')
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post._id === comment.postId) {
+            const postToReturn = { ...post }
+            postToReturn.comments.unshift(comment)
+            return postToReturn
+          }
+          return post
+        }),
       }
 
     case 'UPDATE_POST':
       return {
         ...state,
-        posts: state.posts.map((post) =>
-          post._id === action.post._id ? action.post : post
-        ),
+        posts: state.posts.map((post) => {
+          return post._id === action.post._id ? action.post : post
+        }),
       }
 
     default:

@@ -11,7 +11,7 @@ export const PostsList = ({}) => {
   return (
     <section className="posts-list">
       {posts.map((post) => (
-        <PostPreview key={post._id} post={post} userId={post.userId} />
+        <PostPreview key={post._id} post={post} />
       ))}
     </section>
   )
