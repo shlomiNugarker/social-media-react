@@ -3,10 +3,16 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/PostsList'
 import { Link } from 'react-router-dom'
+import { loadPostsByUserId } from '../store/actions/postActions'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function Profile() {
   const params = useParams()
+  const dispatch = useDispatch()
   const [user, setUser] = useState(null)
+  const { posts } = useSelector((state) => state.postModule)
+  // const { userPosts } = useSelector((state) => state.postModule)
+  const userPosts = posts?.filter((post) => post.userId === user?._id)
 
   const loadUser = async () => {
     const tempId = '62ea127beb6ee5f8058fd56e'
@@ -15,7 +21,12 @@ export function Profile() {
   }
 
   useEffect(() => {
+    console.log(params.userId)
+    const filterBy = {
+      userId: params.userId,
+    }
     loadUser()
+    dispatch(loadPostsByUserId(filterBy))
     // eslint-disable-next-line
   }, [params.userId])
 
@@ -46,9 +57,14 @@ export function Profile() {
           </div>
         </div>
 
-        <div className="user-posts"></div>
+        <div className="user-posts">
+          <PostsList posts={userPosts} />
+        </div>
       </div>
-      <div className="right">right</div>
+      <div className="right">
+        <div className="top-div"></div>
+        <div className="bottom-div"></div>
+      </div>
     </section>
   )
 }

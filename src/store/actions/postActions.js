@@ -13,6 +13,22 @@ export function loadPosts() {
   }
 }
 
+/////////////////////////////////////////
+
+export function loadPostsByUserId(filterBy) {
+  return async (dispatch, getState) => {
+    try {
+      const posts = await postService.query(filterBy)
+      console.log(posts)
+      dispatch({ type: 'ADD_POSTS', posts })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+/////////////////////////////////////////
+
 export function savePost(post) {
   return async (dispatch) => {
     try {

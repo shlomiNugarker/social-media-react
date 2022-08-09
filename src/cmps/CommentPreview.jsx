@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { userService } from '../services/user/userService'
+import TimeAgo from 'react-timeago'
 
 export const CommentPreview = ({ comment }) => {
   const { userId, createdAt, postId, reactions } = comment
@@ -36,7 +37,9 @@ export const CommentPreview = ({ comment }) => {
               <p>{profession}</p>
             </div>
             <div>
-              <span>{createdAt}</span>
+              <span>
+                <TimeAgo date={createdAt} />
+              </span>
               <FontAwesomeIcon
                 className="dots-icon"
                 icon="fa-solid fa-ellipsis"

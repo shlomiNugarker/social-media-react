@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   posts: null,
   filterBy: null,
+  // userPosts: null,
 }
 
 export function postReducer(state = INITIAL_STATE, action) {
@@ -10,17 +11,18 @@ export function postReducer(state = INITIAL_STATE, action) {
         ...state,
         posts: action.posts,
       }
-    // case 'REMOVE_POST':
-    //   return {
-    //     ...state,
-    //     posts: state.posts.filter((post) => post._id !== action.postId),
-    //   }
 
     case 'ADD_POST':
       console.log('add post reducer')
       return {
         ...state,
         posts: [...state.posts, action.post],
+      }
+    case 'ADD_POSTS':
+      console.log('add posts reducer')
+      return {
+        ...state,
+        posts: [...new Set(...state.posts, ...action.posts)],
       }
     case 'ADD_COMMENT':
       const { comment } = action

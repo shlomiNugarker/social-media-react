@@ -28,26 +28,26 @@ export const PostPreview = ({ post }) => {
   }
 
   const onLikePost = () => {
-    const postToSave = JSON.parse(JSON.stringify(post))
-    const isAlreadyLike = postToSave.reactions.some(
+    const isAlreadyLike = post.reactions.some(
       (reaction) => reaction.userId === loggedInUser._id
     )
     if (isAlreadyLike) {
       console.log('isAlreadyLike')
-      postToSave.reactions = postToSave.reactions.filter(
+      post.reactions = post.reactions.filter(
         (reaction) => reaction.userId !== loggedInUser._id
       )
     } else if (!isAlreadyLike) {
       console.log('!isAlreadyLike')
-      postToSave.reactions.push({
+      post.reactions.push({
         userId: loggedInUser._id,
         fullname: loggedInUser.fullname,
         reaction: 'like',
       })
     }
     // console.log(postToSave)
-    dispatch(savePost(postToSave))
+    dispatch(savePost(post))
   }
+
   useEffect(() => {
     loadUserPost(post.userId)
   }, [])

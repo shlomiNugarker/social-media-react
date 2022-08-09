@@ -7,6 +7,7 @@ import { loadPosts } from '../store/actions/postActions'
 
 export const Posts = () => {
   const dispatch = useDispatch()
+  // const { posts } = useSelector((state) => state.postModule)
 
   useEffect(() => {
     dispatch(loadPosts())

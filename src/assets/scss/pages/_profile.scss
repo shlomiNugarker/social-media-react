@@ -75,12 +75,28 @@
     }
 
     .user-posts {
-      background-color: lightcyan;
     }
   }
 
   .right {
     grid-area: aside;
-    background-color: lightslategray;
+
+    .top-div {
+      height: 520px;
+      background-color: white;
+      border: 1px solid $border;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 0 0 10px 0;
+    }
+
+    .bottom-div {
+      height: 520px;
+      background-color: white;
+      border: 1px solid $border;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 0 0 10px 0;
+    }
   }
 }

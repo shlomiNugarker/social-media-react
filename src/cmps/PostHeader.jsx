@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import TimeAgo from 'react-timeago'
 
 export const PostHeader = ({ post, userPost }) => {
   if (!userPost) return <section className="post-header">Loading</section>
@@ -16,7 +17,10 @@ export const PostHeader = ({ post, userPost }) => {
           <p>{profession}</p>
         </div>
         <div className="time">
-          <p>{post.createdAt}</p>
+          <p></p>
+          <span>
+            <TimeAgo date={post.createdAt} />
+          </span>
         </div>
       </div>
       <div className="follow">
