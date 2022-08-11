@@ -24,12 +24,14 @@ const App = () => {
         <div className="temp-div">
           <Link to="/home">Home</Link>|<Link to="/signup">signup</Link>|
           <Link to="/main/feed">feed</Link>|
+          <Link to="/mynetwork">my-network</Link>|
         </div>
         <main>
           <Switch>
             <Route path="/signup" component={Signup} />
             <Route path="/main" component={Main} />
             <Route path="/about" component={About} />
+
             <Route path="/" component={Home} />
           </Switch>
         </main>

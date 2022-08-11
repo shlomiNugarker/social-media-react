@@ -2,9 +2,17 @@ import { Posts } from '../cmps/Posts'
 import { RightSideBar } from '../cmps/RightSideBar'
 import { LeftSideBar } from '../cmps/LeftSideBar'
 import { useDispatch, useSelector } from 'react-redux'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { setCurrPage } from '../store/actions/postActions'
 
-export const Feed = () => {
+export const Feed = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setCurrPage('home'))
+    // eslint-disable-next-line
+  }, [])
 
   if (!loggedInUser)
     return (

@@ -1,0 +1,72 @@
+.connection-preview {
+  background-color: white;
+  margin: 3px;
+  list-style-type: none;
+  border-radius: 10px;
+  min-height: 100px;
+  border: 1px solid $border;
+  height: 275px;
+  width: 235px;
+  position: relative;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 4px 6px rgb(0 0 0 / 20%);
+  }
+
+  .bg {
+    // background-color: lightblue;
+    background: url('../../imgs/bg.svg');
+    height: 20%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+
+    .img-profile {
+      border-radius: 50%;
+      width: 72px;
+      height: 72px;
+      background-color: aquamarine;
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      transform: translate(0, 10%);
+      object-fit: cover;
+    }
+  }
+  .fullname {
+    padding: 0 10px;
+    margin: 35px 0 0 0;
+  }
+  .profession {
+    padding: 0 10px;
+  }
+
+  .followers-count {
+    position: absolute;
+    padding: 0 10px;
+    bottom: 65px;
+    p {
+    }
+  }
+
+  .btn-container {
+    position: absolute;
+    padding: 0 10px;
+    bottom: 15px;
+    width: 100%;
+
+    button {
+      width: 100%;
+      border-radius: 35px;
+      padding: 7px 5px;
+      background-color: white;
+      color: #0a66c2;
+      border: 1px solid #0a66c2;
+
+      &:hover {
+        background-color: #70b5f933;
+      }
+    }
+  }
+}

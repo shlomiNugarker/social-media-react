@@ -5,11 +5,11 @@ const INITIAL_STATE = {
 
 export function userReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    // case 'GET_USERS':
-    //   return {
-    //     ...state,
-    //     users: action.users,
-    //   }
+    case 'GET_USERS':
+      return {
+        ...state,
+        users: action.users,
+      }
     case 'LOGIN':
       return {
         ...state,

@@ -11,11 +11,15 @@ export const CreatePostModal = ({
     body: '',
     imgBodyUrl: '',
     title: '',
+    style: {
+      textAlign: 'ltr',
+    },
   })
 
-  const handleChange = async ({ target }) => {
-    const field = target.name
-    let value = target.type === 'number' ? +target.value || '' : target.value
+  const handleChange = async (e) => {
+    const field = e.target.name
+    let value =
+      e.target.type === 'number' ? +e.target.value || '' : e.target.value
     setNewPost((prevCred) => ({ ...prevCred, [field]: value }))
   }
 
@@ -74,6 +78,12 @@ export const CreatePostModal = ({
             placeholder="What do you want to talk about?"
           ></textarea>
         </div>
+
+        {/* <div className="tools">
+          <span>
+            <FontAwesomeIcon icon="fa-solid fa-align-right" />
+          </span>
+        </div> */}
 
         <div className="btns-add-container">
           <button className="post-btn">Post</button>

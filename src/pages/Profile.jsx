@@ -12,16 +12,14 @@ export function Profile() {
   const [user, setUser] = useState(null)
   const { posts } = useSelector((state) => state.postModule)
   // const { userPosts } = useSelector((state) => state.postModule)
-  const userPosts = posts?.filter((post) => post.userId === user?._id)
+  // const userPosts = posts?.filter((post) => post.userId === user?._id)
 
   const loadUser = async () => {
-    const tempId = '62ea127beb6ee5f8058fd56e'
-    const user = await userService.getById(tempId)
+    const user = await userService.getById(params.userId)
     setUser(() => user)
   }
 
   useEffect(() => {
-    console.log(params.userId)
     const filterBy = {
       userId: params.userId,
     }
@@ -36,7 +34,7 @@ export function Profile() {
     <section className="profile">
       <div className="left">
         <div className="user-profile">
-          <div className="bg">
+          <div className="bg" style={{ backgroundImage: `url(${user.bg})` }}>
             <div className="img-container">
               <img src={user.imgUrl} alt="" className="img" />
             </div>
@@ -58,7 +56,7 @@ export function Profile() {
         </div>
 
         <div className="user-posts">
-          <PostsList posts={userPosts} />
+          <PostsList posts={posts} />
         </div>
       </div>
       <div className="right">

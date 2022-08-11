@@ -1,0 +1,67 @@
+.my-network {
+  min-height: 100vh;
+  //   background-color: lightseagreen;
+  padding-top: 60px;
+  display: grid;
+  grid-template-areas: 'sidebar main';
+  grid-template-columns: minmax(300px, 7fr) minmax(0, 17fr);
+  column-gap: 2.4em;
+  color: #666666;
+  grid-auto-flow: column;
+
+  div {
+    h3 {
+      padding: 5px calc(5px + 0.8rem);
+    }
+  }
+
+  .left {
+    grid-area: sidebar;
+
+    .manage-network {
+      border: 1px solid $border;
+      background-color: white;
+      //   border-top-left-radius: 10px;
+      //   border-top-right-radius: 10px;
+      border-radius: 10px;
+      padding: 5px 5px;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          list-style: none;
+          button {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: unset;
+            background-color: white;
+            color: inherit;
+
+            &:hover {
+              background-color: #dedbdb62;
+            }
+
+            div {
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .right {
+    grid-area: main;
+    // background-color: rgb(109, 157, 155);
+
+    .recommended {
+      border: 1px solid $border;
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+    }
+  }
+}

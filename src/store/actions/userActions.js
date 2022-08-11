@@ -1,15 +1,15 @@
 import { userService } from '../../services/user/userService'
 
-// export function getUsers() {
-//   return async (dispatch) => {
-//     try {
-//       const users = await userService.getUsers()
-//       dispatch({ type: 'GET_USERS', users })
-//     } catch (err) {
-//       console.log('cannot get users:', err)
-//     }
-//   }
-// }
+export function getUsers() {
+  return async (dispatch) => {
+    try {
+      const users = await userService.getUsers()
+      dispatch({ type: 'GET_USERS', users })
+    } catch (err) {
+      console.log('cannot get users:', err)
+    }
+  }
+}
 export function login(userCred) {
   return async (dispatch) => {
     try {

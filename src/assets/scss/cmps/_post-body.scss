@@ -1,9 +1,17 @@
 .post-body {
-  padding: 10px 15px 0 15px;
+  padding: 10px 0 0 0;
   .post-text {
+    padding: 0 15px;
     p {
       margin: 10px 0;
       font-size: 20px;
+    }
+    .rtl {
+      text-align: right;
+    }
+
+    .ltr {
+      text-align: left;
     }
   }
 
@@ -12,5 +20,8 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+
+    img {
+    }
   }
 }

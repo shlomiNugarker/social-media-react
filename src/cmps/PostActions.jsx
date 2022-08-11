@@ -7,6 +7,7 @@ export const PostActions = ({
   post,
   onToggleShowComment,
   onLikePost,
+  onSharePost, // TODO: SHARE POST !
   loggedInUser,
 }) => {
   const isLogedInUserLikePost = post?.reactions.some((reaction) => {
@@ -30,7 +31,7 @@ export const PostActions = ({
         />
         <span>Comment</span>
       </button>
-      <button className="share">
+      <button className="share" onClick={() => onSharePost(post._id)}>
         <FontAwesomeIcon className="share-icon icon" icon="fa-solid fa-share" />
         <span>Share</span>
       </button>

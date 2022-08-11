@@ -31,6 +31,8 @@ import {
   faCompass,
   faUserGroup,
   faX,
+  faAlignRight,
+  faPeopleGroup,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -57,7 +59,9 @@ library.add(
   faFaceSmile,
   faCompass,
   faUserGroup,
-  faX
+  faX,
+  faAlignRight,
+  faPeopleGroup
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

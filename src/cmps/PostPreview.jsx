@@ -27,6 +27,10 @@ export const PostPreview = ({ post }) => {
     setIsShowComments((prev) => !prev)
   }
 
+  const onSharePost = (post) => {
+    console.log('share !', post)
+  }
+
   const onLikePost = () => {
     const isAlreadyLike = post.reactions.some(
       (reaction) => reaction.userId === loggedInUser._id
@@ -52,8 +56,6 @@ export const PostPreview = ({ post }) => {
     loadUserPost(post.userId)
   }, [])
 
-  useEffectUpdate(() => {}, [])
-
   console.log('render PostPreview')
   return (
     <section className="post-preview">
@@ -73,6 +75,7 @@ export const PostPreview = ({ post }) => {
         onToggleShowComment={onToggleShowComment}
         onLikePost={onLikePost}
         loggedInUser={loggedInUser}
+        onSharePost={onSharePost}
       />
 
       {isShowComments && (

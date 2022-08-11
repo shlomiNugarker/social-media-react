@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { utilService } from '../services/utilService'
 
-export const PostsList = () => {
-  const { posts } = useSelector((state) => state.postModule)
+export const PostsList = ({ posts }) => {
+  // const { posts } = useSelector((state) => state.postModule)
 
   if (!posts) return <div>Loading posts...</div>
 

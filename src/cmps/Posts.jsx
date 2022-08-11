@@ -7,7 +7,7 @@ import { loadPosts } from '../store/actions/postActions'
 
 export const Posts = () => {
   const dispatch = useDispatch()
-  // const { posts } = useSelector((state) => state.postModule)
+  const { posts } = useSelector((state) => state.postModule)
 
   useEffect(() => {
     dispatch(loadPosts())
@@ -19,7 +19,7 @@ export const Posts = () => {
     <section className="posts">
       <AddPost />
       <SortBy />
-      <PostsList />
+      <PostsList posts={posts} />
     </section>
   )
 }

@@ -1,11 +1,17 @@
 const INITIAL_STATE = {
   posts: null,
   filterBy: null,
+  currPage: null,
   // userPosts: null,
 }
 
 export function postReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case 'SET_CURR_PAGE':
+      return {
+        ...state,
+        currPage: action.page,
+      }
     case 'SET_POSTS':
       return {
         ...state,
@@ -16,13 +22,14 @@ export function postReducer(state = INITIAL_STATE, action) {
       console.log('add post reducer')
       return {
         ...state,
-        posts: [...state.posts, action.post],
+        posts: [action.post, ...state.posts],
       }
     case 'ADD_POSTS':
-      console.log('add posts reducer')
+      console.log('add posts reducer', action)
       return {
         ...state,
-        posts: [...new Set(...state.posts, ...action.posts)],
+        posts: [...action.posts],
+        // posts: [...new Set(...state.posts, ...action.posts)],
       }
     case 'ADD_COMMENT':
       const { comment } = action

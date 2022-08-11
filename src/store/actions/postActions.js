@@ -19,7 +19,6 @@ export function loadPostsByUserId(filterBy) {
   return async (dispatch, getState) => {
     try {
       const posts = await postService.query(filterBy)
-      console.log(posts)
       dispatch({ type: 'ADD_POSTS', posts })
     } catch (err) {
       console.log('err:', err)
@@ -49,6 +48,16 @@ export function saveComment(comment) {
       comment._id
         ? dispatch({ type: 'UPDATE_COMMENT', commret: savedComment })
         : dispatch({ type: 'ADD_COMMENT', comment: savedComment })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function setCurrPage(page) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'SET_CURR_PAGE', page })
     } catch (err) {
       console.log('err:', err)
     }

@@ -3,12 +3,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 export const Nav = () => {
+  const { currPage } = useSelector((state) => state.postModule)
+
+  // current-btn
+
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   return (
     <nav className="nav">
       <ul>
-        <li className="home current-btn">
+        <li
+          className={'home' + ' ' + (currPage === 'home' ? 'current-btn' : '')}
+        >
           <Link to="/main/feed">
             <p>
               <FontAwesomeIcon className="nav-icon" icon="fas fa-home-lg-alt" />
@@ -16,31 +22,56 @@ export const Nav = () => {
             </p>
           </Link>
         </li>
-        <li>
-          <p>
-            <FontAwesomeIcon className="nav-icon" icon="fas fa-user-friends" />
-            My Network
-          </p>
+        <li
+          className={
+            'mynetwork' + ' ' + (currPage === 'mynetwork' ? 'current-btn' : '')
+          }
+        >
+          <Link to={`/main/mynetwork`}>
+            <p>
+              <FontAwesomeIcon
+                className="nav-icon"
+                icon="fas fa-user-friends"
+              />
+              My Network
+            </p>
+          </Link>
         </li>
-        <li>
+        <li
+          className={'jobs' + ' ' + (currPage === 'jobs' ? 'current-btn' : '')}
+        >
           <p>
             <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" />
             Jobs
           </p>
         </li>
-        <li>
+        <li
+          className={
+            'messaging' + ' ' + (currPage === 'messaging' ? 'current-btn' : '')
+          }
+        >
           <p>
             <FontAwesomeIcon className="nav-icon" icon="fas fa-comment" />
             Messaging
           </p>
         </li>
-        <li>
+        <li
+          className={
+            'notifications' +
+            ' ' +
+            (currPage === 'notifications' ? 'current-btn' : '')
+          }
+        >
           <p>
             <FontAwesomeIcon className="nav-icon" icon="fas fa-bell" />
             Notifications
           </p>
         </li>
-        <li className="me-btn">
+        <li
+          className={
+            'me-btn' + ' ' + (currPage === 'profile' ? 'current-btn' : '')
+          }
+        >
           <Link to={`/main/profile/${loggedInUser?._id}`}>
             <p>
               <span>

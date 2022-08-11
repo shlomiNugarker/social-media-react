@@ -20,6 +20,7 @@
 @import 'pages/signup';
 @import 'pages/feed';
 @import 'pages/profile';
+@import 'pages/my-network';
 
 // Components
 
@@ -44,6 +45,8 @@
 @import 'cmps/feed-identity-module';
 @import 'cmps/community-panel';
 @import 'cmps/create-post-modal';
+@import 'cmps/connection-list';
+@import 'cmps/connection-preview';
 
 .app {
   background-color: $main-background;
