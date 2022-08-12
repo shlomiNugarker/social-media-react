@@ -1,8 +1,7 @@
 export function About() {
   return (
-    <div>
+    <section className="about-page">
       <h1>About!</h1>
-      <pre></pre>
-    </div>
+    </section>
   )
 }

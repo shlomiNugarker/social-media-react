@@ -56,7 +56,7 @@ export const Signup = ({ history }) => {
 
   if (loggedInUser) {
     return (
-      <section className="sign-up">
+      <section className="sign-up-page">
         <p>loggedInUser: {loggedInUser.fullname}</p>
         <button onClick={doLogout}>Logout</button>
       </section>
@@ -64,7 +64,7 @@ export const Signup = ({ history }) => {
   }
 
   return (
-    <section className="sign-up">
+    <section className="sign-up-page">
       <div className="logo-container">
         <p>linkedin</p>
       </div>

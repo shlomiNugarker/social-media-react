@@ -40,20 +40,24 @@ export const Nav = () => {
         <li
           className={'jobs' + ' ' + (currPage === 'jobs' ? 'current-btn' : '')}
         >
-          <p>
-            <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" />
-            Jobs
-          </p>
+          <Link to="/main/jobs">
+            <p>
+              <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" />
+              Jobs
+            </p>
+          </Link>
         </li>
         <li
           className={
-            'messaging' + ' ' + (currPage === 'messaging' ? 'current-btn' : '')
+            'messaging' + ' ' + (currPage === 'message' ? 'current-btn' : '')
           }
         >
-          <p>
-            <FontAwesomeIcon className="nav-icon" icon="fas fa-comment" />
-            Messaging
-          </p>
+          <Link to={`/main/message`}>
+            <p>
+              <FontAwesomeIcon className="nav-icon" icon="fas fa-comment" />
+              Messaging
+            </p>
+          </Link>
         </li>
         <li
           className={
@@ -62,10 +66,12 @@ export const Nav = () => {
             (currPage === 'notifications' ? 'current-btn' : '')
           }
         >
-          <p>
-            <FontAwesomeIcon className="nav-icon" icon="fas fa-bell" />
-            Notifications
-          </p>
+          <Link to={`/main/notifications`}>
+            <p>
+              <FontAwesomeIcon className="nav-icon" icon="fas fa-bell" />
+              Notifications
+            </p>
+          </Link>
         </li>
         <li
           className={

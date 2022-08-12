@@ -25,7 +25,7 @@ export function postReducer(state = INITIAL_STATE, action) {
         posts: [action.post, ...state.posts],
       }
     case 'ADD_POSTS':
-      console.log('add posts reducer', action)
+      console.log('add posts reducer')
       return {
         ...state,
         posts: [...action.posts],

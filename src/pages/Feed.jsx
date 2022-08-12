@@ -22,7 +22,7 @@ export const Feed = (props) => {
     )
   console.log('render Feed')
   return (
-    <section className="feed">
+    <section className="feed-page">
       <LeftSideBar />
       <Posts />
       <RightSideBar />

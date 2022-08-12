@@ -22,9 +22,11 @@ const App = () => {
     <Router>
       <div className="app">
         <div className="temp-div">
-          <Link to="/home">Home</Link>|<Link to="/signup">signup</Link>|
-          <Link to="/main/feed">feed</Link>|
-          <Link to="/mynetwork">my-network</Link>|
+          <Link to="/home">Home</Link>|-<Link to="/signup">signup</Link>|-
+          <Link to="/about">About</Link>|-<Link to="/main/feed">feed</Link>|-
+          <Link to="/main/mynetwork">my-network</Link>|-
+          <Link to="/main/jobs">jobs</Link>|-
+          <Link to="/main/connections">connections</Link>|-
         </div>
         <main>
           <Switch>

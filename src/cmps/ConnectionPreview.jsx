@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 export function ConnectionPreview({ user }) {
-  console.log(user)
   if (!user) return
   return (
     <li className="connection-preview">

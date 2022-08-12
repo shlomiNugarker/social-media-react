@@ -31,7 +31,7 @@ export function Profile() {
   if (!user) return <section className="feed-load">Loading...</section>
 
   return (
-    <section className="profile">
+    <section className="profile-page">
       <div className="left">
         <div className="user-profile">
           <div className="bg" style={{ backgroundImage: `url(${user.bg})` }}>

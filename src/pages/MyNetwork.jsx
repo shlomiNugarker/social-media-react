@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../store/actions/userActions'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { setCurrPage } from '../store/actions/postActions'
+import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 export function MyNetwork() {
   const dispatch = useDispatch()
+  let history = useHistory()
 
   const { users } = useSelector((state) => state.userModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
-  console.log(users)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -21,7 +23,7 @@ export function MyNetwork() {
   if (!users) return <section className="my-network">Loading</section>
 
   return (
-    <section className="my-network">
+    <section className="my-network-page">
       <div className="left">
         <div className="manage-network">
           <div>
@@ -29,7 +31,7 @@ export function MyNetwork() {
           </div>
           <ul>
             <li>
-              <button>
+              <button onClick={() => history.push('/main/connections')}>
                 <div>
                   <span className="logo">
                     <FontAwesomeIcon icon="fa-solid fa-user-group" />
