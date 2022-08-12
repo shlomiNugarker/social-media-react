@@ -33,6 +33,7 @@ import {
   faX,
   faAlignRight,
   faPeopleGroup,
+  faUserPlus,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -61,7 +62,8 @@ library.add(
   faUserGroup,
   faX,
   faAlignRight,
-  faPeopleGroup
+  faPeopleGroup,
+  faUserPlus
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

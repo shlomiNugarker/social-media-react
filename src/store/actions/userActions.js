@@ -68,6 +68,17 @@ export function removeUser(userId) {
     }
   }
 }
+export function addConnection(connection) {
+  return async (dispatch) => {
+    try {
+      await userService.addConnection(connection)
+
+      dispatch({ type: 'ADD_CONNECTION', connection })
+    } catch (err) {
+      console.log('cannot remove user', err)
+    }
+  }
+}
 
 export function getUserById(userId) {
   return async (dispatch) => {

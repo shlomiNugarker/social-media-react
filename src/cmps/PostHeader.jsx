@@ -30,12 +30,12 @@ export const PostHeader = ({ post, userPost }) => {
           </div>
         </div>
       </Link>
-      <div className="follow">
+      {/* <div className="follow">
         <span>
           <FontAwesomeIcon icon="fa-solid fa-plus" />
           Follow
         </span>
-      </div>
+      </div> */}
     </section>
   )
 }

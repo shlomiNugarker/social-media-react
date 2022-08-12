@@ -5,6 +5,7 @@
   padding: 10px 15px 0 15px;
   .likes-count {
     span {
+      cursor: pointer;
     }
   }
 
@@ -23,6 +24,31 @@
       margin-left: 10px;
       p {
       }
+    }
+  }
+
+  .likes-container {
+    z-index: 300;
+    background-color: #000000bf;
+    position: fixed;
+    z-index: 5;
+    inset: 50px 0 0 0;
+    transition: opacity 0.2s;
+    cursor: pointer;
+
+    .likes {
+      position: absolute;
+      background-color: white;
+      overflow-y: auto;
+      overflow-x: auto;
+      border-radius: 7px;
+      width: 50vw;
+      max-width: 400px;
+      max-height: 400px;
+      height: 50vw;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

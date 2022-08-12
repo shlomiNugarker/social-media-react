@@ -1,9 +1,18 @@
+import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
+import { LikeList } from './LikeList'
+
 export function SocialDetails({ comments, shares, post, onToggleShowComment }) {
+  const [isShowLikes, setisShowLikes] = useState(false)
+
+  const toggleLikes = () => {
+    setisShowLikes((prevVal) => !prevVal)
+  }
+
   if (!comments) return
   return (
     <section className="social-details">
       <div className="likes-count">
-        <span>
+        <span onClick={toggleLikes}>
           {!post.reactions?.length
             ? ''
             : post.reactions?.length > 1
@@ -31,6 +40,24 @@ export function SocialDetails({ comments, shares, post, onToggleShowComment }) {
           </p>
         </div>
       </div>
+      {isShowLikes && (
+        <div
+          className="likes-container"
+          onClick={(ev) => {
+            ev.stopPropagation()
+            toggleLikes()
+          }}
+        >
+          <div
+            className="likes"
+            onClick={(ev) => {
+              ev.stopPropagation()
+            }}
+          >
+            <LikeList reactions={post.reactions} />
+          </div>
+        </div>
+      )}
     </section>
   )
 }

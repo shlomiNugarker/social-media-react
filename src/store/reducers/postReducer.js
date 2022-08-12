@@ -2,7 +2,6 @@ const INITIAL_STATE = {
   posts: null,
   filterBy: null,
   currPage: null,
-  // userPosts: null,
 }
 
 export function postReducer(state = INITIAL_STATE, action) {
@@ -52,6 +51,12 @@ export function postReducer(state = INITIAL_STATE, action) {
         posts: state.posts.map((post) => {
           return post._id === action.post._id ? action.post : post
         }),
+      }
+
+    case 'SET_FILTER_BY':
+      return {
+        ...state,
+        filterBy: { ...action.filterBy },
       }
 
     default:

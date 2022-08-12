@@ -59,15 +59,23 @@
 
           .btns-container {
             padding-top: 10px;
+            display: flex;
 
-            button {
-              &.add-details {
-                background-color: #0a66c2;
-                color: white;
-                border-radius: 20px;
-                padding: 10px 10px;
-                border: none;
-                font-size: 18px;
+            button,
+            .connect,
+            .add-details {
+              display: flex;
+              align-items: center;
+              margin: 5px;
+              background-color: #0a66c2;
+              color: white;
+              border-radius: 20px;
+              padding: 10px 10px;
+              border: none;
+              font-size: 18px;
+
+              p {
+                margin-left: 3px;
               }
             }
           }

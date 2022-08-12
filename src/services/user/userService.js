@@ -11,6 +11,7 @@ export const userService = {
   getById,
   remove,
   update,
+  // addConnection,
 }
 
 async function getUsers() {
@@ -32,6 +33,10 @@ async function update(user) {
   if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
   return user
 }
+
+// async function addConnection(user, connection) {
+//   const user = await httpService.put(`user/${user._id}`, user)
+// }
 
 async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)

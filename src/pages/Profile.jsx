@@ -5,18 +5,39 @@ import { PostsList } from '../cmps/PostsList'
 import { Link } from 'react-router-dom'
 import { loadPostsByUserId } from '../store/actions/postActions'
 import { useDispatch, useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { addConnection } from '../store/actions/userActions'
 
 export function Profile() {
   const params = useParams()
   const dispatch = useDispatch()
   const [user, setUser] = useState(null)
   const { posts } = useSelector((state) => state.postModule)
-  // const { userPosts } = useSelector((state) => state.postModule)
-  // const userPosts = posts?.filter((post) => post.userId === user?._id)
+  const { loggedInUser } = useSelector((state) => state.userModule)
 
   const loadUser = async () => {
     const user = await userService.getById(params.userId)
     setUser(() => user)
+  }
+
+  const connectProfile = () => {
+    console.log('connect', user)
+
+    if (isConnected) {
+      // Remove
+    } else if (!isConnected) {
+      // Add
+      const connectionToAdd = {
+        userId: user._id,
+      }
+      dispatch(addConnection(connectionToAdd))
+    }
+  }
+
+  const isConnected = () => {
+    return loggedInUser.connections.some(
+      (connection) => connection.userId === user._id
+    )
   }
 
   useEffect(() => {
@@ -29,6 +50,8 @@ export function Profile() {
   }, [params.userId])
 
   if (!user) return <section className="feed-load">Loading...</section>
+
+  const isLoggedInUserProfile = loggedInUser?._id === user?._id
 
   return (
     <section className="profile-page">
@@ -49,7 +72,16 @@ export function Profile() {
                 <p>{user.profession}</p>
               </div>
               <div className="btns-container">
-                <button className="add-details">Add more details</button>
+                {isLoggedInUserProfile && (
+                  <button className="add-details">Add more details</button>
+                )}
+                {!isLoggedInUserProfile && (
+                  <button className="connect" onClick={connectProfile}>
+                    <FontAwesomeIcon icon="fa-solid fa-user-plus" />
+                    <p>{isConnected ? 'Connect' : 'Disconnect'}</p>
+                  </button>
+                )}
+                <button className="follow">Follow</button>
               </div>
             </div>
           </div>

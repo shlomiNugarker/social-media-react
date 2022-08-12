@@ -13,8 +13,6 @@ export function loadPosts() {
   }
 }
 
-/////////////////////////////////////////
-
 export function loadPostsByUserId(filterBy) {
   return async (dispatch, getState) => {
     try {
@@ -25,8 +23,6 @@ export function loadPostsByUserId(filterBy) {
     }
   }
 }
-
-/////////////////////////////////////////
 
 export function savePost(post) {
   return async (dispatch) => {
@@ -61,5 +57,11 @@ export function setCurrPage(page) {
     } catch (err) {
       console.log('err:', err)
     }
+  }
+}
+
+export function setFilterBy(filterBy) {
+  return async (dispatch) => {
+    dispatch({ type: 'SET_FILTER_BY', filterBy })
   }
 }

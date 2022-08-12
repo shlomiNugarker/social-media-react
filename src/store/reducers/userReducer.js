@@ -30,6 +30,11 @@ export function userReducer(state = INITIAL_STATE, action) {
         ...state,
         loggedInUser: null,
       }
+    case 'ADD_CONNECTION':
+      return {
+        ...state,
+        // loggedInUser: null,
+      }
     // case 'UPDATE_USER':
     //   return {
     //     ...state,
