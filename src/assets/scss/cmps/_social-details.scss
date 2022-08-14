@@ -37,10 +37,11 @@
     cursor: pointer;
 
     .likes {
+      cursor: default;
       position: absolute;
       background-color: white;
-      overflow-y: auto;
-      overflow-x: auto;
+      // overflow-y: auto;
+      // overflow-x: auto;
       border-radius: 7px;
       width: 50vw;
       max-width: 400px;

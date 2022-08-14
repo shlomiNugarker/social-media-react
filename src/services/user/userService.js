@@ -34,10 +34,6 @@ async function update(user) {
   return user
 }
 
-// async function addConnection(user, connection) {
-//   const user = await httpService.put(`user/${user._id}`, user)
-// }
-
 async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
   if (user) return _saveLocalUser(user)

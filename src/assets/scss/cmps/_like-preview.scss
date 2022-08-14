@@ -7,6 +7,10 @@
   align-items: center;
   justify-content: space-between;
 
+  .container-name {
+    cursor: pointer;
+  }
+
   div {
     display: flex;
     .img-container {
@@ -28,7 +32,7 @@
       background-color: white;
       border: 1px solid $border;
       border-radius: 30px;
-      padding: 5px 10px;
+      padding: 10px;
 
       &:hover {
         background-color: rgba(112, 112, 112, 0.135);

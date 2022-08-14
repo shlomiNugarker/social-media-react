@@ -7,32 +7,46 @@ const INITIAL_STATE = {
 export function postReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_CURR_PAGE':
+      console.log('SET_CURR_PAGE')
       return {
         ...state,
         currPage: action.page,
       }
-    case 'SET_POSTS':
+    case 'SET_FILTER_BY':
+      console.log('SET_FILTER_BY')
       return {
         ...state,
-        posts: action.posts,
+        filterBy: { ...action.filterBy },
       }
-
+    case 'SET_POSTS':
+      console.log('SET_POSTS')
+      return {
+        ...state,
+        posts: [...action.posts],
+      }
     case 'ADD_POST':
-      console.log('add post reducer')
+      console.log('ADD_POST')
       return {
         ...state,
         posts: [action.post, ...state.posts],
       }
     case 'ADD_POSTS':
-      console.log('add posts reducer')
+      console.log('ADD_POSTS')
       return {
         ...state,
         posts: [...action.posts],
-        // posts: [...new Set(...state.posts, ...action.posts)],
+      }
+    case 'UPDATE_POST':
+      console.log('UPDATE_POST')
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          return post._id === action.post._id ? action.post : post
+        }),
       }
     case 'ADD_COMMENT':
+      console.log('ADD_COMMENT')
       const { comment } = action
-      console.log('add comment reducer')
       return {
         ...state,
         posts: state.posts.map((post) => {
@@ -44,21 +58,6 @@ export function postReducer(state = INITIAL_STATE, action) {
           return post
         }),
       }
-
-    case 'UPDATE_POST':
-      return {
-        ...state,
-        posts: state.posts.map((post) => {
-          return post._id === action.post._id ? action.post : post
-        }),
-      }
-
-    case 'SET_FILTER_BY':
-      return {
-        ...state,
-        filterBy: { ...action.filterBy },
-      }
-
     default:
       return state
   }

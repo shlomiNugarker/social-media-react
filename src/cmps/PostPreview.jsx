@@ -10,10 +10,12 @@ import { userService } from '../services/user/userService'
 import { savePost, loadPosts } from '../store/actions/postActions'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 
-export const PostPreview = ({ post }) => {
+export const PostPreview = ({ post, idx }) => {
   const dispatch = useDispatch()
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
+
+  // const post = useSelector((state) => state.postModule.posts[idx])
 
   const { loggedInUser } = useSelector((state) => state.userModule)
 
@@ -36,19 +38,16 @@ export const PostPreview = ({ post }) => {
       (reaction) => reaction.userId === loggedInUser._id
     )
     if (isAlreadyLike) {
-      console.log('isAlreadyLike')
       post.reactions = post.reactions.filter(
         (reaction) => reaction.userId !== loggedInUser._id
       )
     } else if (!isAlreadyLike) {
-      console.log('!isAlreadyLike')
       post.reactions.push({
         userId: loggedInUser._id,
         fullname: loggedInUser.fullname,
         reaction: 'like',
       })
     }
-    // console.log(postToSave)
     dispatch(savePost(post))
   }
 

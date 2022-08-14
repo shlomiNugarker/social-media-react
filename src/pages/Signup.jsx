@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import jwt_decode from 'jwt-decode'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, signup, logout } from '../store/actions/userActions'
 
@@ -106,7 +107,7 @@ export const Signup = ({ history }) => {
             placeholder="Passsword"
             required
           />
-          <a href="">Forgot password?</a>
+          <a>Forgot password?</a>
 
           <button className="sign-in-btn">
             {signin ? 'Sign in' : 'Sign up'}
@@ -125,7 +126,6 @@ export const Signup = ({ history }) => {
                 ev.preventDefault()
                 tooggle()
               }}
-              href=""
             >
               {signin
                 ? ' New to LinkedIn? Join now'

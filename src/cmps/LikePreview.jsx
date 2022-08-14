@@ -22,7 +22,10 @@ export function LikePreview({ reaction }) {
 
   return (
     <section className="like-preview">
-      <div onClick={() => history.push(`/main/profile/${user._id}`)}>
+      <div
+        className="container-name"
+        onClick={() => history.push(`/main/profile/${user._id}`)}
+      >
         <div className="img-container">
           <img src={user.imgUrl} alt="" className="img" />
         </div>

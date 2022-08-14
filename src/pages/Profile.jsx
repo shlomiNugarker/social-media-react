@@ -3,10 +3,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/PostsList'
 import { Link } from 'react-router-dom'
-import { loadPostsByUserId } from '../store/actions/postActions'
+import { loadPostsByUserId, setFilterBy } from '../store/actions/postActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { addConnection } from '../store/actions/userActions'
 
 export function Profile() {
   const params = useParams()
@@ -30,7 +29,6 @@ export function Profile() {
       const connectionToAdd = {
         userId: user._id,
       }
-      dispatch(addConnection(connectionToAdd))
     }
   }
 
@@ -44,8 +42,13 @@ export function Profile() {
     const filterBy = {
       userId: params.userId,
     }
+    dispatch(setFilterBy(filterBy))
     loadUser()
-    dispatch(loadPostsByUserId(filterBy))
+    dispatch(loadPostsByUserId())
+
+    return () => {
+      dispatch(setFilterBy(null))
+    }
     // eslint-disable-next-line
   }, [params.userId])
 

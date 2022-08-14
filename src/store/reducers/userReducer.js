@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   loggedInUser: null,
   users: null,
+  usersToAdd: null,
 }
 
 export function userReducer(state = INITIAL_STATE, action) {
@@ -30,16 +31,12 @@ export function userReducer(state = INITIAL_STATE, action) {
         ...state,
         loggedInUser: null,
       }
-    case 'ADD_CONNECTION':
+
+    case 'UPDATE_USER':
       return {
         ...state,
-        // loggedInUser: null,
+        loggedInUser: action.user,
       }
-    // case 'UPDATE_USER':
-    //   return {
-    //     ...state,
-    //     loggedInUser: action.user,
-    //   }
 
     // case 'REMOVE_USER':
     //   return {

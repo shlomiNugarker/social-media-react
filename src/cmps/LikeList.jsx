@@ -2,12 +2,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { utilService } from '../services/utilService'
 import { LikePreview } from './LikePreview'
 
-export function LikeList({ reactions }) {
+export function LikeList({ reactions, toggleLikes }) {
   return (
     <section className="like-list">
       <div className="title">
         <h2>Reactions:</h2>
-        <FontAwesomeIcon className="logo-close" icon="fa-solid fa-x" />
+        <FontAwesomeIcon
+          onClick={() => toggleLikes()}
+          className="logo-close"
+          icon="fa-solid fa-x"
+        />
       </div>
       <div>
         <div className="all">

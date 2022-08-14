@@ -54,7 +54,7 @@ export function SocialDetails({ comments, shares, post, onToggleShowComment }) {
               ev.stopPropagation()
             }}
           >
-            <LikeList reactions={post.reactions} />
+            <LikeList reactions={post.reactions} toggleLikes={toggleLikes} />
           </div>
         </div>
       )}

@@ -3,14 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AddPost } from './AddPost'
 import { PostsList } from './PostsList'
 import { SortBy } from './SortBy'
-import { loadPosts } from '../store/actions/postActions'
+import { loadPosts, setFilterBy } from '../store/actions/postActions'
 
 export const Posts = () => {
   const dispatch = useDispatch()
-  const { posts } = useSelector((state) => state.postModule)
+
+  const { filterBy } = useSelector((state) => state.postModule)
+  // dispatch(setFilterBy(filterBy))
 
   useEffect(() => {
     dispatch(loadPosts())
+
     // eslint-disable-next-line
   }, [])
 
@@ -19,7 +22,7 @@ export const Posts = () => {
     <section className="posts">
       <AddPost />
       <SortBy />
-      <PostsList posts={posts} />
+      <PostsList />
     </section>
   )
 }

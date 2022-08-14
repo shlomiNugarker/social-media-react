@@ -51,29 +51,18 @@ export function logout() {
   }
 }
 
-// export function updateUser(user) {
-//   return async (dispatch) => {
-//     await userService.update(user)
-//     dispatch({ type: 'UPDATE_USER', user })
-//   }
-// }
+export function updateUser(user) {
+  return async (dispatch) => {
+    await userService.update(user)
+    dispatch({ type: 'UPDATE_USER', user })
+  }
+}
 
 export function removeUser(userId) {
   return async (dispatch) => {
     try {
       await userService.remove(userId)
       dispatch({ type: 'REMOVE_USER', userId })
-    } catch (err) {
-      console.log('cannot remove user', err)
-    }
-  }
-}
-export function addConnection(connection) {
-  return async (dispatch) => {
-    try {
-      await userService.addConnection(connection)
-
-      dispatch({ type: 'ADD_CONNECTION', connection })
     } catch (err) {
       console.log('cannot remove user', err)
     }
