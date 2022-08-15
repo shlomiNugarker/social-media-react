@@ -13,8 +13,6 @@ export const Posts = () => {
 
   useEffect(() => {
     dispatch(loadPosts())
-
-    // eslint-disable-next-line
   }, [])
 
   console.log('render Posts')

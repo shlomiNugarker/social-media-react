@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
-export const InputComment = ({ onAddComment }) => {
+export const InputComment = ({ onSaveComment }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { imgUrl, _id } = loggedInUser
 
@@ -18,7 +18,7 @@ export const InputComment = ({ onAddComment }) => {
   }
 
   const doSubmit = () => {
-    onAddComment(newComment)
+    onSaveComment(newComment)
     setNewComment(() => ({ txt: '', userId: _id }))
   }
 

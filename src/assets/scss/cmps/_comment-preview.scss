@@ -60,6 +60,10 @@
         padding: 5px;
         border-radius: 3px;
 
+        &.liked {
+          color: #378fe9;
+        }
+
         &:hover {
           background-color: #f2f2f2;
         }

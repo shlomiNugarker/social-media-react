@@ -7,16 +7,22 @@ import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 export const Comments = ({ postId, comments }) => {
   const dispatch = useDispatch()
 
-  const onAddComment = (comment) => {
-    const commentToAdd = { ...comment, postId }
-    dispatch(saveComment(commentToAdd))
+  const onSaveComment = async (comment) => {
+    const commentToSave = { ...comment, postId }
+    dispatch(saveComment(commentToSave)).then((res) => {
+      console.log(res)
+    })
   }
 
   console.log('render Comments')
   return (
     <section className="comments">
-      <InputComment onAddComment={onAddComment} />
-      <ListComments postId={postId} comments={comments} />
+      <InputComment onSaveComment={onSaveComment} />
+      <ListComments
+        postId={postId}
+        comments={comments}
+        onSaveComment={onSaveComment}
+      />
     </section>
   )
 }
