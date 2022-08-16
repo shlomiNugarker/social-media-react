@@ -1,15 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { userService } from '../../../../../services/user/userService'
+import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const ReplyPreview = ({ reply, updateReply }) => {
   const { userId } = reply
-  const dispatch = useDispatch()
-
   const { loggedInUser } = useSelector((state) => state.userModule)
-
   const [userReply, setUserReply] = useState(null)
 
   const onLikeReply = () => {
@@ -29,13 +26,11 @@ export const ReplyPreview = ({ reply, updateReply }) => {
         reaction: 'like',
       })
     }
-
     updateReply(replyToUpdate)
   }
 
   const loadUser = async () => {
     const userReply = await userService.getById(userId)
-
     setUserReply(userReply)
   }
 

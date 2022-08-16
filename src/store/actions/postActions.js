@@ -54,6 +54,17 @@ export function savePost(post) {
   }
 }
 
+export function removePost(postId) {
+  return async (dispatch) => {
+    try {
+      await postService.remove(postId)
+      dispatch({ type: 'REMOVE_POST', postId })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
 export function saveComment(comment) {
   return async (dispatch) => {
     try {

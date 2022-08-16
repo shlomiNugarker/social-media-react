@@ -1,16 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
-import { userService } from '../../../../services/user/userService'
+import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
 import { useSelector } from 'react-redux'
-import { utilService } from '../../../../services/utilService'
-import { ReplyList } from './replies/ReplyList'
+import { utilService } from '../../services/utilService'
+import { ReplyList } from '../replies/ReplyList'
 
 export const CommentPreview = ({ comment, onSaveComment }) => {
   const { userId, createdAt, postId, reactions, replies } = comment
   const [userComment, setUserComment] = useState(null)
   const [isShowinputComment, setIsShowinputComment] = useState(false)
   const [isShowreplyList, setIsShowReplyList] = useState(false)
+  const [isFirstFocus, setIsFirstFocus] = useState(true)
   const [replyField, setReplyField] = useState({
     txt: '',
   })
@@ -69,7 +70,6 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
       (reply) => reply._id === replyToUpdate._id
     )
     commentToSave.replies[idx] = replyToUpdate
-    console.log(commentToSave)
     onSaveComment(commentToSave)
   }
 
@@ -92,6 +92,11 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
   const likeBtnStyle = isLogedInUserLikeComment ? 'liked' : ''
 
   const { profession, imgUrl } = userComment
+
+  const inputRef = (elInput) => {
+    if (elInput && isFirstFocus) elInput.focus()
+    setIsFirstFocus(false)
+  }
   console.log('render CommentPreview')
   return (
     <section className="comment-preview">
@@ -128,9 +133,16 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
           <button onClick={() => setIsShowinputComment((prev) => !prev)}>
             Reply
           </button>
-          <button onClick={() => setIsShowReplyList((prev) => !prev)}>
-            {isShowreplyList ? 'Hide replies' : 'Show replies'}
-          </button>
+          |
+          {comment.replies.length ? (
+            <button onClick={() => setIsShowReplyList((prev) => !prev)}>
+              {isShowreplyList && isShowreplyList
+                ? `Hide ${comment.replies.length} replies`
+                : `Show ${comment.replies.length} replies`}
+            </button>
+          ) : (
+            ''
+          )}
         </div>
 
         {isShowinputComment && (
@@ -140,6 +152,7 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
             </div>
             <div className="input-container">
               <input
+                ref={inputRef}
                 type="text"
                 placeholder="Add a reply..."
                 onChange={handleChange}

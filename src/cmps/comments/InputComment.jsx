@@ -5,7 +5,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 export const InputComment = ({ onSaveComment }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { imgUrl, _id } = loggedInUser
-
   const [isFirstFocus, setIsFirstFocus] = useState(true)
   const [newComment, setNewComment] = useState({
     txt: '',

@@ -44,6 +44,13 @@ export function postReducer(state = INITIAL_STATE, action) {
           return post._id === action.post._id ? action.post : post
         }),
       }
+
+    case 'REMOVE_POST':
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== action.postId),
+      }
+
     case 'ADD_COMMENT':
       console.log('ADD_COMMENT')
       const { comment } = action

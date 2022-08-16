@@ -7,6 +7,7 @@
   color: $clr4;
   margin: 15px 0;
   padding: 0 0 5px 0;
+  position: relative;
 
   hr {
     color: $border;
@@ -14,6 +15,7 @@
 
   .menu {
     position: relative;
+    cursor: pointer;
     .dots-icon {
       position: absolute;
       padding: 10px;

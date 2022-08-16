@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Comments } from './comments/Comments'
+import { Comments } from '../../comments/Comments'
 import { PostActions } from './PostActions'
 import { PostBody } from './PostBody'
 import { PostHeader } from './PostHeader'
@@ -7,17 +7,25 @@ import { SocialDetails } from './SocialDetails'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../../../services/user/userService'
-import { savePost, loadPosts } from '../../../store/actions/postActions'
+import {
+  savePost,
+  loadPosts,
+  removePost,
+} from '../../../store/actions/postActions'
 import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
+import { PostMenu } from './PostMenu'
 
-export const PostPreview = ({ post, idx }) => {
+export const PostPreview = ({ post }) => {
   const dispatch = useDispatch()
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
-
-  // const post = useSelector((state) => state.postModule.posts[idx])
-
+  const [isShowMenu, setIsShowMenu] = useState(false)
   const { loggedInUser } = useSelector((state) => state.userModule)
+
+  const toggleMenu = () => {
+    console.log('ddd')
+    setIsShowMenu((prevVal) => !prevVal)
+  }
 
   const loadUserPost = async (id) => {
     if (!post) return
@@ -51,6 +59,11 @@ export const PostPreview = ({ post, idx }) => {
     dispatch(savePost(post))
   }
 
+  const onRemovePost = () => {
+    console.log(post._id)
+    dispatch(removePost(post._id))
+  }
+
   useEffect(() => {
     loadUserPost(post.userId)
   }, [])
@@ -58,7 +71,7 @@ export const PostPreview = ({ post, idx }) => {
   console.log('render PostPreview')
   return (
     <section className="post-preview">
-      <div className="menu">
+      <div className="menu" onClick={toggleMenu}>
         <FontAwesomeIcon className="dots-icon" icon="fa-solid fa-ellipsis" />
       </div>
       <PostHeader post={post} userPost={userPost} />
@@ -79,6 +92,10 @@ export const PostPreview = ({ post, idx }) => {
 
       {isShowComments && (
         <Comments comments={post.comments} postId={post._id} />
+      )}
+
+      {isShowMenu && (
+        <PostMenu toggleMenu={toggleMenu} onRemovePost={onRemovePost} />
       )}
     </section>
   )

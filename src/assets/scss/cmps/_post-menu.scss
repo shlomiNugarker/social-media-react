@@ -1,0 +1,75 @@
+.bg-menu {
+  inset: 50px 0 0 0;
+  position: fixed;
+  cursor: pointer;
+  background-color: #48484800;
+}
+.post-menu {
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 15px;
+  width: 50%;
+  min-height: 160px;
+  top: 40px;
+  right: 15px;
+  box-shadow: 0px 0px 0 1px rgb(255 255 255 / 0%),
+    0px 0px 20px 9px rgb(91 91 91 / 20%);
+
+  .container {
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 10px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    .delete-container {
+      color: #666666;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border: none;
+      background: unset;
+      .trash-icon {
+        font-size: 25px;
+      }
+
+      p {
+        color: black;
+        margin-left: 5px;
+      }
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.188);
+    }
+  }
+
+  .ask-again {
+    padding: 0px 15px;
+    p {
+    }
+
+    .opts {
+      display: flex;
+      margin-top: 5px;
+
+      .opt-btn {
+        margin: 0 5px;
+        cursor: pointer;
+        color: white;
+        padding: 5px;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+      }
+
+      .yes {
+        background-color: #5f9b41;
+      }
+
+      .no {
+        background-color: #e16745;
+      }
+    }
+  }
+}

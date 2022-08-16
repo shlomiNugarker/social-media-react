@@ -56,10 +56,10 @@
 @import 'cmps/like-list';
 @import 'cmps/reply-list';
 @import 'cmps/reply-preview';
+@import 'cmps/post-menu';
 
 .app {
   background-color: $main-background;
-  // overflow-x: hidden;
 }
 
 .logo {
