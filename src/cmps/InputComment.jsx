@@ -6,6 +6,7 @@ export const InputComment = ({ onSaveComment }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { imgUrl, _id } = loggedInUser
 
+  const [isFirstFocus, setIsFirstFocus] = useState(true)
   const [newComment, setNewComment] = useState({
     txt: '',
     userId: _id,
@@ -23,7 +24,8 @@ export const InputComment = ({ onSaveComment }) => {
   }
 
   const inputRef = (elInput) => {
-    if (elInput) elInput.focus()
+    if (elInput && isFirstFocus) elInput.focus()
+    setIsFirstFocus(false)
   }
   return (
     <section>

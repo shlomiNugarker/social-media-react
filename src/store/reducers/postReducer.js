@@ -58,6 +58,25 @@ export function postReducer(state = INITIAL_STATE, action) {
           return post
         }),
       }
+
+    case 'UPDATE_COMMENT':
+      console.log('UPDATE_COMMENT', action.comment)
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          // return post._id === action.comment.postId ? action.post.comments : post
+          if (post._id === action.comment.postId) {
+            const idx = post.comments.findIndex(
+              (c) => c._id === action.comment._id
+            )
+            post.comments[idx] = action.comment
+            // post.comments = post.comments.splice(idx, 1, action.comment)
+            return post
+          } else {
+            return post
+          }
+        }),
+      }
     default:
       return state
   }

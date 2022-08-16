@@ -84,7 +84,6 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
             Like
           </button>{' '}
           |<button>Reply</button>
-          <p>{reactions.length}</p>
         </div>
       </div>
     </section>
