@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { CreatePostModal } from './CreatePostModal'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
-import { savePost } from '../store/actions/postActions'
+import { savePost } from '../../store/actions/postActions'
 
 export const AddPost = () => {
   const dispatch = useDispatch()

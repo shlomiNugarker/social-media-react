@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
-import { PostsList } from '../cmps/PostsList'
+import { PostsList } from '../cmps/posts/PostsList'
 import { Link } from 'react-router-dom'
 import { loadPostsByUserId, setFilterBy } from '../store/actions/postActions'
 import { useDispatch, useSelector } from 'react-redux'

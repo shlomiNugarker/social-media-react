@@ -4,7 +4,6 @@ import { userService } from '../services/user/userService'
 
 export function LikePreview({ reaction }) {
   const [user, setUser] = useState(null)
-  console.log(reaction)
 
   const history = useHistory()
 

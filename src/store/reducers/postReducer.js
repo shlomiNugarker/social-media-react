@@ -60,7 +60,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       }
 
     case 'UPDATE_COMMENT':
-      console.log('UPDATE_COMMENT', action.comment)
+      console.log('UPDATE_COMMENT')
       return {
         ...state,
         posts: state.posts.map((post) => {

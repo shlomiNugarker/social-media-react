@@ -1,5 +1,5 @@
-import { userService } from '../services/user/userService'
-import { utilService } from '../services/utilService'
+import { userService } from '../../services/user/userService'
+import { utilService } from '../../services/utilService'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import TimeAgo from 'react-timeago'

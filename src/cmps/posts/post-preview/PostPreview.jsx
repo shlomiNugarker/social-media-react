@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Comments } from './Comments'
+import { Comments } from './comments/Comments'
 import { PostActions } from './PostActions'
 import { PostBody } from './PostBody'
 import { PostHeader } from './PostHeader'
 import { SocialDetails } from './SocialDetails'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userService } from '../services/user/userService'
-import { savePost, loadPosts } from '../store/actions/postActions'
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { userService } from '../../../services/user/userService'
+import { savePost, loadPosts } from '../../../store/actions/postActions'
+import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
 
 export const PostPreview = ({ post, idx }) => {
   const dispatch = useDispatch()

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { ConnectionList } from '../cmps/ConnectionList'
+import { ConnectionList } from '../cmps/connections/ConnectionList'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../store/actions/userActions'
 import { useCallback, useEffect, useMemo, useState } from 'react'

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AddPost } from './AddPost'
 import { PostsList } from './PostsList'
 import { SortBy } from './SortBy'
-import { loadPosts, setFilterBy } from '../store/actions/postActions'
+import { loadPosts, setFilterBy } from '../../store/actions/postActions'
 
 export const Posts = () => {
   const dispatch = useDispatch()

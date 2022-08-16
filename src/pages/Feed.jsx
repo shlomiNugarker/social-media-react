@@ -1,4 +1,4 @@
-import { Posts } from '../cmps/Posts'
+import { Posts } from '../cmps/posts/Posts'
 import { RightSideBar } from '../cmps/RightSideBar'
 import { LeftSideBar } from '../cmps/LeftSideBar'
 import { useDispatch, useSelector } from 'react-redux'

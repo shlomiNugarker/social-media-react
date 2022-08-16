@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
-import { LikeList } from './LikeList'
+import { LikeList } from '../../LikeList'
 
 export function SocialDetails({ comments, shares, post, onToggleShowComment }) {
   const [isShowLikes, setisShowLikes] = useState(false)

@@ -1,7 +1,7 @@
 import { InputComment } from './InputComment'
 import { ListComments } from './ListComments'
 import { useDispatch, useSelector } from 'react-redux'
-import { saveComment } from '../store/actions/postActions'
+import { saveComment } from '../../../../store/actions/postActions'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 
 export const Comments = ({ postId, comments }) => {
@@ -9,9 +9,7 @@ export const Comments = ({ postId, comments }) => {
 
   const onSaveComment = async (comment) => {
     const commentToSave = { ...comment, postId }
-    dispatch(saveComment(commentToSave)).then((res) => {
-      console.log(res)
-    })
+    dispatch(saveComment(commentToSave))
   }
 
   console.log('render Comments')

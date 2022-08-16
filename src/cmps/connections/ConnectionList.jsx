@@ -1,4 +1,4 @@
-import { utilService } from '../services/utilService'
+import { utilService } from '../../services/utilService'
 import { ConnectionPreview } from './ConnectionPreview'
 
 export function ConnectionList({ users }) {

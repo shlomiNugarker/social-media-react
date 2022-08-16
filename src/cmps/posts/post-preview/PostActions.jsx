@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 
 export const PostActions = ({

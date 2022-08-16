@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
-import { userService } from '../services/user/userService'
+import { userService } from '../../../../services/user/userService'
 import TimeAgo from 'react-timeago'
 import { useSelector } from 'react-redux'
 
@@ -43,12 +43,10 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
   if (!userComment) return
 
   const isLogedInUserLikeComment = comment?.reactions.some((reaction) => {
-    console.log(loggedInUser._id, '===', reaction.userId)
     return loggedInUser._id === reaction.userId
   })
 
   const likeBtnStyle = isLogedInUserLikeComment ? 'liked' : ''
-  console.log(isLogedInUserLikeComment)
 
   const { profession, imgUrl } = userComment
   console.log('render CommentPreview')

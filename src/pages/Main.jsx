@@ -1,5 +1,5 @@
 import { Feed } from '../pages/Feed'
-import { Header } from '../cmps/Header'
+import { Header } from '../cmps/header/Header'
 import { Switch, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getLoggedinUser } from '../store/actions/userActions'
