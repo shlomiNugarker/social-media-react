@@ -2,10 +2,10 @@ import { CommentPreview } from './CommentPreview'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-export const ListComments = ({ comments, onSaveComment }) => {
+export const CommentsList = ({ comments, onSaveComment }) => {
   if (!comments) return <section className="list-comments">Loading..</section>
 
-  console.log('render ListComments')
+  console.log('render CommentsList')
   return (
     <section className="list-comments">
       {comments.map((comment) => (

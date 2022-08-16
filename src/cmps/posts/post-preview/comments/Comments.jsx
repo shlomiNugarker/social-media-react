@@ -1,5 +1,5 @@
 import { InputComment } from './InputComment'
-import { ListComments } from './ListComments'
+import { CommentsList } from './CommentsList'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveComment } from '../../../../store/actions/postActions'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
@@ -16,7 +16,7 @@ export const Comments = ({ postId, comments }) => {
   return (
     <section className="comments">
       <InputComment onSaveComment={onSaveComment} />
-      <ListComments
+      <CommentsList
         postId={postId}
         comments={comments}
         onSaveComment={onSaveComment}

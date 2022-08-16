@@ -69,5 +69,45 @@
         }
       }
     }
+
+    .input-reply {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      .img-loggedUser {
+        .img {
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          object-fit: cover;
+        }
+      }
+
+      .input-container {
+        width: 100%;
+        margin-left: 5px;
+        border-radius: 15px;
+        border: 1px solid $border;
+        padding: 5px;
+        input {
+          border: none;
+          width: 100%;
+          padding: 3px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+    .reply-btn {
+      padding: 5px 10px;
+      margin: 5px 3px;
+      border-radius: 15px;
+      background-color: #0a66c2;
+      color: white;
+      border: none;
+    }
   }
 }
