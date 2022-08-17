@@ -82,6 +82,23 @@ export function postReducer(state = INITIAL_STATE, action) {
           }
         }),
       }
+
+    case 'REMOVE_COMMENT':
+      console.log('REMOVE_COMMENT')
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post._id === action.comment.postId) {
+            const idx = post.comments.findIndex(
+              (c) => c._id === action.comment._id
+            )
+            post.comments.splice(idx, 1)
+            return post
+          } else {
+            return post
+          }
+        }),
+      }
     default:
       return state
   }

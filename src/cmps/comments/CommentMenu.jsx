@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
+export const CommentMenu = ({ toggleMenu, onRemoveComment, commentUserId }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const [isAskAgain, setIsAskAgain] = useState(false)
   const dispatch = useDispatch()
@@ -11,9 +11,9 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
     // eslint-disable-next-line
   }, [])
 
-  const isLoggedInUserCanDelete = loggedInUser._id === postUserId
+  const isLoggedInUserCanDelete = loggedInUser._id === commentUserId
 
-  console.log('render PostMenu')
+  console.log('render CommentMenu')
   return (
     <section>
       <div
@@ -23,7 +23,7 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
           toggleMenu()
         }}
       ></div>
-      <section className="post-menu">
+      <section className="comment-menu">
         <div className="container">
           {isLoggedInUserCanDelete && (
             <button
@@ -34,7 +34,7 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
                 className="trash-icon"
                 icon="fa-solid fa-trash"
               />
-              <p>Delete post</p>
+              <p>Delete comment</p>
             </button>
           )}
         </div>
@@ -42,7 +42,7 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
           <div className="ask-again">
             <p>Are you sure?</p>
             <div className="opts">
-              <p className="yes opt-btn" onClick={onRemovePost}>
+              <p className="yes opt-btn" onClick={onRemoveComment}>
                 yes
               </p>
               <p className="no opt-btn" onClick={() => setIsAskAgain(false)}>

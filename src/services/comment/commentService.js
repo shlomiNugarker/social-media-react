@@ -17,8 +17,8 @@ async function getById(id) {
   return await httpService.get(`${ENDPOINT}/${id}`)
 }
 
-async function remove(id) {
-  return await httpService.delete(`${ENDPOINT}/${id}`)
+async function remove(comment) {
+  return await httpService.delete(`${ENDPOINT}/${comment._id}`, comment)
 }
 
 async function save(comment) {

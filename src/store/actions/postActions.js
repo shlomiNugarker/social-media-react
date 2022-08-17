@@ -77,3 +77,14 @@ export function saveComment(comment) {
     }
   }
 }
+
+export function removeComment(comment) {
+  return async (dispatch) => {
+    try {
+      await commentService.remove(comment)
+      dispatch({ type: 'REMOVE_COMMENT', comment })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}

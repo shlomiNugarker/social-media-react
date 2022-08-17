@@ -2,20 +2,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { utilService } from '../../services/utilService'
 import { ReplyList } from '../replies/ReplyList'
+import { CommentMenu } from './CommentMenu'
+import { removeComment } from '../../store/actions/postActions'
 
 export const CommentPreview = ({ comment, onSaveComment }) => {
+  const dispatch = useDispatch()
   const { userId, createdAt, postId, reactions, replies } = comment
   const [userComment, setUserComment] = useState(null)
   const [isShowinputComment, setIsShowinputComment] = useState(false)
   const [isShowreplyList, setIsShowReplyList] = useState(false)
+  const [isShowMenu, setIsShowMenu] = useState(false)
   const [isFirstFocus, setIsFirstFocus] = useState(true)
+
   const [replyField, setReplyField] = useState({
     txt: '',
   })
   const { loggedInUser } = useSelector((state) => state.userModule)
+
+  const toggleMenu = () => {
+    setIsShowMenu((prevVal) => !prevVal)
+  }
 
   const loadUserComment = async (userId) => {
     if (!userId) return
@@ -42,12 +51,14 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
     onSaveComment(commentToSave)
   }
 
+  const onRemoveComment = () => {
+    dispatch(removeComment(comment))
+  }
+
   const addReply = () => {
     if (replyField.txt === '' || !replyField.txt) return
     const commentToSave = { ...comment }
-
     setIsShowReplyList(true)
-
     const newRpely = {
       _id: utilService.makeId(24),
       userId: loggedInUser._id,
@@ -115,6 +126,7 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
                 <TimeAgo date={createdAt} />
               </span>
               <FontAwesomeIcon
+                onClick={toggleMenu}
                 className="dots-icon"
                 icon="fa-solid fa-ellipsis"
               />
@@ -171,6 +183,14 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
 
         {isShowreplyList && (
           <ReplyList replies={replies} updateReply={updateReply} />
+        )}
+
+        {isShowMenu && (
+          <CommentMenu
+            toggleMenu={toggleMenu}
+            onRemoveComment={onRemoveComment}
+            commentUserId={comment.userId}
+          />
         )}
       </div>
     </section>

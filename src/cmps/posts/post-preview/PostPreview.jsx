@@ -23,7 +23,6 @@ export const PostPreview = ({ post }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   const toggleMenu = () => {
-    console.log('ddd')
     setIsShowMenu((prevVal) => !prevVal)
   }
 
@@ -60,7 +59,6 @@ export const PostPreview = ({ post }) => {
   }
 
   const onRemovePost = () => {
-    console.log(post._id)
     dispatch(removePost(post._id))
   }
 
@@ -95,7 +93,11 @@ export const PostPreview = ({ post }) => {
       )}
 
       {isShowMenu && (
-        <PostMenu toggleMenu={toggleMenu} onRemovePost={onRemovePost} />
+        <PostMenu
+          toggleMenu={toggleMenu}
+          onRemovePost={onRemovePost}
+          postUserId={post.userId}
+        />
       )}
     </section>
   )
