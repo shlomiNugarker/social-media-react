@@ -9,6 +9,7 @@
   grid-area: content;
   grid-template-rows: auto;
   row-gap: 2.4em;
+  position: relative;
 
   .left {
     grid-area: main;
@@ -28,6 +29,7 @@
         .img-container {
           position: absolute;
           left: 30px;
+          cursor: pointer;
           .img {
             width: 152px;
             height: 152px;

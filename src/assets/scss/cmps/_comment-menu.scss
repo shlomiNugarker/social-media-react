@@ -3,6 +3,7 @@
   position: fixed;
   cursor: pointer;
   background-color: #48484800;
+  z-index: 8;
 }
 .comment-menu {
   z-index: 10;
@@ -10,7 +11,7 @@
   position: absolute;
   border-radius: 15px;
   width: 50%;
-  min-height: 160px;
+  min-height: 60px;
   top: 40px;
   right: 15px;
   box-shadow: 0px 0px 0 1px rgb(255 255 255 / 0%),
@@ -45,7 +46,7 @@
   }
 
   .ask-again {
-    padding: 0px 15px;
+    padding: 15px 15px;
     p {
     }
 

@@ -103,6 +103,12 @@
         border: 1px solid $clr3;
       }
 
+      .msg {
+        p {
+          color: red;
+        }
+      }
+
       a {
         margin: 10px 0;
       }

@@ -13,6 +13,7 @@ export const Comments = ({ postId, comments }) => {
   }
 
   console.log('render Comments')
+  if (!comments) return <div>Loading</div>
   return (
     <section className="comments">
       <InputComment onSaveComment={onSaveComment} />

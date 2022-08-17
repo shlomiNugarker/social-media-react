@@ -12,6 +12,14 @@ export const Home = (props) => {
     password: '1234',
   })
 
+  const [msg, setMsg] = useState('')
+
+  const showMsg = (txt) => {
+    setMsg(txt)
+
+    setTimeout(() => setMsg(''), 3000)
+  }
+
   const handleChange = async ({ target }) => {
     const field = target.name
     let value = target.type === 'number' ? +target.value || '' : target.value
@@ -19,7 +27,12 @@ export const Home = (props) => {
   }
 
   const doLogin = () => {
-    dispatch(login(creds)).then(() => {
+    dispatch(login(creds)).then((res) => {
+      const user = res
+      if (!user) {
+        showMsg('Something went wrong...')
+        return
+      }
       setCreds(() => ({ username: '', password: '' }))
       props.history.push('/main/feed')
     })
@@ -101,6 +114,11 @@ export const Home = (props) => {
             placeholder="Passsword"
             required
           />
+
+          <div className="msg">
+            <p>{msg}</p>
+          </div>
+
           <a href="">Forgot password?</a>
           <div>
             <button>Sign in</button>

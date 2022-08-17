@@ -1,0 +1,51 @@
+.img-profile-preview {
+  margin-top: 60px;
+  background-color: rgb(255, 255, 255);
+  height: 50vh;
+  position: absolute;
+  .bg {
+    z-index: 105;
+    inset: 0 0 0 0;
+    background-color: rgba(0, 0, 0, 0.776);
+    position: fixed;
+    cursor: pointer;
+  }
+
+  .container {
+    z-index: 1120;
+    position: fixed;
+    background-color: #1d2226;
+    color: white;
+    border-radius: 20px;
+    top: 50vh;
+    left: 50vw;
+    width: 70vw;
+    height: 80vh;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    min-height: content;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      font-size: 24px;
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .img-container {
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      .img {
+        width: 30vw;
+        height: 30vw;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+  }
+}

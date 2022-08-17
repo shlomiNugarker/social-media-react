@@ -15,6 +15,7 @@ export function login(userCred) {
     try {
       const user = await userService.login(userCred)
       dispatch({ type: 'LOGIN', user })
+      return user
     } catch (err) {
       console.log("can't do login:", err)
     }

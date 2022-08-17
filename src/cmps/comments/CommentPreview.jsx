@@ -109,6 +109,9 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
     setIsFirstFocus(false)
   }
   console.log('render CommentPreview')
+
+  if (!comment) return <div>Loading</div>
+
   return (
     <section className="comment-preview">
       <div className="img-container">

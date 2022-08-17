@@ -2,8 +2,13 @@ import { useParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/posts/PostsList'
+import { ImgProfilePreview } from '../cmps/ImgProfilePreview'
 import { Link } from 'react-router-dom'
-import { loadPostsByUserId, setFilterBy } from '../store/actions/postActions'
+import {
+  loadPostsByUserId,
+  setCurrPage,
+  setFilterBy,
+} from '../store/actions/postActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -11,6 +16,7 @@ export function Profile() {
   const params = useParams()
   const dispatch = useDispatch()
   const [user, setUser] = useState(null)
+  const [isShowImdProfile, setIsShowImdProfile] = useState(false)
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
 
@@ -19,9 +25,17 @@ export function Profile() {
     setUser(() => user)
   }
 
+  const toggleShowImgProfile = () => {
+    setIsShowImdProfile((prev) => !prev)
+  }
+
+  const onShowProfile = () => {
+    console.log('onShowProfile')
+    toggleShowImgProfile()
+  }
+
   const connectProfile = () => {
     console.log('connect', user)
-
     if (isConnected) {
       // Remove
     } else if (!isConnected) {
@@ -42,14 +56,14 @@ export function Profile() {
     const filterBy = {
       userId: params.userId,
     }
+    dispatch(setCurrPage('profile'))
     dispatch(setFilterBy(filterBy))
     loadUser()
-    dispatch(loadPostsByUserId())
+    dispatch(loadPostsByUserId(filterBy))
 
     return () => {
       dispatch(setFilterBy(null))
     }
-    // eslint-disable-next-line
   }, [params.userId])
 
   if (!user) return <section className="feed-load">Loading...</section>
@@ -61,7 +75,7 @@ export function Profile() {
       <div className="left">
         <div className="user-profile">
           <div className="bg" style={{ backgroundImage: `url(${user.bg})` }}>
-            <div className="img-container">
+            <div className="img-container" onClick={onShowProfile}>
               <img src={user.imgUrl} alt="" className="img" />
             </div>
           </div>
@@ -76,7 +90,7 @@ export function Profile() {
               </div>
               <div className="btns-container">
                 {isLoggedInUserProfile && (
-                  <button className="add-details">Add more details</button>
+                  <button className="add-details">Edit profile</button>
                 )}
                 {!isLoggedInUserProfile && (
                   <button className="connect" onClick={connectProfile}>
@@ -98,6 +112,12 @@ export function Profile() {
         <div className="top-div"></div>
         <div className="bottom-div"></div>
       </div>
+      {isShowImdProfile && (
+        <ImgProfilePreview
+          toggleShowImgProfile={toggleShowImgProfile}
+          user={user}
+        />
+      )}
     </section>
   )
 }
