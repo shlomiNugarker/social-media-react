@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/posts/PostsList'
-import { ImgProfilePreview } from '../cmps/ImgProfilePreview'
+import { ImgProfilePreview } from '../cmps/profile/ImgProfilePreview'
 import { Link } from 'react-router-dom'
 import {
   loadPostsByUserId,
@@ -11,12 +11,14 @@ import {
 } from '../store/actions/postActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { EditModal } from '../cmps/profile/EditModal'
 
 export function Profile() {
   const params = useParams()
   const dispatch = useDispatch()
   const [user, setUser] = useState(null)
   const [isShowImdProfile, setIsShowImdProfile] = useState(false)
+  const [isShowEditModal, setIsShowEditModal] = useState(false)
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
 
@@ -27,6 +29,9 @@ export function Profile() {
 
   const toggleShowImgProfile = () => {
     setIsShowImdProfile((prev) => !prev)
+  }
+  const toggleShowEditModal = () => {
+    setIsShowEditModal((prev) => !prev)
   }
 
   const onShowProfile = () => {
@@ -64,7 +69,7 @@ export function Profile() {
     return () => {
       dispatch(setFilterBy(null))
     }
-  }, [params.userId])
+  }, [params.userId, loggedInUser])
 
   if (!user) return <section className="feed-load">Loading...</section>
 
@@ -90,7 +95,9 @@ export function Profile() {
               </div>
               <div className="btns-container">
                 {isLoggedInUserProfile && (
-                  <button className="add-details">Edit profile</button>
+                  <button className="add-details" onClick={toggleShowEditModal}>
+                    Edit profile
+                  </button>
                 )}
                 {!isLoggedInUserProfile && (
                   <button className="connect" onClick={connectProfile}>
@@ -117,6 +124,10 @@ export function Profile() {
           toggleShowImgProfile={toggleShowImgProfile}
           user={user}
         />
+      )}
+
+      {isShowEditModal && (
+        <EditModal toggleShowEditModal={toggleShowEditModal} user={user} />
       )}
     </section>
   )

@@ -4,12 +4,15 @@
   align-items: flex-start;
   position: relative;
 
-  .img-profile {
-    border-radius: 50%;
-    background-color: lightskyblue;
-    width: 35px;
-    height: 35px;
-    object-fit: cover;
+  .img-container {
+    cursor: pointer;
+    .img-profile {
+      border-radius: 50%;
+      background-color: lightskyblue;
+      width: 35px;
+      height: 35px;
+      object-fit: cover;
+    }
   }
 
   .container {

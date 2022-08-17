@@ -54,8 +54,9 @@ export function logout() {
 
 export function updateUser(user) {
   return async (dispatch) => {
-    await userService.update(user)
-    dispatch({ type: 'UPDATE_USER', user })
+    const savedUser = await userService.update(user)
+    dispatch({ type: 'UPDATE_USER', user: savedUser })
+    return savedUser
   }
 }
 

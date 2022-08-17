@@ -64,7 +64,7 @@ export const PostPreview = ({ post }) => {
 
   useEffect(() => {
     loadUserPost(post.userId)
-  }, [])
+  }, [loggedInUser])
 
   console.log('render PostPreview')
   return (

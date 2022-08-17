@@ -7,9 +7,12 @@ import { utilService } from '../../services/utilService'
 import { ReplyList } from '../replies/ReplyList'
 import { CommentMenu } from './CommentMenu'
 import { removeComment } from '../../store/actions/postActions'
+import { useHistory } from 'react-router-dom'
 
 export const CommentPreview = ({ comment, onSaveComment }) => {
   const dispatch = useDispatch()
+  const history = useHistory()
+
   const { userId, createdAt, postId, reactions, replies } = comment
   const [userComment, setUserComment] = useState(null)
   const [isShowinputComment, setIsShowinputComment] = useState(false)
@@ -114,7 +117,10 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
 
   return (
     <section className="comment-preview">
-      <div className="img-container">
+      <div
+        className="img-container"
+        onClick={() => history.push(`/main/profile/${userComment?._id}`)}
+      >
         <img src={imgUrl} alt="" className="img-profile" />
       </div>
       <div className="container">
