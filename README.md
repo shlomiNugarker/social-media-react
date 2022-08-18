@@ -1,1 +1,1 @@
-## Social network ! - full-stack app using React.js, Redux, Node.js, MongoDb and more !
+## Social Network ! - full-stack app using React.js, Redux, Node.js, MongoDb and more !
