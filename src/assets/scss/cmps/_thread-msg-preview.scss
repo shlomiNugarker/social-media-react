@@ -1,0 +1,44 @@
+.thread-msg-list {
+  .thread-msg-preview {
+    background-color: #ffffff;
+    margin: 5px;
+    margin: 5px 5px 15px 5px;
+
+    .container-msg {
+      display: flex;
+      .img-container {
+        .img {
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          background-color: lightskyblue;
+          object-fit: cover;
+        }
+      }
+
+      .name-time-container {
+        display: flex;
+        align-items: center;
+        margin-left: 7px;
+        .fullname {
+          margin-left: 7px;
+          p {
+          }
+        }
+
+        .time {
+          margin-left: 7px;
+          span {
+          }
+        }
+      }
+    }
+
+    .the-msg {
+      margin-left: 60px;
+
+      p {
+      }
+    }
+  }
+}

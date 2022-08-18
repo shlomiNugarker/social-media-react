@@ -1,0 +1,50 @@
+.messaging {
+  .container {
+    display: flex;
+    height: 100%;
+    .list-msg {
+      background-color: #ffffff;
+      width: 30%;
+      height: 100%;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+
+      .title-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+        p {
+        }
+
+        .logos {
+          display: flex;
+          align-items: center;
+          color: #00000099;
+          span {
+            margin: 5px;
+          }
+        }
+      }
+
+      .filter-container {
+        width: 100%;
+        padding: 5px;
+
+        input {
+          width: 100%;
+          border: none;
+          border-radius: 5px;
+          padding: 5px;
+          background-color: #eef3f8;
+        }
+      }
+
+      .list {
+        overflow-y: auto;
+        height: 100%;
+        height: calc(100vh - 155px);
+      }
+    }
+  }
+}

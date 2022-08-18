@@ -1,5 +1,17 @@
 .message-page {
+  height: 100vh;
+  display: grid;
+  grid-template-areas: 'messaging right-side-message';
+  grid-template-columns: minmax(0, 17fr) minmax(300px, 7fr);
   padding-top: 60px;
-  min-height: 100vh;
-  background-color: lightgreen;
+  justify-content: space-between;
+  column-gap: 2.4em;
+  grid-area: content;
+  grid-template-rows: auto;
+  row-gap: 2.4em;
+
+  .right-side-message {
+    grid-area: right-side-message;
+    border: 1px solid $border;
+  }
 }

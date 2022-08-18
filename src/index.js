@@ -36,6 +36,7 @@ import {
   faUserPlus,
   faTrash,
   faCloudArrowUp,
+  faMessage,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -67,7 +68,8 @@ library.add(
   faPeopleGroup,
   faUserPlus,
   faTrash,
-  faCloudArrowUp
+  faCloudArrowUp,
+  faMessage
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

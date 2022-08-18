@@ -60,6 +60,12 @@
 @import 'cmps/comment-menu';
 @import 'cmps/img-profile-preview';
 @import 'cmps/edit-modal';
+@import 'cmps/messaging';
+@import 'cmps/list-msg';
+@import 'cmps/message-thread';
+@import 'cmps/msg-preview';
+@import 'cmps/thread-msg-list';
+@import 'cmps/thread-msg-preview';
 
 .app {
   background-color: $main-background;

@@ -1,0 +1,10 @@
+.message-page {
+  .messaging {
+    height: 100%;
+    grid-area: messaging;
+
+    .container {
+      border-radius: 1px solid black;
+    }
+  }
+}

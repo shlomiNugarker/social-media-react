@@ -1,0 +1,35 @@
+.list-msg,
+.msg-preview {
+  background-color: #ffffff;
+
+  .container {
+    padding: 10px;
+    .img-container {
+      margin: 5px;
+      .img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: lemonchiffon;
+        object-fit: cover;
+      }
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      .fullname {
+        display: flex;
+        h1 {
+          font-size: 18px;
+        }
+
+        span {
+          margin-left: 3px;
+        }
+      }
+    }
+  }
+}
