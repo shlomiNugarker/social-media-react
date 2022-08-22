@@ -14,21 +14,29 @@ export function Message() {
 
   const openChat = () => {
     if (params.userId) {
-      console.log('show/create chat of the userId', params.userId)
+      // console.log('show/create chat of the userId', params.userId)
     } else {
-      console.log('no userId, open the first user in the list')
+      // console.log('no userId, open the first user in the list')
     }
+  }
+
+  const checkIfChatExist = () => {
+    return chats?.some((chat) => {
+      return chat.userId === params.userId || chat.userId2 === params.userId
+    })
   }
 
   useEffect(() => {
     dispatch(setCurrPage('message'))
     const userId = loggedInUser?._id
     if (userId) dispatch(loadChats(userId))
+    const isChatExist = checkIfChatExist()
+    console.log(isChatExist)
 
     openChat()
   }, [loggedInUser, params.userId])
 
-  console.log('render Message')
+  // console.log('render Message')
   if (!chats) return
   return (
     <section className="message-page">

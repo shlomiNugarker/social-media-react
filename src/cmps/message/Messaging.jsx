@@ -7,7 +7,7 @@ import { MessageThread } from './MessageThread'
 export function Messaging({ chats }) {
   const [messagesToShow, setMessagesToShow] = useState(null)
   const { loggedInUser } = useSelector((state) => state.userModule)
-  const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
+  const [chatWith, setChatWith] = useState(null)
 
   return (
     <section className="messaging">
@@ -15,14 +15,10 @@ export function Messaging({ chats }) {
         <ListMsg
           chats={chats}
           setMessagesToShow={setMessagesToShow}
-          theNotLoggedUserChat={theNotLoggedUserChat}
-          setTheNotLoggedUserChat={setTheNotLoggedUserChat}
+          setChatWith={setChatWith}
         />
         {messagesToShow && (
-          <MessageThread
-            messagesToShow={messagesToShow}
-            theNotLoggedUserChat={theNotLoggedUserChat}
-          />
+          <MessageThread messagesToShow={messagesToShow} chatWith={chatWith} />
         )}
       </div>
     </section>

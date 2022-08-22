@@ -2,18 +2,14 @@ import { useSelector } from 'react-redux'
 import { ReactSnip } from '@strg/react-snip'
 import TimeAgo from 'react-timeago'
 import { userService } from '../../services/user/userService'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-export function MsgPreview({
-  chat,
-  setMessagesToShow,
-  setTheNotLoggedUserChat,
-  theNotLoggedUserChat,
-}) {
-  const lastMsg = chat.messages[0].txt || 'No Messages yet..'
+export function MsgPreview({ chat, setMessagesToShow, setChatWith }) {
+  const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
+  const lastMsg = chat.messages[0]?.txt || 'No Messages yet..'
   const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
 
-  const dateToShow = new Date(chat.messages[0].createdAt || chat.createdAt)
+  const dateToShow = new Date(chat.messages[0]?.createdAt || chat.createdAt)
 
   const slicedDate = dateToShow.toLocaleDateString().slice(0, -5)
 
@@ -22,7 +18,7 @@ export function MsgPreview({
     if (loggedInUser._id !== chat.userId) userId = chat.userId
     else if (loggedInUser._id !== chat.userId2) userId = chat.userId2
     const user = await userService.getById(userId)
-    setTheNotLoggedUserChat(user)
+    setTheNotLoggedUserChat(user) ////////////////
   }
 
   useEffect(() => {
@@ -30,7 +26,6 @@ export function MsgPreview({
 
     return () => {}
   }, [])
-  console.log(theNotLoggedUserChat)
 
   // console.log('render MsgPreview')
   return (
@@ -38,6 +33,7 @@ export function MsgPreview({
       className="msg-preview"
       onClick={() => {
         setMessagesToShow(chat.messages)
+        setChatWith(theNotLoggedUserChat)
       }}
     >
       <div className="container">

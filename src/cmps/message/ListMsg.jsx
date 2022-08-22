@@ -2,12 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { utilService } from '../../services/utilService'
 import { MsgPreview } from './MsgPreview'
 
-export function ListMsg({
-  chats,
-  setMessagesToShow,
-  theNotLoggedUserChat,
-  setTheNotLoggedUserChat,
-}) {
+export function ListMsg({ chats, setMessagesToShow, setChatWith }) {
   return (
     <section className="list-msg">
       <div className="title-container">
@@ -36,8 +31,7 @@ export function ListMsg({
             key={chat._id}
             chat={chat}
             setMessagesToShow={setMessagesToShow}
-            setTheNotLoggedUserChat={setTheNotLoggedUserChat}
-            theNotLoggedUserChat={theNotLoggedUserChat}
+            setChatWith={setChatWith}
           />
         ))}
       </div>

@@ -4,7 +4,7 @@ import { ThreadMsgList } from './ThreadMsgList'
 import { userService } from '../../services/user/userService'
 import { useHistory } from 'react-router-dom'
 
-export function MessageThread({ messagesToShow, theNotLoggedUserChat }) {
+export function MessageThread({ messagesToShow, chatWith }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const history = useHistory()
 
@@ -14,13 +14,11 @@ export function MessageThread({ messagesToShow, theNotLoggedUserChat }) {
         <div>
           <div
             className="img-profile"
-            onClick={() =>
-              history.push(`/main/profile/${theNotLoggedUserChat?._id}`)
-            }
+            onClick={() => history.push(`/main/profile/${chatWith?._id}`)}
           >
-            <img src={theNotLoggedUserChat?.imgUrl} alt="" className="img" />
+            <img src={chatWith?.imgUrl} alt="" className="img" />
           </div>
-          <div className="fullname">{theNotLoggedUserChat.fullname}</div>
+          <div className="fullname">{chatWith.fullname}</div>
         </div>
         <div className="container-logo">
           <span className="logo-menu">
