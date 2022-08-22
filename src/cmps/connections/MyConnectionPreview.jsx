@@ -19,7 +19,6 @@ export function MyConnectionPreview({ connection }) {
   }, [])
 
   if (!user) return
-  console.log(user)
 
   return (
     <section className="my-connection-preview">

@@ -12,7 +12,7 @@ export const Comments = ({ postId, comments }) => {
     dispatch(saveComment(commentToSave))
   }
 
-  console.log('render Comments')
+  // console.log('render Comments')
   if (!comments) return <div>Loading</div>
   return (
     <section className="comments">

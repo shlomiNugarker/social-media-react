@@ -20,7 +20,7 @@ export const Feed = (props) => {
         <div className="loading">Loading...</div>
       </section>
     )
-  console.log('render Feed')
+  // console.log('render Feed')
   return (
     <section className="feed-page">
       <LeftSideBar />

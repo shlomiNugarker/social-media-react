@@ -7,7 +7,7 @@ export const PostsList = () => {
   const posts = useSelector((state) => state.postModule.posts)
 
   if (!posts) return <div>Loading posts...</div>
-  console.log('render PostsList')
+  // console.log('render PostsList')
   return (
     <section className="posts-list">
       {posts.map((post) => (

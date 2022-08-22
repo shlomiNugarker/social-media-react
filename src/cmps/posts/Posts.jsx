@@ -15,7 +15,7 @@ export const Posts = () => {
     dispatch(loadPosts())
   }, [])
 
-  console.log('render Posts')
+  // console.log('render Posts')
   return (
     <section className="posts">
       <AddPost />

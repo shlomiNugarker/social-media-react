@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/posts/PostsList'
@@ -15,6 +15,7 @@ import { EditModal } from '../cmps/profile/EditModal'
 
 export function Profile() {
   const params = useParams()
+  const history = useHistory()
   const dispatch = useDispatch()
   const [user, setUser] = useState(null)
   const [isShowImdProfile, setIsShowImdProfile] = useState(false)
@@ -55,6 +56,11 @@ export function Profile() {
     return loggedInUser.connections.some(
       (connection) => connection.userId === user._id
     )
+  }
+
+  const moveToChat = () => {
+    console.log('moveToChat')
+    history.push(`/main/message/${user?._id}`)
   }
 
   useEffect(() => {
@@ -106,6 +112,9 @@ export function Profile() {
                   </button>
                 )}
                 <button className="follow">Follow</button>
+                <button className="message" onClick={() => moveToChat()}>
+                  Message
+                </button>
               </div>
             </div>
           </div>

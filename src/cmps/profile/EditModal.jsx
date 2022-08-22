@@ -51,7 +51,7 @@ export function EditModal({ toggleShowEditModal, user }) {
     })
   }
 
-  console.log('render EditModal')
+  // console.log('render EditModal')
   return (
     <section className="edit-modal">
       <div className="bg" onClick={toggleShowEditModal}></div>

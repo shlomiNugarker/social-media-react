@@ -46,7 +46,7 @@ export const ReplyPreview = ({ reply, updateReply }) => {
 
   const likeBtnStyle = isLogedInUserLikeReply ? 'liked' : ''
 
-  console.log('render ReplyPreview')
+  // console.log('render ReplyPreview')
   return (
     <section className="reply-preview">
       <div className="img-profile-reply">

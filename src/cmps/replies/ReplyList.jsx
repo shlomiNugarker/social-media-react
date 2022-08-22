@@ -7,7 +7,7 @@ export const ReplyList = ({ replies, updateReply }) => {
     // eslint-disable-next-line
   }, [])
 
-  console.log('render ReplyList')
+  // console.log('render ReplyList')
   return (
     <section className="reply-list">
       {replies.map((reply) => (

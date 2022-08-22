@@ -111,7 +111,7 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
     if (elInput && isFirstFocus) elInput.focus()
     setIsFirstFocus(false)
   }
-  console.log('render CommentPreview')
+  // console.log('render CommentPreview')
 
   if (!comment) return <div>Loading</div>
 

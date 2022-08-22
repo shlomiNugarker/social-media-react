@@ -7,37 +7,37 @@ const INITIAL_STATE = {
 export function postReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_CURR_PAGE':
-      console.log('SET_CURR_PAGE')
+      // console.log('SET_CURR_PAGE')
       return {
         ...state,
         currPage: action.page,
       }
     case 'SET_FILTER_BY':
-      console.log('SET_FILTER_BY')
+      // console.log('SET_FILTER_BY')
       return {
         ...state,
         filterBy: { ...action.filterBy },
       }
     case 'SET_POSTS':
-      console.log('SET_POSTS')
+      // console.log('SET_POSTS')
       return {
         ...state,
         posts: [...action.posts],
       }
     case 'ADD_POST':
-      console.log('ADD_POST')
+      // console.log('ADD_POST')
       return {
         ...state,
         posts: [action.post, ...state.posts],
       }
     case 'ADD_POSTS':
-      console.log('ADD_POSTS')
+      // console.log('ADD_POSTS')
       return {
         ...state,
         posts: [...action.posts],
       }
     case 'UPDATE_POST':
-      console.log('UPDATE_POST')
+      // console.log('UPDATE_POST')
       return {
         ...state,
         posts: state.posts.map((post) => {
@@ -52,7 +52,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       }
 
     case 'ADD_COMMENT':
-      console.log('ADD_COMMENT')
+      // console.log('ADD_COMMENT')
       const { comment } = action
       return {
         ...state,
@@ -67,7 +67,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       }
 
     case 'UPDATE_COMMENT':
-      console.log('UPDATE_COMMENT')
+      // console.log('UPDATE_COMMENT')
       return {
         ...state,
         posts: state.posts.map((post) => {
@@ -84,7 +84,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       }
 
     case 'REMOVE_COMMENT':
-      console.log('REMOVE_COMMENT')
+      // console.log('REMOVE_COMMENT')
       return {
         ...state,
         posts: state.posts.map((post) => {

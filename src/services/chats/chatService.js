@@ -26,7 +26,6 @@ async function query(filterBy = {}) {
 //     ? await httpService.put(`${ENDPOINT}/${chat._id}`, chat)
 //     : await httpService.chat(ENDPOINT, chat)
 // }
-console.log('sdsddsdsdsd')
 
 // ;(async () => {
 //   console.log('IFI !')

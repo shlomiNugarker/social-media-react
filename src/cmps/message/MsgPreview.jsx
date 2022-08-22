@@ -30,7 +30,9 @@ export function MsgPreview({
 
     return () => {}
   }, [])
+  console.log(theNotLoggedUserChat)
 
+  // console.log('render MsgPreview')
   return (
     <section
       className="msg-preview"
@@ -45,9 +47,8 @@ export function MsgPreview({
 
         <div className="details">
           <div className="fullname">
-            <ReactSnip lines={1} method={'css'}>
-              <h1>Shlomi Nugarker</h1>
-            </ReactSnip>
+            <h1>{theNotLoggedUserChat?.fullname}</h1>
+            {/* <ReactSnip lines={1} method={'css'}></ReactSnip> */}
 
             <span title={dateToShow}>
               <ReactSnip lines={1} method={'css'}>

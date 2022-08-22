@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
+import { useHistory } from 'react-router-dom'
 
 export function ThreadMsgPreview({ msg }) {
   const [userMsg, setUserMsg] = useState(null)
+  const history = useHistory()
 
   const loadUserMsg = async (id) => {
     if (!msg) return
@@ -19,7 +21,10 @@ export function ThreadMsgPreview({ msg }) {
   return (
     <section className="thread-msg-preview">
       <div className="container-msg">
-        <div className="img-container">
+        <div
+          className="img-container"
+          onClick={() => history.push(`/main/profile/${userMsg?._id}`)}
+        >
           <img src={userMsg?.imgUrl || ''} alt="" className="img" />
         </div>
 

@@ -12,7 +12,6 @@ export function Connections() {
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   useEffect(() => {
-    console.log(loggedInUser?.connections)
     // eslint-disable-next-line
   }, [])
 

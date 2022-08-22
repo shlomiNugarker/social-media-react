@@ -6,7 +6,7 @@ export function ImgProfilePreview({ toggleShowImgProfile, user }) {
   const dispatch = useDispatch()
   useEffect(() => {}, [])
 
-  console.log('render ImgProfilePreview')
+  // console.log('render ImgProfilePreview')
   return (
     <div className="img-profile-preview">
       <div className="bg" onClick={toggleShowImgProfile}></div>

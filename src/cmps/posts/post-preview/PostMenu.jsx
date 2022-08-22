@@ -13,7 +13,7 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
 
   const isLoggedInUserCanDelete = loggedInUser._id === postUserId
 
-  console.log('render PostMenu')
+  // console.log('render PostMenu')
   return (
     <section>
       <div

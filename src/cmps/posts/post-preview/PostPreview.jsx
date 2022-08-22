@@ -66,7 +66,7 @@ export const PostPreview = ({ post }) => {
     loadUserPost(post.userId)
   }, [loggedInUser])
 
-  console.log('render PostPreview')
+  // console.log('render PostPreview')
   return (
     <section className="post-preview">
       <div className="menu" onClick={toggleMenu}>

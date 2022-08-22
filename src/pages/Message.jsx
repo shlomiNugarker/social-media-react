@@ -4,19 +4,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCurrPage } from '../store/actions/postActions'
 import { Messaging } from '../cmps/message/Messaging'
 import { loadChats } from '../store/actions/chatActions'
+import { useParams } from 'react-router-dom'
 
 export function Message() {
   const dispatch = useDispatch()
+  const params = useParams()
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { chats } = useSelector((state) => state.chatModule)
+
+  const openChat = () => {
+    if (params.userId) {
+      console.log('show/create chat of the userId', params.userId)
+    } else {
+      console.log('no userId, open the first user in the list')
+    }
+  }
 
   useEffect(() => {
     dispatch(setCurrPage('message'))
     const userId = loggedInUser?._id
-    if (userId) {
-      dispatch(loadChats(userId))
-    }
-  }, [loggedInUser])
+    if (userId) dispatch(loadChats(userId))
+
+    openChat()
+  }, [loggedInUser, params.userId])
 
   console.log('render Message')
   if (!chats) return
