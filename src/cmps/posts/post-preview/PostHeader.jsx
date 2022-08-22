@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
 import { Link } from 'react-router-dom'
+import { userService } from '../../../services/user/userService'
 
 export const PostHeader = ({ post, userPost }) => {
   if (!userPost) return <section className="post-header">Loading</section>

@@ -3,19 +3,17 @@ import { useSelector } from 'react-redux'
 import { ThreadMsgList } from './ThreadMsgList'
 import { userService } from '../../services/user/userService'
 
-export function MessageThread({ messages }) {
+export function MessageThread({ messagesToShow, theNotLoggedUserChat }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
-
-  console.log(messages)
 
   return (
     <section className="message-thread">
       <header className="header-message-thread">
         <div>
           <div className="img-profile">
-            <img src={loggedInUser?.imgUrl} alt="" className="img" />
+            <img src={theNotLoggedUserChat?.imgUrl} alt="" className="img" />
           </div>
-          <div className="fullname">fullname</div>
+          <div className="fullname">{theNotLoggedUserChat.fullname}</div>
         </div>
         <div className="container-logo">
           <span className="logo-menu">
@@ -28,7 +26,7 @@ export function MessageThread({ messages }) {
       </header>
 
       <div className="user-profile-details">
-        <ThreadMsgList messages={messages} />
+        <ThreadMsgList messagesToShow={messagesToShow} />
       </div>
 
       <form className="send-msg-container">

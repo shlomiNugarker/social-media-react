@@ -2,7 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { utilService } from '../../services/utilService'
 import { MsgPreview } from './MsgPreview'
 
-export function ListMsg({ chats, setMessages }) {
+export function ListMsg({
+  chats,
+  setMessagesToShow,
+  theNotLoggedUserChat,
+  setTheNotLoggedUserChat,
+}) {
   return (
     <section className="list-msg">
       <div className="title-container">
@@ -27,7 +32,13 @@ export function ListMsg({ chats, setMessages }) {
 
       <div className="list">
         {chats.map((chat) => (
-          <MsgPreview key={chat._id} chat={chat} setMessages={setMessages} />
+          <MsgPreview
+            key={chat._id}
+            chat={chat}
+            setMessagesToShow={setMessagesToShow}
+            setTheNotLoggedUserChat={setTheNotLoggedUserChat}
+            theNotLoggedUserChat={theNotLoggedUserChat}
+          />
         ))}
       </div>
     </section>
