@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { utilService } from '../../services/utilService'
 import { ThreadMsgPreview } from './ThreadMsgPreview'
 
-export function ThreadMsgList() {
+export function ThreadMsgList({ messages }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   const msgs = [
@@ -46,7 +46,7 @@ export function ThreadMsgList() {
   return (
     <section className="thread-msg-list">
       <div className="list">
-        {msgs.map((msg) => (
+        {messages.map((msg) => (
           <ThreadMsgPreview key={utilService.makeId()} msg={msg} />
         ))}
       </div>

@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux'
 import { ThreadMsgList } from './ThreadMsgList'
+import { userService } from '../../services/user/userService'
 
-export function MessageThread() {
+export function MessageThread({ messages }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
+
+  console.log(messages)
 
   return (
     <section className="message-thread">
@@ -25,7 +28,7 @@ export function MessageThread() {
       </header>
 
       <div className="user-profile-details">
-        <ThreadMsgList />
+        <ThreadMsgList messages={messages} />
       </div>
 
       <form className="send-msg-container">

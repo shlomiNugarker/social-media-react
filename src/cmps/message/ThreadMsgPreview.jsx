@@ -1,4 +1,4 @@
-export function ThreadMsgPreview() {
+export function ThreadMsgPreview({ msg }) {
   return (
     <section className="thread-msg-preview">
       <div className="container-msg">
@@ -20,7 +20,7 @@ export function ThreadMsgPreview() {
         </div>
       </div>
       <div className="the-msg">
-        <p>how are you ??</p>
+        <p>{msg.txt}</p>
       </div>
     </section>
   )

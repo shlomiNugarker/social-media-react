@@ -1,10 +1,10 @@
 import { chatService } from '../../services/chats/chatService'
-import { commentService } from '../../services/comment/commentService'
 
-export function loadChats() {
+export function loadChats(userId) {
   return async (dispatch, getState) => {
     try {
-      const { filterBy } = getState().chatModule
+      // const { filterBy } = getState().postModule
+      const filterBy = { userId }
       const chats = await chatService.query(filterBy)
       dispatch({ type: 'SET_CHATS', chats })
     } catch (err) {

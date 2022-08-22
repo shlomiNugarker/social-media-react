@@ -2,7 +2,7 @@ import { httpService } from '../httpService'
 
 const ENDPOINT = 'chat'
 
-export const postService = {
+export const chatService = {
   query,
   // getById,
   // remove,
@@ -21,16 +21,16 @@ async function query(filterBy = {}) {
 //   return await httpService.delete(`${ENDPOINT}/${id}`)
 // }
 
-// async function save(post) {
-//   return post._id
-//     ? await httpService.put(`${ENDPOINT}/${post._id}`, post)
-//     : await httpService.post(ENDPOINT, post)
+// async function save(chat) {
+//   return chat._id
+//     ? await httpService.put(`${ENDPOINT}/${chat._id}`, chat)
+//     : await httpService.chat(ENDPOINT, chat)
 // }
 console.log('sdsddsdsdsd')
 
-;(async () => {
-  console.log('IFI !')
-  const posts = await query()
+// ;(async () => {
+//   console.log('IFI !')
+//   const chats = await query()
 
-  console.log('posts: ', posts)
-})()
+//   console.log('chats: ', chats)
+// })()

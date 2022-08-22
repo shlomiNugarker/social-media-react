@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux'
 import { ReactSnip } from '@strg/react-snip'
 
-export function MsgPreview({ msg }) {
+export function MsgPreview({ chat, setMessages }) {
   const lastMsg = ' Lorem ipsum dolor sit, amet consectetur adipisicing elit.'
   const user = useSelector((state) => state.userModule.loggedInUser)
   return (
-    <section className="msg-preview">
+    <section className="msg-preview" onClick={() => setMessages(chat.messages)}>
       <div className="container">
         <div className="img-container">
           <img src={user?.imgUrl} alt="" className="img" />

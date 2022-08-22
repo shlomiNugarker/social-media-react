@@ -2,30 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { utilService } from '../../services/utilService'
 import { MsgPreview } from './MsgPreview'
 
-export function ListMsg() {
-  const msgs = [
-    'adfa',
-    'sgadgadfg',
-    'adfagrw asdgadg sdg',
-    'dgd gfadgf g fdhsfg aefa ',
-    'adfa',
-    'sgadgadfg',
-    'adfagrw asdgadg sdg',
-    'dgd gfadgf g fdhsfg aefa ',
-    'adfa',
-    'sgadgadfg',
-    'adfagrw asdgadg sdg',
-    'dgd gfadgf g fdhsfg aefa ',
-    'adfa',
-    'sgadgadfg',
-    'adfagrw asdgadg sdg',
-    'dgd gfadgf g fdhsfg aefa ',
-    'adfa',
-    'sgadgadfg',
-    'adfagrw asdgadg sdg',
-    'dgd gfadgf g fdhsfg aefa ',
-  ]
-
+export function ListMsg({ chats, setMessages }) {
   return (
     <section className="list-msg">
       <div className="title-container">
@@ -49,8 +26,8 @@ export function ListMsg() {
       </div>
 
       <div className="list">
-        {msgs.map((msg) => (
-          <MsgPreview key={utilService.makeId()} msg={msg} />
+        {chats.map((chat) => (
+          <MsgPreview key={chat._id} chat={chat} setMessages={setMessages} />
         ))}
       </div>
     </section>
