@@ -4,7 +4,7 @@ export function getUsers() {
   return async (dispatch) => {
     try {
       const users = await userService.getUsers()
-      dispatch({ type: 'GET_USERS', users })
+      dispatch({ type: 'SET_USERS', users })
     } catch (err) {
       console.log('cannot get users:', err)
     }

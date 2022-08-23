@@ -10,12 +10,12 @@ export function chatReducer(state = INITIAL_STATE, action) {
         ...state,
         chats: [...action.chats],
       }
-    // case 'ADD_CHAT':
-    //   console.log('ADD_CHAT')
-    //   return {
-    //     ...state,
-    //     chats: [action.chat, ...state.chats],
-    //   }
+    case 'ADD_CHAT':
+      console.log('ADD_CHAT')
+      return {
+        ...state,
+        chats: [action.chat, ...state.chats],
+      }
     // case 'ADD_CHATS':
     //   console.log('ADD_CHATS')
     //   return {

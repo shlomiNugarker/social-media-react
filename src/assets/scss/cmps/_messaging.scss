@@ -2,6 +2,7 @@
   .messaging {
     height: 100%;
     grid-area: messaging;
+    overflow-y: hidden;
 
     .container {
       border-radius: 1px solid black;

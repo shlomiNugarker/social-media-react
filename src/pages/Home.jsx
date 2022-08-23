@@ -16,7 +16,6 @@ export const Home = (props) => {
 
   const showMsg = (txt) => {
     setMsg(txt)
-
     setTimeout(() => setMsg(''), 3000)
   }
 

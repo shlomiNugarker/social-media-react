@@ -42,8 +42,12 @@ export const Nav = () => {
         >
           <Link to="/main/jobs">
             <p>
-              <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" />
-              Jobs
+              <FontAwesomeIcon
+                className="nav-icon"
+                icon="fa-solid fa-map-location"
+              />
+              {/* <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" /> */}
+              Map
             </p>
           </Link>
         </li>

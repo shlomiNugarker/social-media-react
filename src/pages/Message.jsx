@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrPage } from '../store/actions/postActions'
 import { Messaging } from '../cmps/message/Messaging'
-import { loadChats, saveChat } from '../store/actions/chatActions'
+import { addTempChat, loadChats, saveChat } from '../store/actions/chatActions'
 import { useHistory, useParams } from 'react-router-dom'
 import { userService } from '../services/user/userService'
 import { utilService } from '../services/utilService'
@@ -24,7 +24,7 @@ export function Message() {
   const onSendMsg = (txt) => {
     const newMsg = createNewMsg(txt)
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
-    const chatToUpdate = chats[chatIdx]
+    const chatToUpdate = { ...chats[chatIdx] }
     chatToUpdate.messages.push(newMsg)
     dispatch(saveChat(chatToUpdate)).then((savedChat) => {
       setMessagesToShow(savedChat.messages)
@@ -40,16 +40,34 @@ export function Message() {
     }
   }
 
+  // TODO:
+
+  const createChat = (userId) => {
+    console.log('createChat')
+    return {
+      userId,
+      userId2: loggedInUser._id,
+    }
+  }
+
   const openChat = async () => {
     if (isUserChatExist) {
+      console.log('isUserChatExist')
       const chatToShow = findChat(params.userId)
       setChooseenChatId(chatToShow._id)
       setMessagesToShow(chatToShow.messages)
       await loadNotLoggedUser(chatToShow)
     } else {
-      if (!chats) return
-      const userToSelect = await getTheNotLoggedUserChat(chats[0])
-      history.push(`/main/message/${userToSelect?._id}`)
+      console.log('!isUserChatExist')
+      // TODO: OOPEN NEW CHAT TO START CONVERTION
+      //
+      // if (!params.userId) return
+      // const newChat = createChat(params.userId)
+      // // dispatch(addTempChat(newChat))
+      // dispatch(saveChat(newChat))
+      // await loadNotLoggedUser(newChat)
+      // setChooseenChatId(newChat._id)
+      // setMessagesToShow(newChat.messages)
     }
   }
 
@@ -81,6 +99,7 @@ export function Message() {
   useEffect(() => {
     dispatch(setCurrPage('message'))
     const userId = loggedInUser?._id
+
     if (userId) dispatch(loadChats(userId))
     const isChatExist = checkIfChatExist()
     setIsUserChatExist(isChatExist)

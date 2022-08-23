@@ -63,7 +63,7 @@ export const CreatePostModal = ({
             <img src={loggedInUser.imgUrl} alt="" className="img-profile" />
           </div>
           <div className="name">
-            <h2>Shlomi Nugarker</h2>
+            <h2>{loggedInUser.fullname}</h2>
           </div>
         </div>
         <div className="input-container">

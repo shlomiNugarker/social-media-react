@@ -1,5 +1,51 @@
 .notifications-page {
+  display: grid;
+  grid-template-areas: 'sidebar main aside';
+  grid-template-columns: minmax(0, 5fr) minmax(0, 12fr) minmax(300px, 7fr);
   padding-top: 60px;
+  justify-content: space-between;
+  column-gap: 2.4em;
+  grid-area: content;
+  grid-template-rows: auto;
+  row-gap: 2.4em;
   min-height: 100vh;
-  background-color: rgb(219, 144, 238);
+
+  .side-bar {
+    grid-area: sidebar;
+    height: 100%;
+
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      min-height: 300px;
+      position: sticky;
+      top: 60px;
+    }
+  }
+
+  .main {
+    grid-area: main;
+    height: fit-content;
+    border: 1px solid $border;
+    border-radius: 10px;
+
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      min-height: 300px;
+    }
+  }
+
+  .aside {
+    grid-area: aside;
+    height: 100%;
+
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      min-height: 300px;
+      position: sticky;
+      top: 60px;
+    }
+  }
 }

@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export function SendMessageForm({ onSendMsg }) {
+export function SendMessageForm({ onSendMsg, messagesToShow }) {
   const [newMsg, setNewMsg] = useState({
     txt: '',
   })
@@ -13,7 +13,13 @@ export function SendMessageForm({ onSendMsg }) {
 
   const doSubmit = () => {
     onSendMsg(newMsg.txt)
+    setNewMsg({ txt: '' })
   }
+
+  useEffect(() => {
+    setNewMsg({ txt: '' })
+    return () => {}
+  }, [messagesToShow])
 
   return (
     <form

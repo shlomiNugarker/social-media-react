@@ -54,6 +54,22 @@ export function saveChat(chat) {
   }
 }
 
+export function addTempChat(chat) {
+  return async (dispatch) => {
+    try {
+      // const addedChat = await chatService.save(chat)
+      // chat._id
+      // ? dispatch({ type: 'UPDATE_CHAT', chat: addedChat })
+      dispatch({ type: 'ADD_CHAT', chat })
+
+      return chat
+    } catch (err) {
+      console.log('err:', err)
+      throw new Error(err)
+    }
+  }
+}
+
 // export function removeChat(chatId) {
 //   return async (dispatch) => {
 //     try {

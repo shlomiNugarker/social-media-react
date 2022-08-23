@@ -46,7 +46,7 @@ export function MessageThread({ messagesToShow, chatWith, onSendMsg }) {
         <ThreadMsgList messagesToShow={messagesToShow} />
       </div>
 
-      <SendMessageForm onSendMsg={onSendMsg} />
+      <SendMessageForm onSendMsg={onSendMsg} messagesToShow={messagesToShow} />
     </section>
   )
 }
