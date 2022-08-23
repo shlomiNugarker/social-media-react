@@ -11,8 +11,14 @@ export function MessageThread({ messagesToShow, chatWith, onSendMsg }) {
   const history = useHistory()
 
   useEffect(() => {
+    scrollToBottom()
     return () => {}
-  }, [])
+  }, [messagesToShow])
+
+  const scrollToBottom = () => {
+    var msgsContainer = document.querySelector('.user-profile-details')
+    msgsContainer.scrollTop = msgsContainer.scrollHeight
+  }
 
   return (
     <section className="message-thread">

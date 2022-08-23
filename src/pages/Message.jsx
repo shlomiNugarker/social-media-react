@@ -26,7 +26,9 @@ export function Message() {
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
     const chatToUpdate = chats[chatIdx]
     chatToUpdate.messages.push(newMsg)
-    dispatch(saveChat(chatToUpdate))
+    dispatch(saveChat(chatToUpdate)).then((savedChat) => {
+      setMessagesToShow(savedChat.messages)
+    })
   }
 
   const createNewMsg = (txt) => {

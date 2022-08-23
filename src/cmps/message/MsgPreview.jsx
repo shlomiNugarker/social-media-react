@@ -18,7 +18,10 @@ export function MsgPreview({
   const params = useParams()
 
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
-  const lastMsg = chat.messages[0]?.txt || 'No Messages yet..'
+
+  const lastMsg =
+    chat.messages[chat.messages.length - 1]?.txt || 'No Messages yet..'
+
   const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
 
   const dateToShow = new Date(chat.messages[0]?.createdAt || chat.createdAt)

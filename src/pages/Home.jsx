@@ -27,15 +27,15 @@ export const Home = (props) => {
   }
 
   const doLogin = () => {
-    dispatch(login(creds)).then((res) => {
-      const user = res
-      if (!user) {
+    dispatch(login(creds))
+      .then((savedUser) => {
+        setCreds(() => ({ username: '', password: '' }))
+        props.history.push('/main/feed')
+      })
+      .catch((err) => {
         showMsg('Something went wrong...')
-        return
-      }
-      setCreds(() => ({ username: '', password: '' }))
-      props.history.push('/main/feed')
-    })
+        console.log(err)
+      })
   }
 
   return (
