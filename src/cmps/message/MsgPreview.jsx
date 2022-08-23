@@ -3,50 +3,52 @@ import { ReactSnip } from '@strg/react-snip'
 import TimeAgo from 'react-timeago'
 import { userService } from '../../services/user/userService'
 import { useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router-dom'
 
 export function MsgPreview({
   chat,
   setMessagesToShow,
   setChatWith,
+  chatWith,
   chooseenChatId,
   setChooseenChatId,
+  getTheNotLoggedUserChat,
 }) {
+  const history = useHistory()
+  const params = useParams()
+
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
   const lastMsg = chat.messages[0]?.txt || 'No Messages yet..'
   const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
 
   const dateToShow = new Date(chat.messages[0]?.createdAt || chat.createdAt)
-
   const slicedDate = dateToShow.toLocaleDateString().slice(0, -5)
 
-  const getTheNotLoggedUserChat = async (chat) => {
-    let userId
-    if (loggedInUser._id !== chat.userId) userId = chat.userId
-    else if (loggedInUser._id !== chat.userId2) userId = chat.userId2
-    const user = await userService.getById(userId)
+  const loadNotLoggedUser = async (chat) => {
+    const user = await getTheNotLoggedUserChat(chat)
     setTheNotLoggedUserChat(user)
   }
 
-  useEffect(() => {
-    getTheNotLoggedUserChat(chat)
+  const onClickChat = () => {
+    setMessagesToShow(chat.messages)
+    setChatWith(theNotLoggedUserChat)
+    setChooseenChatId(chat._id)
+    if (theNotLoggedUserChat?._id !== params.userId) {
+      history.push(`/main/message/${theNotLoggedUserChat?._id}`)
+    }
+  }
 
+  useEffect(() => {
+    loadNotLoggedUser(chat)
     return () => {}
   }, [])
 
   const isChatChooseen = chooseenChatId === chat._id ? 'chooseen-chat' : ''
-
   const containerStyle = `container ${isChatChooseen}`
 
   // console.log('render MsgPreview')
   return (
-    <section
-      className="msg-preview"
-      onClick={() => {
-        setMessagesToShow(chat.messages)
-        setChatWith(theNotLoggedUserChat)
-        setChooseenChatId(chat._id)
-      }}
-    >
+    <section className="msg-preview" onClick={onClickChat}>
       <div className={containerStyle}>
         <div className="img-container">
           <img src={theNotLoggedUserChat?.imgUrl} alt="" className="img" />

@@ -3,10 +3,13 @@ import { useSelector } from 'react-redux'
 import { ThreadMsgList } from './ThreadMsgList'
 import { userService } from '../../services/user/userService'
 import { useHistory } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export function MessageThread({ messagesToShow, chatWith }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const history = useHistory()
+
+  useEffect(() => {}, [])
 
   return (
     <section className="message-thread">
@@ -18,7 +21,7 @@ export function MessageThread({ messagesToShow, chatWith }) {
           >
             <img src={chatWith?.imgUrl} alt="" className="img" />
           </div>
-          <div className="fullname">{chatWith.fullname}</div>
+          <div className="fullname">{chatWith?.fullname}</div>
         </div>
         <div className="container-logo">
           <span className="logo-menu">

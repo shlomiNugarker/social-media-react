@@ -4,11 +4,21 @@ import { userService } from '../../services/user/userService'
 import { ListMsg } from './ListMsg'
 import { MessageThread } from './MessageThread'
 
-export function Messaging({ chats }) {
-  const [messagesToShow, setMessagesToShow] = useState(null)
-  const [chooseenChatId, setChooseenChatId] = useState(null)
+export function Messaging({
+  chats,
+  messagesToShow,
+  setMessagesToShow,
+  chooseenChatId,
+  setChooseenChatId,
+  chatWith,
+  setChatWith,
+  getTheNotLoggedUserChat,
+  setTheNotLoggedUserChat,
+  theNotLoggedUserChat,
+}) {
+  // const [chooseenChatId, setChooseenChatId] = useState(null)
   const { loggedInUser } = useSelector((state) => state.userModule)
-  const [chatWith, setChatWith] = useState(null)
+  // const [chatWith, setChatWith] = useState(null)
 
   return (
     <section className="messaging">
@@ -17,8 +27,12 @@ export function Messaging({ chats }) {
           chats={chats}
           setMessagesToShow={setMessagesToShow}
           setChatWith={setChatWith}
+          chatWith={chatWith}
           setChooseenChatId={setChooseenChatId}
           chooseenChatId={chooseenChatId}
+          getTheNotLoggedUserChat={getTheNotLoggedUserChat}
+          setTheNotLoggedUserChat={setTheNotLoggedUserChat}
+          theNotLoggedUserChat={theNotLoggedUserChat}
         />
         {messagesToShow && (
           <MessageThread messagesToShow={messagesToShow} chatWith={chatWith} />

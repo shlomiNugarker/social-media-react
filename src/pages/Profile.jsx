@@ -59,7 +59,6 @@ export function Profile() {
   }
 
   const moveToChat = () => {
-    console.log('moveToChat')
     history.push(`/main/message/${user?._id}`)
   }
 

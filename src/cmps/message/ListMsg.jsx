@@ -6,8 +6,12 @@ export function ListMsg({
   chats,
   setMessagesToShow,
   setChatWith,
+  chatWith,
   setChooseenChatId,
   chooseenChatId,
+  getTheNotLoggedUserChat,
+  setTheNotLoggedUserChat,
+  theNotLoggedUserChat,
 }) {
   return (
     <section className="list-msg">
@@ -38,7 +42,12 @@ export function ListMsg({
             chat={chat}
             setMessagesToShow={setMessagesToShow}
             setChatWith={setChatWith}
+            chatWith={chatWith}
             setChooseenChatId={setChooseenChatId}
+            getTheNotLoggedUserChat={getTheNotLoggedUserChat}
+            setTheNotLoggedUserChat={setTheNotLoggedUserChat}
+            theNotLoggedUserChat={theNotLoggedUserChat}
+            // onClick={() => history.push(`/main/profile/${chatWith?._id}`)}
             // onClick={() => {
             //   console.log('chat._id', chat._id)
             //   setChooseenChatId(chat._id)
