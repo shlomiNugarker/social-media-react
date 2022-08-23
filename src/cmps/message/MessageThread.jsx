@@ -3,13 +3,16 @@ import { useSelector } from 'react-redux'
 import { ThreadMsgList } from './ThreadMsgList'
 import { userService } from '../../services/user/userService'
 import { useHistory } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { SendMessageForm } from './SendMessageForm'
 
-export function MessageThread({ messagesToShow, chatWith }) {
+export function MessageThread({ messagesToShow, chatWith, onSendMsg }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const history = useHistory()
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    return () => {}
+  }, [])
 
   return (
     <section className="message-thread">
@@ -37,15 +40,7 @@ export function MessageThread({ messagesToShow, chatWith }) {
         <ThreadMsgList messagesToShow={messagesToShow} />
       </div>
 
-      <form className="send-msg-container">
-        <div className="input-container">
-          <textarea type="text" placeholder="Write a message..." />
-        </div>
-
-        <div className="btns-container">
-          <button>Send</button>
-        </div>
-      </form>
+      <SendMessageForm onSendMsg={onSendMsg} />
     </section>
   )
 }

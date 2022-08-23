@@ -22,14 +22,14 @@ export function chatReducer(state = INITIAL_STATE, action) {
     //     ...state,
     //     chats: [...action.chats],
     //   }
-    // case 'UPDATE_CHAT':
-    //   console.log('UPDATE_CHAT')
-    //   return {
-    //     ...state,
-    //     chats: state.chats.map((chat) => {
-    //       return chat._id === action.chat._id ? action.chat : chat
-    //     }),
-    //   }
+    case 'UPDATE_CHAT':
+      console.log('UPDATE_CHAT')
+      return {
+        ...state,
+        chats: state.chats.map((chat) => {
+          return chat._id === action.chat._id ? action.chat : chat
+        }),
+      }
 
     // case 'REMOVE_CHAT':
     //   return {

@@ -6,7 +6,7 @@ export const chatService = {
   query,
   // getById,
   // remove,
-  // save,
+  save,
 }
 
 async function query(filterBy = {}) {
@@ -21,11 +21,13 @@ async function query(filterBy = {}) {
 //   return await httpService.delete(`${ENDPOINT}/${id}`)
 // }
 
-// async function save(chat) {
-//   return chat._id
-//     ? await httpService.put(`${ENDPOINT}/${chat._id}`, chat)
-//     : await httpService.chat(ENDPOINT, chat)
-// }
+async function save(chat) {
+  console.log(chat)
+
+  return chat._id
+    ? await httpService.put(`${ENDPOINT}/${chat._id}`, chat)
+    : await httpService.chat(ENDPOINT, chat)
+}
 
 // ;(async () => {
 //   console.log('IFI !')

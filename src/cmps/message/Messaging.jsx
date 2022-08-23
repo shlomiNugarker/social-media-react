@@ -15,6 +15,7 @@ export function Messaging({
   getTheNotLoggedUserChat,
   setTheNotLoggedUserChat,
   theNotLoggedUserChat,
+  onSendMsg,
 }) {
   // const [chooseenChatId, setChooseenChatId] = useState(null)
   const { loggedInUser } = useSelector((state) => state.userModule)
@@ -35,7 +36,11 @@ export function Messaging({
           theNotLoggedUserChat={theNotLoggedUserChat}
         />
         {messagesToShow && (
-          <MessageThread messagesToShow={messagesToShow} chatWith={chatWith} />
+          <MessageThread
+            messagesToShow={messagesToShow}
+            chatWith={chatWith}
+            onSendMsg={onSendMsg}
+          />
         )}
       </div>
     </section>

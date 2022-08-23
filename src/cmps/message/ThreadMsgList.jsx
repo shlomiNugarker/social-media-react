@@ -11,7 +11,7 @@ export function ThreadMsgList({ messagesToShow }) {
     <section className="thread-msg-list">
       <div className="list">
         {messagesToShow.map((msg) => (
-          <ThreadMsgPreview key={utilService.makeId()} msg={msg} /> // TODO: ADD ID TO EACH MSG
+          <ThreadMsgPreview key={msg._id} msg={msg} />
         ))}
       </div>
     </section>

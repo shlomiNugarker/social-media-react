@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrPage } from '../store/actions/postActions'
 import { Messaging } from '../cmps/message/Messaging'
-import { loadChats } from '../store/actions/chatActions'
+import { loadChats, saveChat } from '../store/actions/chatActions'
 import { useHistory, useParams } from 'react-router-dom'
 import { userService } from '../services/user/userService'
+import { utilService } from '../services/utilService'
 
 export function Message() {
   const dispatch = useDispatch()
@@ -19,6 +20,23 @@ export function Message() {
   const [chooseenChatId, setChooseenChatId] = useState(null)
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
   const [chatWith, setChatWith] = useState(null)
+
+  const onSendMsg = (txt) => {
+    const newMsg = createNewMsg(txt)
+    const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
+    const chatToUpdate = chats[chatIdx]
+    chatToUpdate.messages.push(newMsg)
+    dispatch(saveChat(chatToUpdate))
+  }
+
+  const createNewMsg = (txt) => {
+    return {
+      _id: utilService.makeId(24),
+      txt,
+      userId: loggedInUser._id,
+      createdAt: new Date().getTime(),
+    }
+  }
 
   const openChat = async () => {
     if (isUserChatExist) {
@@ -82,6 +100,7 @@ export function Message() {
         getTheNotLoggedUserChat={getTheNotLoggedUserChat}
         setTheNotLoggedUserChat={setTheNotLoggedUserChat}
         theNotLoggedUserChat={theNotLoggedUserChat}
+        onSendMsg={onSendMsg}
       />
       <div className="right-side-message">
         <p>This ad could be yours</p>
