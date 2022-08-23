@@ -1,9 +1,15 @@
-.list-msg,
 .msg-preview {
   background-color: #ffffff;
 
   .container {
+    cursor: pointer;
     padding: 10px;
+
+    &.chooseen-chat {
+      border-left: 3px solid #057642;
+      background-color: #eef3f8;
+    }
+
     .img-container {
       margin: 5px;
       .img {

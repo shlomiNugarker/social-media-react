@@ -4,7 +4,13 @@ import TimeAgo from 'react-timeago'
 import { userService } from '../../services/user/userService'
 import { useEffect, useState } from 'react'
 
-export function MsgPreview({ chat, setMessagesToShow, setChatWith }) {
+export function MsgPreview({
+  chat,
+  setMessagesToShow,
+  setChatWith,
+  chooseenChatId,
+  setChooseenChatId,
+}) {
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
   const lastMsg = chat.messages[0]?.txt || 'No Messages yet..'
   const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
@@ -18,7 +24,7 @@ export function MsgPreview({ chat, setMessagesToShow, setChatWith }) {
     if (loggedInUser._id !== chat.userId) userId = chat.userId
     else if (loggedInUser._id !== chat.userId2) userId = chat.userId2
     const user = await userService.getById(userId)
-    setTheNotLoggedUserChat(user) ////////////////
+    setTheNotLoggedUserChat(user)
   }
 
   useEffect(() => {
@@ -27,6 +33,10 @@ export function MsgPreview({ chat, setMessagesToShow, setChatWith }) {
     return () => {}
   }, [])
 
+  const isChatChooseen = chooseenChatId === chat._id ? 'chooseen-chat' : ''
+
+  const containerStyle = `container ${isChatChooseen}`
+
   // console.log('render MsgPreview')
   return (
     <section
@@ -34,9 +44,10 @@ export function MsgPreview({ chat, setMessagesToShow, setChatWith }) {
       onClick={() => {
         setMessagesToShow(chat.messages)
         setChatWith(theNotLoggedUserChat)
+        setChooseenChatId(chat._id)
       }}
     >
-      <div className="container">
+      <div className={containerStyle}>
         <div className="img-container">
           <img src={theNotLoggedUserChat?.imgUrl} alt="" className="img" />
         </div>

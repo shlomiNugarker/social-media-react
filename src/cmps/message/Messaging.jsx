@@ -6,6 +6,7 @@ import { MessageThread } from './MessageThread'
 
 export function Messaging({ chats }) {
   const [messagesToShow, setMessagesToShow] = useState(null)
+  const [chooseenChatId, setChooseenChatId] = useState(null)
   const { loggedInUser } = useSelector((state) => state.userModule)
   const [chatWith, setChatWith] = useState(null)
 
@@ -16,6 +17,8 @@ export function Messaging({ chats }) {
           chats={chats}
           setMessagesToShow={setMessagesToShow}
           setChatWith={setChatWith}
+          setChooseenChatId={setChooseenChatId}
+          chooseenChatId={chooseenChatId}
         />
         {messagesToShow && (
           <MessageThread messagesToShow={messagesToShow} chatWith={chatWith} />

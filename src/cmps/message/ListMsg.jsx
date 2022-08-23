@@ -2,7 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { utilService } from '../../services/utilService'
 import { MsgPreview } from './MsgPreview'
 
-export function ListMsg({ chats, setMessagesToShow, setChatWith }) {
+export function ListMsg({
+  chats,
+  setMessagesToShow,
+  setChatWith,
+  setChooseenChatId,
+  chooseenChatId,
+}) {
   return (
     <section className="list-msg">
       <div className="title-container">
@@ -32,6 +38,12 @@ export function ListMsg({ chats, setMessagesToShow, setChatWith }) {
             chat={chat}
             setMessagesToShow={setMessagesToShow}
             setChatWith={setChatWith}
+            setChooseenChatId={setChooseenChatId}
+            // onClick={() => {
+            //   console.log('chat._id', chat._id)
+            //   setChooseenChatId(chat._id)
+            // }}
+            chooseenChatId={chooseenChatId}
           />
         ))}
       </div>

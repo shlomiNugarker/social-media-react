@@ -11,6 +11,7 @@ export function Message() {
   const params = useParams()
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { chats } = useSelector((state) => state.chatModule)
+  const [isUserChatExist, setIsUserChatExist] = useState(false)
 
   const openChat = () => {
     if (params.userId) {
@@ -31,7 +32,8 @@ export function Message() {
     const userId = loggedInUser?._id
     if (userId) dispatch(loadChats(userId))
     const isChatExist = checkIfChatExist()
-    console.log(isChatExist)
+    setIsUserChatExist(isChatExist)
+    // console.log(isChatExist)
 
     openChat()
   }, [loggedInUser, params.userId])
