@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setFilterBy } from '../../store/actions/postActions'
+import { setFilterByPosts } from '../../store/actions/postActions'
 
 export const InputFilter = () => {
   const dispatch = useDispatch
@@ -16,7 +16,7 @@ export const InputFilter = () => {
     setFields({ [field]: value })
   }
   const setFilter = () => {
-    dispatch(setFilterBy({ ...fields }))
+    dispatch(setFilterByPosts({ ...fields }))
   }
 
   return (

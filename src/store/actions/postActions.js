@@ -11,17 +11,19 @@ export function setCurrPage(page) {
   }
 }
 
-export function setFilterBy(filterBy) {
+export function setFilterByPosts(filterByPosts) {
   return async (dispatch) => {
-    dispatch({ type: 'SET_FILTER_BY', filterBy })
+    dispatch({ type: 'SET_FILTER_BY_POSTS', filterByPosts })
   }
 }
 
 export function loadPosts() {
   return async (dispatch, getState) => {
     try {
-      const { filterBy } = getState().postModule
-      const posts = await postService.query(filterBy)
+      const { filterByPosts } = getState().postModule
+      // console.log({ filterByPosts })
+      const posts = await postService.query(filterByPosts)
+      console.log({ posts })
       dispatch({ type: 'SET_POSTS', posts })
     } catch (err) {
       console.log('err:', err)

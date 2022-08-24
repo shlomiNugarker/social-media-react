@@ -1,15 +1,24 @@
 import { userService } from '../../services/user/userService'
 
 export function getUsers() {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
-      const users = await userService.getUsers()
+      const { filterByUsers } = getState().userModule
+      const users = await userService.getUsers(filterByUsers)
       dispatch({ type: 'SET_USERS', users })
     } catch (err) {
       console.log('cannot get users:', err)
     }
   }
 }
+
+export function setFilterByUsers(filterByUsers) {
+  // console.log({ filterByUsers })
+  return async (dispatch) => {
+    dispatch({ type: 'SET_FILTER_BY_USERS', filterByUsers })
+  }
+}
+
 export function login(userCred) {
   return async (dispatch) => {
     try {

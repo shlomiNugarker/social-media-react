@@ -40,7 +40,7 @@ export const Nav = () => {
         <li
           className={'jobs' + ' ' + (currPage === 'jobs' ? 'current-btn' : '')}
         >
-          <Link to="/main/jobs">
+          <Link to="/main/map">
             <p>
               <FontAwesomeIcon
                 className="nav-icon"

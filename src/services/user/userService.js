@@ -14,8 +14,8 @@ export const userService = {
   // addConnection,
 }
 
-async function getUsers() {
-  return await httpService.get(`user`)
+async function getUsers(filterBy) {
+  return await httpService.get(`user`, filterBy)
 }
 
 async function getById(userId) {

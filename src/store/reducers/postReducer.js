@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   posts: null,
-  filterBy: null,
+  filterByPosts: null,
   currPage: null,
 }
 
@@ -12,14 +12,14 @@ export function postReducer(state = INITIAL_STATE, action) {
         ...state,
         currPage: action.page,
       }
-    case 'SET_FILTER_BY':
-      // console.log('SET_FILTER_BY')
+    case 'SET_FILTER_BY_POSTS':
+      // console.log('SET_FILTER_BY_POST')
       return {
         ...state,
-        filterBy: { ...action.filterBy },
+        filterByPosts: { ...action.filterByPosts },
       }
     case 'SET_POSTS':
-      // console.log('SET_POSTS')
+      console.log('SET_POSTS', action.posts)
       return {
         ...state,
         posts: [...action.posts],

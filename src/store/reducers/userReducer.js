@@ -2,14 +2,22 @@ const INITIAL_STATE = {
   loggedInUser: null,
   users: null,
   usersToAdd: null,
+  filterByUsers: null,
 }
 
 export function userReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_USERS':
+      // console.log('SET_USERS')
       return {
         ...state,
         users: action.users,
+      }
+    case 'SET_FILTER_BY_USERS':
+      // console.log('SET_FILTER_BY_USERS')
+      return {
+        ...state,
+        filterByUsers: { ...action.filterByUsers },
       }
     case 'LOGIN':
       return {

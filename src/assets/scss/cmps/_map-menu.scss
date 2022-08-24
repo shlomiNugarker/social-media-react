@@ -1,0 +1,36 @@
+.map-page {
+  .map-menu {
+    //   position: relative;
+    min-height: 100px;
+    min-width: 100px;
+    top: 0px;
+    left: 200px;
+
+    .location-icon {
+      svg {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+  .opts-container {
+    background-color: white;
+    position: absolute;
+    top: 45px;
+    left: -90px;
+    right: -15px;
+    border-radius: 5px;
+
+    .opt {
+      padding: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: rgb(207, 207, 207);
+      }
+    }
+  }
+}

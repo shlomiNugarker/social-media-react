@@ -21,7 +21,7 @@
 @import 'pages/feed';
 @import 'pages/profile';
 @import 'pages/my-network';
-@import 'pages/maps';
+@import 'pages/map';
 @import 'pages/message';
 @import 'pages/notifications';
 @import 'pages/connections';
@@ -68,6 +68,9 @@
 @import 'cmps/thread-msg-preview';
 @import 'cmps/notfications-list';
 @import 'cmps/notificaiton-preview';
+@import 'cmps/user-icon-pos';
+@import 'cmps/map-menu';
+@import 'cmps/post-icon-map';
 
 .app {
   background-color: $main-background;

@@ -2,12 +2,12 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/posts/PostsList'
-import { ImgProfilePreview } from '../cmps/profile/ImgProfilePreview'
+import { ImgPreview } from '../cmps/profile/ImgPreview'
 import { Link } from 'react-router-dom'
 import {
   loadPostsByUserId,
   setCurrPage,
-  setFilterBy,
+  setFilterByPosts,
 } from '../store/actions/postActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -67,12 +67,12 @@ export function Profile() {
       userId: params.userId,
     }
     dispatch(setCurrPage('profile'))
-    dispatch(setFilterBy(filterBy))
+    dispatch(setFilterByPosts(filterBy))
     loadUser()
     dispatch(loadPostsByUserId(filterBy))
 
     return () => {
-      dispatch(setFilterBy(null))
+      dispatch(setFilterByPosts(null))
     }
   }, [params.userId, loggedInUser])
 
@@ -128,9 +128,10 @@ export function Profile() {
         <div className="bottom-div"></div>
       </div>
       {isShowImdProfile && (
-        <ImgProfilePreview
-          toggleShowImgProfile={toggleShowImgProfile}
-          user={user}
+        <ImgPreview
+          toggleShowImg={toggleShowImgProfile}
+          imgUrl={user.imgUrl}
+          title="Profile photo"
         />
       )}
 

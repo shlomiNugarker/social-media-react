@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getLoggedinUser } from '../store/actions/userActions'
 import { Profile } from './Profile'
 import { MyNetwork } from './MyNetwork'
-import { Maps } from './Maps'
+import { Map } from './Map'
 import { Message } from './Message'
 import { Notifications } from './Notifications'
 import { Connections } from './Connections'
@@ -32,7 +32,7 @@ export function Main() {
       <Route path="/main/feed" component={Feed}></Route>
       <Route path="/main/profile/:userId" component={Profile} />
       <Route path="/main/mynetwork" component={MyNetwork} />
-      <Route path="/main/jobs" component={Maps} />
+      <Route path="/main/map" component={Map} />
       <Route path="/main/message/:userId?" component={Message} />
       <Route path="/main/notifications" component={Notifications} />
       <Route path="/main/connections" component={Connections} />
