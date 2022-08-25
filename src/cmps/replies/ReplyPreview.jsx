@@ -10,7 +10,6 @@ export const ReplyPreview = ({ reply, updateReply }) => {
   const [userReply, setUserReply] = useState(null)
 
   const onLikeReply = () => {
-    console.log('like')
     const replyToUpdate = { ...reply }
     const isAlreadyLike = replyToUpdate.reactions.some(
       (reaction) => reaction.userId === loggedInUser._id

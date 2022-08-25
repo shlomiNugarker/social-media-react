@@ -4,9 +4,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { userService } from '../../services/user/userService'
 
-export function ImgPreview({ toggleShowImg, imgUrl, title, post, body }) {
+export function ImgPreview({
+  toggleShowImg,
+  imgUrl,
+  videoUrl,
+  title,
+  post,
+  body,
+}) {
   const dispatch = useDispatch()
   const history = useHistory()
+
   const [user, setUser] = useState(null)
 
   const loadUser = async (userId) => {
@@ -62,7 +70,14 @@ export function ImgPreview({ toggleShowImg, imgUrl, title, post, body }) {
         )}
 
         <div className="img-container">
-          {imgUrl && <img className="img" src={imgUrl} alt="" />}
+          {(imgUrl && <img className="img" src={imgUrl} alt="" />) ||
+            (videoUrl && (
+              <div>
+                <video width="100%" height="300" controls>
+                  <source src={videoUrl} type="video/mp4" />
+                </video>
+              </div>
+            ))}
         </div>
       </section>
     </div>

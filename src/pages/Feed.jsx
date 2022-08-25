@@ -1,8 +1,8 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Posts } from '../cmps/posts/Posts'
 import { RightSideBar } from '../cmps/RightSideBar'
 import { LeftSideBar } from '../cmps/LeftSideBar'
-import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 import { setCurrPage } from '../store/actions/postActions'
 
 export const Feed = (props) => {
@@ -11,7 +11,6 @@ export const Feed = (props) => {
 
   useEffect(() => {
     dispatch(setCurrPage('home'))
-    // eslint-disable-next-line
   }, [])
 
   if (!loggedInUser)

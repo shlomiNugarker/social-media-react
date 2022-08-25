@@ -2,10 +2,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
-  const { loggedInUser } = useSelector((state) => state.userModule)
-  const [isAskAgain, setIsAskAgain] = useState(false)
+export const PostMenu = ({
+  toggleMenu,
+  onRemovePost,
+  postUserId,
+  copyToClipBoard,
+}) => {
   const dispatch = useDispatch()
+
+  const { loggedInUser } = useSelector((state) => state.userModule)
+
+  const [isAskAgain, setIsAskAgain] = useState(false)
 
   useEffect(() => {
     // eslint-disable-next-line
@@ -24,10 +31,10 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
         }}
       ></div>
       <section className="post-menu">
-        <div className="container">
-          {isLoggedInUserCanDelete && (
+        {isLoggedInUserCanDelete && (
+          <div className="container">
             <button
-              className="delete-container"
+              className="delete-container "
               onClick={() => setIsAskAgain((prev) => !prev)}
             >
               <FontAwesomeIcon
@@ -36,8 +43,8 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
               />
               <p>Delete post</p>
             </button>
-          )}
-        </div>
+          </div>
+        )}
         {isAskAgain && (
           <div className="ask-again">
             <p>Are you sure?</p>
@@ -51,6 +58,13 @@ export const PostMenu = ({ toggleMenu, onRemovePost, postUserId }) => {
             </div>
           </div>
         )}
+
+        <div className="copy-to-clip-board">
+          <button onClick={copyToClipBoard}>
+            <FontAwesomeIcon icon="fa-solid fa-copy" />
+            <p>Copy link to post</p>
+          </button>
+        </div>
       </section>
     </section>
   )

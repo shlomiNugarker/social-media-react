@@ -8,8 +8,6 @@ export const InputFilter = () => {
 
   const [fields, setFields] = useState({ txt: '' })
 
-  // const { filterBy } = useSelector((state) => state.postModule)
-
   const handleChange = async ({ target }) => {
     const field = target.name
     let value = target.type === 'number' ? +target.value || '' : target.value

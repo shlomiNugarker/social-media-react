@@ -6,20 +6,18 @@ import { MessageThread } from './MessageThread'
 
 export function Messaging({
   chats,
+  chatWith,
   messagesToShow,
   setMessagesToShow,
   chooseenChatId,
   setChooseenChatId,
-  chatWith,
   setChatWith,
   getTheNotLoggedUserChat,
   setTheNotLoggedUserChat,
   theNotLoggedUserChat,
   onSendMsg,
 }) {
-  // const [chooseenChatId, setChooseenChatId] = useState(null)
   const { loggedInUser } = useSelector((state) => state.userModule)
-  // const [chatWith, setChatWith] = useState(null)
 
   return (
     <section className="messaging">

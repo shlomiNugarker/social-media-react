@@ -40,6 +40,7 @@ import {
   faMapLocation,
   faLocationDot,
   faCommentDots,
+  faCopy,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -75,7 +76,8 @@ library.add(
   faMessage,
   faMapLocation,
   faLocationDot,
-  faCommentDots
+  faCommentDots,
+  faCopy
 )
 
 const root = ReactDOM.createRoot(document.getElementById('root'))

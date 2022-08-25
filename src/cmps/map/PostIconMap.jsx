@@ -12,13 +12,20 @@ export const PostIconMap = ({ post, setPostToPreview }) => {
           <span className="img-logo">
             {(post.imgBodyUrl && (
               <img src={post.imgBodyUrl} alt="" className="img" />
-            )) || (
-              <p>
-                <span className="post-logo">
-                  <FontAwesomeIcon icon="fa-solid fa-comment-dots" />
-                </span>
-              </p>
-            )}
+            )) ||
+              (post.videoBodyUrl && (
+                <p>
+                  <span className="post-logo">
+                    <FontAwesomeIcon icon="fa-solid fa-video" />
+                  </span>
+                </p>
+              )) || (
+                <p>
+                  <span className="post-logo">
+                    <FontAwesomeIcon icon="fa-solid fa-comment-dots" />
+                  </span>
+                </p>
+              )}
           </span>
         </div>
       </div>

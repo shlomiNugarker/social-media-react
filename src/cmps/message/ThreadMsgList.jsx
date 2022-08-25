@@ -3,8 +3,6 @@ import { utilService } from '../../services/utilService'
 import { ThreadMsgPreview } from './ThreadMsgPreview'
 
 export function ThreadMsgList({ messagesToShow }) {
-  const { loggedInUser } = useSelector((state) => state.userModule)
-
   if (!messagesToShow.length) return <div>No msgs yet..</div>
 
   return (

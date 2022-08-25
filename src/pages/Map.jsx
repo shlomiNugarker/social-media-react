@@ -1,23 +1,23 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import GoogleMapReact from 'google-map-react'
 import { useDispatch, useSelector } from 'react-redux'
+import { UserIconPos } from '../cmps/map/UserIconPos'
+import { MapMenu } from '../cmps/map/MapMenu'
+import { PostIconMap } from '../cmps/map/PostIconMap'
+import { ImgPreview } from '../cmps/profile/ImgPreview'
+import { CreatePostModal } from '../cmps/posts/CreatePostModal'
 import {
   loadPosts,
   savePost,
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
-import GoogleMapReact from 'google-map-react'
 import {
   getUsers,
   setFilterByUsers,
   updateUser,
 } from '../store/actions/userActions'
-import { UserIconPos } from '../cmps/map/UserIconPos'
-import { MapMenu } from '../cmps/map/MapMenu'
-import { PostIconMap } from '../cmps/map/PostIconMap'
-import { ImgPreview } from '../cmps/profile/ImgPreview'
-import { CreatePostModal } from '../cmps/posts/CreatePostModal'
 
 export function Map() {
   const dispatch = useDispatch()
@@ -27,14 +27,13 @@ export function Map() {
   const [menuPosition, setMenuPosition] = useState(null)
   const [postToPreview, setPostToPreview] = useState(false)
   const [isShowCreatePost, setIsCreateShowPost] = useState(false)
-  console.log({ menuPosition })
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { users } = useSelector((state) => state.userModule)
   const { posts } = useSelector((state) => state.postModule)
 
   useEffect(() => {
-    dispatch(setCurrPage('jobs'))
+    dispatch(setCurrPage('map'))
     const filterBy = {
       position: 'position',
     }
@@ -52,10 +51,7 @@ export function Map() {
 
   const saveUser = (position) => {
     if (!loggedInUser) return
-    console.log('save user pos', position)
-    dispatch(updateUser({ ...loggedInUser, position })).then((res) =>
-      console.log(res)
-    )
+    dispatch(updateUser({ ...loggedInUser, position }))
   }
 
   const togglePostToPreview = (post) => {
@@ -85,19 +81,16 @@ export function Map() {
       console.log('Geolocation is not supported by this browser.')
     }
   }
+
   function showPosition(position) {
     const positionToSave = {
       lat: position.coords.latitude,
       lng: position.coords.longitude,
     }
-
-    if (position) {
-      saveUser(positionToSave)
-    }
+    if (position) saveUser(positionToSave)
   }
 
   const closeUserIcon = () => {
-    console.log('closeUserIcon')
     setIsCloseUserIcon((prev) => !prev)
   }
 
@@ -128,9 +121,7 @@ export function Map() {
           bootstrapURLKeys={{ key: '' }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
-          onClick={(ev) => {
-            onClickMap(ev)
-          }}
+          onClick={(ev) => onClickMap(ev)}
         >
           {users &&
             users.map((user) => (
@@ -166,6 +157,7 @@ export function Map() {
           )}
         </GoogleMapReact>
       </div>
+
       {postToPreview && (
         <ImgPreview
           toggleShowImg={togglePostToPreview}
@@ -173,6 +165,7 @@ export function Map() {
           body={postToPreview.body}
           imgUrl={postToPreview.imgBodyUrl}
           post={postToPreview}
+          videoUrl={postToPreview?.videoBodyUrl}
         />
       )}
 

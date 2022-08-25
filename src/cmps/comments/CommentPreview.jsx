@@ -1,13 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useEffect, useState } from 'react'
-import { userService } from '../../services/user/userService'
-import TimeAgo from 'react-timeago'
 import { useDispatch, useSelector } from 'react-redux'
-import { utilService } from '../../services/utilService'
-import { ReplyList } from '../replies/ReplyList'
-import { CommentMenu } from './CommentMenu'
+import { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { removeComment } from '../../store/actions/postActions'
 import { useHistory } from 'react-router-dom'
+import { userService } from '../../services/user/userService'
+import { utilService } from '../../services/utilService'
+import { CommentMenu } from './CommentMenu'
+import { ReplyList } from '../replies/ReplyList'
+import TimeAgo from 'react-timeago'
 
 export const CommentPreview = ({ comment, onSaveComment }) => {
   const dispatch = useDispatch()
@@ -184,6 +184,7 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
             </div>
           </div>
         )}
+
         {replyField.txt && (
           <button className="reply-btn" onClick={() => addReply()}>
             Reply

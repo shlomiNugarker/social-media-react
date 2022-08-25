@@ -1,11 +1,10 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ConnectionList } from '../cmps/connections/ConnectionList'
-import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../store/actions/userActions'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 import { setCurrPage } from '../store/actions/postActions'
-import { Link } from 'react-router-dom'
-import { useHistory } from 'react-router-dom'
 
 export function MyNetwork() {
   const dispatch = useDispatch()
@@ -17,11 +16,9 @@ export function MyNetwork() {
   useEffect(() => {
     dispatch(getUsers())
     dispatch(setCurrPage('mynetwork'))
-    // eslint-disable-next-line
   }, [])
 
   if (!users) return <section className="my-network">Loading</section>
-
   return (
     <section className="my-network-page">
       <div className="left">

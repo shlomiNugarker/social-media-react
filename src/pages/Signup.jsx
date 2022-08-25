@@ -4,17 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login, signup, logout } from '../store/actions/userActions'
 
 export const Signup = ({ history }) => {
-  const { loggedInUser } = useSelector((state) => state.userModule)
-
   const dispatch = useDispatch()
-
+  
   const [signin, setIsSignin] = useState(false)
-
   const [cred, setCred] = useState({
     username: '',
     password: '',
     fullname: '',
   })
+  
+  const { loggedInUser } = useSelector((state) => state.userModule)
 
   const handleChange = async ({ target }) => {
     const field = target.name
@@ -26,19 +25,18 @@ export const Signup = ({ history }) => {
     setCred(() => ({ username: '', password: '', fullname: '' }))
 
   const doLogin = async () => {
-    console.log('doLogin')
     dispatch(login(cred))
     cleanFields()
   }
+
   const doLogout = async () => {
     dispatch(logout())
     cleanFields()
   }
+
   const doSignup = async () => {
-    console.log('doSignup')
     dispatch(signup(cred))
     cleanFields()
-    // history.push('/main/feed')
   }
 
   const doSubmit = () => {

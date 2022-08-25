@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 export const InputComment = ({ onSaveComment }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { imgUrl, _id } = loggedInUser
+
   const [isFirstFocus, setIsFirstFocus] = useState(true)
   const [newComment, setNewComment] = useState({
     txt: '',
@@ -31,10 +32,10 @@ export const InputComment = ({ onSaveComment }) => {
       <form
         className="input-comment"
         action=""
-        onSubmit={(ev) => {
-          ev.preventDefault()
-          doSubmit()
-        }}
+        // onSubmit={(ev) => {
+        //   ev.preventDefault()
+        //   doSubmit()
+        // }}
         // onClick={(ev) => {
         //   ev.stopPropagation()
         // }}
@@ -70,7 +71,16 @@ export const InputComment = ({ onSaveComment }) => {
           </div>
         </div>
         <div className="post-btn-container">
-          {newComment.txt && <button>Post</button>}
+          {newComment.txt && (
+            <button
+              onClick={(ev) => {
+                ev.preventDefault()
+                doSubmit()
+              }}
+            >
+              Post
+            </button>
+          )}
         </div>
       </form>
     </section>

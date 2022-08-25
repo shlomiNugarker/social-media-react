@@ -19,7 +19,7 @@
 
   .container {
     width: 100%;
-    margin: 5px 0 0 0;
+    // margin: 5px 0 0 0;
     padding: 10px 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -71,6 +71,33 @@
 
       .no {
         background-color: #e16745;
+      }
+    }
+  }
+
+  .copy-to-clip-board {
+    width: 100%;
+    margin: 5px 0 0 0;
+    padding: 10px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.188);
+    }
+    button {
+      color: #666666;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border: none;
+      background: unset;
+      svg {
+        font-size: 25px;
+      }
+      p {
+        color: black;
+        margin-left: 5px;
       }
     }
   }

@@ -1,23 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { PostPreview } from '../cmps/posts/post-preview/PostPreview'
 import {
   loadPosts,
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
-import { useParams } from 'react-router-dom'
-import { PostPreview } from '../cmps/posts/post-preview/PostPreview'
 
 export const SpecificPost = (props) => {
-  const { loggedInUser } = useSelector((state) => state.userModule)
   const dispatch = useDispatch()
   const params = useParams()
   const { posts } = useSelector((state) => state.postModule)
-  //   const [post, setPost] = useState(null)
 
   useEffect(() => {
-    console.log(params.userId)
-    console.log(params.postId)
     dispatch(setCurrPage(null))
     const filterBy = {
       _id: params.postId,
@@ -25,10 +21,10 @@ export const SpecificPost = (props) => {
     dispatch(setFilterByPosts(filterBy))
     dispatch(loadPosts())
 
-    // eslint-disable-next-line
     return () => {
       dispatch(setFilterByPosts(null))
     }
+    // eslint-disable-next-line
   }, [])
 
   console.log('render SpecificPost')

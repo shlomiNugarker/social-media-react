@@ -6,7 +6,6 @@ export const CommentsList = ({ comments, onSaveComment }) => {
   if (!comments) return <section className="list-comments">Loading..</section>
 
   // console.log('render CommentsList')
-
   return (
     <section className="list-comments">
       {comments.map((comment) => (

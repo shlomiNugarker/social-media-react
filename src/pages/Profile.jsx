@@ -1,25 +1,27 @@
 import { useHistory, useParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/posts/PostsList'
 import { ImgPreview } from '../cmps/profile/ImgPreview'
-import { Link } from 'react-router-dom'
+import { EditModal } from '../cmps/profile/EditModal'
 import {
   loadPosts,
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
-import { useDispatch, useSelector } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { EditModal } from '../cmps/profile/EditModal'
 
 export function Profile() {
   const params = useParams()
   const history = useHistory()
   const dispatch = useDispatch()
+
   const [user, setUser] = useState(null)
   const [isShowImdProfile, setIsShowImdProfile] = useState(false)
   const [isShowEditModal, setIsShowEditModal] = useState(false)
+
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
 
@@ -41,7 +43,6 @@ export function Profile() {
   }
 
   const connectProfile = () => {
-    console.log('connect', user)
     if (isConnected) {
       // Remove
     } else if (!isConnected) {
@@ -66,7 +67,6 @@ export function Profile() {
     const filterBy = {
       userId: params.userId,
     }
-
     dispatch(setCurrPage('profile'))
     dispatch(setFilterByPosts(filterBy))
     loadUser()
@@ -77,7 +77,7 @@ export function Profile() {
     }
   }, [params.userId, loggedInUser])
 
-  if (!user) return <section className="feed-load">Loading...</section>
+  if (!user) return <section className="feed-load">Loading user...</section>
 
   const isLoggedInUserProfile = loggedInUser?._id === user?._id
 
@@ -121,7 +121,11 @@ export function Profile() {
         </div>
 
         <div className="user-posts">
-          <PostsList posts={posts} />
+          {(posts?.length && <PostsList posts={posts} />) || (
+            <div>
+              <p>{user.fullname} has not published any posts yet.</p>
+            </div>
+          )}
         </div>
       </div>
       <div className="right">

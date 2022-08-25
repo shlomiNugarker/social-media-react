@@ -8,9 +8,6 @@ import { loadPosts, setFilterByPosts } from '../../store/actions/postActions'
 export const Posts = () => {
   const dispatch = useDispatch()
 
-  const { filterBy } = useSelector((state) => state.postModule)
-  // dispatch(setFilterByPosts(filterBy))
-
   useEffect(() => {
     dispatch(loadPosts())
   }, [])

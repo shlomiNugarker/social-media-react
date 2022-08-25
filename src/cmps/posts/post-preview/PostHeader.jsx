@@ -1,30 +1,39 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { userService } from '../../../services/user/userService'
 
 export const PostHeader = ({ post, userPost }) => {
+  const history = useHistory()
+
   if (!userPost) return <section className="post-header">Loading</section>
 
-  // const goToProfile = () => {}
+  const postUrl = ` /main/post/${post.userId}/${post._id}`
 
   const { imgUrl, profession, fullname } = userPost
   return (
     <section className="post-header">
-      <div className="img-actor">
+      <div
+        className="img-actor"
+        onClick={() => history.push(`/main/profile/${userPost?._id}`)}
+      >
         <img src={imgUrl} className="img"></img>
       </div>
 
-      <Link to={`/main/profile/${userPost?._id}`}>
-        <div className="details">
+      <div className="details">
+        <Link to={`/main/profile/${userPost?._id}`}>
           <div className="name">
             <h3>{fullname}</h3>
           </div>
+        </Link>
+        <div
+          className="time-and-description-container"
+          onClick={() => history.push(`/main/post/${post.userId}/${post._id}`)}
+        >
           <div className="description">
             <p>{profession}</p>
           </div>
           <div className="time">
-            <p></p>
             <span>
               <TimeAgo date={post.createdAt} />
             </span>{' '}
@@ -35,7 +44,7 @@ export const PostHeader = ({ post, userPost }) => {
             )}
           </div>
         </div>
-      </Link>
+      </div>
       {/* <div className="follow">
         <span>
           <FontAwesomeIcon icon="fa-solid fa-plus" />

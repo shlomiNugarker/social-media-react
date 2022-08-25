@@ -17,13 +17,12 @@ export function MsgPreview({
   const history = useHistory()
   const params = useParams()
 
+  const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
+
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
 
   const lastMsg =
     chat.messages[chat.messages.length - 1]?.txt || 'No Messages yet..'
-
-  const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
-
   const dateToShow = new Date(chat.messages[0]?.createdAt || chat.createdAt)
   const slicedDate = dateToShow.toLocaleDateString().slice(0, -5)
 

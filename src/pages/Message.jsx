@@ -10,16 +10,27 @@ import { utilService } from '../services/utilService'
 
 export function Message() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const params = useParams()
+
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { chats } = useSelector((state) => state.chatModule)
-  const history = useHistory()
 
   const [isUserChatExist, setIsUserChatExist] = useState(false)
   const [messagesToShow, setMessagesToShow] = useState(null)
   const [chooseenChatId, setChooseenChatId] = useState(null)
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
   const [chatWith, setChatWith] = useState(null)
+
+  useEffect(() => {
+    dispatch(setCurrPage('message'))
+    const userId = loggedInUser?._id
+
+    if (userId) dispatch(loadChats(userId))
+    const isChatExist = checkIfChatExist()
+    setIsUserChatExist(isChatExist)
+    openChat()
+  }, [loggedInUser, params.userId, isUserChatExist])
 
   const onSendMsg = (txt) => {
     const newMsg = createNewMsg(txt)
@@ -40,8 +51,7 @@ export function Message() {
     }
   }
 
-  // TODO:
-
+  // TODO: ///
   const createChat = (userId) => {
     console.log('createChat')
     return {
@@ -95,16 +105,6 @@ export function Message() {
       return chat.userId === params.userId || chat.userId2 === params.userId
     })
   }
-
-  useEffect(() => {
-    dispatch(setCurrPage('message'))
-    const userId = loggedInUser?._id
-
-    if (userId) dispatch(loadChats(userId))
-    const isChatExist = checkIfChatExist()
-    setIsUserChatExist(isChatExist)
-    openChat()
-  }, [loggedInUser, params.userId, isUserChatExist])
 
   // console.log('render Message')
   if (!chats) return

@@ -6,7 +6,6 @@ export const UserIconPos = ({ url, userId, fullname, isCloseUserIcon }) => {
   const history = useHistory()
 
   useEffect(() => {
-    // console.log(isCloseUserIcon)
     if (isCloseUserIcon) {
       setisUserIconOpen(false)
     }
@@ -26,10 +25,6 @@ export const UserIconPos = ({ url, userId, fullname, isCloseUserIcon }) => {
         src={url}
         alt={fullname}
         title={fullname}
-        // onClick={(ev) => {
-        //   ev.stopPropagation()
-        //   setisUserIconOpen((prev) => !prev)
-        // }}
       />
       {isUserIconOpen && (
         <div className="menu-container">

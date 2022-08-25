@@ -7,20 +7,25 @@ import { SocialDetails } from './SocialDetails'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../../../services/user/userService'
+import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
+import { PostMenu } from './PostMenu'
 import {
   savePost,
   loadPosts,
   removePost,
 } from '../../../store/actions/postActions'
-import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
-import { PostMenu } from './PostMenu'
 
 export const PostPreview = ({ post }) => {
   const dispatch = useDispatch()
+
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
   const [isShowMenu, setIsShowMenu] = useState(false)
   const { loggedInUser } = useSelector((state) => state.userModule)
+
+  useEffect(() => {
+    loadUserPost(post.userId)
+  }, [loggedInUser])
 
   const toggleMenu = () => {
     setIsShowMenu((prevVal) => !prevVal)
@@ -62,9 +67,13 @@ export const PostPreview = ({ post }) => {
     dispatch(removePost(post._id))
   }
 
-  useEffect(() => {
-    loadUserPost(post.userId)
-  }, [loggedInUser])
+  // TODO: ADD REAL SITE TO COPY
+  function copyToClipBoard() {
+    const postUrl = `/main/post/${post.userId}/${post._id}`
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(postUrl)
+    alert('Copied the text: ' + postUrl)
+  }
 
   // console.log('render PostPreview')
   return (
@@ -101,6 +110,7 @@ export const PostPreview = ({ post }) => {
           toggleMenu={toggleMenu}
           onRemovePost={onRemovePost}
           postUserId={post.userId}
+          copyToClipBoard={copyToClipBoard}
         />
       )}
     </section>

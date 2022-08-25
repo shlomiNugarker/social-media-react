@@ -8,8 +8,6 @@ export const CreatePostModal = ({
   isShowCreatePost,
   loggedInUser,
 }) => {
-  console.log({ loggedInUser })
-
   const initPost = {
     body: '',
     imgBodyUrl: null,

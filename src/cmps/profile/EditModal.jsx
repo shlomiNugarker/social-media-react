@@ -32,7 +32,6 @@ export function EditModal({ toggleShowEditModal, user }) {
         [field]: value,
       }
     })
-    // setUserToUpdate({ ...userToUpdate, [field]: value })
   }
 
   const onSaveUser = () => {
@@ -96,18 +95,6 @@ export function EditModal({ toggleShowEditModal, user }) {
                 value={fullname || ''}
               />
             </label>
-
-            {/* <label htmlFor="last-name" className="last-name">
-              <p>
-                Last name <span>*</span>
-              </p>
-              <input
-                onChange={handleChange}
-                id="last-name"
-                type="text"
-                value={''}
-              />
-            </label> */}
 
             <label htmlFor="email" className="email">
               <p>Email</p>

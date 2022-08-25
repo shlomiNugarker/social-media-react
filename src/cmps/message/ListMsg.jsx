@@ -47,11 +47,6 @@ export function ListMsg({
             getTheNotLoggedUserChat={getTheNotLoggedUserChat}
             setTheNotLoggedUserChat={setTheNotLoggedUserChat}
             theNotLoggedUserChat={theNotLoggedUserChat}
-            // onClick={() => history.push(`/main/profile/${chatWith?._id}`)}
-            // onClick={() => {
-            //   console.log('chat._id', chat._id)
-            //   setChooseenChatId(chat._id)
-            // }}
             chooseenChatId={chooseenChatId}
           />
         ))}

@@ -1,8 +1,8 @@
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { login, signup } from '../store/actions/userActions'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
 
 export const Home = (props) => {
   const dispatch = useDispatch()

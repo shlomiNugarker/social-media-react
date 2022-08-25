@@ -12,27 +12,10 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const App = () => {
-  // function handleCallbackResponse(response) {
-  //   console.log('Encoded JWT ID token: ' + response.credential)
-  //   const userObject = jwt_decode(response.credential)
-  //   console.log(userObject)
-  // }
-
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getLoggedinUser())
-
-    //   google.accounts.id.initialize({
-    //     client_id:
-    //       '623819778069-7n3g3kj4ivchsgf4s46ud0av2m6kulmk.apps.googleusercontent.com',
-    //     callback: handleCallbackResponse,
-    //   })
-
-    //   google.accounts.id.renderButton(document.getElementById('signIdDiv'), {
-    //     theme: 'outline',
-    //     size: 'large',
-    //   })
   }, [])
 
   return (
@@ -50,7 +33,6 @@ const App = () => {
             <Route path="/signup" component={Signup} />
             <Route path="/main" component={Main} />
             <Route path="/about" component={About} />
-
             <Route path="/" component={Home} />
           </Switch>
         </main>

@@ -18,7 +18,6 @@ export function Main() {
   dispatch(getLoggedinUser())
 
   // const { loggedInUser } = useSelector((state) => state.userModule)
-
   // useEffect(() => {
   //   const userId = loggedInUser?._id
   //   if (userId) dispatch(loadChats(userId))
@@ -29,16 +28,16 @@ export function Main() {
   return (
     <div className="main-page container">
       <Header />
-      {/* <Switch> */}
-      <Route path="/main/feed" component={Feed} />
-      <Route path="/main/post/:userId/:postId" component={SpecificPost} />
-      <Route path="/main/profile/:userId" component={Profile} />
-      <Route path="/main/mynetwork" component={MyNetwork} />
-      <Route path="/main/map" component={Map} />
-      <Route path="/main/message/:userId?" component={Message} />
-      <Route path="/main/notifications" component={Notifications} />
-      <Route path="/main/connections" component={Connections} />
-      {/* </Switch> */}
+      <Switch>
+        <Route path="/main/feed" component={Feed} />
+        <Route path="/main/post/:userId/:postId" component={SpecificPost} />
+        <Route path="/main/profile/:userId" component={Profile} />
+        <Route path="/main/mynetwork" component={MyNetwork} />
+        <Route path="/main/map" component={Map} />
+        <Route path="/main/message/:userId?" component={Message} />
+        <Route path="/main/notifications" component={Notifications} />
+        <Route path="/main/connections" component={Connections} />
+      </Switch>
     </div>
   )
 }

@@ -3,13 +3,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const CommentMenu = ({ toggleMenu, onRemoveComment, commentUserId }) => {
-  const { loggedInUser } = useSelector((state) => state.userModule)
   const [isAskAgain, setIsAskAgain] = useState(false)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    // eslint-disable-next-line
-  }, [])
+  const { loggedInUser } = useSelector((state) => state.userModule)
 
   const isLoggedInUserCanDelete = loggedInUser._id === commentUserId
 
