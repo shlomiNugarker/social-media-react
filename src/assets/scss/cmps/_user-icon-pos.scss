@@ -1,5 +1,5 @@
 .user-icon-pos-container {
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 
   padding: 10px;
   width: fit-content;
@@ -25,13 +25,18 @@
     max-width: 250px;
     min-height: 50px;
     border-radius: 5px;
-
+    font-size: 0.875rem;
+    font-size: 0.875rem;
     display: flex;
     flex-direction: column;
 
     position: absolute;
     top: 40px;
-    left: -105px;
+    left: -115px;
+
+    &:hover {
+      z-index: 400;
+    }
 
     .opts-btns {
       .opt {

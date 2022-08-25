@@ -13,6 +13,7 @@ export function setCurrPage(page) {
 
 export function setFilterByPosts(filterByPosts) {
   return async (dispatch) => {
+    // console.log(filterByPosts)
     dispatch({ type: 'SET_FILTER_BY_POSTS', filterByPosts })
   }
 }
@@ -21,9 +22,7 @@ export function loadPosts() {
   return async (dispatch, getState) => {
     try {
       const { filterByPosts } = getState().postModule
-      // console.log({ filterByPosts })
       const posts = await postService.query(filterByPosts)
-      console.log({ posts })
       dispatch({ type: 'SET_POSTS', posts })
     } catch (err) {
       console.log('err:', err)
@@ -31,17 +30,17 @@ export function loadPosts() {
   }
 }
 
-export function loadPostsByUserId() {
-  return async (dispatch, getState) => {
-    try {
-      const { filterBy } = getState().postModule
-      const posts = await postService.query(filterBy)
-      dispatch({ type: 'ADD_POSTS', posts })
-    } catch (err) {
-      console.log('err:', err)
-    }
-  }
-}
+// export function loadPostsByUserId() {
+//   return async (dispatch, getState) => {
+//     try {
+//       const { filterBy } = getState().postModule
+//       const posts = await postService.query(filterBy)
+//       dispatch({ type: 'ADD_POSTS', posts })
+//     } catch (err) {
+//       console.log('err:', err)
+//     }
+//   }
+// }
 
 export function savePost(post) {
   return async (dispatch) => {

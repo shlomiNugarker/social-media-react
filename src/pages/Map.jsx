@@ -109,6 +109,7 @@ export function Map() {
     zoom: 5,
   }
 
+  console.log('render Map')
   return (
     // Important! Always set the container height explicitly
     <section className="map-page ">
@@ -158,8 +159,10 @@ export function Map() {
       {postToPreview && (
         <ImgPreview
           toggleShowImg={togglePostToPreview}
-          title={postToPreview.body}
+          title={postToPreview.title}
+          body={postToPreview.body}
           imgUrl={postToPreview.imgBodyUrl}
+          post={postToPreview}
         />
       )}
     </section>

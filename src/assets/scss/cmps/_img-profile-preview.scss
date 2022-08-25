@@ -3,6 +3,7 @@
   background-color: rgb(255, 255, 255);
   height: 50vh;
   position: absolute;
+
   .bg {
     z-index: 105;
     inset: 0 0 0 0;
@@ -29,9 +30,48 @@
       display: flex;
       justify-content: space-between;
       font-size: 24px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0;
+      position: relative;
 
-      span {
+      .user-details {
+        position: absolute;
+        left: 5px;
+        display: flex;
         cursor: pointer;
+        .img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+        .fullname {
+          display: flex;
+          font-size: 1rem;
+          margin-left: 5px;
+          align-items: center;
+        }
+      }
+
+      .logo-close {
+        cursor: pointer;
+        position: absolute;
+        right: 5px;
+      }
+    }
+
+    .body {
+      text-align: center;
+    }
+
+    .see-post {
+      text-align: center;
+      margin: 5px 0;
+      cursor: pointer;
+      p {
+        text-decoration: underline;
       }
     }
 

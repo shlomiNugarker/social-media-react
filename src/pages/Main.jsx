@@ -11,6 +11,7 @@ import { Message } from './Message'
 import { Notifications } from './Notifications'
 import { Connections } from './Connections'
 import { loadChats } from '../store/actions/chatActions'
+import { SpecificPost } from './SpecificPost'
 
 export function Main() {
   const dispatch = useDispatch()
@@ -29,7 +30,8 @@ export function Main() {
     <div className="main-page container">
       <Header />
       {/* <Switch> */}
-      <Route path="/main/feed" component={Feed}></Route>
+      <Route path="/main/feed" component={Feed} />
+      <Route path="/main/post/:userId/:postId" component={SpecificPost} />
       <Route path="/main/profile/:userId" component={Profile} />
       <Route path="/main/mynetwork" component={MyNetwork} />
       <Route path="/main/map" component={Map} />

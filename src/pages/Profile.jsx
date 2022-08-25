@@ -5,7 +5,7 @@ import { PostsList } from '../cmps/posts/PostsList'
 import { ImgPreview } from '../cmps/profile/ImgPreview'
 import { Link } from 'react-router-dom'
 import {
-  loadPostsByUserId,
+  loadPosts,
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
@@ -66,10 +66,11 @@ export function Profile() {
     const filterBy = {
       userId: params.userId,
     }
+
     dispatch(setCurrPage('profile'))
     dispatch(setFilterByPosts(filterBy))
     loadUser()
-    dispatch(loadPostsByUserId(filterBy))
+    dispatch(loadPosts(filterBy))
 
     return () => {
       dispatch(setFilterByPosts(null))

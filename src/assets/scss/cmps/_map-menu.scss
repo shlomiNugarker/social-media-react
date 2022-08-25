@@ -1,10 +1,15 @@
 .map-page {
   .map-menu {
+    font-size: 0.875rem;
     //   position: relative;
     min-height: 100px;
     min-width: 100px;
     top: 0px;
     left: 200px;
+
+    &:hover {
+      z-index: 400;
+    }
 
     .location-icon {
       svg {
@@ -17,7 +22,7 @@
     background-color: white;
     position: absolute;
     top: 45px;
-    left: -90px;
+    left: -95px;
     right: -15px;
     border-radius: 5px;
 

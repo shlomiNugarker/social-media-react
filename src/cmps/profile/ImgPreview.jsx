@@ -1,10 +1,23 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { userService } from '../../services/user/userService'
 
-export function ImgPreview({ toggleShowImg, imgUrl, title }) {
+export function ImgPreview({ toggleShowImg, imgUrl, title, post, body }) {
   const dispatch = useDispatch()
-  useEffect(() => {}, [])
+  const history = useHistory()
+  const [user, setUser] = useState(null)
+
+  const loadUser = async (userId) => {
+    const user = await userService.getById(userId)
+    setUser(user)
+  }
+
+  useEffect(() => {
+    if (post?.userId) loadUser(post.userId)
+    // console.log({ user })
+  }, [])
 
   // console.log('render ImgProfilePreview')
   return (
@@ -12,11 +25,42 @@ export function ImgPreview({ toggleShowImg, imgUrl, title }) {
       <div className="bg" onClick={toggleShowImg}></div>
       <section className="container">
         <div className="title">
+          {(user && post && (
+            <div
+              className="user-details"
+              onClick={() => history.push(`/main/profile/${post.userId}`)}
+            >
+              <img src={user.imgUrl} alt="" className="img" />
+              <p className="fullname">{user.fullname}</p>
+            </div>
+          )) ||
+            (post && <p className="user-details">Loading user...</p>)}
+
           <p>{title}</p>
-          <span onClick={toggleShowImg}>
+
+          <span className="logo-close" onClick={toggleShowImg}>
             <FontAwesomeIcon icon="fa-solid fa-x" />
           </span>
         </div>
+
+        {body && (
+          <div>
+            <p className="body">{body}</p>
+          </div>
+        )}
+
+        {post && (
+          <div className="see-post">
+            <p
+              onClick={() =>
+                history.push(`/main/post/${post.userId}/${post._id}`)
+              }
+            >
+              See original post
+            </p>
+          </div>
+        )}
+
         <div className="img-container">
           {imgUrl && <img className="img" src={imgUrl} alt="" />}
         </div>
