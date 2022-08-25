@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const MapMenu = ({ menuPosition }) => {
+export const MapMenu = ({ menuPosition, setIsCreateShowPost }) => {
   return (
     <section className="map-menu">
       <span className="location-icon">
@@ -8,10 +8,15 @@ export const MapMenu = ({ menuPosition }) => {
       </span>
 
       <div className="opts-container">
-        <div className="add-picture opt">
+        {/* <div className="add-picture opt">
           <p>Add a picture here</p>
-        </div>
-        <div className="add-post-to-map opt">
+        </div> */}
+        <div
+          className="add-post-to-map opt"
+          onClick={() => {
+            setIsCreateShowPost(true)
+          }}
+        >
           <p>Add a post here</p>
         </div>
       </div>

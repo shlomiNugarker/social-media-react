@@ -23,7 +23,11 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding-bottom: 60px;
+
     cursor: auto;
+    display: flex;
+    flex-direction: column;
 
     .title {
       display: flex;
@@ -79,23 +83,68 @@
       }
     }
 
-    .tools {
-      background-color: lightgreen;
-      height: 50px;
+    .container-img-body {
+      overflow-y: auto;
     }
 
     .btns-add-container {
       position: absolute;
-
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
       bottom: 0;
+      right: 5px;
       padding: 5px;
 
-      .post-btn,
-      button {
+      .btn {
         border-radius: 15px;
         padding: 7px 7px;
         border: none;
         font-size: 24px;
+        border: 1px solid $border;
+        margin: 0 5px;
+        cursor: pointer;
+
+        &.cancel-btn {
+          &:hover {
+            background-color: red;
+            color: white;
+          }
+        }
+
+        &.add-img-btn {
+          // background-color: #f0f0f0;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #378fe9;
+            color: white;
+          }
+
+          .add-img-body {
+            cursor: pointer;
+          }
+        }
+
+        &.add-video-btn {
+          cursor: pointer;
+
+          &:hover {
+            background-color: #5f9b41;
+            color: white;
+          }
+
+          .add-video-body {
+            cursor: pointer;
+          }
+        }
+
+        &:hover {
+          &.post-btn {
+            background-color: #378fe9;
+            color: white;
+          }
+        }
       }
     }
   }

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   loadPosts,
+  savePost,
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
@@ -16,6 +17,7 @@ import { UserIconPos } from '../cmps/map/UserIconPos'
 import { MapMenu } from '../cmps/map/MapMenu'
 import { PostIconMap } from '../cmps/map/PostIconMap'
 import { ImgPreview } from '../cmps/profile/ImgPreview'
+import { CreatePostModal } from '../cmps/posts/CreatePostModal'
 
 export function Map() {
   const dispatch = useDispatch()
@@ -24,20 +26,12 @@ export function Map() {
   const [isMapClicked, setIsMapClicked] = useState(false)
   const [menuPosition, setMenuPosition] = useState(null)
   const [postToPreview, setPostToPreview] = useState(false)
+  const [isShowCreatePost, setIsCreateShowPost] = useState(false)
+  console.log({ menuPosition })
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { users } = useSelector((state) => state.userModule)
   const { posts } = useSelector((state) => state.postModule)
-
-  // const posts = [
-  //   {
-  //     _id: '35434fbx4w36dfbhg6',
-  //     imgUrl:
-  //       'https://images.unsplash.com/photo-1556861458-41759cadc36f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80',
-  //     userId: '62ea127beb6ee5f8058fd56e',
-  //     position: { lat: 32.05589021253922, lng: 34.75542191498591 },
-  //   },
-  // ]
 
   useEffect(() => {
     dispatch(setCurrPage('jobs'))
@@ -57,15 +51,31 @@ export function Map() {
   }, [])
 
   const saveUser = (position) => {
-    dispatch(updateUser({ ...loggedInUser, position }))
+    if (!loggedInUser) return
+    console.log('save user pos', position)
+    dispatch(updateUser({ ...loggedInUser, position })).then((res) =>
+      console.log(res)
+    )
   }
 
   const togglePostToPreview = (post) => {
-    console.log({ postToPreview })
     if (postToPreview) setPostToPreview(null)
     else {
       setPostToPreview(post)
     }
+  }
+
+  const toggleShowCreatePost = () => {
+    setIsCreateShowPost((prev) => !prev)
+  }
+
+  const onAddPost = (post) => {
+    const postToAdd = {
+      ...post,
+      userId: loggedInUser._id,
+      position: menuPosition,
+    }
+    dispatch(savePost(postToAdd)).then(() => toggleShowCreatePost())
   }
 
   function getLocation() {
@@ -120,7 +130,6 @@ export function Map() {
           defaultZoom={defaultProps.zoom}
           onClick={(ev) => {
             onClickMap(ev)
-            console.log(ev)
           }}
         >
           {users &&
@@ -152,6 +161,7 @@ export function Map() {
               menuPosition={menuPosition}
               lat={menuPosition.lat}
               lng={menuPosition.lng}
+              setIsCreateShowPost={setIsCreateShowPost}
             />
           )}
         </GoogleMapReact>
@@ -163,6 +173,15 @@ export function Map() {
           body={postToPreview.body}
           imgUrl={postToPreview.imgBodyUrl}
           post={postToPreview}
+        />
+      )}
+
+      {isShowCreatePost && (
+        <CreatePostModal
+          isShowCreatePost={isShowCreatePost}
+          onAddPost={onAddPost}
+          toggleShowCreatePost={toggleShowCreatePost}
+          loggedInUser={loggedInUser}
         />
       )}
     </section>

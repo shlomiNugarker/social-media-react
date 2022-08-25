@@ -22,6 +22,20 @@
               z-index: 10330;
             }
           }
+
+          .post-logo {
+            svg {
+              width: 15px;
+              height: 15px;
+              transition: width 0.3s, height 0.3s;
+
+              &:hover {
+                width: 35px;
+                height: 35px;
+                z-index: 10330;
+              }
+            }
+          }
         }
       }
     }

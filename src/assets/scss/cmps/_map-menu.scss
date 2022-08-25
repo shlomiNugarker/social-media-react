@@ -25,6 +25,7 @@
     left: -95px;
     right: -15px;
     border-radius: 5px;
+    border: 1px solid;
 
     .opt {
       padding: 5px;
@@ -32,6 +33,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 5px;
 
       &:hover {
         background-color: rgb(207, 207, 207);

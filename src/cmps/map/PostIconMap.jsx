@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 
 export const PostIconMap = ({ post, setPostToPreview }) => {
@@ -11,7 +12,13 @@ export const PostIconMap = ({ post, setPostToPreview }) => {
           <span className="img-logo">
             {(post.imgBodyUrl && (
               <img src={post.imgBodyUrl} alt="" className="img" />
-            )) || <p>post</p>}
+            )) || (
+              <p>
+                <span className="post-logo">
+                  <FontAwesomeIcon icon="fa-solid fa-comment-dots" />
+                </span>
+              </p>
+            )}
           </span>
         </div>
       </div>

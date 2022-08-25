@@ -73,7 +73,11 @@ export const PostPreview = ({ post }) => {
         <FontAwesomeIcon className="dots-icon" icon="fa-solid fa-ellipsis" />
       </div>
       <PostHeader post={post} userPost={userPost} />
-      <PostBody body={post.body} imgUrl={post.imgBodyUrl} />
+      <PostBody
+        body={post.body}
+        imgUrl={post.imgBodyUrl}
+        videoUrl={post.videoBodyUrl}
+      />
       <SocialDetails
         comments={post.comments}
         post={post}

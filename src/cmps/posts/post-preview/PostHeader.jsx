@@ -27,7 +27,12 @@ export const PostHeader = ({ post, userPost }) => {
             <p></p>
             <span>
               <TimeAgo date={post.createdAt} />
-            </span>
+            </span>{' '}
+            {post?.position?.lat && post?.position?.lng && (
+              <span className="logo-location">
+                <FontAwesomeIcon icon="fa-solid fa-location-dot" />
+              </span>
+            )}
           </div>
         </div>
       </Link>
