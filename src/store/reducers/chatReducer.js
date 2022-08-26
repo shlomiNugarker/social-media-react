@@ -31,11 +31,11 @@ export function chatReducer(state = INITIAL_STATE, action) {
         }),
       }
 
-    // case 'REMOVE_CHAT':
-    //   return {
-    //     ...state,
-    //     chats: state.chats.filter((chat) => chat._id !== action.chatId),
-    //   }
+    case 'REMOVE_CHAT':
+      return {
+        ...state,
+        chats: state.chats.filter((chat) => chat._id !== action.chatId),
+      }
 
     default:
       return state

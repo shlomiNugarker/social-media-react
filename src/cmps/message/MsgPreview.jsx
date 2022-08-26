@@ -35,9 +35,9 @@ export function MsgPreview({
     setMessagesToShow(chat.messages)
     setChatWith(theNotLoggedUserChat)
     setChooseenChatId(chat._id)
-    if (theNotLoggedUserChat?._id !== params.userId) {
-      history.push(`/main/message/${theNotLoggedUserChat?._id}`)
-    }
+    // if (theNotLoggedUserChat?._id !== params.userId) {
+    //   history.push(`/main/message/${theNotLoggedUserChat?._id}`)
+    // }
   }
 
   useEffect(() => {

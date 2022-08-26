@@ -8,6 +8,7 @@ export const AddPost = () => {
   const dispatch = useDispatch()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
+  console.log(loggedInUser)
 
   const [isShowCreatePost, setIsShowCreatePost] = useState(false)
 
@@ -16,7 +17,11 @@ export const AddPost = () => {
   }
 
   const onAddPost = (post) => {
-    const postToAdd = { ...post, userId: loggedInUser._id }
+    const postToAdd = {
+      ...post,
+      userId: loggedInUser._id,
+      fullname: loggedInUser.fullname,
+    }
     dispatch(savePost(postToAdd)).then(() => toggleShowCreatePost())
   }
 

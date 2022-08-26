@@ -22,6 +22,14 @@ import {
 export function Map() {
   const dispatch = useDispatch()
 
+  const [defaultProps, setDefaultProps] = useState({
+    center: {
+      lat: 32.05591645013164,
+      lng: 34.7549857056555,
+    },
+    zoom: 2,
+    yesIWantToUseGoogleMapApiInternals: true,
+  })
   const [isCloseUserIcon, setIsCloseUserIcon] = useState(false)
   const [isMapClicked, setIsMapClicked] = useState(false)
   const [menuPosition, setMenuPosition] = useState(null)
@@ -48,6 +56,24 @@ export function Map() {
       dispatch(setFilterByPosts(null))
     }
   }, [])
+
+  // // Return map bounds based on list of places
+  // const getMapBounds = (map, maps, places) => {
+  //   const bounds = new maps.LatLngBounds()
+
+  //   places.forEach((place) => {
+  //     bounds.extend(new maps.LatLng(place.lat, place.lng))
+  //   })
+  //   return bounds
+  // }
+  // // Re-center map when resizing the window
+  // const bindResizeListener = (map, maps, bounds) => {
+  //   maps.event.addDomListenerOnce(map, 'idle', () => {
+  //     maps.event.addDomListener(window, 'resize', () => {
+  //       map.fitBounds(bounds)
+  //     })
+  //   })
+  // }
 
   const saveUser = (position) => {
     if (!loggedInUser) return
@@ -81,7 +107,6 @@ export function Map() {
       console.log('Geolocation is not supported by this browser.')
     }
   }
-
   function showPosition(position) {
     const positionToSave = {
       lat: position.coords.latitude,
@@ -104,13 +129,25 @@ export function Map() {
     setIsMapClicked((prev) => !prev)
   }
 
-  const defaultProps = {
-    center: {
-      lat: 32.05591645013164,
-      lng: 34.7549857056555,
-    },
-    zoom: 5,
-  }
+  // const handleApiLoaded = (map, maps, places) => {
+  //   // Get bounds by our places
+  //   const bounds = getMapBounds(map, maps, places)
+  //   // Fit map to bounds
+  //   map.fitBounds(bounds)
+  //   // Bind the resize listener
+  //   bindResizeListener(map, maps, bounds)
+  // }
+
+  const places = [{ lat: 30.911220168353783, lng: 58.405513914562775 }]
+
+  // const defaultProps = {
+  //   center: {
+  //     lat: 32.05591645013164,
+  //     lng: 34.7549857056555,
+  //   },
+  //   zoom: 1,
+  //   yesIWantToUseGoogleMapApiInternals: true,
+  // }
 
   console.log('render Map')
   return (
@@ -121,7 +158,15 @@ export function Map() {
           bootstrapURLKeys={{ key: '' }}
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
+          yesIWantToUseGoogleMapApiInternals
+          // onGoogleApiLoaded={({ map, maps }) =>
+          //   handleApiLoaded(map, maps, places)
+          // }
+          onChange={() => console.log('onBoundsChange')}
           onClick={(ev) => onClickMap(ev)}
+          onDrag={(map) => console.log('onDrag')}
+          onDragEnd={(map) => console.log('onDragEnd')}
+          onRightClick={() => console.log('onRightClick')}
         >
           {users &&
             users.map((user) => (
@@ -177,6 +222,20 @@ export function Map() {
           loggedInUser={loggedInUser}
         />
       )}
+      <button
+        onClick={() =>
+          setDefaultProps({
+            center: {
+              lat: 32.29430021651131,
+              lng: 58.140507578610226,
+            },
+            zoom: 6,
+            yesIWantToUseGoogleMapApiInternals: true,
+          })
+        }
+      >
+        btn
+      </button>
     </section>
   )
 }

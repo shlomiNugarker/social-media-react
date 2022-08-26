@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { uploadImg, uploadVid } from '../../services/imgUpload.service'
 
 export const CreatePostModal = ({
@@ -25,7 +26,10 @@ export const CreatePostModal = ({
     const field = e.target.name
     let value =
       e.target.type === 'number' ? +e.target.value || '' : e.target.value
-    setNewPost((prevCred) => ({ ...prevCred, [field]: value }))
+    setNewPost((prevCred) => ({
+      ...prevCred,
+      [field]: value,
+    }))
   }
 
   const doSubmit = () => {
