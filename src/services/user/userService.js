@@ -20,7 +20,6 @@ async function getUsers(filterBy) {
 
 async function getById(userId) {
   const user = await httpService.get(`user/${userId}`)
-
   return user
 }
 function remove(userId) {

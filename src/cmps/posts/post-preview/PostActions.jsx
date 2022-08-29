@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 export const PostActions = ({
   post,
@@ -10,6 +11,8 @@ export const PostActions = ({
   onSharePost, // TODO: SHARE POST !
   loggedInUser,
 }) => {
+  const history = useHistory()
+
   const isLogedInUserLikePost = post?.reactions.some((reaction) => {
     return loggedInUser._id === reaction.userId
   })
@@ -35,7 +38,10 @@ export const PostActions = ({
         <FontAwesomeIcon className="share-icon icon" icon="fa-solid fa-share" />
         <span>Share</span>
       </button>
-      <button className="send">
+      <button
+        className="send"
+        onClick={() => history.push(`/main/message/${post.userId}`)}
+      >
         <FontAwesomeIcon
           className="send-icon icon"
           icon="fa-solid fa-paper-plane"

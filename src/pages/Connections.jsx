@@ -9,11 +9,35 @@ import { MyConnectionPreview } from '../cmps/connections/MyConnectionPreview'
 
 export function Connections() {
   const dispatch = useDispatch()
+
+  const [connections, setConnections] = useState(null)
+  const [field, setField] = useState({ fullname: '' })
+
   const { loggedInUser } = useSelector((state) => state.userModule)
 
+  const handleChange = async ({ target }) => {
+    const field = target.name
+    let value = target.type === 'number' ? +target.value || '' : target.value
+    setField({ [field]: value })
+    setFilter(value)
+  }
+
   useEffect(() => {
-    // eslint-disable-next-line
-  }, [])
+    if (loggedInUser?.connections) {
+      setConnections([...loggedInUser?.connections])
+    }
+  }, [loggedInUser])
+
+  const setFilter = (txt) => {
+    const regex = new RegExp(txt, 'i')
+    const filteredCnnections = [...loggedInUser?.connections].filter(
+      (connection) => {
+        return regex.test(connection.fullname)
+      }
+    )
+    setConnections(filteredCnnections)
+    console.log(filteredCnnections)
+  }
 
   if (!loggedInUser) return
 
@@ -31,6 +55,10 @@ export function Connections() {
               <FontAwesomeIcon className="search-icon" icon="fas fa-search" />
               <input
                 type="text"
+                onChange={handleChange}
+                id="fullname"
+                name="fullname"
+                value={field.fullname}
                 placeholder="Search by name"
                 className="input"
               />
@@ -38,7 +66,7 @@ export function Connections() {
           </div>
 
           <div className="my-connection-list">
-            {loggedInUser.connections.map((connection) => (
+            {connections?.map((connection) => (
               <MyConnectionPreview
                 key={utilService.makeId()}
                 connection={connection}

@@ -5,6 +5,8 @@ import { setCurrPage } from '../store/actions/postActions'
 import { NotificationsList } from '../cmps/notifications/NotificationsList'
 
 export function Notifications() {
+  const { loggedInUser } = useSelector((state) => state.userModule)
+
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(setCurrPage('notifications'))

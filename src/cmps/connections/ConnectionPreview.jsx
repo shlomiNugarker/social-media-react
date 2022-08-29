@@ -20,7 +20,7 @@ export function ConnectionPreview({ user }) {
       </div>
 
       <div className="btn-container">
-        <button>Follow</button>
+        <button>Connect</button>
       </div>
     </li>
   )

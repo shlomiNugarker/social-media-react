@@ -4,6 +4,11 @@
   background-color: white;
   padding: 10px 15px 0 15px;
   border-radius: 10px;
+
+  .loading-circle {
+    height: 70px;
+    width: 70px;
+  }
   .img-actor {
     display: flex;
     align-items: center;

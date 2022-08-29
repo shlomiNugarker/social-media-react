@@ -1,2 +1,32 @@
 .posts-list {
+  .load-more {
+    margin: 10px 5px 15px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .load-btn {
+      background-color: white;
+      width: 60px;
+      padding: 10px;
+      border-radius: 15px;
+      color: #b2b2b2;
+
+      &:hover {
+        color: black;
+      }
+
+      span {
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    p {
+      text-align: center;
+      cursor: pointer;
+    }
+  }
 }

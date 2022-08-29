@@ -4,6 +4,7 @@ import TimeAgo from 'react-timeago'
 import { userService } from '../../services/user/userService'
 import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import loadingGif from '../../assets/imgs/loading-circle.gif'
 
 export function MsgPreview({
   chat,
@@ -49,6 +50,16 @@ export function MsgPreview({
   const containerStyle = `container ${isChatChooseen}`
 
   // console.log('render MsgPreview')
+
+  if (!theNotLoggedUserChat)
+    return (
+      <div className="msg-preview">
+        <span className="loading-circle">
+          <img src={loadingGif} alt="" />
+        </span>
+      </div>
+    )
+
   return (
     <section className="msg-preview" onClick={onClickChat}>
       <div className={containerStyle}>

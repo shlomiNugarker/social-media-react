@@ -7,10 +7,14 @@ export const postService = {
   getById,
   remove,
   save,
+  getPostsLength,
 }
 
 async function query(filterBy = {}) {
   return await httpService.get(ENDPOINT, filterBy)
+}
+async function getPostsLength(filterBy = {}) {
+  return await httpService.get(ENDPOINT + '/length', filterBy)
 }
 
 async function getById(id) {

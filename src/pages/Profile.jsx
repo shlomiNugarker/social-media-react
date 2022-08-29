@@ -6,12 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { userService } from '../services/user/userService'
 import { PostsList } from '../cmps/posts/PostsList'
 import { ImgPreview } from '../cmps/profile/ImgPreview'
+import loadingGif from '../assets/imgs/loading-gif.gif'
 import { EditModal } from '../cmps/profile/EditModal'
 import {
+  getPostsLength,
   loadPosts,
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
+import { getUserById, updateUser } from '../store/actions/userActions'
 
 export function Profile() {
   const params = useParams()
@@ -21,9 +24,15 @@ export function Profile() {
   const [user, setUser] = useState(null)
   const [isShowImdProfile, setIsShowImdProfile] = useState(false)
   const [isShowEditModal, setIsShowEditModal] = useState(false)
+  const [isConnected, setIsConnected] = useState(null)
 
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
+
+  useEffect(() => {
+    check()
+    return () => {}
+  }, [user])
 
   const loadUser = async () => {
     const user = await userService.getById(params.userId)
@@ -42,21 +51,59 @@ export function Profile() {
     toggleShowImgProfile()
   }
 
-  const connectProfile = () => {
-    if (isConnected) {
-      // Remove
-    } else if (!isConnected) {
-      // Add
-      const connectionToAdd = {
-        userId: user._id,
-      }
-    }
+  const check = () => {
+    const isConnected = loggedInUser?.connections?.some(
+      (connection) => connection?.userId === user?._id
+    )
+
+    setIsConnected(isConnected)
   }
 
-  const isConnected = () => {
-    return loggedInUser.connections.some(
-      (connection) => connection.userId === user._id
-    )
+  const connectProfile = async () => {
+    if (!user) return
+    if (isConnected === true) {
+      // Remove
+      const connectionToRemve = JSON.parse(JSON.stringify(user))
+      const loggedInUserToUpdate = JSON.parse(JSON.stringify(loggedInUser))
+
+      loggedInUserToUpdate.connections =
+        loggedInUserToUpdate.connections.filter(
+          (connection) => connection.userId !== connectionToRemve._id
+        )
+
+      connectionToRemve.connections = connectionToRemve.connections.filter(
+        (connection) => connection.userId !== loggedInUserToUpdate._id
+      )
+
+      dispatch(updateUser(loggedInUserToUpdate))
+      dispatch(updateUser(connectionToRemve))
+
+      setUser((prev) => ({ ...prev, ...connectionToRemve }))
+    } else if (isConnected === false) {
+      // Add
+      const connectionToAdd = JSON.parse(JSON.stringify(user))
+
+      const loggedInUserToUpdate = JSON.parse(JSON.stringify(loggedInUser))
+
+      connectionToAdd.connections.unshift({
+        userId: loggedInUserToUpdate._id,
+        fullname: loggedInUserToUpdate.fullname,
+      })
+
+      loggedInUserToUpdate.connections.push({
+        userId: connectionToAdd._id,
+        fullname: connectionToAdd.fullname,
+      })
+
+      console.log('before')
+      await dispatch(updateUser(loggedInUserToUpdate))
+      await dispatch(updateUser(connectionToAdd))
+      console.log('after')
+
+      console.log(connectionToAdd)
+
+      setUser(connectionToAdd)
+    }
   }
 
   const moveToChat = () => {
@@ -69,18 +116,28 @@ export function Profile() {
     }
     dispatch(setCurrPage('profile'))
     dispatch(setFilterByPosts(filterBy))
+    // dispatch(getPostsLength())
     loadUser()
     dispatch(loadPosts(filterBy))
+    dispatch(getPostsLength())
 
     return () => {
       dispatch(setFilterByPosts(null))
     }
   }, [params.userId, loggedInUser])
 
-  if (!user) return <section className="feed-load">Loading user...</section>
+  if (!user)
+    return (
+      <section className="feed-load">
+        <span className="gif-container">
+          <img className="loading-gif" src={loadingGif} alt="" />
+        </span>
+      </section>
+    )
 
   const isLoggedInUserProfile = loggedInUser?._id === user?._id
 
+  console.log('render profile')
   return (
     <section className="profile-page">
       <div className="left">
@@ -99,6 +156,9 @@ export function Profile() {
               <div className="profession">
                 <p>{user.profession}</p>
               </div>
+              <div className="profession">
+                <p>{user.email}</p>
+              </div>
               <div className="btns-container">
                 {isLoggedInUserProfile && (
                   <button className="add-details" onClick={toggleShowEditModal}>
@@ -108,10 +168,11 @@ export function Profile() {
                 {!isLoggedInUserProfile && (
                   <button className="connect" onClick={connectProfile}>
                     <FontAwesomeIcon icon="fa-solid fa-user-plus" />
-                    <p>{isConnected ? 'Connect' : 'Disconnect'}</p>
+                    <p>{!isConnected ? 'Connect' : 'Disconnect'}</p>
                   </button>
                 )}
-                <button className="follow">Follow</button>
+
+                {/* <button className="follow">Follow</button> */}
                 <button className="message" onClick={() => moveToChat()}>
                   Message
                 </button>

@@ -5,14 +5,14 @@ import { login, signup, logout } from '../store/actions/userActions'
 
 export const Signup = ({ history }) => {
   const dispatch = useDispatch()
-  
+
   const [signin, setIsSignin] = useState(false)
   const [cred, setCred] = useState({
     username: '',
     password: '',
     fullname: '',
   })
-  
+
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   const handleChange = async ({ target }) => {
@@ -61,8 +61,8 @@ export const Signup = ({ history }) => {
 
   return (
     <section className="sign-up-page">
-      <div className="logo-container">
-        <p>linkedin</p>
+      <div className="logo-container" onClick={() => history.push(`/home`)}>
+        <p>Travelsdin</p>
       </div>
       <div className="form-container">
         <form
@@ -72,7 +72,7 @@ export const Signup = ({ history }) => {
           }}
         >
           <h1>{signin ? 'Sign in' : 'Sign up'}</h1>
-          <p>Stay updated on your professional world</p>
+          <p>Stay updated on your amazing world</p>
           {!signin && (
             <input
               required

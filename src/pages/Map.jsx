@@ -53,7 +53,7 @@ export function Map() {
 
     return () => {
       dispatch(setFilterByPosts(null))
-      dispatch(setFilterByPosts(null))
+      dispatch(setFilterByUsers(null))
     }
   }, [])
 
@@ -129,25 +129,7 @@ export function Map() {
     setIsMapClicked((prev) => !prev)
   }
 
-  // const handleApiLoaded = (map, maps, places) => {
-  //   // Get bounds by our places
-  //   const bounds = getMapBounds(map, maps, places)
-  //   // Fit map to bounds
-  //   map.fitBounds(bounds)
-  //   // Bind the resize listener
-  //   bindResizeListener(map, maps, bounds)
-  // }
-
   const places = [{ lat: 30.911220168353783, lng: 58.405513914562775 }]
-
-  // const defaultProps = {
-  //   center: {
-  //     lat: 32.05591645013164,
-  //     lng: 34.7549857056555,
-  //   },
-  //   zoom: 1,
-  //   yesIWantToUseGoogleMapApiInternals: true,
-  // }
 
   console.log('render Map')
   return (

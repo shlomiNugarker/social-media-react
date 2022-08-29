@@ -63,9 +63,15 @@ export function logout() {
 }
 
 export function updateUser(user) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const { loggedinUser } = getState().userModule
     const savedUser = await userService.update(user)
-    dispatch({ type: 'UPDATE_USER', user: savedUser })
+    console.log('updateUser')
+    if (savedUser._id === (await getLoggedinUser._id)) {
+      dispatch({ type: 'UPDATE_LOGGED_IN_USER', user: savedUser })
+    } else {
+      // dispatch({ type: 'UPDATE_USER', user: savedUser })
+    }
     return savedUser
   }
 }
@@ -82,9 +88,13 @@ export function removeUser(userId) {
 }
 
 export function getUserById(userId) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
+      const { users } = getState().userModule
+      if (users[userId]) return users[userId]
+
       const user = await userService.getById(userId)
+      dispatch({ type: 'SAVE_USER', user: user })
       return user
     } catch (err) {
       console.log('cannot getUserById:', err)

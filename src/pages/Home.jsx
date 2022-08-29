@@ -3,9 +3,11 @@ import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { login, signup } from '../store/actions/userActions'
+import { Link, useHistory } from 'react-router-dom'
 
 export const Home = (props) => {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const [creds, setCreds] = useState({
     username: 'shlomi123',
@@ -41,7 +43,7 @@ export const Home = (props) => {
     <section className="home-page">
       <header className="home-header">
         <div>
-          <div className="home-logo">Linkedin</div>
+          <div className="home-logo">Travelsdin</div>
         </div>
         <nav className="home-nav">
           <ul>
@@ -66,17 +68,23 @@ export const Home = (props) => {
             <li>
               <button>
                 <FontAwesomeIcon icon="fa-solid fa-compass" />
-                <span>Jobs</span>
+                <span>Places</span>
               </button>
             </li>
             <div className="divider"></div>
             <li>
-              <button className="join-now-btn">
+              <button
+                className="join-now-btn"
+                onClick={() => history.push(`/signup`)}
+              >
                 <span>Join now</span>
               </button>
             </li>
             <li>
-              <button className="sign-in-btn">
+              <button
+                className="sign-in-btn"
+                onClick={() => history.push(`/signup`)}
+              >
                 <span>Sign in</span>
               </button>
             </li>
@@ -141,7 +149,7 @@ export const Home = (props) => {
               <a href="">Remote</a>
             </li>
             <li>
-              <a href=""> Work from Home</a>
+              <a href=""> Work and Travel</a>
             </li>
 
             <li>
@@ -157,7 +165,7 @@ export const Home = (props) => {
               <a href="">Salary and Compensation</a>
             </li>
             <li>
-              <a href="">Starting a job</a>
+              <a href="">Starting a trip</a>
             </li>
           </ul>
         </div>
@@ -204,13 +212,15 @@ export const Home = (props) => {
       <div className="post">
         <div className="title-container">
           <h1 className="title">
-            Post your job for <br /> millions of people to see
+            Post your story for <br /> millions of people to see
           </h1>
         </div>
-        <div className="btns-container">
+        <div className="btns-container" onClick={() => history.push(`/signup`)}>
           <ul>
             <li>
-              <a href=""> Post a job</a>
+              <a href="" onClick={() => history.push(`/signup`)}>
+                Post your story
+              </a>
             </li>
           </ul>
         </div>
@@ -220,12 +230,12 @@ export const Home = (props) => {
         <div className="title-container">
           <div>
             <h1 className="title">
-              Let the right people know <br /> you're open to work
+              Let the right people know <br /> you're traveling in their area
             </h1>
             <p>
-              With the Open To Work feature, you can privately tell recruiters
-              or publicly share with the LinkedIn community that you are looking
-              for new job opportunities.
+              With the Post On Map feature, you can tell people or publicly
+              share with the Travelsdin community that you are looking for new
+              trip opportunities.
             </p>
           </div>
         </div>
@@ -264,7 +274,7 @@ export const Home = (props) => {
       <div className="join">
         <div>
           <h1>
-            Join your colleagues, classmates, and friends on <br /> LinkedIn.
+            Join your colleagues, classmates, and friends on <br /> Travelsdin.
           </h1>
 
           <div className="get-started-container">

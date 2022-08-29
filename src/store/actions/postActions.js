@@ -11,10 +11,21 @@ export function setCurrPage(page) {
   }
 }
 
+export function addFilterByPosts(filterByPosts) {
+  return async (dispatch) => {
+    dispatch({ type: 'ADD_FILTER_BY_POSTS', filterByPosts })
+  }
+}
+
 export function setFilterByPosts(filterByPosts) {
   return async (dispatch) => {
-    // console.log(filterByPosts)
     dispatch({ type: 'SET_FILTER_BY_POSTS', filterByPosts })
+  }
+}
+
+export function setNextPage() {
+  return async (dispatch) => {
+    dispatch({ type: 'SET_NEXT_PAGE' })
   }
 }
 
@@ -23,6 +34,7 @@ export function loadPosts() {
     try {
       const { filterByPosts } = getState().postModule
       const posts = await postService.query(filterByPosts)
+      await getPostsLength()
       dispatch({ type: 'SET_POSTS', posts })
     } catch (err) {
       console.log('err:', err)
@@ -30,18 +42,44 @@ export function loadPosts() {
   }
 }
 
-// export function loadPostsByUserId() {
-//   return async (dispatch, getState) => {
-//     try {
-//       const { filterBy } = getState().postModule
-//       const posts = await postService.query(filterBy)
-//       dispatch({ type: 'ADD_POSTS', posts })
-//     } catch (err) {
-//       console.log('err:', err)
-//     }
-//   }
-// }
+export function getPostsLength() {
+  console.log('[getpostslength]')
+  return async (dispatch, getState) => {
+    try {
+      const { filterByPosts } = getState().postModule
+      const postsLength = await postService.getPostsLength(filterByPosts)
+      console.log(postsLength)
+      dispatch({ type: 'SET_POSTS_LENGTH', postsLength })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+///////////////
+//// ADDING NEXT PAGE
+export function addPosts() {
+  return async (dispatch, getState) => {
+    try {
+      console.log('load posts')
+      const { filterByPosts } = getState().postModule
+      console.log({ filterByPosts })
+      const { pageNumber } = getState().postModule
+      const newFilterBy = {
+        ...filterByPosts,
+        page: pageNumber,
+      }
 
+      dispatch({ type: 'SET_IS_POSTS_LOADING', isLoading: true })
+      const posts = await postService.query(newFilterBy)
+      dispatch({ type: 'ADD_POSTS', posts })
+      dispatch({ type: 'SET_IS_POSTS_LOADING', isLoading: false })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+///////////////
 export function savePost(post) {
   return async (dispatch) => {
     try {

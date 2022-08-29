@@ -2,11 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
 import { Link, useHistory } from 'react-router-dom'
 import { userService } from '../../../services/user/userService'
+import loadingCircle from '../../../assets/imgs/loading-circle.gif'
 
 export const PostHeader = ({ post, userPost }) => {
   const history = useHistory()
 
-  if (!userPost) return <section className="post-header">Loading</section>
+  if (!userPost)
+    return (
+      <section className="post-header">
+        <img className="loading-circle" src={loadingCircle} alt="" />
+      </section>
+    )
 
   const postUrl = ` /main/post/${post.userId}/${post._id}`
 

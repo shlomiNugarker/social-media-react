@@ -23,6 +23,7 @@
     padding: 10px 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+
     .delete-container {
       color: #666666;
       width: 100%;
@@ -41,6 +42,8 @@
     }
     &:hover {
       background-color: rgba(0, 0, 0, 0.188);
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
     }
   }
 
@@ -79,11 +82,11 @@
     width: 100%;
     margin: 5px 0 0 0;
     padding: 10px 15px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.188);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
     }
     button {
       color: #666666;
@@ -92,6 +95,7 @@
       align-items: center;
       border: none;
       background: unset;
+
       svg {
         font-size: 25px;
       }

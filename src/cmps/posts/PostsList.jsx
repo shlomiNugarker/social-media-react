@@ -2,17 +2,86 @@ import { PostPreview } from './post-preview/PostPreview'
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { utilService } from '../../services/utilService'
+import { useEffectUpdate } from '../../hooks/useEffectUpdate'
+import loadingGif from '../../assets/imgs/loading-gif.gif'
+import { useParams } from 'react-router-dom'
+import {
+  addPosts,
+  addFilterByPosts,
+  setNextPage,
+  // getPostsLength,
+} from '../../store/actions/postActions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const PostsList = () => {
+  const dispatch = useDispatch()
+  const params = useParams()
   const posts = useSelector((state) => state.postModule.posts)
+  const { pageNumber } = useSelector((state) => state.postModule)
+  const { isPostsLoading } = useSelector((state) => state.postModule)
+  const { postsLength } = useSelector((state) => state.postModule)
 
-  if (!posts) return <div>Loading posts...</div>
+  const onLoadNextPage = () => {
+    const filterBy = {
+      pageNumber,
+    }
+    if (params.userId) filterBy.userId = params.userId
+
+    if (postsLength === posts?.length) return
+
+    dispatch(addFilterByPosts(filterBy))
+    dispatch(addPosts())
+    dispatch(setNextPage())
+  }
+
+  const handleScroll = () => {
+    // console.log(window.scrollY + window.innerHeight) //scrolled from top
+    // console.log(window.innerHeight) //visible part of screen
+    if (
+      window.scrollY + window.innerHeight >=
+      document.documentElement.scrollHeight
+    ) {
+      console.log('do')
+      onLoadNextPage()
+    }
+  }
+
+  useEffect(() => {
+    // dispatch(getPostsLength())
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  if (!posts)
+    return (
+      <div className="posts-list">
+        <span className="gif-container">
+          <img className="loading-gif" src={loadingGif} alt="" />
+        </span>
+      </div>
+    )
   // console.log('render PostsList')
   return (
     <section className="posts-list">
       {posts.map((post) => (
         <PostPreview key={post._id} post={post} />
       ))}
+      <div onClick={onLoadNextPage} className="load-more">
+        {!isPostsLoading && posts.length < postsLength && (
+          <p className="load-btn">
+            <span>
+              <FontAwesomeIcon icon="fa-solid fa-caret-down" />
+            </span>
+          </p>
+        )}
+        {isPostsLoading && posts.length < postsLength && (
+          <span className="gif-container">
+            <img className="loading-gif" src={loadingGif} alt="" />
+          </span>
+        )}
+        {posts.length === postsLength && <p>This is the end..</p>}
+      </div>
     </section>
   )
 }

@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { uploadImg, uploadVid } from '../../services/imgUpload.service'
+import LoadingGif from '../../assets/imgs/loading-gif.gif'
 
 export const CreatePostModal = ({
   toggleShowCreatePost,
@@ -32,6 +33,12 @@ export const CreatePostModal = ({
     }))
   }
 
+  useEffect(() => {
+    return () => {
+      setNewPost(null)
+    }
+  }, [])
+
   const doSubmit = () => {
     onAddPost(newPost)
   }
@@ -42,12 +49,9 @@ export const CreatePostModal = ({
 
   const onUploadImg = async (ev) => {
     try {
-      console.log('uploading')
       setIsUploding(true)
       const res = await uploadImg(ev)
-      console.log(res)
       setIsUploding(false)
-      console.log('finish uploading')
       setNewPost((prev) => {
         return {
           ...prev,
@@ -128,7 +132,13 @@ export const CreatePostModal = ({
         </div>
 
         <div className="is-loading-container">
-          <p>{isUploding && <span>Uploaing...</span>}</p>
+          <p>
+            {isUploding && (
+              <span>
+                <img src={LoadingGif} alt="" />
+              </span>
+            )}
+          </p>
         </div>
 
         <div className="container-video-body">
@@ -154,7 +164,18 @@ export const CreatePostModal = ({
             className="cancel-btn btn"
             onClick={() => {
               console.log('cancel')
-              setNewPost(initPost)
+
+              setNewPost({
+                body: '',
+                imgBodyUrl: null,
+                videoBodyUrl: null,
+                title: '',
+                style: {
+                  textAlign: 'ltr',
+                },
+              })
+
+              toggleShowCreatePost()
             }}
           >
             Cancel

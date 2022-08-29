@@ -40,6 +40,7 @@ import {
   faMapLocation,
   faLocationDot,
   faCommentDots,
+  faCaretDown,
   faCopy,
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -77,6 +78,7 @@ library.add(
   faMapLocation,
   faLocationDot,
   faCommentDots,
+  faCaretDown,
   faCopy
 )
 

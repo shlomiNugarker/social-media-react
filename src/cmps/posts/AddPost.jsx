@@ -8,7 +8,6 @@ export const AddPost = () => {
   const dispatch = useDispatch()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
-  console.log(loggedInUser)
 
   const [isShowCreatePost, setIsShowCreatePost] = useState(false)
 
@@ -26,12 +25,12 @@ export const AddPost = () => {
   }
 
   return (
-    <section className="add-post">
+    <section className="add-post" onClick={toggleShowCreatePost}>
       <section className="top">
         <div className="img-container">
           <img src={loggedInUser.imgUrl} alt="" className="icon" />
         </div>
-        <button className="input-container" onClick={toggleShowCreatePost}>
+        <button className="input-container">
           <span>Start a post</span>
         </button>
       </section>

@@ -2,6 +2,9 @@ const INITIAL_STATE = {
   posts: null,
   filterByPosts: null,
   currPage: null,
+  pageNumber: 1,
+  isPostsLoading: false,
+  postsLength: null,
 }
 
 export function postReducer(state = INITIAL_STATE, action) {
@@ -12,20 +15,46 @@ export function postReducer(state = INITIAL_STATE, action) {
         ...state,
         currPage: action.page,
       }
+    case 'SET_NEXT_PAGE':
+      console.log('SET_NEXT_PAGE', state.pageNumber + 1)
+      return {
+        ...state,
+        pageNumber: state.pageNumber + 1,
+      }
+
+    case 'SET_IS_POSTS_LOADING':
+      console.log('SET_IS_POSTS_LOADING', action.isLoading)
+      return {
+        ...state,
+        isPostsLoading: action.isLoading,
+      }
+
+    case 'SET_POSTS_LENGTH':
+      // console.log('SET_postsLength')
+      return {
+        ...state,
+        postsLength: action.postsLength,
+      }
+    case 'ADD_FILTER_BY_POSTS':
+      console.log('SET_FILTER_BY_POST', action.filterByPosts)
+      return {
+        ...state,
+        filterByPosts: { ...state.filterByPosts, ...action.filterByPosts },
+      }
     case 'SET_FILTER_BY_POSTS':
       // console.log('SET_FILTER_BY_POST')
       return {
         ...state,
-        filterByPosts: { ...action.filterByPosts },
+        filterByPosts: action.filterByPosts,
       }
     case 'SET_POSTS':
-      console.log('SET_POSTS', action.posts)
+      // console.log('SET_POSTS', action.posts)
       return {
         ...state,
         posts: [...action.posts],
       }
     case 'ADD_POST':
-      // console.log('ADD_POST')
+      console.log('ADD_POST')
       return {
         ...state,
         posts: [action.post, ...state.posts],
@@ -34,7 +63,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       // console.log('ADD_POSTS')
       return {
         ...state,
-        posts: [...action.posts],
+        posts: [...state.posts, ...action.posts],
       }
     case 'UPDATE_POST':
       // console.log('UPDATE_POST')

@@ -7,7 +7,28 @@
     display: inline-block;
     margin: 15px 0;
     color: $border;
-    width: 80%;
+    width: 60%;
+  }
+
+  .sort-container {
+    display: flex;
+    justify-content: center;
+
+    .label {
+      display: flex;
+
+      select {
+        border: none;
+        background-color: unset;
+        color: rgb(0, 0, 0);
+      }
+
+      option {
+        border: none;
+
+        padding: 10px;
+      }
+    }
   }
 
   color: #00000099;

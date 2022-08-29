@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ConnectionList } from '../cmps/connections/ConnectionList'
 import { getUsers } from '../store/actions/userActions'
 import { setCurrPage } from '../store/actions/postActions'
+import loadingGif from '../assets/imgs/loading-gif.gif'
 
 export function MyNetwork() {
   const dispatch = useDispatch()
@@ -18,7 +19,14 @@ export function MyNetwork() {
     dispatch(setCurrPage('mynetwork'))
   }, [])
 
-  if (!users) return <section className="my-network">Loading</section>
+  if (!users)
+    return (
+      <section className="network">
+        <span className="gif-container">
+          <img className="loading-gif" src={loadingGif} alt="" />
+        </span>
+      </section>
+    )
   return (
     <section className="my-network-page">
       <div className="left">
@@ -47,7 +55,7 @@ export function MyNetwork() {
               </button>
             </li>
             <li>
-              <button>
+              {/* <button>
                 <div>
                   <span className="logo">
                     <FontAwesomeIcon icon="fa-solid fa-people-group" />
@@ -59,7 +67,7 @@ export function MyNetwork() {
                 <span>
                   <p>23</p>
                 </span>
-              </button>
+              </button> */}
             </li>
           </ul>
         </div>

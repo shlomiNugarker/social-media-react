@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   loggedInUser: null,
-  users: null,
+  users: null, // object map
   usersToAdd: null,
   filterByUsers: null,
 }
@@ -40,7 +40,21 @@ export function userReducer(state = INITIAL_STATE, action) {
         loggedInUser: null,
       }
 
+    case 'Add_USER':
+      return {
+        ...state,
+        users: [...state.users, action.user],
+      }
     case 'UPDATE_USER':
+      return {
+        ...state,
+        users: state.users.map((user) => {
+          return user._id === action.user._id ? action.user : user
+        }),
+      }
+
+    case 'UPDATE_LOGGED_IN_USER':
+      console.log('UPDATE_LOGGED_IN_USER')
       return {
         ...state,
         loggedInUser: action.user,

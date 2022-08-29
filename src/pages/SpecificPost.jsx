@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { PostPreview } from '../cmps/posts/post-preview/PostPreview'
 import {
+  getPostsLength,
   loadPosts,
   setCurrPage,
   setFilterByPosts,
@@ -20,6 +21,7 @@ export const SpecificPost = (props) => {
     }
     dispatch(setFilterByPosts(filterBy))
     dispatch(loadPosts())
+    dispatch(getPostsLength())
 
     return () => {
       dispatch(setFilterByPosts(null))
