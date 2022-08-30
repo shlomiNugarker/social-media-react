@@ -16,6 +16,10 @@ export function SendMessageForm({ onSendMsg, messagesToShow }) {
     setNewMsg({ txt: '' })
   }
 
+  const inputRef = (elInput) => {
+    if (elInput) elInput.focus()
+  }
+
   useEffect(() => {
     setNewMsg({ txt: '' })
     return () => {}
@@ -31,6 +35,7 @@ export function SendMessageForm({ onSendMsg, messagesToShow }) {
     >
       <div className="input-container">
         <textarea
+          ref={inputRef}
           required
           onChange={handleChange}
           type="text"

@@ -34,7 +34,6 @@ export function loadPosts() {
     try {
       const { filterByPosts } = getState().postModule
       const posts = await postService.query(filterByPosts)
-      await getPostsLength()
       dispatch({ type: 'SET_POSTS', posts })
     } catch (err) {
       console.log('err:', err)
@@ -43,12 +42,10 @@ export function loadPosts() {
 }
 
 export function getPostsLength() {
-  console.log('[getpostslength]')
   return async (dispatch, getState) => {
     try {
       const { filterByPosts } = getState().postModule
       const postsLength = await postService.getPostsLength(filterByPosts)
-      console.log(postsLength)
       dispatch({ type: 'SET_POSTS_LENGTH', postsLength })
     } catch (err) {
       console.log('err:', err)
@@ -58,6 +55,7 @@ export function getPostsLength() {
 ///////////////
 //// ADDING NEXT PAGE
 export function addPosts() {
+  // *loadPosts
   return async (dispatch, getState) => {
     try {
       console.log('load posts')
@@ -83,10 +81,13 @@ export function addPosts() {
 export function savePost(post) {
   return async (dispatch) => {
     try {
+      // throw Error('Error')
       const addedPost = await postService.save(post)
       post._id
         ? dispatch({ type: 'UPDATE_POST', post: addedPost })
         : dispatch({ type: 'ADD_POST', post: addedPost })
+
+      return addedPost
     } catch (err) {
       console.log('err:', err)
     }
@@ -111,6 +112,7 @@ export function saveComment(comment) {
       comment._id
         ? dispatch({ type: 'UPDATE_COMMENT', comment: savedComment })
         : dispatch({ type: 'ADD_COMMENT', comment: savedComment })
+      return savedComment
     } catch (err) {
       console.log('err:', err)
     }

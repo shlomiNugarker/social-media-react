@@ -21,11 +21,12 @@
         border: none;
         background-color: unset;
         color: rgb(0, 0, 0);
+        color: rgba(0, 0, 0, 0.627);
+        cursor: pointer;
       }
-
       option {
         border: none;
-
+        cursor: pointer;
         padding: 10px;
       }
     }

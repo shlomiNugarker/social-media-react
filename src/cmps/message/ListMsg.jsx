@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from 'react'
 import { utilService } from '../../services/utilService'
 import { MsgPreview } from './MsgPreview'
 
@@ -13,6 +14,30 @@ export function ListMsg({
   setTheNotLoggedUserChat,
   theNotLoggedUserChat,
 }) {
+  const [chatsToShow, setChatsToShow] = useState(null)
+
+  const [field, setField] = useState({ txt: '' })
+
+  const handleChange = async ({ target }) => {
+    const field = target.name
+    let value = target.type === 'number' ? +target.value || '' : target.value
+    setField({ [field]: value })
+    setFilter(value)
+  }
+
+  const setFilter = (txt) => {
+    const regex = new RegExp(txt, 'i')
+    const filteredChats = [...chats].filter((chat) => {
+      return regex.test(chat.users[0]) || regex.test(chat.users[1])
+    })
+
+    setChatsToShow(filteredChats)
+  }
+
+  useEffect(() => {
+    setChatsToShow([...chats])
+  }, [])
+
   return (
     <section className="list-msg">
       <div className="title-container">
@@ -32,24 +57,32 @@ export function ListMsg({
       </div>
 
       <div className="filter-container">
-        <input type="text" placeholder="Search messages" />
+        <input
+          onChange={handleChange}
+          type="text"
+          id="txt"
+          name="txt"
+          value={field.txt}
+          placeholder="Search messages"
+        />
       </div>
 
       <div className="list">
-        {chats.map((chat) => (
-          <MsgPreview
-            key={chat._id}
-            chat={chat}
-            setMessagesToShow={setMessagesToShow}
-            setChatWith={setChatWith}
-            chatWith={chatWith}
-            setChooseenChatId={setChooseenChatId}
-            getTheNotLoggedUserChat={getTheNotLoggedUserChat}
-            setTheNotLoggedUserChat={setTheNotLoggedUserChat}
-            theNotLoggedUserChat={theNotLoggedUserChat}
-            chooseenChatId={chooseenChatId}
-          />
-        ))}
+        {chatsToShow &&
+          chatsToShow.map((chat) => (
+            <MsgPreview
+              key={chat._id}
+              chat={chat}
+              setMessagesToShow={setMessagesToShow}
+              setChatWith={setChatWith}
+              chatWith={chatWith}
+              setChooseenChatId={setChooseenChatId}
+              getTheNotLoggedUserChat={getTheNotLoggedUserChat}
+              setTheNotLoggedUserChat={setTheNotLoggedUserChat}
+              theNotLoggedUserChat={theNotLoggedUserChat}
+              chooseenChatId={chooseenChatId}
+            />
+          ))}
       </div>
     </section>
   )

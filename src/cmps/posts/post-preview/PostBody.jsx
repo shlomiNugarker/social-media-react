@@ -1,10 +1,10 @@
-export function PostBody({ body, imgUrl, videoUrl }) {
+export function PostBody({ body, imgUrl, videoUrl, toggleShowImgPreview }) {
   return (
     <section className="post-body">
       <div className="post-text">
         <p>{body}</p>
       </div>
-      <div className="img-container">
+      <div className="img-container" onClick={toggleShowImgPreview}>
         {imgUrl && <img src={imgUrl} alt="" />}
       </div>
       <div className="video-container">

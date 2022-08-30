@@ -36,7 +36,6 @@ export function Connections() {
       }
     )
     setConnections(filteredCnnections)
-    console.log(filteredCnnections)
   }
 
   if (!loggedInUser) return
@@ -68,7 +67,7 @@ export function Connections() {
           <div className="my-connection-list">
             {connections?.map((connection) => (
               <MyConnectionPreview
-                key={utilService.makeId()}
+                key={connection.userId}
                 connection={connection}
               />
             ))}

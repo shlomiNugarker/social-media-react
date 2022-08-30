@@ -14,6 +14,8 @@ import {
   loadPosts,
   removePost,
 } from '../../../store/actions/postActions'
+import { saveActivity } from '../../../store/actions/activityAction'
+import { ImgPreview } from '../../profile/ImgPreview'
 
 export const PostPreview = ({ post }) => {
   const dispatch = useDispatch()
@@ -21,6 +23,8 @@ export const PostPreview = ({ post }) => {
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
   const [isShowMenu, setIsShowMenu] = useState(false)
+  const [isShowImgPreview, setIsShowImgPreview] = useState(false)
+
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   useEffect(() => {
@@ -29,6 +33,11 @@ export const PostPreview = ({ post }) => {
 
   const toggleMenu = () => {
     setIsShowMenu((prevVal) => !prevVal)
+  }
+
+  const toggleShowImgPreview = () => {
+    console.log('toggle')
+    setIsShowImgPreview((prev) => !prev)
   }
 
   const loadUserPost = async (id) => {
@@ -41,8 +50,19 @@ export const PostPreview = ({ post }) => {
     setIsShowComments((prev) => !prev)
   }
 
-  const onSharePost = (post) => {
-    console.log('share !', post)
+  const onSharePost = async () => {
+    const shareData = {
+      title: 'Post',
+      text: 'a post from Travelsdin',
+      url: `/main/post/${post.userId}/${post._id}`,
+    }
+
+    try {
+      await navigator.share(shareData)
+      console.log('shared successfully')
+    } catch (err) {
+      console.log(`Error: ${err}`)
+    }
   }
 
   const onLikePost = () => {
@@ -60,7 +80,18 @@ export const PostPreview = ({ post }) => {
         reaction: 'like',
       })
     }
-    dispatch(savePost(post))
+
+    dispatch(savePost(post)).then((savedPost) => {
+      if (savedPost?._id === post._id) {
+        const newActivity = {
+          type: isAlreadyLike ? 'remove-like' : 'add-like',
+          createdBy: loggedInUser._id,
+          createdTo: post.userId,
+          postId: post._id,
+        }
+        dispatch(saveActivity(newActivity))
+      }
+    })
   }
 
   const onRemovePost = () => {
@@ -86,6 +117,7 @@ export const PostPreview = ({ post }) => {
         body={post.body}
         imgUrl={post.imgBodyUrl}
         videoUrl={post.videoBodyUrl}
+        toggleShowImgPreview={toggleShowImgPreview}
       />
       <SocialDetails
         comments={post.comments}
@@ -102,7 +134,11 @@ export const PostPreview = ({ post }) => {
       />
 
       {isShowComments && (
-        <Comments comments={post.comments} postId={post._id} />
+        <Comments
+          comments={post.comments}
+          postId={post._id}
+          userPostId={post.userId}
+        />
       )}
 
       {isShowMenu && (
@@ -111,6 +147,14 @@ export const PostPreview = ({ post }) => {
           onRemovePost={onRemovePost}
           postUserId={post.userId}
           copyToClipBoard={copyToClipBoard}
+        />
+      )}
+
+      {isShowImgPreview && (
+        <ImgPreview
+          toggleShowImg={toggleShowImgPreview}
+          imgUrl={post.imgBodyUrl}
+          title="Image"
         />
       )}
     </section>

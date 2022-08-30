@@ -12,17 +12,26 @@ import { Notifications } from './Notifications'
 import { Connections } from './Connections'
 import { loadChats } from '../store/actions/chatActions'
 import { SpecificPost } from './SpecificPost'
+import {
+  loadActivities,
+  setFilterByActivities,
+} from '../store/actions/activityAction'
 
 export function Main() {
   const dispatch = useDispatch()
-  dispatch(getLoggedinUser())
 
-  // const { loggedInUser } = useSelector((state) => state.userModule)
-  // useEffect(() => {
-  //   const userId = loggedInUser?._id
-  //   if (userId) dispatch(loadChats(userId))
-  //   // eslint-disable-next-line
-  // }, [])
+  const { loggedInUser } = useSelector((state) => state.userModule)
+  useEffect(() => {
+    // dispatch(getLoggedinUser())
+    if (loggedInUser?._id) {
+      const filterBy = {
+        userId: loggedInUser._id,
+      }
+      console.log('sett')
+      dispatch(setFilterByActivities(filterBy))
+      dispatch(loadActivities())
+    }
+  }, [])
 
   // console.log('render Main')
   return (

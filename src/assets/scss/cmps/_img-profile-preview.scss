@@ -20,8 +20,10 @@
     border-radius: 20px;
     top: 50vh;
     left: 50vw;
-    // width: 70vw;
+
     min-width: 50vw;
+    max-width: 95vw;
+
     transform: translate(-50%, -50%);
     padding: 20px;
     min-height: min-content;
@@ -81,9 +83,7 @@
       justify-content: center;
       align-items: center;
       .img {
-        width: 40vw;
-        max-height: 40vw;
-        // border-radius: 50%;
+        max-height: 80vh;
         object-fit: cover;
       }
     }

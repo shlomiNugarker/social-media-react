@@ -1,4 +1,5 @@
 const INITIAL_STATE = {
+  baseUrl: process.env.NODE_ENV === 'production' ? '/' : '/localhost:3030/',
   posts: null,
   filterByPosts: null,
   currPage: null,

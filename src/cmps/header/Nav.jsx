@@ -91,10 +91,10 @@ export const Nav = () => {
               </span>
               <span>
                 Me
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                   className="down-icon"
                   icon="fas fa-sort-down"
-                />
+                /> */}
               </span>
             </p>
           </Link>

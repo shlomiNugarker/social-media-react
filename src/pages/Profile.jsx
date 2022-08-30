@@ -47,7 +47,6 @@ export function Profile() {
   }
 
   const onShowProfile = () => {
-    console.log('onShowProfile')
     toggleShowImgProfile()
   }
 

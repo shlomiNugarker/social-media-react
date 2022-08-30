@@ -34,7 +34,7 @@ export const PostActions = ({
         />
         <span>Comment</span>
       </button>
-      <button className="share" onClick={() => onSharePost(post._id)}>
+      <button className="share" onClick={() => onSharePost()}>
         <FontAwesomeIcon className="share-icon icon" icon="fa-solid fa-share" />
         <span>Share</span>
       </button>
