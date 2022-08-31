@@ -55,7 +55,7 @@ export function NotificaitonPreview({ activity }) {
         createdToUser._id === loggedInUser._id ? 'you' : createdToUser?.fullname
       }`
 
-      const linkToPost = `post/${post.userId}/${activity.postId}`
+      const linkToPost = `post/${post?.userId}/${activity?.postId}`
       setLink(linkToPost)
       setStr(str)
     }
