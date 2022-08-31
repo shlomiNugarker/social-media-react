@@ -96,7 +96,10 @@ export function Message() {
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
     const chatToUpdate = { ...chats[chatIdx] }
     chatToUpdate.messages.push(newMsg)
-    chatToUpdate.users = [loggedInUser.fullname, theNotLoggedUserChat.fullname]
+    chatToUpdate.users = [
+      loggedInUser?.fullname,
+      theNotLoggedUserChat?.fullname,
+    ]
     if (isNewChat) {
       dispatch(removeTempChat(chatToUpdate._id))
       delete chatToUpdate._id

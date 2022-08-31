@@ -86,18 +86,37 @@
     .is-loading-container {
       text-align: center;
       img {
+        margin-left: 10px;
         width: 60px;
+        object-fit: cover;
       }
     }
 
     .container-img-body {
       overflow-y: auto;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .link-container {
+      display: flex;
+      justify-content: center;
+      input {
+        border: none;
+        width: 90%;
+        padding: 5px;
+      }
     }
 
     .btns-add-container {
       position: absolute;
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       margin-bottom: 5px;
       bottom: 0;
       right: 5px;
@@ -150,6 +169,98 @@
           &.post-btn {
             background-color: #378fe9;
             color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .create-post-modal {
+    &.hide {
+    }
+
+    .container {
+      min-width: 85vw;
+      .title {
+        h1 {
+        }
+
+        .close-icon {
+        }
+      }
+
+      .name-container {
+        .img-container {
+          .img-profile {
+          }
+        }
+
+        .name {
+        }
+      }
+
+      .input-container {
+        input,
+        textarea {
+          &:focus {
+          }
+        }
+      }
+
+      .is-loading-container {
+        img {
+        }
+      }
+
+      .container-img-body {
+        img {
+          height: 360px;
+          object-fit: cover;
+        }
+      }
+
+      .link-container {
+        input {
+        }
+      }
+
+      .btns-add-container {
+        .btn {
+          &.cancel-btn {
+            font-size: 16px;
+            &:hover {
+            }
+          }
+
+          &.add-img-btn {
+            font-size: 16px;
+            &:hover {
+            }
+
+            .add-img-body {
+              font-size: 16px;
+            }
+          }
+
+          &.add-video-btn {
+            font-size: 16px;
+            &:hover {
+            }
+
+            .add-video-body {
+              font-size: 16px;
+            }
+          }
+
+          &.post-btn {
+            font-size: 16px;
+          }
+
+          &:hover {
+            &.post-btn {
+            }
           }
         }
       }

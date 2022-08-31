@@ -18,7 +18,7 @@ export const Nav = () => {
           <Link to="/main/feed">
             <p>
               <FontAwesomeIcon className="nav-icon" icon="fas fa-home-lg-alt" />
-              Home
+              <span>Home</span>
             </p>
           </Link>
         </li>
@@ -33,7 +33,7 @@ export const Nav = () => {
                 className="nav-icon"
                 icon="fas fa-user-friends"
               />
-              My Network
+              <span>My Network</span>
             </p>
           </Link>
         </li>
@@ -45,7 +45,7 @@ export const Nav = () => {
                 icon="fa-solid fa-map-location"
               />
               {/* <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" /> */}
-              Map
+              <span>Map</span>
             </p>
           </Link>
         </li>
@@ -57,7 +57,7 @@ export const Nav = () => {
           <Link to={`/main/message`}>
             <p>
               <FontAwesomeIcon className="nav-icon" icon="fas fa-comment" />
-              Messaging
+              <span>Messaging</span>
             </p>
           </Link>
         </li>
@@ -71,7 +71,7 @@ export const Nav = () => {
           <Link to={`/main/notifications`}>
             <p>
               <FontAwesomeIcon className="nav-icon" icon="fas fa-bell" />
-              Notifications
+              <span>Notifications</span>
             </p>
           </Link>
         </li>
@@ -89,7 +89,7 @@ export const Nav = () => {
                   className="profile-icon"
                 />
               </span>
-              <span>
+              <span className="txt">
                 Me
                 {/* <FontAwesomeIcon
                   className="down-icon"
@@ -99,16 +99,16 @@ export const Nav = () => {
             </p>
           </Link>
         </li>
-        <li>
+        <li className="volunteering-btn">
           <p>
             <FontAwesomeIcon className="nav-icon" icon="fas fa-th" />
-            Work
+            Volunteer
           </p>
         </li>
-        <li>
+        <li className="post-volunteer-btn">
           <p>
             <FontAwesomeIcon className="nav-icon" icon="fas fa-plus" />
-            Post a job
+            more
           </p>
         </li>
       </ul>

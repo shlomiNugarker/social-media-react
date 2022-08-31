@@ -204,7 +204,7 @@ export function Map() {
           loggedInUser={loggedInUser}
         />
       )}
-      <button
+      {/* <button
         onClick={() =>
           setDefaultProps({
             center: {
@@ -217,7 +217,7 @@ export function Map() {
         }
       >
         btn
-      </button>
+      </button> */}
     </section>
   )
 }

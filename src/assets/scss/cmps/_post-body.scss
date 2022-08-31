@@ -1,5 +1,13 @@
 .post-body {
   padding: 10px 0 0 0;
+
+  .title {
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      padding: 0 15px;
+    }
+  }
   .post-text {
     padding: 0 15px;
     p {
@@ -15,6 +23,11 @@
     }
   }
 
+  .link {
+    cursor: pointer;
+    padding: 5px 15px;
+  }
+
   .img-container {
     display: flex;
     align-items: center;
@@ -27,6 +40,40 @@
       // max-height: 60vh;
       max-width: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .post-body {
+    .title {
+      h1 {
+      }
+    }
+    .post-text {
+      p {
+      }
+      .rtl {
+      }
+
+      .ltr {
+      }
+    }
+
+    .link {
+      width: 100%;
+      color: rgb(103, 103, 228);
+      a {
+      }
+    }
+    .the-link {
+      background-color: lightcoral;
+      display: none;
+    }
+
+    .img-container {
+      img {
+      }
     }
   }
 }

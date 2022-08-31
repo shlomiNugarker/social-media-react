@@ -89,3 +89,42 @@
     }
   }
 }
+
+@media (max-width: 1160px) {
+  .img-profile-preview {
+    .bg {
+    }
+
+    .container {
+      min-width: 90vw;
+      padding: 10px;
+      .title {
+        margin: 0 0 5px;
+        font-size: 14px;
+        .user-details {
+          .img {
+          }
+          .fullname {
+          }
+        }
+
+        .logo-close {
+        }
+      }
+
+      .body {
+      }
+
+      .see-post {
+        p {
+        }
+      }
+
+      .img-container {
+        .img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

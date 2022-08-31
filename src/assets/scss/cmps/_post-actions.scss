@@ -30,3 +30,23 @@
     }
   }
 }
+
+@media (max-width: 460px) {
+  .post-actions {
+    button {
+      svg {
+      }
+      span {
+        display: none;
+      }
+      &:hover {
+      }
+
+      &.liked {
+      }
+
+      .icon {
+      }
+    }
+  }
+}

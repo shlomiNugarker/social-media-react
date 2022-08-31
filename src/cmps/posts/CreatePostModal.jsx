@@ -14,6 +14,7 @@ export const CreatePostModal = ({
     body: '',
     imgBodyUrl: null,
     videoBodyUrl: null,
+    link: '',
     title: '',
     style: {
       textAlign: 'ltr',
@@ -129,6 +130,17 @@ export const CreatePostModal = ({
             value={newPost.txt}
             placeholder="What do you want to talk about?"
           ></textarea>
+        </div>
+
+        <div className="link-container">
+          <input
+            id="link"
+            name="link"
+            value={newPost.link}
+            onChange={handleChange}
+            type="text"
+            placeholder="Your link here"
+          />
         </div>
 
         <div className="is-loading-container">

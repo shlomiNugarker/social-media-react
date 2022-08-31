@@ -69,3 +69,289 @@
     }
   }
 }
+
+@media (max-width: 945px) {
+  .nav {
+    ul {
+      li {
+        &.current-btn {
+        }
+
+        a {
+        }
+
+        &.volunteering-btn {
+          display: none;
+        }
+        &.post-volunteer-btn {
+          display: none;
+        }
+      }
+
+      p {
+        &:hover {
+        }
+
+        .nav-icon {
+        }
+      }
+
+      .me-btn {
+        border-right: unset;
+        p {
+          .profile-icon {
+          }
+
+          span {
+            .down-icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 905px) {
+  .nav {
+    width: min-content;
+    ul {
+      li {
+        &.current-btn {
+        }
+
+        a {
+        }
+
+        &.volunteering-btn {
+        }
+        &.post-volunteer-btn {
+        }
+      }
+
+      p {
+        &:hover {
+        }
+
+        .nav-icon {
+        }
+      }
+
+      .me-btn {
+        p {
+          .profile-icon {
+          }
+
+          span {
+            .down-icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .nav {
+    ul {
+      li {
+        &.current-btn {
+        }
+
+        a {
+        }
+
+        &.volunteering-btn {
+          display: none;
+        }
+        &.post-volunteer-btn {
+          display: none;
+        }
+      }
+
+      p {
+        &:hover {
+        }
+
+        .nav-icon {
+        }
+      }
+
+      .me-btn {
+        border-right: unset;
+        p {
+          .profile-icon {
+          }
+
+          span {
+            .down-icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 545px) {
+  .nav {
+    ul {
+      li {
+        &.current-btn {
+        }
+
+        &.me-btn {
+          a {
+            p {
+              .txt {
+                display: none;
+              }
+            }
+          }
+        }
+
+        a {
+          p {
+            span {
+              display: none;
+            }
+          }
+        }
+
+        &.volunteering-btn {
+        }
+        &.post-volunteer-btn {
+        }
+      }
+
+      p {
+        min-width: 65px;
+        &:hover {
+        }
+
+        .nav-icon {
+        }
+      }
+
+      .me-btn {
+        p {
+          .profile-icon {
+          }
+
+          span {
+            .down-icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  .nav {
+    ul {
+      li {
+        &.current-btn {
+        }
+
+        &.me-btn {
+          a {
+            p {
+              .txt {
+                display: none;
+              }
+            }
+          }
+        }
+
+        a {
+          p {
+            span {
+              display: none;
+            }
+          }
+        }
+
+        &.volunteering-btn {
+        }
+        &.post-volunteer-btn {
+        }
+      }
+
+      p {
+        min-width: 50px;
+        &:hover {
+        }
+
+        .nav-icon {
+        }
+      }
+
+      .me-btn {
+        p {
+          .profile-icon {
+          }
+
+          span {
+            .down-icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 290px) {
+  .nav {
+    ul {
+      li {
+        &.current-btn {
+        }
+
+        &.me-btn {
+          a {
+            p {
+              .txt {
+                display: none;
+              }
+            }
+          }
+        }
+
+        a {
+          p {
+            span {
+              display: none;
+            }
+          }
+        }
+
+        &.volunteering-btn {
+        }
+        &.post-volunteer-btn {
+        }
+      }
+
+      p {
+        min-width: 40px;
+        &:hover {
+        }
+
+        .nav-icon {
+        }
+      }
+
+      .me-btn {
+        p {
+          .profile-icon {
+          }
+
+          span {
+            .down-icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}

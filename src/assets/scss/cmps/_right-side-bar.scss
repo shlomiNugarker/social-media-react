@@ -8,3 +8,11 @@
     margin: 10px 0;
   }
 }
+
+@media (max-width: 1160px) {
+  .right-side-bar {
+    display: none;
+    div {
+    }
+  }
+}

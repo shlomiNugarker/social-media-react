@@ -5,3 +5,11 @@
   margin: 0;
   padding: 0;
 }
+
+@media (max-width: 1150px) {
+  .connection-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

@@ -16,3 +16,23 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 1160px) {
+  .feed-page {
+    grid-template-areas: 'left-side-bar posts  ';
+    grid-template-columns: minmax(0, 5fr) minmax(0, 13fr);
+  }
+}
+@media (max-width: 700px) {
+  .feed-page {
+    grid-template-areas: 'posts';
+    grid-template-columns: 1fr;
+    margin: 0 30px;
+    column-gap: 0;
+  }
+}
+@media (max-width: 7460px) {
+  .feed-page {
+    margin: 0 15px;
+  }
+}

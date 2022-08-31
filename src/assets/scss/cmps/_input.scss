@@ -26,3 +26,31 @@
     }
   }
 }
+
+@media (max-width: 905px) {
+  .input {
+    width: min-content;
+    .search-icon {
+    }
+
+    input {
+      width: 230px;
+      &:focus {
+        width: 230px;
+      }
+    }
+  }
+}
+@media (max-width: 780px) {
+  .input {
+    display: none;
+
+    .search-icon {
+    }
+
+    input {
+      &:focus {
+      }
+    }
+  }
+}

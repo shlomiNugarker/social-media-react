@@ -2,9 +2,11 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import jwt_decode from 'jwt-decode'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, signup, logout } from '../store/actions/userActions'
+import { useHistory } from 'react-router-dom'
 
-export const Signup = ({ history }) => {
+export const Signup = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const [signin, setIsSignin] = useState(false)
   const [cred, setCred] = useState({
@@ -25,7 +27,9 @@ export const Signup = ({ history }) => {
     setCred(() => ({ username: '', password: '', fullname: '' }))
 
   const doLogin = async () => {
-    dispatch(login(cred))
+    dispatch(login(cred)).then((user) => {
+      if (user) history.push('/main/feed')
+    })
     cleanFields()
   }
 

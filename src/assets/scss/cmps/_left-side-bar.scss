@@ -5,3 +5,9 @@
 
   // border: 1px solid $border;
 }
+
+@media (max-width: 700px) {
+  .left-side-bar {
+    display: none;
+  }
+}

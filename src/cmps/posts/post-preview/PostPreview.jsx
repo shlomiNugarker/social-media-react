@@ -117,6 +117,8 @@ export const PostPreview = ({ post }) => {
         body={post.body}
         imgUrl={post.imgBodyUrl}
         videoUrl={post.videoBodyUrl}
+        link={post.link}
+        title={post.title}
         toggleShowImgPreview={toggleShowImgPreview}
       />
       <SocialDetails

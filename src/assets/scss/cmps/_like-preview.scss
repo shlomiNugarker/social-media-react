@@ -40,3 +40,27 @@
     }
   }
 }
+
+@media (max-width: 580px) {
+  .like-preview {
+    flex-direction: column;
+    .container-name {
+    }
+
+    div {
+      width: 100%;
+      justify-content: space-evenly;
+      .img-container {
+        .img {
+        }
+      }
+
+      .fullname {
+      }
+      button {
+        &:hover {
+        }
+      }
+    }
+  }
+}

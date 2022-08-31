@@ -5,6 +5,8 @@
   display: grid;
   grid-template-areas: 'sidebar main';
   grid-template-columns: minmax(300px, 7fr) minmax(0, 17fr);
+  // grid-template-areas: 'sidebar main';
+  // grid-template-columns: minmax(300px, 7fr) minmax(0, 17fr);
   column-gap: 2.4em;
   color: #666666;
   grid-auto-flow: column;
@@ -62,6 +64,42 @@
       background-color: white;
       padding: 25px;
       border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .my-network-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      h3 {
+      }
+    }
+
+    .left {
+      margin-bottom: 10px;
+      .manage-network {
+        ul {
+          li {
+            button {
+              &:hover {
+              }
+
+              div {
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      width: 80%;
+      min-height: 20px;
+      .recommended {
+      }
     }
   }
 }
