@@ -38,6 +38,7 @@ export function Messaging({
             messagesToShow={messagesToShow}
             chatWith={chatWith}
             onSendMsg={onSendMsg}
+            setMessagesToShow={setMessagesToShow}
           />
         )}
       </div>

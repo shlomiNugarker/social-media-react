@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const PostsList = () => {
   const dispatch = useDispatch()
   const params = useParams()
-  const posts = useSelector((state) => state.postModule.posts)
+  const { posts } = useSelector((state) => state.postModule)
   const { pageNumber } = useSelector((state) => state.postModule)
   const { isPostsLoading } = useSelector((state) => state.postModule)
   const { postsLength } = useSelector((state) => state.postModule)
@@ -26,9 +26,9 @@ export const PostsList = () => {
       pageNumber,
     }
     if (params.userId) filterBy.userId = params.userId
-
+    if (!postsLength && !posts) return
     if (postsLength === posts?.length) return
-
+    console.log('do', postsLength, '===', posts?.length)
     dispatch(addFilterByPosts(filterBy))
     dispatch(addPosts())
     dispatch(setNextPage())
@@ -41,7 +41,6 @@ export const PostsList = () => {
       window.scrollY + window.innerHeight >=
       document.documentElement.scrollHeight
     ) {
-      console.log('do')
       onLoadNextPage()
     }
   }
@@ -50,7 +49,10 @@ export const PostsList = () => {
     // dispatch(getPostsLength())
 
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      dispatch(setNextPage(1))
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   if (!posts)

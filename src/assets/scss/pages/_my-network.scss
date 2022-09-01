@@ -80,6 +80,7 @@
 
     .left {
       margin-bottom: 10px;
+
       .manage-network {
         ul {
           li {
@@ -100,6 +101,14 @@
       min-height: 20px;
       .recommended {
       }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .my-network-page {
+    .left {
+      width: 80%;
     }
   }
 }

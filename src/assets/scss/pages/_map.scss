@@ -10,10 +10,14 @@
 @media (max-width: 1150px) {
   .main-page {
     .map-page {
-      background-color: lightcoral;
+      // background-color: lightcoral;
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      .map {
+        width: 90%;
+      }
     }
   }
 }

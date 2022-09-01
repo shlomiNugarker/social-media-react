@@ -57,13 +57,12 @@ export function loadChats(userId) {
 export function saveChat(chat) {
   return async (dispatch) => {
     try {
-      console.log(chat)
       const addedChat = await chatService.save(chat)
       chat._id
         ? dispatch({ type: 'UPDATE_CHAT', chat: addedChat })
         : dispatch({ type: 'ADD_CHAT', chat: addedChat })
 
-      return chat
+      return addedChat
     } catch (err) {
       console.log('err:', err)
       throw new Error(err)

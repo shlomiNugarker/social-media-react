@@ -277,3 +277,142 @@
     align-items: center;
   }
 }
+
+@media (max-width: 690px) {
+  .home-page {
+    .home-header {
+      .home-nav {
+        display: none;
+        ul {
+          .divider {
+          }
+
+          li {
+            button {
+              &:hover {
+              }
+
+              span {
+              }
+            }
+
+            .join-now-btn {
+              &:hover {
+              }
+            }
+            .sign-in-btn {
+              &:hover {
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .welcome-signin-container {
+      .form {
+        input {
+        }
+
+        .msg {
+          p {
+          }
+        }
+
+        a {
+        }
+
+        div {
+          button {
+          }
+        }
+
+        .title {
+        }
+      }
+    }
+
+    div.explore {
+    }
+
+    div.find {
+    }
+    div.post {
+    }
+    div.meet {
+    }
+
+    .explore,
+    .find,
+    .post,
+    .meet {
+      flex-direction: column;
+      padding: 20px;
+
+      .title-container {
+        margin: 0;
+        .title {
+        }
+
+        p {
+        }
+      }
+
+      .btns-container {
+        h2 {
+        }
+
+        ul {
+          li {
+            &:hover {
+            }
+            a {
+              &:hover {
+              }
+            }
+          }
+        }
+      }
+
+      .container-r-side {
+        .img-container {
+          .img {
+          }
+        }
+      }
+    }
+
+    .connect-learn {
+      display: flex;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+      .connect,
+      .learn {
+        h1 {
+        }
+
+        a {
+          &:hover {
+          }
+        }
+      }
+    }
+
+    .join {
+      div {
+        h1 {
+        }
+
+        .get-started-container {
+          .get-started-btn {
+          }
+        }
+      }
+    }
+
+    .footer-home {
+    }
+  }
+}

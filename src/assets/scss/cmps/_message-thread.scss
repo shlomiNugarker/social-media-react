@@ -38,6 +38,11 @@
         .container-logo {
           color: #00000099;
           .logo-menu {
+            cursor: pointer;
+
+            svg {
+              font-size: 25px;
+            }
           }
         }
       }
@@ -73,6 +78,50 @@
             border-radius: 10px;
             padding: 7px 10px;
             border: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .messaging {
+    .container {
+      .message-thread {
+        // display: none;
+        padding: 0 10px;
+        position: fixed;
+        width: 95%;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        .header-message-thread {
+          div {
+            .img-profile {
+              .img {
+              }
+            }
+            .fullname {
+            }
+          }
+
+          .container-logo {
+            .logo-menu {
+            }
+          }
+        }
+
+        .user-profile-details {
+        }
+
+        .send-msg-container {
+          .input-container {
+            textarea {
+            }
+          }
+          .btns-container {
+            button {
+            }
           }
         }
       }

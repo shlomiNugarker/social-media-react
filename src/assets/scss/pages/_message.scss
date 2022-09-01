@@ -15,3 +15,20 @@
     border: 1px solid $border;
   }
 }
+
+@media (max-width: 920px) {
+  .message-page {
+    grid-template-areas: 'messaging';
+    grid-template-columns: minmax(0, 1fr);
+
+    .right-side-message {
+      display: none;
+    }
+  }
+}
+@media (max-width: 630px) {
+  .message-page {
+    .right-side-message {
+    }
+  }
+}

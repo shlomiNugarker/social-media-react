@@ -49,3 +49,51 @@
     }
   }
 }
+
+@media (max-width: 920px) {
+  .notifications-page {
+    grid-template-areas: 'main';
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    .side-bar {
+      display: none;
+      .container {
+      }
+    }
+
+    .main {
+      width: 90%;
+      .container {
+        // width: 90%;
+      }
+    }
+
+    .aside {
+      display: none;
+      .container {
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .notifications-page {
+    display: flex;
+    justify-content: center;
+    .side-bar {
+      .container {
+      }
+    }
+
+    .main {
+      width: 90%;
+      .container {
+      }
+    }
+
+    .aside {
+      .container {
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { setCurrPage } from '../store/actions/postActions'
 import { NotificationsList } from '../cmps/notifications/NotificationsList'
+import loadingGif from '../assets/imgs/loading-gif.gif'
 import {
   loadActivities,
   setFilterByActivities,
@@ -10,6 +11,7 @@ import {
 
 export function Notifications() {
   const { loggedInUser } = useSelector((state) => state.userModule)
+  const { activities } = useSelector((state) => state.activityModule)
 
   const dispatch = useDispatch()
 
@@ -25,6 +27,15 @@ export function Notifications() {
 
     // eslint-disable-next-line
   }, [loggedInUser])
+
+  if (!activities)
+    return (
+      <div className="message-page">
+        <div className="gif-container">
+          <img className="loading-gif" src={loadingGif} alt="" />
+        </div>
+      </div>
+    )
 
   return (
     <div className="notifications-page">

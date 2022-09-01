@@ -22,7 +22,6 @@
     img {
       width: 55px;
       height: 55px;
-      background-color: burlywood;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -59,6 +58,44 @@
       margin: 5px 0;
       svg {
         font-size: 22px;
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .notificaiton-preview {
+    height: 105px;
+    &:hover {
+    }
+
+    .img-container {
+      width: 25%;
+      img {
+        margin: 0 10px 0 0;
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    .content {
+      width: 60%;
+      p {
+      }
+      .actions {
+        p {
+        }
+      }
+    }
+
+    .menu {
+      width: 15%;
+      p {
+        font-size: 14px;
+      }
+      span {
+        svg {
+        }
       }
     }
   }

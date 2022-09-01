@@ -171,7 +171,7 @@ export const Home = (props) => {
         </div>
       </div>
 
-      <div className="find">
+      {/* <div className="find">
         <div className="title-container">
           <h1 className="title">
             Find the right job or <br /> internship for you
@@ -207,9 +207,9 @@ export const Home = (props) => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
 
-      <div className="post">
+      {/* <div className="post">
         <div className="title-container">
           <h1 className="title">
             Post your story for <br /> millions of people to see
@@ -224,9 +224,9 @@ export const Home = (props) => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
 
-      <div className="meet">
+      {/* <div className="meet">
         <div className="title-container">
           <div>
             <h1 className="title">
@@ -248,9 +248,9 @@ export const Home = (props) => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="connect-learn">
+      {/* <div className="connect-learn">
         <div className="connect">
           <div className="img-container">
             <img className="img" src="" alt="" />
@@ -269,9 +269,9 @@ export const Home = (props) => {
           </h1>
           <a href="">Find people you know</a>
         </div>
-      </div>
+      </div> */}
 
-      <div className="join">
+      {/* <div className="join">
         <div>
           <h1>
             Join your colleagues, classmates, and friends on <br /> Travelsdin.
@@ -290,7 +290,7 @@ export const Home = (props) => {
         </div>
 
         <div className="imgs-container"></div>
-      </div>
+      </div> */}
 
       <footer className="footer-home">
         <div>

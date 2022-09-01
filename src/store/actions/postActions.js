@@ -23,9 +23,9 @@ export function setFilterByPosts(filterByPosts) {
   }
 }
 
-export function setNextPage() {
+export function setNextPage(number) {
   return async (dispatch) => {
-    dispatch({ type: 'SET_NEXT_PAGE' })
+    dispatch({ type: 'SET_NEXT_PAGE', page: number })
   }
 }
 
@@ -58,9 +58,7 @@ export function addPosts() {
   // *loadPosts
   return async (dispatch, getState) => {
     try {
-      console.log('load posts')
       const { filterByPosts } = getState().postModule
-      console.log({ filterByPosts })
       const { pageNumber } = getState().postModule
       const newFilterBy = {
         ...filterByPosts,

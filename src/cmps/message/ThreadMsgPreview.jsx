@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
 import { useHistory } from 'react-router-dom'
+import loadingCircle from '../../assets/imgs/loading-circle.gif'
 
 export function ThreadMsgPreview({ msg }) {
   const [userMsg, setUserMsg] = useState(null)
@@ -25,7 +26,9 @@ export function ThreadMsgPreview({ msg }) {
           className="img-container"
           onClick={() => history.push(`/main/profile/${userMsg?._id}`)}
         >
-          <img src={userMsg?.imgUrl || ''} alt="" className="img" />
+          {(userMsg?.imgUrl && (
+            <img src={userMsg?.imgUrl || ''} alt="" className="img" />
+          )) || <img src={loadingCircle} className="img" alt="" />}
         </div>
 
         <div className="name-time-container">

@@ -48,3 +48,30 @@
     }
   }
 }
+
+@media (max-width: 630px) {
+  .messaging {
+    .container {
+      .list-msg {
+        width: 90%;
+        .title-container {
+          p {
+          }
+
+          .logos {
+            span {
+            }
+          }
+        }
+
+        .filter-container {
+          input {
+          }
+        }
+
+        .list {
+        }
+      }
+    }
+  }
+}

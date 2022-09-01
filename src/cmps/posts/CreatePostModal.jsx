@@ -139,7 +139,7 @@ export const CreatePostModal = ({
             value={newPost.link}
             onChange={handleChange}
             type="text"
-            placeholder="Your link here"
+            placeholder="Add a link here"
           />
         </div>
 

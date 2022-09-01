@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import loadingCircle from '../../assets/imgs/loading-circle.gif'
 
 export function ConnectionPreview({ user }) {
   if (!user) return
@@ -6,7 +7,10 @@ export function ConnectionPreview({ user }) {
     <li className="connection-preview">
       <Link to={`/main/profile/${user?._id}`}>
         <div className="bg">
-          <img src={user.imgUrl} alt="" className="img-profile" />
+          {(user.imgUrl && (
+            <img src={user.imgUrl} alt="" className="img-profile" />
+          )) || <img src={loadingCircle} alt="" />}
+          {/* <img src={user.imgUrl} alt="" className="img-profile" /> */}
         </div>
         <div className="fullname">
           <p>{user.fullname}</p>

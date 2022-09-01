@@ -23,6 +23,7 @@ export const Comments = ({ postId, comments, userPostId }) => {
         }
         dispatch(saveActivity(newActivity))
       }
+      return savedComment
     })
   }
 

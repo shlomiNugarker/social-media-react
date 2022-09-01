@@ -16,9 +16,11 @@ import {
 } from '../../../store/actions/postActions'
 import { saveActivity } from '../../../store/actions/activityAction'
 import { ImgPreview } from '../../profile/ImgPreview'
+import { useParams } from 'react-router-dom'
 
 export const PostPreview = ({ post }) => {
   const dispatch = useDispatch()
+  const params = useParams()
 
   const [userPost, setUserPost] = useState(null)
   const [isShowComments, setIsShowComments] = useState(false)
@@ -29,6 +31,7 @@ export const PostPreview = ({ post }) => {
 
   useEffect(() => {
     loadUserPost(post.userId)
+    if (params.postId) setIsShowComments(true)
   }, [loggedInUser])
 
   const toggleMenu = () => {

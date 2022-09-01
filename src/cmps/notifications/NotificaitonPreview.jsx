@@ -5,6 +5,7 @@ import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
 import { useHistory } from 'react-router-dom'
 import { postService } from '../../services/posts/postService'
+import loadingCircle from '../../assets/imgs/loading-circle.gif'
 
 export function NotificaitonPreview({ activity }) {
   const dispatch = useDispatch()
@@ -58,6 +59,19 @@ export function NotificaitonPreview({ activity }) {
       const linkToPost = `post/${post?.userId}/${activity?.postId}`
       setLink(linkToPost)
       setStr(str)
+    } else if (activity.type === 'remove-like') {
+      const post = await postService.getById(activity.postId)
+      const str = `${
+        createdByUser?._id === loggedInUser?._id
+          ? 'You'
+          : createdByUser?.fullname
+      } unliked  post of ${
+        createdToUser._id === loggedInUser._id ? 'you' : createdToUser?.fullname
+      }`
+
+      const linkToPost = `post/${post?.userId}/${activity?.postId}`
+      setLink(linkToPost)
+      setStr(str)
     }
     //
     else if (activity.type === 'add-comment') {
@@ -69,6 +83,11 @@ export function NotificaitonPreview({ activity }) {
       } post a comment in your post `
 
       const linkToPost = `post/${post.userId}/${activity.postId}`
+      setLink(linkToPost)
+      setStr(str)
+    } else if (activity.type === 'private-message') {
+      const str = `${createdByUser.fullname} sent you a peivate message`
+      const linkToPost = `message/`
       setLink(linkToPost)
       setStr(str)
     }
@@ -103,7 +122,11 @@ export function NotificaitonPreview({ activity }) {
       }}
     >
       <div className="img-container">
-        <img src={createdByUser?.imgUrl} alt="" className="img" />
+        {(createdByUser?.imgUrl && (
+          <img src={createdByUser?.imgUrl} alt="" className="img" />
+        )) || <img src={loadingCircle} alt="" />}
+
+        {/* <img src={createdByUser?.imgUrl} alt="" className="img" /> */}
       </div>
 
       <div className="content">

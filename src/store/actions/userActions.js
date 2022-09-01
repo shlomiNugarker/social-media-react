@@ -12,6 +12,16 @@ export function getUsers() {
   }
 }
 
+export function setUsers(users) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: 'SET_USERS', users })
+    } catch (err) {
+      console.log('cannot get users:', err)
+    }
+  }
+}
+
 export function setFilterByUsers(filterByUsers) {
   // console.log({ filterByUsers })
   return async (dispatch) => {

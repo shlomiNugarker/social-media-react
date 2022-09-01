@@ -6,7 +6,12 @@ import { useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { SendMessageForm } from './SendMessageForm'
 
-export function MessageThread({ messagesToShow, chatWith, onSendMsg }) {
+export function MessageThread({
+  messagesToShow,
+  setMessagesToShow,
+  chatWith,
+  onSendMsg,
+}) {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const history = useHistory()
 
@@ -35,8 +40,11 @@ export function MessageThread({ messagesToShow, chatWith, onSendMsg }) {
         <div className="container-logo">
           <span className="logo-menu">
             <FontAwesomeIcon
+              icon="fa-solid fa-x"
               className="dots-icon"
-              icon="fa-solid fa-ellipsis"
+              onClick={() => {
+                setMessagesToShow(null)
+              }}
             />
           </span>
         </div>
@@ -50,3 +58,4 @@ export function MessageThread({ messagesToShow, chatWith, onSendMsg }) {
     </section>
   )
 }
+// ;<FontAwesomeIcon icon="fa-solid fa-x" />

@@ -8,7 +8,7 @@ export const Signup = () => {
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const [signin, setIsSignin] = useState(false)
+  const [signin, setIsSignin] = useState(true)
   const [cred, setCred] = useState({
     username: '',
     password: '',

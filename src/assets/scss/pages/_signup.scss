@@ -88,6 +88,7 @@
     .to-sign-up-container {
       margin: 20px 0;
       display: flex;
+      cursor: pointer;
 
       p {
         a {
@@ -101,5 +102,51 @@
     align-items: center;
     justify-content: center;
     height: 10%;
+  }
+}
+
+@media (max-width: 650px) {
+  .sign-up-page {
+    .logo-container {
+      p {
+      }
+    }
+
+    .form-container {
+      form {
+        h1 {
+        }
+        p {
+        }
+        input {
+        }
+
+        a {
+        }
+
+        .sign-in-btn {
+        }
+        .sign-in-apple-btn {
+        }
+
+        .divider-container {
+          :first-child {
+          }
+          :nth-child(2) {
+          }
+          :last-child {
+          }
+        }
+      }
+      .to-sign-up-container {
+        p {
+          a {
+          }
+        }
+      }
+    }
+
+    .footer-container {
+    }
   }
 }

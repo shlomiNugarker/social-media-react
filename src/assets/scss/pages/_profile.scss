@@ -113,3 +113,114 @@
     }
   }
 }
+
+@media (max-width: 920px) {
+  .profile-page {
+    grid-template-areas: 'main';
+    grid-template-columns: minmax(0, 80%);
+    justify-content: center;
+    .left {
+      .user-profile {
+        .bg {
+          .img-container {
+            .img {
+            }
+          }
+        }
+
+        .user-details {
+          div {
+            .name {
+              h1 {
+              }
+            }
+            .profession {
+              p {
+              }
+            }
+
+            .btns-container {
+              button,
+              .connect,
+              .add-details,
+              .message,
+              .follow {
+                p {
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .user-posts {
+      }
+    }
+
+    .right {
+      display: none;
+      .top-div {
+      }
+
+      .bottom-div {
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .profile-page {
+    .left {
+      .user-profile {
+        .bg {
+          .img-container {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+            cursor: pointer;
+            .img {
+            }
+          }
+        }
+
+        .user-details {
+          padding: 60px 0px 30px 0px;
+          div {
+            .name {
+              text-align: center;
+              h1 {
+              }
+            }
+            .profession {
+              p {
+              }
+            }
+
+            .btns-container {
+              justify-content: center;
+              button,
+              .connect,
+              .add-details,
+              .message,
+              .follow {
+                p {
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .user-posts {
+      }
+    }
+
+    .right {
+      .top-div {
+      }
+
+      .bottom-div {
+      }
+    }
+  }
+}

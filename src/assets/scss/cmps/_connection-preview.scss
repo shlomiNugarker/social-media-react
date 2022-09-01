@@ -36,6 +36,9 @@
   .fullname {
     padding: 0 10px;
     margin: 35px 0 0 0;
+    p {
+      padding-top: 5px;
+    }
   }
   .profession {
     padding: 0 10px;
@@ -65,6 +68,37 @@
 
       &:hover {
         background-color: #70b5f933;
+      }
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .connection-preview {
+    height: 235px;
+    width: 180px;
+
+    &:hover {
+    }
+
+    .bg {
+      .img-profile {
+      }
+    }
+    .fullname {
+    }
+    .profession {
+    }
+
+    .followers-count {
+      p {
+      }
+    }
+
+    .btn-container {
+      button {
+        &:hover {
+        }
       }
     }
   }

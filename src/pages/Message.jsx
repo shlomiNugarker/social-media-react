@@ -12,6 +12,8 @@ import {
 import { useHistory, useParams } from 'react-router-dom'
 import { userService } from '../services/user/userService'
 import { utilService } from '../services/utilService'
+import { saveActivity } from '../store/actions/activityAction'
+import loadingGif from '../assets/imgs/loading-gif.gif'
 
 export function Message() {
   const dispatch = useDispatch()
@@ -29,21 +31,18 @@ export function Message() {
   const [chatWith, setChatWith] = useState(null)
 
   useEffect(() => {
-    console.log('use effect')
     dispatch(setCurrPage('message'))
     const userId = loggedInUser?._id
-    console.log({ userId })
     if (!userId) return
     dispatch(loadChats(userId)).then((chats1) => {
-      console.log('in then chats', chats)
       checkIfChatExist()
         .then((bool) => {
-          console.log('then checkIfChatExist')
+          if (params.userId === loggedInUser._id) return
           setIsUserChatExist(bool)
           openChat()
         })
         .catch((bool) => {
-          console.log('chtch checkIfChatExist')
+          if (params.userId === loggedInUser._id) return
           setIsUserChatExist(bool)
           openChat()
         })
@@ -53,12 +52,11 @@ export function Message() {
   const checkIfChatExist = () => {
     const promise = new Promise((resolve, reject) => {
       if (!chats) {
-        console.log('no cats')
+        console.log('no chats')
       } else {
         const isChatExist = chats.some((chat) => {
           return chat.userId === params.userId || chat.userId2 === params.userId
         })
-        console.log({ isChatExist }, 'from chack')
         if (isChatExist) resolve(isChatExist)
         else {
           reject(isChatExist)
@@ -69,14 +67,14 @@ export function Message() {
   }
 
   const openChat = async () => {
-    console.log('open chat')
-    console.log({ isUserChatExist })
     if (isUserChatExist === true) {
+      console.log('isUserChatExist === true')
       const chatToShow = findChat(params.userId)
+      await loadNotLoggedUser(chatToShow)
       setChooseenChatId(chatToShow._id)
       setMessagesToShow(chatToShow.messages)
-      await loadNotLoggedUser(chatToShow)
     } else if (isUserChatExist === false) {
+      console.log('isUserChatExist === false')
       // OPEMIMG TEMP CHAT UNTIL THE FIRST MSG SENT,
       // THEN SAVE IT IN MONGO- NEED TO REMOVE THE ID BEFORE
       if (!params.userId || !chats) return
@@ -92,6 +90,7 @@ export function Message() {
   useEffect(() => {}, [chats])
 
   const onSendMsg = (txt) => {
+    console.log(theNotLoggedUserChat)
     const newMsg = createNewMsg(txt)
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
     const chatToUpdate = { ...chats[chatIdx] }
@@ -105,9 +104,23 @@ export function Message() {
       delete chatToUpdate._id
     }
     setIsNewChat(false)
+
     dispatch(saveChat(chatToUpdate)).then((savedChat) => {
       setMessagesToShow(savedChat.messages)
-      console.log(chatToUpdate)
+      if (savedChat) {
+        console.log(savedChat)
+        const newActivity = {
+          type: 'private-message',
+          createdBy: loggedInUser?._id,
+          createdTo:
+            loggedInUser._id === savedChat.userId
+              ? savedChat.userId2
+              : savedChat.userId,
+          chatId: savedChat._id,
+        }
+        console.log(newActivity)
+        dispatch(saveActivity(newActivity))
+      }
     })
   }
 
@@ -144,13 +157,20 @@ export function Message() {
 
   const getTheNotLoggedUserChat = async (chat) => {
     let userId
-    if (loggedInUser._id !== chat.userId) userId = chat.userId
-    else if (loggedInUser._id !== chat.userId2) userId = chat.userId2
-    return userService.getById(userId)
+    if (loggedInUser?._id !== chat?.userId) userId = chat.userId
+    else if (loggedInUser?._id !== chat?.userId2) userId = chat.userId2
+    return await userService.getById(userId)
   }
 
   // console.log('render Message')
-  if (!chats) return
+  if (!chats)
+    return (
+      <div className="message-page">
+        <div className="gif-container">
+          <img className="loading-gif" src={loadingGif} alt="" />
+        </div>
+      </div>
+    )
   return (
     <section className="message-page">
       <Messaging

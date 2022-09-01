@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ConnectionList } from '../cmps/connections/ConnectionList'
-import { getUsers } from '../store/actions/userActions'
+import { getUsers, setUsers } from '../store/actions/userActions'
 import { setCurrPage } from '../store/actions/postActions'
 import loadingGif from '../assets/imgs/loading-gif.gif'
 
@@ -17,6 +17,10 @@ export function MyNetwork() {
   useEffect(() => {
     dispatch(getUsers())
     dispatch(setCurrPage('mynetwork'))
+
+    return () => {
+      dispatch(setUsers(null))
+    }
   }, [])
 
   if (!users)

@@ -20,7 +20,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       console.log('SET_NEXT_PAGE', state.pageNumber + 1)
       return {
         ...state,
-        pageNumber: state.pageNumber + 1,
+        pageNumber: action.page ? action.page : state.pageNumber + 1,
       }
 
     case 'SET_IS_POSTS_LOADING':
@@ -31,7 +31,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       }
 
     case 'SET_POSTS_LENGTH':
-      // console.log('SET_postsLength')
+      console.log('SET_POSTS_LENGTH', action.postsLength)
       return {
         ...state,
         postsLength: action.postsLength,
