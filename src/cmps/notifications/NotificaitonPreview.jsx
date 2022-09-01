@@ -15,9 +15,15 @@ export function NotificaitonPreview({ activity }) {
   const [link, setLink] = useState(null)
   const [createdByUser, setCreatedByUser] = useState(null)
   const [createdToUser, setCreatedToUser] = useState(null)
+  const [isActivityUnread, setIsActivityUnread] = useState(false)
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { baseUrl } = useSelector((state) => state.postModule)
+  const { unreadActivities } = useSelector((state) => state.activityModule)
+
+  const checkIfActivityUnread = () => {
+    return unreadActivities.some((activityId) => activityId === activity._id)
+  }
 
   const getTheNotLoggedInUser = async () => {
     const userId =
@@ -109,14 +115,17 @@ export function NotificaitonPreview({ activity }) {
       getTheNotLoggedInUser()
     }
 
+    const isActivityUnread = checkIfActivityUnread()
+
+    setIsActivityUnread(isActivityUnread)
+
     return () => {}
   }, [])
 
   console.log('render NotificaitonPreview')
-
   return (
     <section
-      className="notificaiton-preview"
+      className={`notificaiton-preview ${isActivityUnread ? 'unread' : ''}`}
       onClick={() => {
         history.push(link)
       }}

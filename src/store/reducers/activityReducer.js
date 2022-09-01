@@ -3,12 +3,13 @@ const INITIAL_STATE = {
   filterByActivities: null,
   isActivitiesLoading: false,
   activitiesLength: null,
+  unreadActivities: [],
 }
 
 export function activityReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_ACTIVITIES':
-      console.log('SET_ACTIVITIES', action.activities)
+      // console.log('SET_ACTIVITIES', action.activities)
       return {
         ...state,
         activities: [...action.activities],
@@ -51,6 +52,13 @@ export function activityReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         filterByActivities: action.filterByActivities,
+      }
+
+    case 'SET_UNREAD_ACTIVITIES':
+      console.log('SET_UNREAD_ACTIVITIES', action.unreadActivities)
+      return {
+        ...state,
+        unreadActivities: action.unreadActivities,
       }
 
     default:

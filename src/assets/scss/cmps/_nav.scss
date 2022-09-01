@@ -22,8 +22,38 @@
         color: black;
       }
 
+      &.notifications {
+        a {
+          p {
+            position: relative;
+            .number {
+              position: absolute;
+              top: 0;
+              right: 25px;
+              color: white;
+              border-radius: 50%;
+              width: 17px;
+              height: 17px;
+              background-color: rgb(204 16 22);
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+      }
+
       a {
         text-decoration: none;
+
+        p {
+          transition: rotate 0.3s;
+          .curr-logo {
+            animation-name: scaleinsoft;
+            animation-duration: 0.3s;
+          }
+        }
       }
     }
 
@@ -251,6 +281,18 @@
   .nav {
     ul {
       li {
+        &.notifications {
+          a {
+            p {
+              .number {
+                height: 17px;
+                right: 3px;
+                top: 5px;
+              }
+            }
+          }
+        }
+
         &.current-btn {
         }
 

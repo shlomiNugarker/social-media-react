@@ -10,6 +10,13 @@
   cursor: pointer;
   padding: 8px;
 
+  &.unread {
+    background-color: #e2f0fe;
+    &:hover {
+      background-color: #e2f0fe;
+    }
+  }
+
   &:hover {
     background-color: rgba(228, 227, 227, 0.541);
   }

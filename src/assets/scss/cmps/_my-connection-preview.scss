@@ -57,3 +57,38 @@
     }
   }
 }
+
+@media (max-width: 870px) {
+  .my-connection-preview {
+    .container {
+      .img-profile {
+        width: 10%;
+        .img {
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .fullname {
+        width: 60%;
+        a {
+          margin-left: 15px;
+        }
+      }
+
+      .btns {
+        width: 40%;
+        button {
+          padding: 3px;
+          font-size: 14px;
+          &:hover {
+          }
+        }
+
+        .dots-icon {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

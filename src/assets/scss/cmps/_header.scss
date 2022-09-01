@@ -19,6 +19,10 @@
     align-items: center;
     height: 100%;
   }
+
+  .logo {
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 945px) {

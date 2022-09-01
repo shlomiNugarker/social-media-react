@@ -75,8 +75,9 @@
 
 @media (max-width: 1150px) {
   .connection-preview {
-    height: 235px;
-    width: 180px;
+    min-height: 210px;
+    width: 40%;
+    // width: 180px;
 
     &:hover {
     }
@@ -86,6 +87,9 @@
       }
     }
     .fullname {
+      a {
+        margin-left: 15px;
+      }
     }
     .profession {
     }

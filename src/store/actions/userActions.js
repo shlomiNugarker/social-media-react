@@ -74,9 +74,8 @@ export function logout() {
 
 export function updateUser(user) {
   return async (dispatch, getState) => {
-    const { loggedinUser } = getState().userModule
     const savedUser = await userService.update(user)
-    console.log('updateUser')
+    console.log('updateUser', user)
     if (savedUser._id === (await getLoggedinUser._id)) {
       dispatch({ type: 'UPDATE_LOGGED_IN_USER', user: savedUser })
     } else {

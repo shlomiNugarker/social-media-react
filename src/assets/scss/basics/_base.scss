@@ -89,8 +89,18 @@ input {
 }
 
 .network,
+.message-page,
 .message-page {
   padding-top: calc(50vh - 60px);
+
+  &.message-page {
+    .gif-container {
+      .loading-gif {
+        position: absolute;
+        left: 50%;
+      }
+    }
+  }
 
   .gif-container {
     display: flex;

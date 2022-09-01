@@ -92,9 +92,12 @@
         // display: none;
         padding: 0 10px;
         position: fixed;
-        width: 95%;
+        width: 100vw;
+        height: 100vh;
         border-top-left-radius: 15px;
         border-bottom-left-radius: 15px;
+        inset: 0 0 0 0;
+        z-index: 150;
         .header-message-thread {
           div {
             .img-profile {

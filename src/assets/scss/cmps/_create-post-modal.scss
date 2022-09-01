@@ -183,6 +183,8 @@
 
     .container {
       min-width: 85vw;
+      height: 70vh;
+      top: 50%;
       .title {
         h1 {
         }
@@ -228,6 +230,7 @@
 
       .btns-add-container {
         .btn {
+          margin: 5px 5px;
           &.cancel-btn {
             font-size: 16px;
             &:hover {

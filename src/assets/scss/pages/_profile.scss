@@ -170,6 +170,7 @@
 
 @media (max-width: 400px) {
   .profile-page {
+    grid-template-columns: minmax(0, 100%);
     .left {
       .user-profile {
         .bg {
@@ -192,6 +193,7 @@
               }
             }
             .profession {
+              text-align: center;
               p {
               }
             }
@@ -212,6 +214,11 @@
       }
 
       .user-posts {
+        div {
+          p {
+            text-align: center;
+          }
+        }
       }
     }
 

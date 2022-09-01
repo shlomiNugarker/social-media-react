@@ -8,6 +8,7 @@ import {
   loadActivities,
   setFilterByActivities,
 } from '../store/actions/activityAction'
+import { updateUser } from '../store/actions/userActions'
 
 export function Notifications() {
   const { loggedInUser } = useSelector((state) => state.userModule)
@@ -25,8 +26,17 @@ export function Notifications() {
       dispatch(loadActivities())
     }
 
+    updateLastSeenLoggedUser()
+
     // eslint-disable-next-line
   }, [loggedInUser])
+
+  const updateLastSeenLoggedUser = () => {
+    console.log('updateLastSeenLoggedUser')
+    const lastSeen = new Date().getTime()
+
+    dispatch(updateUser({ _id: loggedInUser?._id, lastSeen }))
+  }
 
   if (!activities)
     return (

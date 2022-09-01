@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 export const Nav = () => {
   const { currPage } = useSelector((state) => state.postModule)
 
-  // current-btn
-
   const { loggedInUser } = useSelector((state) => state.userModule)
+  const { unreadActivities } = useSelector((state) => state.activityModule)
+  // current-btn
 
   return (
     <nav className="nav">
@@ -17,7 +17,12 @@ export const Nav = () => {
         >
           <Link to="/main/feed">
             <p>
-              <FontAwesomeIcon className="nav-icon" icon="fas fa-home-lg-alt" />
+              <FontAwesomeIcon
+                className={
+                  'nav-icon' + ' ' + (currPage === 'home' ? 'curr-logo' : '')
+                }
+                icon="fas fa-home-lg-alt"
+              />
               <span>Home</span>
             </p>
           </Link>
@@ -30,7 +35,11 @@ export const Nav = () => {
           <Link to={`/main/mynetwork`}>
             <p>
               <FontAwesomeIcon
-                className="nav-icon"
+                className={
+                  'nav-icon' +
+                  ' ' +
+                  (currPage === 'mynetwork' ? 'curr-logo' : '')
+                }
                 icon="fas fa-user-friends"
               />
               <span>My Network</span>
@@ -41,7 +50,9 @@ export const Nav = () => {
           <Link to="/main/map">
             <p>
               <FontAwesomeIcon
-                className="nav-icon"
+                className={
+                  'nav-icon' + ' ' + (currPage === 'map' ? 'curr-logo' : '')
+                }
                 icon="fa-solid fa-map-location"
               />
               {/* <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" /> */}
@@ -56,7 +67,12 @@ export const Nav = () => {
         >
           <Link to={`/main/message`}>
             <p>
-              <FontAwesomeIcon className="nav-icon" icon="fas fa-comment" />
+              <FontAwesomeIcon
+                className={
+                  'nav-icon' + ' ' + (currPage === 'message' ? 'curr-logo' : '')
+                }
+                icon="fas fa-comment"
+              />
               <span>Messaging</span>
             </p>
           </Link>
@@ -70,8 +86,18 @@ export const Nav = () => {
         >
           <Link to={`/main/notifications`}>
             <p>
-              <FontAwesomeIcon className="nav-icon" icon="fas fa-bell" />
+              <FontAwesomeIcon
+                className={
+                  'nav-icon' +
+                  ' ' +
+                  (currPage === 'notifications' ? 'curr-logo' : '')
+                }
+                icon="fas fa-bell"
+              />
               <span>Notifications</span>
+              {unreadActivities.length > 0 && (
+                <span className="number">{unreadActivities.length}</span>
+              )}
             </p>
           </Link>
         </li>
@@ -101,13 +127,27 @@ export const Nav = () => {
         </li>
         <li className="volunteering-btn">
           <p>
-            <FontAwesomeIcon className="nav-icon" icon="fas fa-th" />
+            <FontAwesomeIcon
+              className={
+                'nav-icon' +
+                ' ' +
+                (currPage === 'volunteering' ? 'curr-logo' : '')
+              }
+              icon="fas fa-th"
+            />
             Volunteer
           </p>
         </li>
         <li className="post-volunteer-btn">
           <p>
-            <FontAwesomeIcon className="nav-icon" icon="fas fa-plus" />
+            <FontAwesomeIcon
+              className={
+                'nav-icon' +
+                ' ' +
+                (currPage === 'post-volunteer' ? 'curr-logo' : '')
+              }
+              icon="fas fa-plus"
+            />
             more
           </p>
         </li>

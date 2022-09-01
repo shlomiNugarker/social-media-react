@@ -51,3 +51,9 @@ export function setFilterByActivities(filterByActivities) {
     dispatch({ type: 'SET_FILTER_BY_ACTIVITIES', filterByActivities })
   }
 }
+
+export function setUnreadActivitiesIds(unreadActivities) {
+  return async (dispatch) => {
+    dispatch({ type: 'SET_UNREAD_ACTIVITIES', unreadActivities })
+  }
+}

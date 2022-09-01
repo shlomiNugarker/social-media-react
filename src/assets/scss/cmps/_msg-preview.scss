@@ -30,16 +30,52 @@
     .details {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      width: 100%;
+
       .fullname {
         display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        // width: 100%;
         h1 {
           font-size: 18px;
         }
 
         span {
           margin-left: 3px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .msg-preview {
+    display: flex;
+    .loading-circle {
+      img {
+      }
+    }
+
+    .container {
+      width: 100%;
+      &.chooseen-chat {
+      }
+
+      .img-container {
+        .img {
+        }
+      }
+
+      .details {
+        .fullname {
+          width: 100%;
+          justify-content: space-between;
+          h1 {
+          }
+
+          span {
+          }
         }
       }
     }

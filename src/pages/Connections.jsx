@@ -59,7 +59,7 @@ export function Connections() {
                 name="fullname"
                 value={field.fullname}
                 placeholder="Search by name"
-                className="input"
+                className="connections-input"
               />
             </div>
           </div>

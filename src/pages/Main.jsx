@@ -15,23 +15,50 @@ import { SpecificPost } from './SpecificPost'
 import {
   loadActivities,
   setFilterByActivities,
+  setUnreadActivitiesIds,
 } from '../store/actions/activityAction'
 
 export function Main() {
   const dispatch = useDispatch()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
+  const { activities } = useSelector((state) => state.activityModule)
+
   useEffect(() => {
-    // dispatch(getLoggedinUser())
     if (loggedInUser?._id) {
       const filterBy = {
         userId: loggedInUser._id,
       }
-      console.log('sett')
       dispatch(setFilterByActivities(filterBy))
       dispatch(loadActivities())
     }
   }, [])
+
+  useEffect(() => {
+    getUnreadNotfications()
+
+    return () => {}
+  }, [activities])
+
+  const getUnreadNotfications = () => {
+    if (!activities) return
+    // lastSennUser > activity.createdAt = unread++
+    getUnReadActivitiesCount()
+  }
+
+  const getUnReadActivitiesCount = () => {
+    if (!activities) return
+    let unreadActivities = []
+    activities.forEach((activity) => {
+      if (loggedInUser.lastSeen < activity.createdAt) {
+        if (loggedInUser._id === activity.createdBy) return
+        unreadActivities.push(activity._id)
+      }
+    })
+    // console.log({ unreadActivities })
+
+    dispatch(setUnreadActivitiesIds(unreadActivities))
+  }
 
   // console.log('render Main')
   return (

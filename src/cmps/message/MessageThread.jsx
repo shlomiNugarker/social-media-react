@@ -50,7 +50,7 @@ export function MessageThread({
         </div>
       </header>
 
-      <div className="user-profile-details">
+      <div className="user-profile-details scroll-area">
         <ThreadMsgList messagesToShow={messagesToShow} />
       </div>
 

@@ -11,7 +11,6 @@ export const userService = {
   getById,
   remove,
   update,
-  // addConnection,
 }
 
 async function getUsers(filterBy) {

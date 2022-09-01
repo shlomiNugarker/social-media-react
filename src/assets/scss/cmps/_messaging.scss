@@ -14,8 +14,16 @@
     .container {
       justify-content: center;
 
+      .message-thred {
+      }
+      .user-profile-details {
+        min-height: calc(100vh - 220px);
+      }
       .message-open-style {
       }
     }
   }
+
+  // .messaging .container .message-thread .user-profile-details {
+  // }
 }

@@ -36,7 +36,7 @@
             color: #666666;
           }
 
-          .input {
+          .connections-input {
             width: 230px;
             border-radius: 5px;
             border: n1px solid $border;
@@ -68,6 +68,43 @@
       height: 400px;
       background-color: white;
       border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 870px) {
+  .connections-page {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+    .left {
+      .container {
+        .count {
+          p {
+          }
+        }
+
+        .filter-container {
+          padding-bottom: 25px;
+          .search {
+            .search-icon {
+            }
+
+            .connections-input {
+              &:focus {
+              }
+            }
+          }
+        }
+
+        .my-connection-list {
+        }
+      }
+    }
+
+    .right {
+      display: none;
+      div {
+      }
     }
   }
 }

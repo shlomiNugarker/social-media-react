@@ -107,8 +107,37 @@
 
 @media (max-width: 650px) {
   .my-network-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      h3 {
+      }
+    }
+
     .left {
-      width: 80%;
+      width: 100%;
+
+      .manage-network {
+        ul {
+          li {
+            button {
+              &:hover {
+              }
+
+              div {
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .right {
+      width: 100%;
+      .recommended {
+        padding: 5px;
+      }
     }
   }
 }
