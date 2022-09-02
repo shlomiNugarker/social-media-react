@@ -7,7 +7,7 @@ export const Nav = () => {
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { unreadActivities } = useSelector((state) => state.activityModule)
-  // current-btn
+  const { unreadMessages } = useSelector((state) => state.activityModule)
 
   return (
     <nav className="nav">
@@ -74,6 +74,9 @@ export const Nav = () => {
                 icon="fas fa-comment"
               />
               <span>Messaging</span>
+              {unreadMessages.length > 0 && (
+                <span className="number">{unreadMessages.length}</span>
+              )}
             </p>
           </Link>
         </li>

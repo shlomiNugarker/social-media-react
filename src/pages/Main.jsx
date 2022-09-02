@@ -23,6 +23,8 @@ export function Main() {
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { activities } = useSelector((state) => state.activityModule)
+  const { unreadActivities } = useSelector((state) => state.activityModule)
+  const { unreadMessages } = useSelector((state) => state.activityModule)
 
   useEffect(() => {
     if (loggedInUser?._id) {
@@ -35,30 +37,12 @@ export function Main() {
   }, [])
 
   useEffect(() => {
-    getUnreadNotfications()
-
-    return () => {}
+    dispatch(setUnreadActivitiesIds())
+    // if (!activities) return
+    return () => {
+      dispatch(setUnreadActivitiesIds())
+    }
   }, [activities])
-
-  const getUnreadNotfications = () => {
-    if (!activities) return
-    // lastSennUser > activity.createdAt = unread++
-    getUnReadActivitiesCount()
-  }
-
-  const getUnReadActivitiesCount = () => {
-    if (!activities) return
-    let unreadActivities = []
-    activities.forEach((activity) => {
-      if (loggedInUser.lastSeen < activity.createdAt) {
-        if (loggedInUser._id === activity.createdBy) return
-        unreadActivities.push(activity._id)
-      }
-    })
-    // console.log({ unreadActivities })
-
-    dispatch(setUnreadActivitiesIds(unreadActivities))
-  }
 
   // console.log('render Main')
   return (

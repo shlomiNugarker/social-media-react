@@ -7,8 +7,9 @@ import loadingGif from '../assets/imgs/loading-gif.gif'
 import {
   loadActivities,
   setFilterByActivities,
+  setUnreadActivitiesIds,
 } from '../store/actions/activityAction'
-import { updateUser } from '../store/actions/userActions'
+import { getLoggedinUser, updateUser } from '../store/actions/userActions'
 
 export function Notifications() {
   const { loggedInUser } = useSelector((state) => state.userModule)
@@ -26,16 +27,17 @@ export function Notifications() {
       dispatch(loadActivities())
     }
 
-    updateLastSeenLoggedUser()
+    return async () => {
+      await updateLastSeenLoggedUser()
+      dispatch(setUnreadActivitiesIds())
+    }
+  }, [])
+  // }, [loggedInUser])
 
-    // eslint-disable-next-line
-  }, [loggedInUser])
+  const updateLastSeenLoggedUser = async () => {
+    const lastSeenActivity = new Date().getTime()
 
-  const updateLastSeenLoggedUser = () => {
-    console.log('updateLastSeenLoggedUser')
-    const lastSeen = new Date().getTime()
-
-    dispatch(updateUser({ _id: loggedInUser?._id, lastSeen }))
+    await dispatch(updateUser({ ...loggedInUser, lastSeenActivity }))
   }
 
   if (!activities)

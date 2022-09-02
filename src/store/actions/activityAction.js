@@ -52,8 +52,33 @@ export function setFilterByActivities(filterByActivities) {
   }
 }
 
-export function setUnreadActivitiesIds(unreadActivities) {
-  return async (dispatch) => {
+export function setUnreadActivitiesIds() {
+  return async (dispatch, getState) => {
+    const { activities } = getState().activityModule
+    const { loggedInUser } = getState().userModule
+
+    if (!activities) return
+    let unreadActivities = []
+    let unreadMessages = []
+    activities.forEach((activity) => {
+      if (loggedInUser.lastSeenActivity < activity.createdAt) {
+        if (loggedInUser._id === activity.createdBy) return
+        if (activity.type !== 'private-message') {
+          unreadActivities.push(activity._id)
+        }
+      }
+      //
+      console.log(loggedInUser.lastSeenMsgs, '<', activity.createdAt)
+      console.log(loggedInUser.lastSeenMsgs < activity.createdAt)
+      if (loggedInUser.lastSeenMsgs < activity.createdAt) {
+        if (loggedInUser._id === activity.createdBy) return
+        if (activity.type === 'private-message') {
+          unreadMessages.push(activity.chatId)
+        }
+      }
+    })
+
     dispatch({ type: 'SET_UNREAD_ACTIVITIES', unreadActivities })
+    dispatch({ type: 'SET_UNREAD_MESSAGES', unreadMessages })
   }
 }

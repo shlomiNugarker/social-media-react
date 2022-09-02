@@ -22,7 +22,8 @@
         color: black;
       }
 
-      &.notifications {
+      &.notifications,
+      &.messaging {
         a {
           p {
             position: relative;

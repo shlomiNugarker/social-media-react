@@ -18,9 +18,20 @@ export function MsgPreview({
   const history = useHistory()
   const params = useParams()
 
-  const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
-
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
+  const [unreadMsgsCount, setUnreadMsgsCount] = useState(0)
+
+  const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
+  const { unreadActivities } = useSelector((state) => state.activityModule)
+  const { unreadMessages } = useSelector((state) => state.activityModule)
+
+  const getUnreadCountMsgs = () => {
+    let countMsgs = 0
+    unreadMessages.forEach((chatId) => {
+      if (chat._id === chatId) countMsgs++
+    })
+    setUnreadMsgsCount(countMsgs)
+  }
 
   const lastMsg =
     chat.messages[chat.messages.length - 1]?.txt || 'No Messages yet..'
@@ -43,6 +54,7 @@ export function MsgPreview({
 
   useEffect(() => {
     loadNotLoggedUser(chat)
+    getUnreadCountMsgs()
     return () => {}
   }, [])
 
@@ -65,8 +77,12 @@ export function MsgPreview({
       <div className={containerStyle}>
         <div className="img-container">
           <img src={theNotLoggedUserChat?.imgUrl} alt="" className="img" />
+          {unreadMsgsCount > 0 && (
+            <span className="number">
+              <p>{unreadMsgsCount}</p>
+            </span>
+          )}
         </div>
-
         <div className="details">
           <div className="fullname">
             <h1>{theNotLoggedUserChat?.fullname}</h1>

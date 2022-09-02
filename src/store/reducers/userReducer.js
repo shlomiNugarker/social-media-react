@@ -54,7 +54,7 @@ export function userReducer(state = INITIAL_STATE, action) {
       }
 
     case 'UPDATE_LOGGED_IN_USER':
-      console.log('UPDATE_LOGGED_IN_USER')
+      console.log('UPDATE_LOGGED_IN_USER', action.user)
       return {
         ...state,
         loggedInUser: action.user,

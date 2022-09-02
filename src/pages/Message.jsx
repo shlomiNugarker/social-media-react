@@ -12,8 +12,12 @@ import {
 import { useHistory, useParams } from 'react-router-dom'
 import { userService } from '../services/user/userService'
 import { utilService } from '../services/utilService'
-import { saveActivity } from '../store/actions/activityAction'
+import {
+  saveActivity,
+  setUnreadActivitiesIds,
+} from '../store/actions/activityAction'
 import loadingGif from '../assets/imgs/loading-gif.gif'
+import { getLoggedinUser, updateUser } from '../store/actions/userActions'
 
 export function Message() {
   const dispatch = useDispatch()
@@ -34,7 +38,7 @@ export function Message() {
     dispatch(setCurrPage('message'))
     const userId = loggedInUser?._id
     if (!userId) return
-    dispatch(loadChats(userId)).then((chats1) => {
+    dispatch(loadChats(userId)).then((chats) => {
       checkIfChatExist()
         .then((bool) => {
           if (params.userId === loggedInUser._id) return
@@ -48,6 +52,19 @@ export function Message() {
         })
     })
   }, [loggedInUser, params.userId, isUserChatExist])
+
+  useEffect(() => {
+    return async () => {
+      await updateLastSeenLoggedUser()
+      dispatch(setUnreadActivitiesIds())
+    }
+  }, [])
+
+  const updateLastSeenLoggedUser = async () => {
+    const lastSeenMsgs = new Date().getTime()
+
+    await dispatch(updateUser({ ...loggedInUser, lastSeenMsgs }))
+  }
 
   const checkIfChatExist = () => {
     const promise = new Promise((resolve, reject) => {
@@ -68,13 +85,11 @@ export function Message() {
 
   const openChat = async () => {
     if (isUserChatExist === true) {
-      console.log('isUserChatExist === true')
       const chatToShow = findChat(params.userId)
       await loadNotLoggedUser(chatToShow)
       setChooseenChatId(chatToShow._id)
       setMessagesToShow(chatToShow.messages)
     } else if (isUserChatExist === false) {
-      console.log('isUserChatExist === false')
       // OPEMIMG TEMP CHAT UNTIL THE FIRST MSG SENT,
       // THEN SAVE IT IN MONGO- NEED TO REMOVE THE ID BEFORE
       if (!params.userId || !chats) return
@@ -90,7 +105,6 @@ export function Message() {
   useEffect(() => {}, [chats])
 
   const onSendMsg = (txt) => {
-    console.log(theNotLoggedUserChat)
     const newMsg = createNewMsg(txt)
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
     const chatToUpdate = { ...chats[chatIdx] }
@@ -118,7 +132,6 @@ export function Message() {
               : savedChat.userId,
           chatId: savedChat._id,
         }
-        console.log(newActivity)
         dispatch(saveActivity(newActivity))
       }
     })
@@ -144,7 +157,7 @@ export function Message() {
   }
 
   const loadNotLoggedUser = async (chat) => {
-    const user = await getTheNotLoggedUserChat(chat)
+    const user = (await getTheNotLoggedUserChat(chat)) || null
     setTheNotLoggedUserChat(user)
     setChatWith(user)
   }
@@ -159,7 +172,7 @@ export function Message() {
     let userId
     if (loggedInUser?._id !== chat?.userId) userId = chat.userId
     else if (loggedInUser?._id !== chat?.userId2) userId = chat.userId2
-    return await userService.getById(userId)
+    return (await userService.getById(userId)) || null
   }
 
   // console.log('render Message')

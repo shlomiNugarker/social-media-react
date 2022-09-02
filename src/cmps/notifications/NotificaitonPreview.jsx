@@ -86,13 +86,13 @@ export function NotificaitonPreview({ activity }) {
         createdByUser?._id === loggedInUser?._id
           ? 'You'
           : createdByUser?.fullname
-      } post a comment in your post `
+      } added a comment in your post `
 
       const linkToPost = `post/${post.userId}/${activity.postId}`
       setLink(linkToPost)
       setStr(str)
     } else if (activity.type === 'private-message') {
-      const str = `${createdByUser.fullname} sent you a peivate message`
+      const str = `${createdByUser.fullname} sent you a private message`
       const linkToPost = `message/`
       setLink(linkToPost)
       setStr(str)
@@ -120,9 +120,9 @@ export function NotificaitonPreview({ activity }) {
     setIsActivityUnread(isActivityUnread)
 
     return () => {}
-  }, [])
+  }, [unreadActivities])
 
-  console.log('render NotificaitonPreview')
+  // console.log('render NotificaitonPreview')
   return (
     <section
       className={`notificaiton-preview ${isActivityUnread ? 'unread' : ''}`}

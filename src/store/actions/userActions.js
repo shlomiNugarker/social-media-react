@@ -46,6 +46,7 @@ export function getLoggedinUser() {
     try {
       const user = await userService.getLoggedinUser()
       dispatch({ type: 'GET_LOGGEDIN_USER', user })
+      return user
     } catch (err) {
       console.log('cannot getLoggedinUser:', err)
     }
@@ -75,8 +76,9 @@ export function logout() {
 export function updateUser(user) {
   return async (dispatch, getState) => {
     const savedUser = await userService.update(user)
-    console.log('updateUser', user)
-    if (savedUser._id === (await getLoggedinUser._id)) {
+    const { loggedInUser } = getState().userModule
+
+    if (savedUser._id === loggedInUser._id) {
       dispatch({ type: 'UPDATE_LOGGED_IN_USER', user: savedUser })
     } else {
       // dispatch({ type: 'UPDATE_USER', user: savedUser })
