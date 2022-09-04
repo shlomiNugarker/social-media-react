@@ -57,8 +57,13 @@ export const Signup = () => {
   if (loggedInUser) {
     return (
       <section className="sign-up-page">
-        <p>loggedInUser: {loggedInUser.fullname}</p>
-        <button onClick={doLogout}>Logout</button>
+        <div className="logged-in-mode">
+          <div className="img-container">
+            <img src={loggedInUser.imgUrl} alt="" className="img" />
+          </div>
+          <p>{loggedInUser.fullname}</p>
+          <button onClick={doLogout}>Logout</button>
+        </div>
       </section>
     )
   }

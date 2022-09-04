@@ -29,7 +29,7 @@ export const SpecificPost = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  console.log('render SpecificPost')
+  // console.log('render SpecificPost')
   if (!posts) return <div className="specific-post">Loading...</div>
   return (
     <section className="specific-post">

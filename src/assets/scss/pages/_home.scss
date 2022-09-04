@@ -84,12 +84,14 @@
 
   .welcome-signin-container {
     background-color: white;
-    min-height: 500px;
+    // min-height: 500px;
+    min-height: calc(100vh - 65px);
     width: 100%;
     margin-top: 10px;
     display: flex;
     padding: 60px;
     justify-content: center;
+    align-items: center;
 
     .form {
       display: flex;
@@ -98,9 +100,10 @@
 
       input {
         background-color: white;
-        margin: 10px 0;
-        padding: 10px;
+        margin: 15px 0;
+        padding: 15px;
         border: 1px solid $clr3;
+        border-radius: 15px;
       }
 
       .msg {

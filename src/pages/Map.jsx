@@ -131,7 +131,7 @@ export function Map() {
 
   const places = [{ lat: 30.911220168353783, lng: 58.405513914562775 }]
 
-  console.log('render Map')
+  // console.log('render Map')
   return (
     // Important! Always set the container height explicitly
     <section className="map-page ">

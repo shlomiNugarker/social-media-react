@@ -68,8 +68,6 @@ export function setUnreadActivitiesIds() {
         }
       }
       //
-      console.log(loggedInUser.lastSeenMsgs, '<', activity.createdAt)
-      console.log(loggedInUser.lastSeenMsgs < activity.createdAt)
       if (loggedInUser.lastSeenMsgs < activity.createdAt) {
         if (loggedInUser._id === activity.createdBy) return
         if (activity.type === 'private-message') {

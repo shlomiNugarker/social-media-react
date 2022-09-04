@@ -230,6 +230,18 @@
         &.current-btn {
         }
 
+        &.notifications,
+        &.messaging {
+          a {
+            p {
+              .number {
+                top: 8px;
+                right: 33px;
+              }
+            }
+          }
+        }
+
         &.me-btn {
           a {
             p {
@@ -288,7 +300,18 @@
               .number {
                 height: 17px;
                 right: 3px;
-                top: 5px;
+                // top: 5px;
+              }
+            }
+          }
+        }
+
+        &.notifications,
+        &.messaging {
+          a {
+            p {
+              .number {
+                right: 27px;
               }
             }
           }
@@ -349,6 +372,17 @@
     ul {
       li {
         &.current-btn {
+        }
+
+        &.notifications,
+        &.messaging {
+          a {
+            p {
+              .number {
+                right: 20px;
+              }
+            }
+          }
         }
 
         &.me-btn {

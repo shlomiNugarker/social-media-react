@@ -1,5 +1,6 @@
 import { postService } from '../../services/posts/postService'
 import { commentService } from '../../services/comment/commentService'
+import { socketService } from '../../services/socket.service'
 
 export function setCurrPage(page) {
   return async (dispatch) => {
@@ -52,10 +53,9 @@ export function getPostsLength() {
     }
   }
 }
-///////////////
+
 //// ADDING NEXT PAGE
 export function addPosts() {
-  // *loadPosts
   return async (dispatch, getState) => {
     try {
       const { filterByPosts } = getState().postModule
@@ -75,15 +75,17 @@ export function addPosts() {
   }
 }
 
-///////////////
 export function savePost(post) {
   return async (dispatch) => {
     try {
-      // throw Error('Error')
       const addedPost = await postService.save(post)
       post._id
         ? dispatch({ type: 'UPDATE_POST', post: addedPost })
         : dispatch({ type: 'ADD_POST', post: addedPost })
+
+      post._id
+        ? socketService.emit('post-updated', addedPost)
+        : socketService.emit('post-added', addedPost)
 
       return addedPost
     } catch (err) {
@@ -96,6 +98,7 @@ export function removePost(postId) {
   return async (dispatch) => {
     try {
       await postService.remove(postId)
+      socketService.emit('post-removed', postId)
       dispatch({ type: 'REMOVE_POST', postId })
     } catch (err) {
       console.log('err:', err)
@@ -122,6 +125,41 @@ export function removeComment(comment) {
     try {
       await commentService.remove(comment)
       dispatch({ type: 'REMOVE_COMMENT', comment })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+// HANDLE SOCKETS
+
+export function updatePostForSocket(post) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'UPDATE_POST', post })
+
+      return post
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function addPostForSocket(post) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'ADD_POST', post })
+      return post
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function removePostForSocket(postId) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'REMOVE_POST', postId })
     } catch (err) {
       console.log('err:', err)
     }

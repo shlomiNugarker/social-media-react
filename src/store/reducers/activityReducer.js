@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  activities: null,
+  activities: [],
   filterByActivities: null,
   isActivitiesLoading: false,
   activitiesLength: null,
@@ -10,20 +10,20 @@ const INITIAL_STATE = {
 export function activityReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_ACTIVITIES':
-      console.log('SET_ACTIVITIES', action.activities)
+      // console.log('SET_ACTIVITIES', action.activities)
       return {
         ...state,
         activities: [...action.activities],
       }
     case 'ADD_ACTIVITY':
-      // console.log('ADD_ACTIVITY')
+      console.log('ADD_ACTIVITY', action.activity)
       return {
         ...state,
         activities: [action.activity, ...state.activities],
       }
 
     case 'UPDATE_ACTIVITY':
-      console.log('UPDATE_ACTIVITY')
+      // console.log('UPDATE_ACTIVITY')
       return {
         ...state,
         activities: state.activities.map((activity) => {
@@ -56,13 +56,13 @@ export function activityReducer(state = INITIAL_STATE, action) {
       }
 
     case 'SET_UNREAD_ACTIVITIES':
-      console.log('SET_UNREAD_ACTIVITIES', action.unreadActivities)
+      // console.log('SET_UNREAD_ACTIVITIES', action.unreadActivities)
       return {
         ...state,
         unreadActivities: action.unreadActivities,
       }
     case 'SET_UNREAD_MESSAGES':
-      console.log('SET_UNREAD_MESSAGES', action.unreadMessages)
+      // console.log('SET_UNREAD_MESSAGES', action.unreadMessages)
       return {
         ...state,
         unreadMessages: action.unreadMessages,

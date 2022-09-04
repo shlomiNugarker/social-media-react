@@ -39,7 +39,6 @@ export const PostPreview = ({ post }) => {
   }
 
   const toggleShowImgPreview = () => {
-    console.log('toggle')
     setIsShowImgPreview((prev) => !prev)
   }
 
@@ -62,7 +61,7 @@ export const PostPreview = ({ post }) => {
 
     try {
       await navigator.share(shareData)
-      console.log('shared successfully')
+      // console.log('shared successfully')
     } catch (err) {
       console.log(`Error: ${err}`)
     }

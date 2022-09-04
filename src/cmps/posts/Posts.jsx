@@ -21,7 +21,6 @@ export const Posts = () => {
     const filterBy = {
       sort: +value,
     }
-    console.log(filterBy)
     dispatch(addFilterByPosts(filterBy))
     dispatch(loadPosts())
     dispatch(getPostsLength())

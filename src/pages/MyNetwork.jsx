@@ -82,6 +82,7 @@ export function MyNetwork() {
           <div>
             <h3>Recommended for you</h3>
           </div>
+          {/* all connections: */}
           <ConnectionList users={users} />
         </div>
       </div>

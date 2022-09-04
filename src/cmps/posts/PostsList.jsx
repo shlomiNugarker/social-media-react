@@ -28,7 +28,6 @@ export const PostsList = () => {
     if (params.userId) filterBy.userId = params.userId
     if (!postsLength && !posts) return
     if (postsLength === posts?.length) return
-    console.log('do', postsLength, '===', posts?.length)
     dispatch(addFilterByPosts(filterBy))
     dispatch(addPosts())
     dispatch(setNextPage())

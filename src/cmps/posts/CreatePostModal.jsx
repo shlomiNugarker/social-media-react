@@ -175,8 +175,6 @@ export const CreatePostModal = ({
           <div
             className="cancel-btn btn"
             onClick={() => {
-              console.log('cancel')
-
               setNewPost({
                 body: '',
                 imgBodyUrl: null,

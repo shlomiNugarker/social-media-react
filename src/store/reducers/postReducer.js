@@ -24,7 +24,7 @@ export function postReducer(state = INITIAL_STATE, action) {
       }
 
     case 'SET_IS_POSTS_LOADING':
-      console.log('SET_IS_POSTS_LOADING', action.isLoading)
+      // console.log('SET_IS_POSTS_LOADING', action.isLoading)
       return {
         ...state,
         isPostsLoading: action.isLoading,
@@ -37,7 +37,7 @@ export function postReducer(state = INITIAL_STATE, action) {
         postsLength: action.postsLength,
       }
     case 'ADD_FILTER_BY_POSTS':
-      console.log('SET_FILTER_BY_POST', action.filterByPosts)
+      // console.log('SET_FILTER_BY_POST', action.filterByPosts)
       return {
         ...state,
         filterByPosts: { ...state.filterByPosts, ...action.filterByPosts },
@@ -55,7 +55,7 @@ export function postReducer(state = INITIAL_STATE, action) {
         posts: [...action.posts],
       }
     case 'ADD_POST':
-      console.log('ADD_POST')
+      // console.log('ADD_POST')
       return {
         ...state,
         posts: [action.post, ...state.posts],

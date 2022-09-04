@@ -1,4 +1,5 @@
 import { userService } from '../../services/user/userService'
+import { socketService } from '../../services/socket.service'
 
 export function getUsers() {
   return async (dispatch, getState) => {
@@ -34,6 +35,9 @@ export function login(userCred) {
     try {
       const user = await userService.login(userCred)
       dispatch({ type: 'LOGIN', user })
+
+      socketService.emit('setUserSocket', user._id)
+
       return user
     } catch (err) {
       console.log("can't do login:", err)

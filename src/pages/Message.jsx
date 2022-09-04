@@ -91,7 +91,7 @@ export function Message() {
       setMessagesToShow(chatToShow.messages)
     } else if (isUserChatExist === false) {
       // OPEMIMG TEMP CHAT UNTIL THE FIRST MSG SENT,
-      // THEN SAVE IT IN MONGO- NEED TO REMOVE THE ID BEFORE
+      // THEN SAVE IT IN MONGO- REMOVING THE ID BEFORE
       if (!params.userId || !chats) return
       const newChat = createChat(params.userId)
       dispatch(addTempChat(newChat))
@@ -107,6 +107,7 @@ export function Message() {
   const onSendMsg = (txt) => {
     const newMsg = createNewMsg(txt)
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
+    console.log({ chatIdx })
     const chatToUpdate = { ...chats[chatIdx] }
     chatToUpdate.messages.push(newMsg)
     chatToUpdate.users = [
@@ -122,7 +123,6 @@ export function Message() {
     dispatch(saveChat(chatToUpdate)).then((savedChat) => {
       setMessagesToShow(savedChat.messages)
       if (savedChat) {
-        console.log(savedChat)
         const newActivity = {
           type: 'private-message',
           createdBy: loggedInUser?._id,
@@ -175,7 +175,7 @@ export function Message() {
     return (await userService.getById(userId)) || null
   }
 
-  // console.log('render Message')
+  console.log('render Message')
   if (!chats)
     return (
       <div className="message-page">

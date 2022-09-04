@@ -11,7 +11,7 @@ export function chatReducer(state = INITIAL_STATE, action) {
         chats: [...action.chats],
       }
     case 'ADD_CHAT':
-      console.log('ADD_CHAT')
+      console.log('ADD_CHAT', action.chat)
       return {
         ...state,
         chats: [action.chat, ...state.chats],
@@ -23,7 +23,7 @@ export function chatReducer(state = INITIAL_STATE, action) {
     //     chats: [...action.chats],
     //   }
     case 'UPDATE_CHAT':
-      console.log('UPDATE_CHAT')
+      console.log('UPDATE_CHAT', action.chat)
       return {
         ...state,
         chats: state.chats.map((chat) => {

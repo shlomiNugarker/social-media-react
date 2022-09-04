@@ -8,6 +8,7 @@ import loadingGif from '../../assets/imgs/loading-circle.gif'
 
 export function MsgPreview({
   chat,
+  chats,
   setMessagesToShow,
   setChatWith,
   chatWith,
@@ -58,10 +59,16 @@ export function MsgPreview({
     return () => {}
   }, [])
 
+  useEffect(() => {
+    setMessagesToShow(chat.messages)
+    setChooseenChatId(chat._id)
+    return () => {}
+  }, [chat, chats])
+
   const isChatChooseen = chooseenChatId === chat._id ? 'chooseen-chat' : ''
   const containerStyle = `container ${isChatChooseen}`
 
-  // console.log('render MsgPreview')
+  console.log('render MsgPreview')
 
   if (!theNotLoggedUserChat)
     return (
@@ -72,6 +79,7 @@ export function MsgPreview({
       </div>
     )
 
+  console.log('rendder msgPreview')
   return (
     <section className="msg-preview" onClick={onClickChat}>
       <div className={containerStyle}>

@@ -36,8 +36,9 @@ export function ListMsg({
 
   useEffect(() => {
     setChatsToShow([...chats])
-  }, [])
+  }, [chats])
 
+  console.log('render ListMsg')
   return (
     <section className="list-msg">
       <div className="title-container">
@@ -73,6 +74,7 @@ export function ListMsg({
             <MsgPreview
               key={chat._id}
               chat={chat}
+              chats={chats}
               setMessagesToShow={setMessagesToShow}
               setChatWith={setChatWith}
               chatWith={chatWith}

@@ -29,8 +29,16 @@ export function Profile() {
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
 
+  const checkIsConnected = () => {
+    const isConnected = loggedInUser?.connections?.some(
+      (connection) => connection?.userId === user?._id
+    )
+
+    setIsConnected(isConnected)
+  }
+
   useEffect(() => {
-    check()
+    checkIsConnected()
     return () => {}
   }, [user])
 
@@ -48,14 +56,6 @@ export function Profile() {
 
   const onShowProfile = () => {
     toggleShowImgProfile()
-  }
-
-  const check = () => {
-    const isConnected = loggedInUser?.connections?.some(
-      (connection) => connection?.userId === user?._id
-    )
-
-    setIsConnected(isConnected)
   }
 
   const connectProfile = async () => {
@@ -94,13 +94,8 @@ export function Profile() {
         fullname: connectionToAdd.fullname,
       })
 
-      console.log('before')
       await dispatch(updateUser(loggedInUserToUpdate))
       await dispatch(updateUser(connectionToAdd))
-      console.log('after')
-
-      console.log(connectionToAdd)
-
       setUser(connectionToAdd)
     }
   }
@@ -136,7 +131,7 @@ export function Profile() {
 
   const isLoggedInUserProfile = loggedInUser?._id === user?._id
 
-  console.log('render profile')
+  // console.log('render profile')
   return (
     <section className="profile-page">
       <div className="left">
