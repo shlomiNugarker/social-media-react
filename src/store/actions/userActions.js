@@ -71,6 +71,7 @@ export function logout() {
     try {
       await userService.logout()
       dispatch({ type: 'LOGOUT' })
+      return true
     } catch (err) {
       console.log('cannot logout:', err)
     }
@@ -113,6 +114,28 @@ export function getUserById(userId) {
       return user
     } catch (err) {
       console.log('cannot getUserById:', err)
+    }
+  }
+}
+
+export function addConnectedUsersForSocket(connectedUsers) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: 'SET_CONNECTED_USERS', connectedUsers })
+      return connectedUsers
+    } catch (err) {
+      console.log('cannot ADD_CONNECTED_USERS:', err)
+    }
+  }
+}
+
+export function addConnectedUserForSocket(connectedUser) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: 'ADD_CONNECTED_USER', connectedUser })
+      return connectedUser
+    } catch (err) {
+      console.log('cannot ADD_CONNECTED_USER:', err)
     }
   }
 }

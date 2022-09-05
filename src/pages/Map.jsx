@@ -144,11 +144,11 @@ export function Map() {
           // onGoogleApiLoaded={({ map, maps }) =>
           //   handleApiLoaded(map, maps, places)
           // }
-          onChange={() => console.log('onBoundsChange')}
+          // onChange={() => console.log('onBoundsChange')}
           onClick={(ev) => onClickMap(ev)}
-          onDrag={(map) => console.log('onDrag')}
-          onDragEnd={(map) => console.log('onDragEnd')}
-          onRightClick={() => console.log('onRightClick')}
+          // onDrag={(map) => console.log('onDrag')}
+          // onDragEnd={(map) => console.log('onDragEnd')}
+          // onRightClick={() => console.log('onRightClick')}
         >
           {users &&
             users.map((user) => (

@@ -69,7 +69,7 @@ export function Message() {
   const checkIfChatExist = () => {
     const promise = new Promise((resolve, reject) => {
       if (!chats) {
-        console.log('no chats')
+        // console.log('no chats')
       } else {
         const isChatExist = chats.some((chat) => {
           return chat.userId === params.userId || chat.userId2 === params.userId
@@ -107,7 +107,6 @@ export function Message() {
   const onSendMsg = (txt) => {
     const newMsg = createNewMsg(txt)
     const chatIdx = chats.findIndex((chat) => chat._id === chooseenChatId)
-    console.log({ chatIdx })
     const chatToUpdate = { ...chats[chatIdx] }
     chatToUpdate.messages.push(newMsg)
     chatToUpdate.users = [
@@ -175,7 +174,7 @@ export function Message() {
     return (await userService.getById(userId)) || null
   }
 
-  console.log('render Message')
+  // console.log('render Message')
   if (!chats)
     return (
       <div className="message-page">

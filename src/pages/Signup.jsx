@@ -104,7 +104,7 @@ export const Signup = () => {
           />
           <input
             onChange={handleChange}
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={cred.password}

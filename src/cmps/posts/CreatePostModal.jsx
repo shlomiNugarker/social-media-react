@@ -70,7 +70,7 @@ export const CreatePostModal = ({
       setIsUploding(true)
       const res = await uploadVid(ev)
       setIsUploding(false)
-      console.log('video res:', res)
+      // console.log('video res:', res)
       setNewPost((prev) => {
         return {
           ...prev,

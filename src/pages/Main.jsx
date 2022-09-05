@@ -3,31 +3,36 @@ import { Header } from '../cmps/header/Header'
 import { Switch, Route } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { socketService } from '../services/socket.service'
 
-import { getLoggedinUser } from '../store/actions/userActions'
 import { Profile } from './Profile'
 import { MyNetwork } from './MyNetwork'
 import { Map } from './Map'
 import { Message } from './Message'
 import { Notifications } from './Notifications'
+import { SpecificPost } from './SpecificPost'
 import { Connections } from './Connections'
+import { socketService } from '../services/socket.service'
+import {
+  addConnectedUserForSocket,
+  addConnectedUsersForSocket,
+  getLoggedinUser,
+} from '../store/actions/userActions'
 import {
   addChatForSocket,
   loadChats,
   updateChatForSocket,
 } from '../store/actions/chatActions'
-import { SpecificPost } from './SpecificPost'
 import {
   loadActivities,
   setFilterByActivities,
   setUnreadActivitiesIds,
 } from '../store/actions/activityAction'
-
-import { socketService } from '../services/socket.service'
 import {
+  addCommentForSocket,
   addPostForSocket,
+  removeCommentForSocket,
   removePostForSocket,
+  updateCommentForSocket,
   updatePostForSocket,
 } from '../store/actions/postActions'
 
@@ -51,7 +56,6 @@ export function Main() {
 
   useEffect(() => {
     dispatch(setUnreadActivitiesIds())
-    // if (!activities) return
     return () => {
       dispatch(setUnreadActivitiesIds())
     }
@@ -65,38 +69,69 @@ export function Main() {
     socketService.on('add-chat', addChat)
     socketService.on('update-chat', updateChat)
 
+    socketService.on('add-connected-users', addConnectedUsers)
+    socketService.on('add-connected-user', addConnectedUser)
+
+    socketService.on('update-comment', updateComment)
+    socketService.on('add-comment', addComment)
+    socketService.on('remove-comment', removeComment)
+
     return () => {
       socketService.off('add-post', addPost)
       socketService.off('update-post', updatePost)
-      socketService.off('remove-post', removePost)
+      socketService.off('remove-post', removeComment)
+
       socketService.off('add-chat', addChat)
       socketService.off('update-chat', updateChat)
+
+      socketService.off('add-connected-users', addConnectedUsers)
+      socketService.off('add-connected-user', addConnectedUser)
+
+      socketService.off('update-comment', updateComment)
+      socketService.off('add-comment', addComment)
+      socketService.off('remove-comment', removeComment)
     }
   }, [])
 
   const addPost = (post) => {
-    console.log('adding post')
     dispatch(addPostForSocket(post))
   }
   const updatePost = (post) => {
-    console.log('updating post')
     dispatch(updatePostForSocket(post))
+    dispatch(loadActivities())
   }
   const removePost = (postId) => {
-    console.log('removing post')
     dispatch(removePostForSocket(postId))
   }
 
   const addChat = (chat) => {
-    console.log('adding chat')
     dispatch(addChatForSocket(chat))
   }
   const updateChat = (chat) => {
-    console.log('updating chat')
     dispatch(updateChatForSocket(chat))
+    dispatch(loadActivities())
+  }
+  const addConnectedUsers = (connectedUsers) => {
+    // console.log('addConnectedUsers', connectedUsers)
+    dispatch(addConnectedUsersForSocket(connectedUsers))
+  }
+  const addConnectedUser = (connectedUser) => {
+    dispatch(addConnectedUserForSocket(connectedUser))
   }
 
-  console.log('render Main')
+  const addComment = (comment) => {
+    dispatch(addCommentForSocket(comment))
+    dispatch(loadActivities())
+  }
+  const updateComment = (comment) => {
+    dispatch(updateCommentForSocket(comment))
+    dispatch(loadActivities())
+  }
+  const removeComment = (comment) => {
+    dispatch(removeCommentForSocket(comment))
+  }
+
+  // console.log('render Main')
   return (
     <div className="main-page container">
       <Header />

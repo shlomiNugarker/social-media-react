@@ -16,7 +16,7 @@ export function activityReducer(state = INITIAL_STATE, action) {
         activities: [...action.activities],
       }
     case 'ADD_ACTIVITY':
-      console.log('ADD_ACTIVITY', action.activity)
+      // console.log('ADD_ACTIVITY', action.activity)
       return {
         ...state,
         activities: [action.activity, ...state.activities],

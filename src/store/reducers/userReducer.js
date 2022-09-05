@@ -3,6 +3,7 @@ const INITIAL_STATE = {
   users: null, // object map
   usersToAdd: null,
   filterByUsers: null,
+  connectedUsers: [],
 }
 
 export function userReducer(state = INITIAL_STATE, action) {
@@ -65,6 +66,20 @@ export function userReducer(state = INITIAL_STATE, action) {
     //     ...state,
     //     loggedInUser: null,
     //   }
+
+    case 'SET_CONNECTED_USERS':
+      // console.log('SET_CONNECTED_USERS', action.connectedUsers)
+      return {
+        ...state,
+        connectedUsers: action.connectedUsers,
+      }
+
+    case 'ADD_CONNECTED_USER':
+      // console.log('ADD_CONNECTED_USER', action.connectedUser)
+      return {
+        ...state,
+        connectedUsers: [...state.connectedUsers, action.connectedUser],
+      }
 
     default:
       return state

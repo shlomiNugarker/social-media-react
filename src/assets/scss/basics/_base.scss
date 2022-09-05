@@ -16,6 +16,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
 }
 
 img {
@@ -75,6 +77,28 @@ input {
 
 ::-webkit-scrollbar-thumb:vertical:active {
   -webkit-border-radius: 100px;
+}
+
+.logo-container {
+  .t {
+    position: relative;
+    width: 50px;
+    .top {
+      position: absolute;
+      top: -15px;
+      height: 10px;
+      width: 85%;
+      background-color: #0073b1;
+    }
+    .bottom {
+      position: absolute;
+      width: 10px;
+      top: -5px;
+      left: 20px;
+      height: 23px;
+      background-color: #0073b1;
+    }
+  }
 }
 
 .gif-container {

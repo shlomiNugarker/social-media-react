@@ -19,9 +19,9 @@ export function PostBody({
       <div className="link">
         {link && (
           // <ReactSnip lines={1} method={'css'}>
-          <span href={link} target="_blank">
+          <a href={link} target="_blank">
             Open link <span className="the-link">{link}</span>
-          </span>
+          </a>
           // </ReactSnip>
         )}
       </div>

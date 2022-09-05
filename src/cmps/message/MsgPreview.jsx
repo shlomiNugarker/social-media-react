@@ -68,7 +68,7 @@ export function MsgPreview({
   const isChatChooseen = chooseenChatId === chat._id ? 'chooseen-chat' : ''
   const containerStyle = `container ${isChatChooseen}`
 
-  console.log('render MsgPreview')
+  // console.log('render MsgPreview')
 
   if (!theNotLoggedUserChat)
     return (
@@ -79,7 +79,7 @@ export function MsgPreview({
       </div>
     )
 
-  console.log('rendder msgPreview')
+  // console.log('rendder msgPreview')
   return (
     <section className="msg-preview" onClick={onClickChat}>
       <div className={containerStyle}>

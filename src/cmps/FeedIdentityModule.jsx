@@ -1,12 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
-import { getLoggedinUser } from '../store/actions/userActions'
+import { getLoggedinUser, logout } from '../store/actions/userActions'
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const FeedIdentityModule = (props) => {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
+
+  const doLogout = async () => {
+    dispatch(logout()).then((res) => {
+      console.log(res)
+      if (res) history.push(`/`)
+    })
+  }
 
   if (!loggedInUser)
     return <section className="feed-identity-module">Loading</section>
@@ -17,7 +27,10 @@ export const FeedIdentityModule = (props) => {
     <section className="feed-identity-module">
       <div className="">
         <div className="bg">
-          <div className="profile-container">
+          <div
+            className="profile-container"
+            onClick={() => history.push(`profile/${loggedInUser._id}`)}
+          >
             <img src={imgUrl} alt="" className="img" />
           </div>
         </div>
@@ -29,28 +42,32 @@ export const FeedIdentityModule = (props) => {
 
         <div className="views">
           <div>
-            <p>Who's viewed your profile</p>
-            <span>245</span>
+            <p>{loggedInUser.connections.length} connections</p>
+            {/* <span>245</span> */}
           </div>
 
           <div>
-            <p>Impressions of your post</p>
-            <span>2164</span>
+            {/* <p>Impressions of your post</p>
+            <span>2164</span> */}
           </div>
         </div>
 
-        <div className="to-premium">
+        {/* <div className="to-premium">
           <p>Access exclusive tools & insights</p>
           <div>
             <span className="logo">o</span>
             <p>Try Premium for free</p>
           </div>
-        </div>
+        </div> */}
 
         <div className="my-items">
-          <div>
-            <span>o</span>
-            My items
+          <div onClick={doLogout}>
+            {/* <span>o</span>
+            My items */}
+            <p>Logout</p>
+            <span>
+              <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
+            </span>
           </div>
         </div>
       </div>

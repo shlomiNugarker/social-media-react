@@ -1,7 +1,7 @@
 .feed-identity-module {
   border-radius: 10px;
   border: 1px solid $border;
-  min-height: 340px;
+  min-height: 240px;
   background-color: white;
 
   div {
@@ -13,6 +13,7 @@
       .profile-container {
         display: flex;
         justify-content: center;
+        cursor: pointer;
         .img {
           width: 70px;
           height: 70px;
@@ -62,6 +63,14 @@
       padding: 5px 10px;
       div {
         padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        p {
+          margin-right: 5px;
+        }
       }
     }
   }

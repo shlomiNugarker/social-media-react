@@ -98,7 +98,9 @@ export function removePost(postId) {
   return async (dispatch) => {
     try {
       await postService.remove(postId)
+
       socketService.emit('post-removed', postId)
+
       dispatch({ type: 'REMOVE_POST', postId })
     } catch (err) {
       console.log('err:', err)
@@ -113,6 +115,12 @@ export function saveComment(comment) {
       comment._id
         ? dispatch({ type: 'UPDATE_COMMENT', comment: savedComment })
         : dispatch({ type: 'ADD_COMMENT', comment: savedComment })
+
+      // TODO: ADD SOCKETS WHEN ADD/UPDATE COMMENT
+      comment._id
+        ? socketService.emit('comment-updated', savedComment)
+        : socketService.emit('comment-added', savedComment)
+
       return savedComment
     } catch (err) {
       console.log('err:', err)
@@ -124,6 +132,9 @@ export function removeComment(comment) {
   return async (dispatch) => {
     try {
       await commentService.remove(comment)
+
+      socketService.emit('comment-removed', comment)
+
       dispatch({ type: 'REMOVE_COMMENT', comment })
     } catch (err) {
       console.log('err:', err)
@@ -160,6 +171,40 @@ export function removePostForSocket(postId) {
   return async (dispatch) => {
     try {
       dispatch({ type: 'REMOVE_POST', postId })
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+////
+
+export function updateCommentForSocket(comment) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'UPDATE_COMMENT', comment })
+
+      return comment
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function addCommentForSocket(comment) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'ADD_COMMENT', comment })
+      return comment
+    } catch (err) {
+      console.log('err:', err)
+    }
+  }
+}
+
+export function removeCommentForSocket(comment) {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: 'REMOVE_COMMENT', comment })
     } catch (err) {
       console.log('err:', err)
     }

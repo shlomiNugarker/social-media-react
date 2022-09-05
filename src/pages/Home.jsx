@@ -114,7 +114,7 @@ export const Home = (props) => {
           />
           <input
             onChange={handleChange}
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={creds.password}
@@ -126,7 +126,7 @@ export const Home = (props) => {
             <p>{msg}</p>
           </div>
 
-          <a href="">Forgot password?</a>
+          <a onClick={() => history.push(`/signup`)}>Or sign-up</a>
           <div>
             <button>Sign in</button>
           </div>
@@ -292,11 +292,11 @@ export const Home = (props) => {
         <div className="imgs-container"></div>
       </div> */}
 
-      <footer className="footer-home">
+      {/* <footer className="footer-home">
         <div>
-          <p>footer c 2022</p>
+          <p>Created by Shlomi</p>
         </div>
-      </footer>
+      </footer> */}
     </section>
   )
 }
