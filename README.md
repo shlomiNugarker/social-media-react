@@ -1,11 +1,11 @@
 
 # Travelsdin
 
-a project management web-app inspired by Linkedin. 
+A social media web-app inspired by Linkedin.
 
 For the project hosted in heroku: https://travelsdin.herokuapp.com/
 
-backend: https://github.com/shlomiNugarker/Social-Network-Backend
+Backend: https://github.com/shlomiNugarker/Social-Network-Backend
 
 # Technologies Used
 
@@ -28,9 +28,7 @@ backend: https://github.com/shlomiNugarker/Social-Network-Backend
 - MongoDB 
 
 <a href="https://travelsdin.herokuapp.com/" target="_blank">
-
  <img src="https://res.cloudinary.com/duajg3ah1/image/upload/v1662386727/ctivc99rxpjymdn0za1n.png" width="100%" title="">
-
 </a>
 
 
