@@ -1,5 +1,37 @@
-## Social Network ! - full-stack app using React.js, Redux, Node.js, MongoDb and more !
 
-Backend- https://github.com/shlomiNugarker/Social-Network-Backend
+# Travelsdin
 
-https://travelsdin.herokuapp.com/#/
+a project management web-app inspired by Linkedin. 
+
+For the project hosted in heroku: https://travelsdin.herokuapp.com/
+
+backend: https://github.com/shlomiNugarker/Social-Network-Backend
+
+# Technologies Used
+
+- React.js
+
+- Redux
+
+- SASS 
+
+- Axios
+
+- Node.js 
+
+- Express
+
+- Socket.io 
+
+-  REST API
+
+- MongoDB 
+
+<a href="https://travelsdin.herokuapp.com/" target="_blank">
+
+ <img src="https://res.cloudinary.com/duajg3ah1/image/upload/v1662386727/ctivc99rxpjymdn0za1n.png" width="100%" title="">
+
+</a>
+
+
+
