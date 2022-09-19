@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Posts } from '../cmps/posts/Posts'
 import { RightSideBar } from '../cmps/RightSideBar'
 import { LeftSideBar } from '../cmps/LeftSideBar'
-import { setCurrPage } from '../store/actions/postActions'
+import { setCurrPage, setNextPage } from '../store/actions/postActions'
 
 export const Feed = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
@@ -11,6 +11,7 @@ export const Feed = (props) => {
 
   useEffect(() => {
     dispatch(setCurrPage('home'))
+    dispatch(setNextPage(1))
   }, [])
 
   if (!loggedInUser)

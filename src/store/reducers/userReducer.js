@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   usersToAdd: null,
   filterByUsers: null,
   connectedUsers: [],
+  isLogingLoading: false,
 }
 
 export function userReducer(state = INITIAL_STATE, action) {
@@ -19,6 +20,12 @@ export function userReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         filterByUsers: { ...action.filterByUsers },
+      }
+    case 'SET_IS_LOADING_LOGING':
+      // console.log('SET_FILTER_BY_USERS')
+      return {
+        ...state,
+        isLogingLoading: action.bool,
       }
     case 'LOGIN':
       return {

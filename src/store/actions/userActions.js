@@ -117,6 +117,15 @@ export function getUserById(userId) {
     }
   }
 }
+export function setLogingLoading(bool) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch({ type: 'SET_IS_LOADING_LOGING', bool })
+    } catch (err) {
+      console.log('cannot getUserById:', err)
+    }
+  }
+}
 
 export function addConnectedUsersForSocket(connectedUsers) {
   return async (dispatch, getState) => {

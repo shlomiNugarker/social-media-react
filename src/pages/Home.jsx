@@ -2,8 +2,10 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { login, signup } from '../store/actions/userActions'
+import { login, setLogingLoading, signup } from '../store/actions/userActions'
 import { Link, useHistory } from 'react-router-dom'
+
+import loading from '../assets/imgs/loading-gif.gif'
 
 export const Home = (props) => {
   const dispatch = useDispatch()
@@ -15,6 +17,8 @@ export const Home = (props) => {
   })
 
   const [msg, setMsg] = useState('')
+
+  const { isLogingLoading } = useSelector((state) => state.userModule)
 
   const showMsg = (txt) => {
     setMsg(txt)
@@ -28,12 +32,15 @@ export const Home = (props) => {
   }
 
   const doLogin = () => {
+    dispatch(setLogingLoading(true))
     dispatch(login(creds))
       .then((savedUser) => {
         setCreds(() => ({ username: '', password: '' }))
         props.history.push('/main/feed')
+        dispatch(setLogingLoading(false))
       })
       .catch((err) => {
+        dispatch(setLogingLoading(false))
         showMsg('Something went wrong...')
         console.log(err)
       })
@@ -43,11 +50,11 @@ export const Home = (props) => {
     <section className="home-page">
       <header className="home-header">
         <div>
-          <div className="home-logo">Travelsdin</div>
+          <div className="home-logo">T</div>
         </div>
         <nav className="home-nav">
           <ul>
-            <li>
+            {/* <li>
               <button>
                 <FontAwesomeIcon icon="fa-solid fa-compass" />
                 <span>Discover</span>
@@ -70,8 +77,8 @@ export const Home = (props) => {
                 <FontAwesomeIcon icon="fa-solid fa-compass" />
                 <span>Places</span>
               </button>
-            </li>
-            <div className="divider"></div>
+            </li> */}
+            {/* <div className="divider"></div> */}
             <li>
               <button
                 className="join-now-btn"
@@ -101,7 +108,7 @@ export const Home = (props) => {
           className="form"
         >
           <h1 className="title">
-            Welcome to your <br /> professional community
+            Welcome to your <br /> traveler's community
           </h1>
           <input
             onChange={handleChange}
@@ -132,8 +139,9 @@ export const Home = (props) => {
           </div>
         </form>
       </div>
+      {isLogingLoading && <img className="loading-logo" src={loading} alt="" />}
 
-      <div className="explore">
+      {/* <div className="explore">
         <div className="title-container">
           <h1 className="title">
             Explore topics you <br /> are interested in
@@ -169,7 +177,7 @@ export const Home = (props) => {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
 
       {/* <div className="find">
         <div className="title-container">

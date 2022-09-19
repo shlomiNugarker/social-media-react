@@ -71,7 +71,7 @@ export const Signup = () => {
   return (
     <section className="sign-up-page">
       <div className="logo-container" onClick={() => history.push(`/home`)}>
-        <p>Travelsdin</p>
+        <p>T</p>
       </div>
       <div className="form-container">
         <form
@@ -81,7 +81,7 @@ export const Signup = () => {
           }}
         >
           <h1>{signin ? 'Sign in' : 'Sign up'}</h1>
-          <p>Stay updated on your amazing world</p>
+          <p>Stay updated with your amazing community</p>
           {!signin && (
             <input
               required
@@ -116,12 +116,12 @@ export const Signup = () => {
           <button className="sign-in-btn">
             {signin ? 'Sign in' : 'Sign up'}
           </button>
-          <div className="divider-container">
+          {/* <div className="divider-container">
             <span></span>
             <span>or</span>
             <span></span>
           </div>
-          <button className="sign-in-apple-btn">Sign in with Apple</button>
+          <button className="sign-in-apple-btn">Sign in with Apple</button> */}
         </form>
         <div className="to-sign-up-container">
           <p>
@@ -132,8 +132,8 @@ export const Signup = () => {
               }}
             >
               {signin
-                ? ' New to LinkedIn? Join now'
-                : 'Already on LinkedIn? Sign in'}
+                ? ' New to Travelsdin? Join now'
+                : 'Already on Travelsdin? Sign in'}
             </a>
           </p>
         </div>

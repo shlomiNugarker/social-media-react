@@ -12,6 +12,11 @@
   align-content: center;
   align-items: center;
 
+  .loading-logo {
+    position: absolute;
+    top: 50%;
+  }
+
   .home-header {
     width: 100%;
 
@@ -20,6 +25,12 @@
     justify-content: space-between;
     padding: 5px 95px;
     margin: 5px 95px;
+    position: fixed;
+
+    .home-logo {
+      font-size: 56px;
+      color: #0073b1;
+    }
 
     .home-nav {
       ul {
@@ -90,6 +101,7 @@
     margin-top: 10px;
     display: flex;
     padding: 60px;
+    padding-top: 0;
     justify-content: center;
     align-items: center;
 

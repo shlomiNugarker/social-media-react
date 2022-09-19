@@ -10,7 +10,13 @@ import {
 export const InputFilter = () => {
   const dispatch = useDispatch()
 
+  const { users } = useSelector((state) => state.userModule)
+
   const [fields, setFields] = useState({ txt: '' })
+
+  const [usersAutoComplete, setUsersAutoComplete] = useState([])
+
+  const [isFocus, setIsFocus] = useState(false)
 
   const handleChange = async ({ target }) => {
     const field = target.name
@@ -19,21 +25,73 @@ export const InputFilter = () => {
     if (target.value === '') onLoadPosts()
   }
 
+  const handleAutComplete = () => {
+    let inputField = document.getElementById('txt')
+    let ulField = document.querySelector('.suggestions')
+    inputField.addEventListener('input', changeAutoComplete)
+
+    if (ulField) ulField.addEventListener('click', selectItem)
+
+    function changeAutoComplete({ target }) {
+      let data = target.value
+      ulField.innerHTML = ``
+      if (data.length) {
+        let autoCompleteValues = autoComplete(data)
+        autoCompleteValues.forEach((value) => {
+          addItem(value)
+        })
+      }
+    }
+
+    function autoComplete(inputValue) {
+      let destination = usersAutoComplete || []
+      return destination.filter((value) =>
+        value.toLowerCase().includes(inputValue.toLowerCase())
+      )
+    }
+
+    function addItem(value) {
+      ulField.innerHTML = ulField.innerHTML + `<li>${value}</li>`
+    }
+
+    function selectItem({ target }) {
+      if (target.tagName === 'LI') {
+        inputField.value = target.textContent
+        ulField.innerHTML = ``
+        setFields({ txt: inputField.value })
+      }
+    }
+  }
+
+  const getUsersName = () => {
+    if (!users) return
+    const usersToReturn = users.map((user) => user.fullname)
+    setUsersAutoComplete(usersToReturn)
+  }
+
   useEffect(() => {
+    getUsersName()
+    handleAutComplete()
     return () => {
       dispatch(addFilterByPosts(null))
     }
-  }, [])
+  }, [users])
+
+  useEffect(() => {
+    handleAutComplete()
+  }, [usersAutoComplete])
+
+  useEffect(() => {
+    onLoadPosts()
+  }, [fields.txt])
 
   const onLoadPosts = () => {
     dispatch(addFilterByPosts(fields))
     dispatch(loadPosts())
     dispatch(getPostsLength())
-    // searchPrompt(fields.txt, true, false)
-    // setTimeout(() => {
-    //   searchPrompt(fields.txt, true, false, true)
-    // }, 3000)
   }
+
+  let focusStyle = isFocus ? 'focus' : ''
 
   return (
     <section className="input">
@@ -45,145 +103,17 @@ export const InputFilter = () => {
         onKeyDown={(e) => {
           if (e.code === 'Enter') onLoadPosts(e)
         }}
+        onFocus={() => {
+          setIsFocus(true)
+        }}
+        onBlur={() => {
+          setIsFocus(false)
+        }}
         id="txt"
         name="txt"
         value={fields.txt}
       />
+      <ul className={'suggestions ' + focusStyle}></ul>
     </section>
-  )
-}
-
-/////////////////////////////////////////////////////////////////////////////////////////
-
-function doHighlight(
-  bodyText,
-  searchTerm,
-  highlightStartTag,
-  highlightEndTag,
-  cleanHighLight
-) {
-  // the highlightStartTag and highlightEndTag parameters are optional
-  if (cleanHighLight) {
-    highlightStartTag = ''
-    highlightEndTag = ''
-  } else if (!highlightStartTag || !highlightEndTag) {
-    highlightStartTag = "<font style='color:blue; background-color:yellow;'>"
-    highlightEndTag = '</font>'
-  }
-
-  var newText = ''
-  var i = -1
-  var lcSearchTerm = searchTerm.toLowerCase()
-  var lcBodyText = bodyText.toLowerCase()
-
-  while (bodyText.length > 0) {
-    i = lcBodyText.indexOf(lcSearchTerm, i + 1)
-    if (i < 0) {
-      newText += bodyText
-      bodyText = ''
-    } else {
-      // skip anything inside an HTML tag
-      if (bodyText.lastIndexOf('>', i) >= bodyText.lastIndexOf('<', i)) {
-        // skip anything inside a <script> block
-        if (
-          lcBodyText.lastIndexOf('/script>', i) >=
-          lcBodyText.lastIndexOf('<script', i)
-        ) {
-          newText +=
-            bodyText.substring(0, i) +
-            highlightStartTag +
-            bodyText.substr(i, searchTerm.length) +
-            highlightEndTag
-          bodyText = bodyText.substr(i + searchTerm.length)
-          lcBodyText = bodyText.toLowerCase()
-          i = -1
-        }
-      }
-    }
-  }
-  return newText
-}
-
-function highlightSearchTerms(
-  searchText,
-  treatAsPhrase,
-  warnOnFailure,
-  highlightStartTag,
-  highlightEndTag,
-  cleanHighLight
-) {
-  var searchArray
-  if (treatAsPhrase) {
-    searchArray = [searchText]
-  } else {
-    searchArray = searchText.split(' ')
-  }
-
-  if (!document.body || typeof document.body.innerHTML == 'undefined') {
-    if (warnOnFailure) {
-      alert('the text is unavailable.')
-    }
-    return false
-  }
-
-  var bodyText = document.body.innerHTML
-  for (var i = 0; i < searchArray.length; i++) {
-    bodyText = doHighlight(
-      bodyText,
-      searchArray[i],
-      highlightStartTag,
-      highlightEndTag,
-      cleanHighLight
-    )
-  }
-
-  document.body.innerHTML = bodyText
-  return true
-}
-
-function searchPrompt(
-  defaultSearchText,
-  isPrompt,
-  treatAsPhrase,
-  cleanHighLight,
-  textColor,
-  bgColor
-) {
-  // we can optionally use our own highlight tag values
-  if (!textColor || !bgColor) {
-    var highlightStartTag = ''
-    var highlightEndTag = ''
-  } else if (cleanHighLight) {
-  } else {
-    highlightStartTag =
-      "<font style='color:" +
-      textColor +
-      '; background-color:' +
-      bgColor +
-      ";'>"
-    highlightEndTag = '</font>'
-  }
-
-  if (treatAsPhrase) {
-    var promptText = "Please enter the phrase you'd like to highlight:"
-  } else {
-    promptText =
-      "Please enter the words you'd like to highlight, separated by spaces:"
-  }
-  if (isPrompt) defaultSearchText = defaultSearchText
-  // if (isPrompt) defaultSearchText = prompt(promptText, defaultSearchText)
-
-  if (!defaultSearchText) {
-    alert('No search terms were entered. Exiting function.')
-    return false
-  }
-
-  return highlightSearchTerms(
-    defaultSearchText,
-    treatAsPhrase,
-    true,
-    highlightStartTag,
-    highlightEndTag,
-    cleanHighLight
   )
 }

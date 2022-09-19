@@ -34,10 +34,11 @@ export const PostsList = () => {
   }
 
   const handleScroll = () => {
+    if (posts.length >= postsLength) return
     // console.log(window.scrollY + window.innerHeight) //scrolled from top
     // console.log(window.innerHeight) //visible part of screen
     if (
-      window.scrollY + window.innerHeight >=
+      window.scrollY + window.innerHeight + 0.9 >=
       document.documentElement.scrollHeight
     ) {
       onLoadNextPage()
@@ -49,10 +50,10 @@ export const PostsList = () => {
 
     window.addEventListener('scroll', handleScroll)
     return () => {
-      dispatch(setNextPage(1))
+      // dispatch(setNextPage(1))
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [posts?.length, postsLength])
 
   if (!posts)
     return (
