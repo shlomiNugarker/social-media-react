@@ -29,7 +29,6 @@ export function Profile() {
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkIsConnected = () => {
     const isConnected = loggedInUser?.connections?.some(
       (connection) => connection?.userId === user?._id
@@ -41,9 +40,8 @@ export function Profile() {
   useEffect(() => {
     checkIsConnected()
     return () => {}
-  }, [checkIsConnected, user])
+  }, [user])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const loadUser = async () => {
     const user = await userService.getById(params.userId)
     setUser(() => user)
@@ -120,7 +118,7 @@ export function Profile() {
     return () => {
       dispatch(setFilterByPosts(null))
     }
-  }, [params.userId, loggedInUser, dispatch, loadUser])
+  }, [params.userId, loggedInUser])
 
   if (!user)
     return (

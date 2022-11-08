@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { AddPost } from './AddPost'
 import { PostsList } from './PostsList'
 import { SortBy } from './SortBy'
@@ -11,6 +11,8 @@ import {
 
 export const Posts = () => {
   const dispatch = useDispatch()
+
+  const { posts } = useSelector((state) => state.postModule)
 
   useEffect(() => {
     dispatch(loadPosts())
@@ -31,7 +33,7 @@ export const Posts = () => {
     <section className="posts">
       <AddPost />
       <SortBy onSetSort={onSetSort} />
-      <PostsList />
+      {posts && <PostsList />}
     </section>
   )
 }
