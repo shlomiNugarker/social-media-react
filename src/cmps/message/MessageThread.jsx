@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useSelector } from 'react-redux'
 import { ThreadMsgList } from './ThreadMsgList'
-import { userService } from '../../services/user/userService'
 import { useHistory } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { SendMessageForm } from './SendMessageForm'
 
 export function MessageThread({

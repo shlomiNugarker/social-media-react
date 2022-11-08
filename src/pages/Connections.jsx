@@ -1,15 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch, useSelector } from 'react-redux'
-import { ConnectionList } from '../cmps/connections/ConnectionList'
-import { userService } from '../services/user/userService'
-import { utilService } from '../services/utilService'
+import { useSelector } from 'react-redux'
 
 import { MyConnectionPreview } from '../cmps/connections/MyConnectionPreview'
 
 export function Connections() {
-  const dispatch = useDispatch()
-
   const [connections, setConnections] = useState(null)
   const [field, setField] = useState({ fullname: '' })
 

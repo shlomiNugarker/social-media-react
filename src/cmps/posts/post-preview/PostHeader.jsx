@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import TimeAgo from 'react-timeago'
 import { Link, useHistory } from 'react-router-dom'
-import { userService } from '../../../services/user/userService'
 import loadingCircle from '../../../assets/imgs/loading-circle.gif'
 
 export const PostHeader = ({ post, userPost }) => {
@@ -51,12 +50,6 @@ export const PostHeader = ({ post, userPost }) => {
           </div>
         </div>
       </div>
-      {/* <div className="follow">
-        <span>
-          <FontAwesomeIcon icon="fa-solid fa-plus" />
-          Follow
-        </span>
-      </div> */}
     </section>
   )
 }

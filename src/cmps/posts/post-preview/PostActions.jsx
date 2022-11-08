@@ -1,7 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
-import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 export const PostActions = ({

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
 
 export const InputComment = ({ onSaveComment }) => {
   const { loggedInUser } = useSelector((state) => state.userModule)

@@ -6,8 +6,6 @@ export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 const baseUrl = process.env.NODE_ENV === 'production' ? '' : '//localhost:3030'
 export const socketService = createSocketService()
 
-// // For DEBUG:
-// window.socketService = socketService
 socketService.setup()
 
 function createSocketService() {

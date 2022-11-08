@@ -19,6 +19,7 @@ async function save(activity) {
 }
 
 async function getActivitiesLength(filterBy = {}) {
+  console.log()
   return await httpService.get(ENDPOINT + '/length', filterBy)
 }
 

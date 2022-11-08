@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import jwt_decode from 'jwt-decode'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, signup, logout } from '../store/actions/userActions'
 import { useHistory } from 'react-router-dom'
@@ -111,7 +110,7 @@ export const Signup = () => {
             placeholder="Passsword"
             required
           />
-          <a>Forgot password?</a>
+          <a href=" ">Forgot password?</a>
 
           <button className="sign-in-btn">
             {signin ? 'Sign in' : 'Sign up'}
@@ -126,6 +125,7 @@ export const Signup = () => {
         <div className="to-sign-up-container">
           <p>
             <a
+              href=" "
               onClick={(ev) => {
                 ev.preventDefault()
                 tooggle()

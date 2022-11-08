@@ -1,9 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
-
 export const SortBy = ({ onSetSort }) => {
-  const [sortBy, setSortBy] = useState(-1)
-
   return (
     <section className="sort-by">
       <hr className="divider" />

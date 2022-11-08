@@ -1,6 +1,6 @@
 import { useHistory, useParams } from 'react-router-dom'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { userService } from '../services/user/userService'
@@ -14,7 +14,7 @@ import {
   setCurrPage,
   setFilterByPosts,
 } from '../store/actions/postActions'
-import { getUserById, updateUser } from '../store/actions/userActions'
+import { updateUser } from '../store/actions/userActions'
 
 export function Profile() {
   const params = useParams()
@@ -29,6 +29,7 @@ export function Profile() {
   const { posts } = useSelector((state) => state.postModule)
   const { loggedInUser } = useSelector((state) => state.userModule)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkIsConnected = () => {
     const isConnected = loggedInUser?.connections?.some(
       (connection) => connection?.userId === user?._id
@@ -40,8 +41,9 @@ export function Profile() {
   useEffect(() => {
     checkIsConnected()
     return () => {}
-  }, [user])
+  }, [checkIsConnected, user])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const loadUser = async () => {
     const user = await userService.getById(params.userId)
     setUser(() => user)
@@ -118,7 +120,7 @@ export function Profile() {
     return () => {
       dispatch(setFilterByPosts(null))
     }
-  }, [params.userId, loggedInUser])
+  }, [params.userId, loggedInUser, dispatch, loadUser])
 
   if (!user)
     return (

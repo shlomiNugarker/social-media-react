@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { PostPreview } from '../cmps/posts/post-preview/PostPreview'
 import {

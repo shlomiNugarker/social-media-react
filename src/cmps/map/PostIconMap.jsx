@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
 
 export const PostIconMap = ({ post, setPostToPreview }) => {
   return (

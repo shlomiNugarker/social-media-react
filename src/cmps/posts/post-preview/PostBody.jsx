@@ -1,5 +1,3 @@
-import { ReactSnip } from '@strg/react-snip'
-
 export function PostBody({
   body,
   imgUrl,
@@ -18,11 +16,9 @@ export function PostBody({
       </div>
       <div className="link">
         {link && (
-          // <ReactSnip lines={1} method={'css'}>
-          <a href={link} target="_blank">
+          <a href={link} target="_blank" rel="noreferrer">
             Open link <span className="the-link">{link}</span>
           </a>
-          // </ReactSnip>
         )}
       </div>
       <div className="img-container" onClick={toggleShowImgPreview}>

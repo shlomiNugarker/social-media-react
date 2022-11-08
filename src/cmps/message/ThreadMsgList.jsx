@@ -1,5 +1,3 @@
-import { useSelector } from 'react-redux'
-import { utilService } from '../../services/utilService'
 import { ThreadMsgPreview } from './ThreadMsgPreview'
 
 export function ThreadMsgList({ messagesToShow }) {

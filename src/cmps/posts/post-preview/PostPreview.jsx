@@ -4,16 +4,12 @@ import { PostActions } from './PostActions'
 import { PostBody } from './PostBody'
 import { PostHeader } from './PostHeader'
 import { SocialDetails } from './SocialDetails'
-import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../../../services/user/userService'
-import { useEffectUpdate } from '../../../hooks/useEffectUpdate'
+
 import { PostMenu } from './PostMenu'
-import {
-  savePost,
-  loadPosts,
-  removePost,
-} from '../../../store/actions/postActions'
+import { savePost, removePost } from '../../../store/actions/postActions'
 import { saveActivity } from '../../../store/actions/activityAction'
 import { ImgPreview } from '../../profile/ImgPreview'
 import { useParams } from 'react-router-dom'

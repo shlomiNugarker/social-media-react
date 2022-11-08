@@ -1,6 +1,4 @@
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { userService } from '../../services/user/userService'
 import { ListMsg } from './ListMsg'
 import { MessageThread } from './MessageThread'
 

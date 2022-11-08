@@ -2,7 +2,6 @@ import { InputComment } from './InputComment'
 import { CommentsList } from './CommentsList'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveComment } from '../../store/actions/postActions'
-import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
 import { saveActivity } from '../../store/actions/activityAction'
 
 export const Comments = ({ postId, comments, userPostId }) => {

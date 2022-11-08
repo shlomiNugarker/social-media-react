@@ -1,8 +1,6 @@
 import { PostPreview } from './post-preview/PostPreview'
 import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useEffect, useRef, useMemo, useState } from 'react'
-import { utilService } from '../../services/utilService'
-import { useEffectUpdate } from '../../hooks/useEffectUpdate'
+import { useEffect } from 'react'
 import loadingGif from '../../assets/imgs/loading-gif.gif'
 import { useParams } from 'react-router-dom'
 import {
@@ -53,7 +51,8 @@ export const PostsList = () => {
       // dispatch(setNextPage(1))
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [posts?.length, postsLength])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [posts.length, postsLength])
 
   if (!posts)
     return (

@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { setCurrPage } from '../store/actions/postActions'
 import { NotificationsList } from '../cmps/notifications/NotificationsList'
 import loadingGif from '../assets/imgs/loading-gif.gif'
@@ -9,7 +9,7 @@ import {
   setFilterByActivities,
   setUnreadActivitiesIds,
 } from '../store/actions/activityAction'
-import { getLoggedinUser, updateUser } from '../store/actions/userActions'
+import { updateUser } from '../store/actions/userActions'
 
 export function Notifications() {
   const { loggedInUser } = useSelector((state) => state.userModule)

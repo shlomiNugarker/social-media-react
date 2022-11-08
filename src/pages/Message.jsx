@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrPage } from '../store/actions/postActions'
 import { Messaging } from '../cmps/message/Messaging'
@@ -9,7 +9,7 @@ import {
   loadChats,
   saveChat,
 } from '../store/actions/chatActions'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { userService } from '../services/user/userService'
 import { utilService } from '../services/utilService'
 import {
@@ -17,11 +17,11 @@ import {
   setUnreadActivitiesIds,
 } from '../store/actions/activityAction'
 import loadingGif from '../assets/imgs/loading-gif.gif'
-import { getLoggedinUser, updateUser } from '../store/actions/userActions'
+import { updateUser } from '../store/actions/userActions'
 
 export function Message() {
   const dispatch = useDispatch()
-  const history = useHistory()
+
   const params = useParams()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
@@ -51,6 +51,7 @@ export function Message() {
           openChat()
         })
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUser, params.userId, isUserChatExist])
 
   useEffect(() => {
@@ -58,6 +59,7 @@ export function Message() {
       await updateLastSeenLoggedUser()
       dispatch(setUnreadActivitiesIds())
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updateLastSeenLoggedUser = async () => {

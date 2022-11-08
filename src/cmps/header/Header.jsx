@@ -1,8 +1,6 @@
 import { Logo } from '../../assets/imgs/Logo'
 import { InputFilter } from './InputFilter'
 import { Nav } from './Nav'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
 
 export function Header() {
   return (

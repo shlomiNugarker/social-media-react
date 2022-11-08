@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux'
-import { utilService } from '../../services/utilService'
 import { NotificaitonPreview } from './NotificaitonPreview'
 
 export function NotificationsList() {

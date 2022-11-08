@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
+import { useState } from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { login, setLogingLoading, signup } from '../store/actions/userActions'
-import { Link, useHistory } from 'react-router-dom'
+
+import { login, setLogingLoading } from '../store/actions/userActions'
+import { useHistory } from 'react-router-dom'
 
 import loading from '../assets/imgs/loading-gif.gif'
 
@@ -54,31 +54,6 @@ export const Home = (props) => {
         </div>
         <nav className="home-nav">
           <ul>
-            {/* <li>
-              <button>
-                <FontAwesomeIcon icon="fa-solid fa-compass" />
-                <span>Discover</span>
-              </button>
-            </li>
-            <li>
-              <button>
-                <FontAwesomeIcon icon="fa-solid fa-user-group" />
-                <span>People</span>
-              </button>
-            </li>
-            <li>
-              <button>
-                <FontAwesomeIcon icon="fa-solid fa-compass" />
-                <span>Learning</span>
-              </button>
-            </li>
-            <li>
-              <button>
-                <FontAwesomeIcon icon="fa-solid fa-compass" />
-                <span>Places</span>
-              </button>
-            </li> */}
-            {/* <div className="divider"></div> */}
             <li>
               <button
                 className="join-now-btn"
@@ -140,171 +115,6 @@ export const Home = (props) => {
         </form>
       </div>
       {isLogingLoading && <img className="loading-logo" src={loading} alt="" />}
-
-      {/* <div className="explore">
-        <div className="title-container">
-          <h1 className="title">
-            Explore topics you <br /> are interested in
-          </h1>
-        </div>
-        <div className="btns-container">
-          <h2>CONTENT TOPICS</h2>
-          <ul>
-            <li>
-              <a href=""> See All Topics</a>
-            </li>
-            <li>
-              <a href="">Remote</a>
-            </li>
-            <li>
-              <a href=""> Work and Travel</a>
-            </li>
-
-            <li>
-              <a href="">Retirement</a>
-            </li>
-            <li>
-              <a href="">Internships</a>
-            </li>
-            <li>
-              <a href="">Freelancer</a>
-            </li>
-            <li>
-              <a href="">Salary and Compensation</a>
-            </li>
-            <li>
-              <a href="">Starting a trip</a>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-
-      {/* <div className="find">
-        <div className="title-container">
-          <h1 className="title">
-            Find the right job or <br /> internship for you
-          </h1>
-        </div>
-        <div className="btns-container">
-          <h2>SUGGESTED SEARCHES</h2>
-          <ul>
-            <li>
-              <a href=""> See All Topics</a>
-            </li>
-            <li>
-              <a href="">Remote</a>
-            </li>
-            <li>
-              <a href=""> Work from Home</a>
-            </li>
-
-            <li>
-              <a href="">Retirement</a>
-            </li>
-            <li>
-              <a href="">Internships</a>
-            </li>
-            <li>
-              <a href="">Freelancer</a>
-            </li>
-            <li>
-              <a href="">Salary and Compensation</a>
-            </li>
-            <li>
-              <a href="">Starting a job</a>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-
-      {/* <div className="post">
-        <div className="title-container">
-          <h1 className="title">
-            Post your story for <br /> millions of people to see
-          </h1>
-        </div>
-        <div className="btns-container" onClick={() => history.push(`/signup`)}>
-          <ul>
-            <li>
-              <a href="" onClick={() => history.push(`/signup`)}>
-                Post your story
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> */}
-
-      {/* <div className="meet">
-        <div className="title-container">
-          <div>
-            <h1 className="title">
-              Let the right people know <br /> you're traveling in their area
-            </h1>
-            <p>
-              With the Post On Map feature, you can tell people or publicly
-              share with the Travelsdin community that you are looking for new
-              trip opportunities.
-            </p>
-          </div>
-        </div>
-        <div className="container-r-side">
-          <div className="img-container">
-            <img
-              className="img"
-              src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              alt=""
-            />
-          </div>
-        </div>
-      </div> */}
-
-      {/* <div className="connect-learn">
-        <div className="connect">
-          <div className="img-container">
-            <img className="img" src="" alt="" />
-          </div>
-          <h1>
-            Connect with people <br /> who can help
-          </h1>
-          <a href="">Find people you know</a>
-        </div>
-        <div className="learn">
-          <div className="img-container">
-            <img className="img" src="" alt="" />
-          </div>
-          <h1>
-            Learn the skills you <br /> need to succeed
-          </h1>
-          <a href="">Find people you know</a>
-        </div>
-      </div> */}
-
-      {/* <div className="join">
-        <div>
-          <h1>
-            Join your colleagues, classmates, and friends on <br /> Travelsdin.
-          </h1>
-
-          <div className="get-started-container">
-            <button
-              onClick={() => {
-                props.history.push('/signup')
-              }}
-              className="get-started-btn"
-            >
-              Get Started
-            </button>
-          </div>
-        </div>
-
-        <div className="imgs-container"></div>
-      </div> */}
-
-      {/* <footer className="footer-home">
-        <div>
-          <p>Created by Shlomi</p>
-        </div>
-      </footer> */}
     </section>
   )
 }

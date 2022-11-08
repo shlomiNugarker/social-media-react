@@ -1,7 +1,7 @@
 import { Feed } from '../pages/Feed'
 import { Header } from '../cmps/header/Header'
 import { Switch, Route } from 'react-router-dom'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Profile } from './Profile'
@@ -15,11 +15,9 @@ import { socketService } from '../services/socket.service'
 import {
   addConnectedUserForSocket,
   addConnectedUsersForSocket,
-  getLoggedinUser,
 } from '../store/actions/userActions'
 import {
   addChatForSocket,
-  loadChats,
   updateChatForSocket,
 } from '../store/actions/chatActions'
 import {
@@ -41,8 +39,8 @@ export function Main() {
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { activities } = useSelector((state) => state.activityModule)
-  const { unreadActivities } = useSelector((state) => state.activityModule)
-  const { unreadMessages } = useSelector((state) => state.activityModule)
+  // const { unreadActivities } = useSelector((state) => state.activityModule)
+  // const { unreadMessages } = useSelector((state) => state.activityModule)
 
   useEffect(() => {
     if (loggedInUser?._id) {
@@ -59,7 +57,7 @@ export function Main() {
     return () => {
       dispatch(setUnreadActivitiesIds())
     }
-  }, [activities])
+  }, [activities, dispatch])
 
   useEffect(() => {
     socketService.on('add-post', addPost)

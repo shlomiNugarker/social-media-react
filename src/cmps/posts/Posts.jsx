@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { AddPost } from './AddPost'
 import { PostsList } from './PostsList'
 import { SortBy } from './SortBy'
@@ -15,7 +15,7 @@ export const Posts = () => {
   useEffect(() => {
     dispatch(loadPosts())
     dispatch(getPostsLength())
-  }, [])
+  }, [dispatch])
 
   const onSetSort = (value) => {
     const filterBy = {

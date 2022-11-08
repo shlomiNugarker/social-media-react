@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux'
 import { ReactSnip } from '@strg/react-snip'
-import TimeAgo from 'react-timeago'
-import { userService } from '../../services/user/userService'
 import { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import loadingGif from '../../assets/imgs/loading-circle.gif'

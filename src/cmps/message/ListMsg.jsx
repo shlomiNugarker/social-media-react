@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
-import { utilService } from '../../services/utilService'
 import { MsgPreview } from './MsgPreview'
 
 export function ListMsg({

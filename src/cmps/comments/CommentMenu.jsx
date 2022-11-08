@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const CommentMenu = ({ toggleMenu, onRemoveComment, commentUserId }) => {

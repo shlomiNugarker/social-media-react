@@ -1,7 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffectUpdate } from '../hooks/useEffectUpdate'
-import { getLoggedinUser, logout } from '../store/actions/userActions'
-import { useEffect, useState } from 'react'
+import { logout } from '../store/actions/userActions'
 import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

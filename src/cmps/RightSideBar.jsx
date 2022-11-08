@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getUsers } from '../store/actions/userActions'
-import { ConnectionPreview } from './connections/ConnectionPreview'
 
 export const RightSideBar = () => {
   const { users } = useSelector((state) => state.userModule)
@@ -11,9 +10,7 @@ export const RightSideBar = () => {
 
   useEffect(() => {
     dispatch(getUsers())
-
-    return () => {}
-  }, [])
+  }, [dispatch])
 
   const lengtConections = [0, 1, 2]
   return (

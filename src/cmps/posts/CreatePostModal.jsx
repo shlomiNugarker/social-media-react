@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+
 import { uploadImg, uploadVid } from '../../services/imgUpload.service'
 import LoadingGif from '../../assets/imgs/loading-gif.gif'
 

@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userService } from '../../services/user/userService'
@@ -8,7 +7,7 @@ import { postService } from '../../services/posts/postService'
 import loadingCircle from '../../assets/imgs/loading-circle.gif'
 
 export function NotificaitonPreview({ activity }) {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const history = useHistory()
   const [theNotLoggedUser, setTheNotLoggedUser] = useState(null)
   const [str, setStr] = useState(null)
