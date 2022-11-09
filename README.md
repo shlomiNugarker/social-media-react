@@ -3,7 +3,7 @@
 
 A social media web-app inspired by Linkedin.
 
-For the project hosted in heroku: https://travelsdin.herokuapp.com/
+For the project hosted in heroku: https://travelsdin.onrender.com/#/
 
 Backend: https://github.com/shlomiNugarker/Social-Network-Backend
 
