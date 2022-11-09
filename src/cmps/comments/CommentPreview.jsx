@@ -146,7 +146,7 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
           </div>
         </div>
         <div className="comment-action">
-          <span>{reactions.length || ''}</span>
+          <span>{reactions?.length || ''}</span>
           <button className={'like ' + likeBtnStyle} onClick={onLikeComment}>
             Like
           </button>
@@ -155,11 +155,11 @@ export const CommentPreview = ({ comment, onSaveComment }) => {
             Reply
           </button>
           |
-          {comment.replies.length ? (
+          {comment.replies?.length ? (
             <button onClick={() => setIsShowReplyList((prev) => !prev)}>
               {isShowreplyList && isShowreplyList
-                ? `Hide ${comment.replies.length} replies`
-                : `Show ${comment.replies.length} replies`}
+                ? `Hide ${comment.replies?.length} replies`
+                : `Show ${comment.replies?.length} replies`}
             </button>
           ) : (
             ''

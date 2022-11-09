@@ -71,7 +71,7 @@ export const ReplyPreview = ({ reply, updateReply }) => {
           <p className="reply-txt">{reply.txt}</p>
         </div>
         <div className="reply-actions">
-          <span>{reply.reactions.length || ''}</span>
+          <span>{reply.reactions?.length || ''}</span>
           <button
             className={'like ' + likeBtnStyle}
             onClick={() => onLikeReply()}

@@ -8,15 +8,9 @@ export const PostMenu = ({
   postUserId,
   copyToClipBoard,
 }) => {
-  const dispatch = useDispatch()
-
   const { loggedInUser } = useSelector((state) => state.userModule)
 
   const [isAskAgain, setIsAskAgain] = useState(false)
-
-  useEffect(() => {
-    // eslint-disable-next-line
-  }, [])
 
   const isLoggedInUserCanDelete = loggedInUser._id === postUserId
 

@@ -35,7 +35,7 @@ export const InputFilter = () => {
     function changeAutoComplete({ target }) {
       let data = target.value
       ulField.innerHTML = ``
-      if (data.length) {
+      if (data?.length) {
         let autoCompleteValues = autoComplete(data)
         autoCompleteValues.forEach((value) => {
           addItem(value)

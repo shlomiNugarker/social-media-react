@@ -40,7 +40,7 @@ export function Connections() {
       <div className="left main">
         <div className="container">
           <div className="count">
-            <h3>{loggedInUser.connections.length} Connections</h3>
+            <h3>{loggedInUser.connections?.length} Connections</h3>
           </div>
 
           <div className="filter-container">

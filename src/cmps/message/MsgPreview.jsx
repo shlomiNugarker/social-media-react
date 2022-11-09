@@ -33,7 +33,7 @@ export function MsgPreview({
   }
 
   const lastMsg =
-    chat.messages[chat.messages.length - 1]?.txt || 'No Messages yet..'
+    chat.messages[chat.messages?.length - 1]?.txt || 'No Messages yet..'
   const dateToShow = new Date(chat.messages[0]?.createdAt || chat.createdAt)
   const slicedDate = dateToShow.toLocaleDateString().slice(0, -5)
 

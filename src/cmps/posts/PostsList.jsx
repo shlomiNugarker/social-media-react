@@ -32,7 +32,7 @@ export const PostsList = () => {
   }
 
   const handleScroll = () => {
-    if (posts.length >= postsLength) return
+    if (posts?.length >= postsLength) return
     // console.log(window.scrollY + window.innerHeight) //scrolled from top
     // console.log(window.innerHeight) //visible part of screen
     if (
@@ -51,8 +51,7 @@ export const PostsList = () => {
       // dispatch(setNextPage(1))
       window.removeEventListener('scroll', handleScroll)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [posts.length, postsLength])
+  }, [postsLength])
 
   if (!posts)
     return (
@@ -69,19 +68,19 @@ export const PostsList = () => {
         <PostPreview key={post._id} post={post} />
       ))}
       <div onClick={onLoadNextPage} className="load-more">
-        {!isPostsLoading && posts.length < postsLength && (
+        {!isPostsLoading && posts?.length < postsLength && (
           <p className="load-btn">
             <span>
               <FontAwesomeIcon icon="fa-solid fa-caret-down" />
             </span>
           </p>
         )}
-        {isPostsLoading && posts.length < postsLength && (
+        {isPostsLoading && posts?.length < postsLength && (
           <span className="gif-container">
             <img className="loading-gif" src={loadingGif} alt="" />
           </span>
         )}
-        {posts.length === postsLength && <p>This is the end..</p>}
+        {posts?.length === postsLength && <p>This is the end..</p>}
       </div>
     </section>
   )

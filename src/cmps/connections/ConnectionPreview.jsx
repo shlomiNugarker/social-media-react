@@ -86,7 +86,7 @@ export function ConnectionPreview({ user }) {
         </div>
       </Link>
       <div className="followers-count">
-        <p> {user.connections.length} conections</p>
+        <p> {user.connections?.length} conections</p>
       </div>
 
       <div className="btn-container" onClick={connectProfile}>

@@ -26,8 +26,7 @@ export const SpecificPost = (props) => {
     return () => {
       dispatch(setFilterByPosts(null))
     }
-    // eslint-disable-next-line
-  }, [])
+  }, [dispatch, params.postId])
 
   // console.log('render SpecificPost')
   if (!posts) return <div className="specific-post">Loading...</div>

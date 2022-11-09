@@ -15,7 +15,7 @@ export function LikeList({ reactions, toggleLikes }) {
       </div>
       <div>
         <div className="all">
-          <p>All {reactions.length}</p>
+          <p>All {reactions?.length}</p>
         </div>
       </div>
       <div className="list">

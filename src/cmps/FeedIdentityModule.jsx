@@ -40,7 +40,7 @@ export const FeedIdentityModule = (props) => {
 
         <div className="views">
           <div>
-            <p>{loggedInUser.connections.length} connections</p>
+            <p>{loggedInUser?.connections?.length} connections</p>
             {/* <span>245</span> */}
           </div>
 

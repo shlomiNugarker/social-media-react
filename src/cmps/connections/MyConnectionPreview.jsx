@@ -16,7 +16,6 @@ export function MyConnectionPreview({ connection }) {
 
   useEffect(() => {
     loadUser()
-    // eslint-disable-next-line
   }, [])
 
   if (!user) return

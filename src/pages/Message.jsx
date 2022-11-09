@@ -51,7 +51,6 @@ export function Message() {
           openChat()
         })
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUser, params.userId, isUserChatExist])
 
   useEffect(() => {
@@ -59,7 +58,6 @@ export function Message() {
       await updateLastSeenLoggedUser()
       dispatch(setUnreadActivitiesIds())
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updateLastSeenLoggedUser = async () => {

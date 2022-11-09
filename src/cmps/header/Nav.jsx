@@ -74,8 +74,8 @@ export const Nav = () => {
                 icon="fas fa-comment"
               />
               <span>Messaging</span>
-              {unreadMessages.length > 0 && (
-                <span className="number">{unreadMessages.length}</span>
+              {unreadMessages?.length > 0 && (
+                <span className="number">{unreadMessages?.length}</span>
               )}
             </p>
           </Link>
@@ -98,8 +98,8 @@ export const Nav = () => {
                 icon="fas fa-bell"
               />
               <span>Notifications</span>
-              {unreadActivities.length > 0 && (
-                <span className="number">{unreadActivities.length}</span>
+              {unreadActivities?.length > 0 && (
+                <span className="number">{unreadActivities?.length}</span>
               )}
             </p>
           </Link>
