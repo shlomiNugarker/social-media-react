@@ -38,7 +38,9 @@ export const Signup = () => {
   }
 
   const doSignup = async () => {
-    dispatch(signup(cred))
+    dispatch(signup(cred)).then((user) => {
+      if (user) history.push('/main/feed')
+    })
     cleanFields()
   }
 
