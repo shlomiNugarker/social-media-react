@@ -1,4 +1,3 @@
-
 # Travelsdin
 
 A social media web-app inspired by Linkedin.
@@ -13,23 +12,20 @@ Backend: https://github.com/shlomiNugarker/Social-Network-Backend
 
 - Redux
 
-- SASS 
+- SASS
 
 - Axios
 
-- Node.js 
+- Node.js
 
 - Express
 
-- Socket.io 
+- Socket.io
 
--  REST API
+- REST API
 
-- MongoDB 
+- MongoDB
 
-<a href="https://travelsdin.herokuapp.com/" target="_blank">
+<a href="https://travelsdin.onrender.com/#/" target="_blank">
  <img src="https://res.cloudinary.com/duajg3ah1/image/upload/v1662386727/ctivc99rxpjymdn0za1n.png" width="100%" title="">
 </a>
-
-
-

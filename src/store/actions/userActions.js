@@ -61,6 +61,7 @@ export function signup(userCred) {
     try {
       const user = await userService.signup(userCred)
       dispatch({ type: 'SIGNUP', user })
+      return user
     } catch (err) {
       console.log('cannot signup:', err)
     }
