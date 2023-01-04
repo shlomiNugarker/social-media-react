@@ -12,7 +12,7 @@ const activitiesCash = {}
 
 async function query(filterBy = {}) {
   const activities = await httpService.get(ENDPOINT, filterBy)
-  console.log({ activities })
+
   return activities
 }
 
@@ -23,6 +23,5 @@ async function save(activity) {
 }
 
 async function getActivitiesLength(filterBy = {}) {
-  console.log()
   return await httpService.get(ENDPOINT + '/length', filterBy)
 }

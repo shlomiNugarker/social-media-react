@@ -20,7 +20,6 @@ async function getPostsLength(filterBy = {}) {
 }
 
 async function getById(id) {
-  console.log({ postsCash })
   if (postsCash[id]) return postsCash[id]
   else {
     const post = await httpService.get(`${ENDPOINT}/${id}`)
