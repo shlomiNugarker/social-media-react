@@ -10,6 +10,8 @@ export const postService = {
   getPostsLength,
 }
 
+const postsCash = {}
+
 async function query(filterBy = {}) {
   return await httpService.get(ENDPOINT, filterBy)
 }
@@ -18,7 +20,13 @@ async function getPostsLength(filterBy = {}) {
 }
 
 async function getById(id) {
-  return await httpService.get(`${ENDPOINT}/${id}`)
+  console.log({ postsCash })
+  if (postsCash[id]) return postsCash[id]
+  else {
+    const post = await httpService.get(`${ENDPOINT}/${id}`)
+    postsCash[id] = post
+    return post
+  }
 }
 
 async function remove(id) {

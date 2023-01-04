@@ -14,7 +14,6 @@ export const PostMenu = ({
 
   const isLoggedInUserCanDelete = loggedInUser._id === postUserId
 
-  // console.log('render PostMenu')
   return (
     <section>
       <div

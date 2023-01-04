@@ -22,21 +22,21 @@ export const RightSideBar = () => {
         <br />
         <div className="list">
           {users &&
-            lengtConections.map((num) => (
+            lengtConections.map((num, idx) => (
               <div
-                key={users[num]._id}
+                key={users[num]?._id || idx}
                 className="preview"
-                onClick={() => history.push(`profile/${users[num]._id}`)}
+                onClick={() => history.push(`profile/${users[num]?._id}`)}
               >
                 <div className="img-container">
-                  <img src={users[num].imgUrl} className="img" alt="" />
+                  <img src={users[num]?.imgUrl} className="img" alt="" />
                 </div>
                 <div>
                   <div className="fullname">
-                    <p>{users[num].fullname}</p>
+                    <p>{users[num]?.fullname}</p>
                   </div>
                   <div className="profession">
-                    <p>{users[num].profession}</p>
+                    <p>{users[num]?.profession}</p>
                   </div>
                   <div className="btn">{/* <button>Connect</button> */}</div>
                 </div>

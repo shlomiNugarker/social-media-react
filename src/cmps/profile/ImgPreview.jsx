@@ -25,7 +25,6 @@ export function ImgPreview({
     // console.log({ user })
   }, [])
 
-  // console.log('render ImgProfilePreview')
   return (
     <div className="img-profile-preview">
       <div className="bg" onClick={toggleShowImg}></div>

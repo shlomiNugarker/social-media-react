@@ -11,7 +11,6 @@ export const FeedIdentityModule = (props) => {
 
   const doLogout = async () => {
     dispatch(logout()).then((res) => {
-      console.log(res)
       if (res) history.push(`/`)
     })
   }

@@ -37,7 +37,6 @@ export function ListMsg({
     setChatsToShow([...chats])
   }, [chats])
 
-  // console.log('render ListMsg')
   return (
     <section className="list-msg">
       <div className="title-container">

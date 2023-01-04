@@ -28,7 +28,6 @@ export const Posts = () => {
     dispatch(getPostsLength())
   }
 
-  // console.log('render Posts')
   return (
     <section className="posts">
       <AddPost />

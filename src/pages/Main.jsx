@@ -110,7 +110,6 @@ export function Main() {
     dispatch(loadActivities())
   }
   const addConnectedUsers = (connectedUsers) => {
-    // console.log('addConnectedUsers', connectedUsers)
     dispatch(addConnectedUsersForSocket(connectedUsers))
   }
   const addConnectedUser = (connectedUser) => {

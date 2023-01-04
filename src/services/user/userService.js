@@ -13,13 +13,19 @@ export const userService = {
   update,
 }
 
+const usersCash = {}
+
 async function getUsers(filterBy) {
   return await httpService.get(`user`, filterBy)
 }
 
 async function getById(userId) {
-  const user = await httpService.get(`user/${userId}`)
-  return user
+  if (usersCash[userId]) return usersCash[userId]
+  else {
+    const user = await httpService.get(`user/${userId}`)
+    usersCash[userId] = user
+    return user
+  }
 }
 function remove(userId) {
   return httpService.delete(`user/${userId}`)

@@ -104,7 +104,6 @@ export const PostPreview = ({ post }) => {
     // alert('Copied the text: ' + postUrl)
   }
 
-  // console.log('render PostPreview')
   return (
     <section className="post-preview">
       <div className="menu" onClick={toggleMenu}>

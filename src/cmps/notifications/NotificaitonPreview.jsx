@@ -87,7 +87,7 @@ export function NotificaitonPreview({ activity }) {
           : createdByUser?.fullname
       } added a comment in your post `
 
-      const linkToPost = `post/${post.userId}/${activity.postId}`
+      const linkToPost = `post/${post?.userId}/${activity?.postId}`
       setLink(linkToPost)
       setStr(str)
     } else if (activity.type === 'private-message') {
@@ -121,7 +121,6 @@ export function NotificaitonPreview({ activity }) {
     return () => {}
   }, [unreadActivities])
 
-  // console.log('render NotificaitonPreview')
   return (
     <section
       className={`notificaiton-preview ${isActivityUnread ? 'unread' : ''}`}

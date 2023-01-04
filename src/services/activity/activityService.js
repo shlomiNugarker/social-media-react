@@ -8,8 +8,12 @@ export const activityService = {
   getActivitiesLength,
 }
 
+const activitiesCash = {}
+
 async function query(filterBy = {}) {
-  return await httpService.get(ENDPOINT, filterBy)
+  const activities = await httpService.get(ENDPOINT, filterBy)
+  console.log({ activities })
+  return activities
 }
 
 async function save(activity) {
@@ -22,10 +26,3 @@ async function getActivitiesLength(filterBy = {}) {
   console.log()
   return await httpService.get(ENDPOINT + '/length', filterBy)
 }
-
-// ;(async () => {
-//   console.log('IFI !')
-//   const chats = await query()
-
-//   console.log('chats: ', chats)
-// })()

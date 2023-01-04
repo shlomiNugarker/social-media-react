@@ -77,7 +77,6 @@ export function MsgPreview({
       </div>
     )
 
-  // console.log('rendder msgPreview')
   return (
     <section className="msg-preview" onClick={onClickChat}>
       <div className={containerStyle}>

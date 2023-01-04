@@ -33,8 +33,6 @@ export const PostsList = () => {
 
   const handleScroll = () => {
     if (posts?.length >= postsLength) return
-    // console.log(window.scrollY + window.innerHeight) //scrolled from top
-    // console.log(window.innerHeight) //visible part of screen
     if (
       window.scrollY + window.innerHeight + 0.9 >=
       document.documentElement.scrollHeight
@@ -44,11 +42,8 @@ export const PostsList = () => {
   }
 
   useEffect(() => {
-    // dispatch(getPostsLength())
-
     window.addEventListener('scroll', handleScroll)
     return () => {
-      // dispatch(setNextPage(1))
       window.removeEventListener('scroll', handleScroll)
     }
   }, [postsLength])
@@ -61,7 +56,7 @@ export const PostsList = () => {
         </span>
       </div>
     )
-  // console.log('render PostsList')
+
   return (
     <section className="posts-list">
       {posts.map((post) => (

@@ -17,7 +17,6 @@ export function Messaging({
 }) {
   const { loggedInUser } = useSelector((state) => state.userModule)
 
-  // console.log('render Messaging')
   return (
     <section className="messaging">
       <div className="container">
