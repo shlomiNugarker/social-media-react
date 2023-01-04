@@ -4,23 +4,28 @@ import { Posts } from '../cmps/posts/Posts'
 import { RightSideBar } from '../cmps/RightSideBar'
 import { LeftSideBar } from '../cmps/LeftSideBar'
 import { setCurrPage, setNextPage } from '../store/actions/postActions'
+import loadongGif from '../assets/imgs/loading-gif.gif'
 
-export const Feed = (props) => {
+const Feed = (props) => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(setCurrPage('home'))
     dispatch(setNextPage(1))
-  }, [])
+  }, [dispatch])
 
   if (!loggedInUser)
     return (
       <section className="feed-load">
-        <div className="loading">Loading...</div>
+        <div className="loading">
+          <span>
+            <img src={loadongGif} alt="" />
+          </span>
+        </div>
       </section>
     )
-  // console.log('render Feed')
+
   return (
     <section className="feed-page">
       <LeftSideBar />
@@ -29,3 +34,5 @@ export const Feed = (props) => {
     </section>
   )
 }
+
+export default Feed

@@ -7,7 +7,7 @@ import { getUsers, setUsers } from '../store/actions/userActions'
 import { setCurrPage } from '../store/actions/postActions'
 import loadingGif from '../assets/imgs/loading-gif.gif'
 
-export function MyNetwork() {
+function MyNetwork() {
   const dispatch = useDispatch()
   let history = useHistory()
 
@@ -21,7 +21,7 @@ export function MyNetwork() {
     return () => {
       dispatch(setUsers(null))
     }
-  }, [])
+  }, [dispatch])
 
   if (!users)
     return (
@@ -89,3 +89,5 @@ export function MyNetwork() {
     </section>
   )
 }
+
+export default MyNetwork

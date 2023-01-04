@@ -19,7 +19,7 @@ import {
 import loadingGif from '../assets/imgs/loading-gif.gif'
 import { updateUser } from '../store/actions/userActions'
 
-export function Message() {
+function Message() {
   const dispatch = useDispatch()
 
   const params = useParams()
@@ -204,3 +204,5 @@ export function Message() {
     </section>
   )
 }
+
+export default Message

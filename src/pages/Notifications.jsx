@@ -11,7 +11,7 @@ import {
 } from '../store/actions/activityAction'
 import { updateUser } from '../store/actions/userActions'
 
-export function Notifications() {
+function Notifications() {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { activities } = useSelector((state) => state.activityModule)
 
@@ -66,3 +66,5 @@ export function Notifications() {
     </div>
   )
 }
+
+export default Notifications

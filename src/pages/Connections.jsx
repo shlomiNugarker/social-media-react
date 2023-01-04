@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { MyConnectionPreview } from '../cmps/connections/MyConnectionPreview'
 
-export function Connections() {
+function Connections() {
   const [connections, setConnections] = useState(null)
   const [field, setField] = useState({ fullname: '' })
 
@@ -78,3 +78,5 @@ export function Connections() {
     </section>
   )
 }
+
+export default Connections

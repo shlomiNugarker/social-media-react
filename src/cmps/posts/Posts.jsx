@@ -8,6 +8,7 @@ import {
   addFilterByPosts,
   getPostsLength,
 } from '../../store/actions/postActions'
+import loadongGif from '../../assets/imgs/loading-gif.gif'
 
 export const Posts = () => {
   const dispatch = useDispatch()
@@ -27,6 +28,21 @@ export const Posts = () => {
     dispatch(loadPosts())
     dispatch(getPostsLength())
   }
+
+  if (!posts)
+    return (
+      <section className="posts">
+        <img
+          src={loadongGif}
+          alt=""
+          style={{
+            position: 'relative',
+            left: ' 50%',
+            transform: ' translate(-50%)',
+          }}
+        />
+      </section>
+    )
 
   return (
     <section className="posts">

@@ -18,7 +18,7 @@ import {
   updateUser,
 } from '../store/actions/userActions'
 
-export function Map() {
+function Map() {
   const dispatch = useDispatch()
 
   const [defaultProps, setDefaultProps] = useState({
@@ -201,3 +201,5 @@ export function Map() {
     </section>
   )
 }
+
+export default Map

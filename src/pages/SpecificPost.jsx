@@ -9,7 +9,7 @@ import {
   setFilterByPosts,
 } from '../store/actions/postActions'
 
-export const SpecificPost = (props) => {
+const SpecificPost = (props) => {
   const dispatch = useDispatch()
   const params = useParams()
   const { posts } = useSelector((state) => state.postModule)
@@ -38,3 +38,5 @@ export const SpecificPost = (props) => {
     </section>
   )
 }
+
+export default SpecificPost

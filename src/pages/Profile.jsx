@@ -16,7 +16,7 @@ import {
 } from '../store/actions/postActions'
 import { updateUser } from '../store/actions/userActions'
 
-export function Profile() {
+function Profile() {
   const params = useParams()
   const history = useHistory()
   const dispatch = useDispatch()
@@ -201,3 +201,5 @@ export function Profile() {
     </section>
   )
 }
+
+export default Profile
