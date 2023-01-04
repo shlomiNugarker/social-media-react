@@ -1,16 +1,9 @@
-import { Feed } from '../pages/Feed'
+import { lazy, Suspense } from 'react'
 import { Header } from '../cmps/header/Header'
 import { Switch, Route } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Profile } from './Profile'
-import { MyNetwork } from './MyNetwork'
-import { Map } from './Map'
-import { Message } from './Message'
-import { Notifications } from './Notifications'
-import { SpecificPost } from './SpecificPost'
-import { Connections } from './Connections'
 import { socketService } from '../services/socket.service'
 import {
   addConnectedUserForSocket,
@@ -34,13 +27,20 @@ import {
   updatePostForSocket,
 } from '../store/actions/postActions'
 
+const Feed = lazy(() => import('../pages/Feed'))
+const SpecificPost = lazy(() => import('./SpecificPost'))
+const Profile = lazy(() => import('./Profile'))
+const MyNetwork = lazy(() => import('./MyNetwork'))
+const Map = lazy(() => import('./Map'))
+const Message = lazy(() => import('./Message'))
+const Notifications = lazy(() => import('./Notifications'))
+const Connections = lazy(() => import('./Connections'))
+
 export function Main() {
   const dispatch = useDispatch()
 
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { activities } = useSelector((state) => state.activityModule)
-  // const { unreadActivities } = useSelector((state) => state.activityModule)
-  // const { unreadMessages } = useSelector((state) => state.activityModule)
 
   useEffect(() => {
     if (loggedInUser?._id) {
@@ -49,8 +49,9 @@ export function Main() {
       }
       dispatch(setFilterByActivities(filterBy))
       dispatch(loadActivities())
+    } else {
     }
-  }, [])
+  }, [dispatch, loggedInUser?._id])
 
   useEffect(() => {
     dispatch(setUnreadActivitiesIds())
@@ -128,20 +129,21 @@ export function Main() {
     dispatch(removeCommentForSocket(comment))
   }
 
-  // console.log('render Main')
   return (
     <div className="main-page container">
       <Header />
-      <Switch>
-        <Route path="/main/feed" component={Feed} />
-        <Route path="/main/post/:userId/:postId" component={SpecificPost} />
-        <Route path="/main/profile/:userId" component={Profile} />
-        <Route path="/main/mynetwork" component={MyNetwork} />
-        <Route path="/main/map" component={Map} />
-        <Route path="/main/message/:userId?" component={Message} />
-        <Route path="/main/notifications" component={Notifications} />
-        <Route path="/main/connections" component={Connections} />
-      </Switch>
+      <Suspense fallback={<h1>Loading</h1>}>
+        <Switch>
+          <Route path="/main/feed" component={Feed} />
+          <Route path="/main/post/:userId/:postId" component={SpecificPost} />
+          <Route path="/main/profile/:userId" component={Profile} />
+          <Route path="/main/mynetwork" component={MyNetwork} />
+          <Route path="/main/map" component={Map} />
+          <Route path="/main/message/:userId?" component={Message} />
+          <Route path="/main/notifications" component={Notifications} />
+          <Route path="/main/connections" component={Connections} />
+        </Switch>
+      </Suspense>
     </div>
   )
 }
