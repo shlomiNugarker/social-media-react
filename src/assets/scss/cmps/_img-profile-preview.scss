@@ -20,9 +20,10 @@
     border-radius: 20px;
     top: 50vh;
     left: 50vw;
+    width: 100%;
 
-    min-width: 50vw;
-    max-width: 95vw;
+    // min-width: 50vw;
+    // max-width: 95vw;
 
     transform: translate(-50%, -50%);
     padding: 20px;
@@ -79,12 +80,15 @@
 
     .img-container {
       display: flex;
-      height: 100%;
+      // height: 100%;
+      width: 100%;
+
       justify-content: center;
       align-items: center;
       .img {
         max-height: 80vh;
         object-fit: cover;
+        width: 100%;
       }
     }
   }

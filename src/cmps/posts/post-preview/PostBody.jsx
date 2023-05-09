@@ -17,7 +17,7 @@ export function PostBody({
       <div className="link">
         {link && (
           <a href={link} target="_blank" rel="noreferrer">
-            Open link <span className="the-link">{link}</span>
+            <span className="the-link">{link}</span>
           </a>
         )}
       </div>

@@ -12,9 +12,16 @@
   align-content: center;
   align-items: center;
 
-  .loading-logo {
-    position: absolute;
-    top: 50%;
+  .loading-container {
+    position: fixed;
+    inset: 0 0 0 0;
+    background-color: #0000008c;
+
+    .loading-logo {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   .home-header {

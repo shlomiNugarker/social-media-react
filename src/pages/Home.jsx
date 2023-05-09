@@ -114,7 +114,11 @@ export const Home = (props) => {
           </div>
         </form>
       </div>
-      {isLogingLoading && <img className="loading-logo" src={loading} alt="" />}
+      {isLogingLoading && (
+        <div className="loading-container">
+          <img className="loading-logo" src={loading} alt="" />
+        </div>
+      )}
     </section>
   )
 }
