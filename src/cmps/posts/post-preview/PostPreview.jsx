@@ -98,7 +98,7 @@ export const PostPreview = ({ post }) => {
 
   // TODO: ADD REAL SITE TO COPY
   function copyToClipBoard() {
-    const postUrl = `https://travelsdin.herokuapp.com/#/main/post/${post.userId}/${post._id}`
+    const postUrl = `https://travelsdin-express-production.up.railway.app/#/main/post/${post.userId}/${post._id}`
     /* Copy the text inside the text field */
     navigator.clipboard.writeText(postUrl)
     // alert('Copied the text: ' + postUrl)
