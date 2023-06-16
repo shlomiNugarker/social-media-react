@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const PostMenu = ({
@@ -53,7 +53,13 @@ export const PostMenu = ({
         )}
 
         <div className="copy-to-clip-board">
-          <button onClick={copyToClipBoard}>
+          <button
+            onClick={(ev) => {
+              ev.stopPropagation()
+              toggleMenu()
+              copyToClipBoard()
+            }}
+          >
             <FontAwesomeIcon icon="fa-solid fa-copy" />
             <p>Copy link to post</p>
           </button>
