@@ -58,6 +58,7 @@ export function setUnreadActivitiesIds() {
     const { loggedInUser } = getState().userModule
 
     if (!activities) return
+    if (!loggedInUser) return
     let unreadActivities = []
     let unreadMessages = []
     activities.forEach((activity) => {
