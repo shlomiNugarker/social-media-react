@@ -5,13 +5,15 @@ export const PostActions = ({
   post,
   onToggleShowComment,
   onLikePost,
-  onSharePost, // TODO: SHARE POST !
+  onSharePost,
   loggedInUser,
 }) => {
   const history = useHistory()
 
-  const isLogedInUserLikePost = post?.reactions.some((reaction) => {
-    return loggedInUser._id === reaction.userId
+  const isLogedInUserLikePost = post?.reactions?.some((reaction) => {
+    return (
+      loggedInUser && loggedInUser._id && loggedInUser?._id === reaction.userId
+    )
   })
 
   const likeBtnStyle = isLogedInUserLikePost ? 'liked' : ''
