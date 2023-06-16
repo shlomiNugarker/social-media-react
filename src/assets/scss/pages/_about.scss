@@ -1,4 +1,12 @@
 .about-page {
-  min-height: 100vh;
-  background-color: rgb(144, 160, 238);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  iframe {
+    width: 90%;
+    height: 90%;
+  }
 }
