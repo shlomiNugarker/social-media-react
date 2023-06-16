@@ -8,6 +8,7 @@ import { Signup } from './pages/Signup'
 import { getLoggedinUser } from '../src/store/actions/userActions'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
+import PrivateRoute from './cmps/PrivateRoute'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -21,7 +22,7 @@ const App = () => {
       <div className="app">
         <main>
           <Switch>
-            <Route path="/main" component={Main} />
+            <PrivateRoute path="/main" component={Main} />
             <Route path="/about" component={About} />
             <Route path="/signup" component={Signup} />
             <Route path="/" component={Home} />

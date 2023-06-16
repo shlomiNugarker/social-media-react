@@ -27,6 +27,8 @@ import {
   updatePostForSocket,
 } from '../store/actions/postActions'
 
+import PrivateRoute from '../cmps/PrivateRoute'
+
 const Feed = lazy(() => import('../pages/Feed'))
 const SpecificPost = lazy(() => import('./SpecificPost'))
 const Profile = lazy(() => import('./Profile'))
@@ -132,16 +134,19 @@ export function Main() {
   return (
     <div className="main-page container">
       <Header />
-      <Suspense fallback={<h1>Loading</h1>}>
+      <Suspense fallback={<h1>Loading...</h1>}>
         <Switch>
-          <Route path="/main/feed" component={Feed} />
-          <Route path="/main/post/:userId/:postId" component={SpecificPost} />
-          <Route path="/main/profile/:userId" component={Profile} />
-          <Route path="/main/mynetwork" component={MyNetwork} />
-          <Route path="/main/map" component={Map} />
-          <Route path="/main/message/:userId?" component={Message} />
-          <Route path="/main/notifications" component={Notifications} />
-          <Route path="/main/connections" component={Connections} />
+          <PrivateRoute path="/main/feed" component={Feed} />
+          <PrivateRoute
+            path="/main/post/:userId/:postId"
+            component={SpecificPost}
+          />
+          <PrivateRoute path="/main/profile/:userId" component={Profile} />
+          <PrivateRoute path="/main/mynetwork" component={MyNetwork} />
+          <PrivateRoute path="/main/map" component={Map} />
+          <PrivateRoute path="/main/message/:userId?" component={Message} />
+          <PrivateRoute path="/main/notifications" component={Notifications} />
+          <PrivateRoute path="/main/connections" component={Connections} />
         </Switch>
       </Suspense>
     </div>
