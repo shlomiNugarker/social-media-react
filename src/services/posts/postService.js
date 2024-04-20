@@ -37,10 +37,3 @@ async function save(post) {
     ? await httpService.put(`${ENDPOINT}/${post._id}`, post)
     : await httpService.post(ENDPOINT, post)
 }
-
-// ;(async () => {
-//   console.log('IFI !')
-//   const posts = await query()
-
-//   console.log('posts: ', posts)
-// })()

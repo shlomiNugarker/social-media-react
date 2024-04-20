@@ -5,8 +5,6 @@ import loadingCircle from '../../assets/imgs/loading-circle.gif'
 import { updateUser } from '../../store/actions/userActions'
 
 export function ConnectionPreview({ user }) {
-  // const params = useParams()
-  // const history = useHistory()
   const dispatch = useDispatch()
 
   const [isConnected, setIsConnected] = useState(null)
@@ -44,8 +42,6 @@ export function ConnectionPreview({ user }) {
 
       dispatch(updateUser(loggedInUserToUpdate))
       dispatch(updateUser(connectionToRemve))
-
-      // setUser((prev) => ({ ...prev, ...connectionToRemve }))
     } else if (isConnected === false) {
       // Add
       const connectionToAdd = JSON.parse(JSON.stringify(user))
@@ -62,9 +58,8 @@ export function ConnectionPreview({ user }) {
         fullname: connectionToAdd.fullname,
       })
 
-      await dispatch(updateUser(loggedInUserToUpdate))
-      await dispatch(updateUser(connectionToAdd))
-      // setUser(connectionToAdd)
+      dispatch(updateUser(loggedInUserToUpdate))
+      dispatch(updateUser(connectionToAdd))
     }
   }
 
@@ -76,7 +71,6 @@ export function ConnectionPreview({ user }) {
           {(user.imgUrl && (
             <img src={user.imgUrl} alt="" className="img-profile" />
           )) || <img src={loadingCircle} alt="" />}
-          {/* <img src={user.imgUrl} alt="" className="img-profile" /> */}
         </div>
         <div className="fullname">
           <p>{user.fullname}</p>

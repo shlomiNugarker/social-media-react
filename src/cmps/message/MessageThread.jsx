@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useSelector } from 'react-redux'
 import { ThreadMsgList } from './ThreadMsgList'
 import { useHistory } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -11,7 +10,6 @@ export function MessageThread({
   chatWith,
   onSendMsg,
 }) {
-  const { loggedInUser } = useSelector((state) => state.userModule)
   const history = useHistory()
 
   useEffect(() => {
@@ -57,4 +55,3 @@ export function MessageThread({
     </section>
   )
 }
-// ;<FontAwesomeIcon icon="fa-solid fa-x" />

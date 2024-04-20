@@ -29,17 +29,7 @@ export const InputComment = ({ onSaveComment }) => {
   }
   return (
     <section>
-      <form
-        className="input-comment"
-        action=""
-        // onSubmit={(ev) => {
-        //   ev.preventDefault()
-        //   doSubmit()
-        // }}
-        // onClick={(ev) => {
-        //   ev.stopPropagation()
-        // }}
-      >
+      <form className="input-comment" action="">
         <div>
           <div className="img-profile">
             <img src={imgUrl} alt="" className="img" />

@@ -7,7 +7,6 @@ import {
   addPosts,
   addFilterByPosts,
   setNextPage,
-  // getPostsLength,
 } from '../../store/actions/postActions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

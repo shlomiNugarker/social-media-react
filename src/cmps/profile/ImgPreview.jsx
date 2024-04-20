@@ -22,7 +22,6 @@ export function ImgPreview({
 
   useEffect(() => {
     if (post?.userId) loadUser(post.userId)
-    // console.log({ user })
   }, [])
 
   return (

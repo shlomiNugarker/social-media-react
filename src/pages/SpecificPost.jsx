@@ -28,7 +28,6 @@ const SpecificPost = (props) => {
     }
   }, [dispatch, params.postId])
 
-  // console.log('render SpecificPost')
   if (!posts) return <div className="specific-post">Loading...</div>
   return (
     <section className="specific-post">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { userService } from '../../services/user/userService'
 import TimeAgo from 'react-timeago'
 import { useHistory } from 'react-router-dom'
@@ -7,7 +7,6 @@ import { postService } from '../../services/posts/postService'
 import loadingCircle from '../../assets/imgs/loading-circle.gif'
 
 export function NotificaitonPreview({ activity }) {
-  // const dispatch = useDispatch()
   const history = useHistory()
   const [theNotLoggedUser, setTheNotLoggedUser] = useState(null)
   const [str, setStr] = useState(null)
@@ -17,7 +16,6 @@ export function NotificaitonPreview({ activity }) {
   const [isActivityUnread, setIsActivityUnread] = useState(false)
 
   const { loggedInUser } = useSelector((state) => state.userModule)
-  const { baseUrl } = useSelector((state) => state.postModule)
   const { unreadActivities } = useSelector((state) => state.activityModule)
 
   const checkIfActivityUnread = () => {
@@ -132,25 +130,15 @@ export function NotificaitonPreview({ activity }) {
         {(createdByUser?.imgUrl && (
           <img src={createdByUser?.imgUrl} alt="" className="img" />
         )) || <img src={loadingCircle} alt="" />}
-
-        {/* <img src={createdByUser?.imgUrl} alt="" className="img" /> */}
       </div>
 
       <div className="content">
-        {/* <p>{activity.description}</p> */}
         <p>{str}</p>
-        {/* <div className="actions">
-          <p>reactions</p>
-          <p>14 comments</p>
-        </div> */}
       </div>
       <div className="menu">
         <p>
           <TimeAgo date={activity.createdAt} />
         </p>
-        {/* <span>
-          <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
-        </span> */}
       </div>
     </section>
   )

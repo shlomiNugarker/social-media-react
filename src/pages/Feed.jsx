@@ -6,7 +6,7 @@ import { LeftSideBar } from '../cmps/LeftSideBar'
 import { setCurrPage, setNextPage } from '../store/actions/postActions'
 import loadongGif from '../assets/imgs/loading-gif.gif'
 
-const Feed = (props) => {
+const Feed = () => {
   const { loggedInUser } = useSelector((state) => state.userModule)
   const dispatch = useDispatch()
 

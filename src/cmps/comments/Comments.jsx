@@ -26,7 +26,6 @@ export const Comments = ({ postId, comments, userPostId }) => {
     })
   }
 
-  // console.log('render Comments')
   if (!comments) return <div>Loading</div>
   return (
     <section className="comments">

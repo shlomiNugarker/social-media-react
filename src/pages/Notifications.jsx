@@ -32,7 +32,6 @@ function Notifications() {
       dispatch(setUnreadActivitiesIds())
     }
   }, [])
-  // }, [loggedInUser])
 
   const updateLastSeenLoggedUser = async () => {
     const lastSeenActivity = new Date().getTime()

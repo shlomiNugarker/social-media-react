@@ -13,8 +13,6 @@ export const PostHeader = ({ post, userPost }) => {
       </section>
     )
 
-  const postUrl = ` /main/post/${post.userId}/${post._id}`
-
   const { imgUrl, profession, fullname } = userPost
   return (
     <section className="post-header">

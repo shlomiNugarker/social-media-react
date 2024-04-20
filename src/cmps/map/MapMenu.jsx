@@ -8,9 +8,6 @@ export const MapMenu = ({ menuPosition, setIsCreateShowPost }) => {
       </span>
 
       <div className="opts-container">
-        {/* <div className="add-picture opt">
-          <p>Add a picture here</p>
-        </div> */}
         <div
           className="add-post-to-map opt"
           onClick={() => {

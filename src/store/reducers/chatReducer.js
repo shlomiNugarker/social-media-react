@@ -5,7 +5,6 @@ const INITIAL_STATE = {
 export function chatReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_CHATS':
-      // console.log('SET_CHATS')
       return {
         ...state,
         chats: [...action.chats],
@@ -18,7 +17,6 @@ export function chatReducer(state = INITIAL_STATE, action) {
       }
 
     case 'UPDATE_CHAT':
-      // console.log('UPDATE_CHAT', action.chat)
       return {
         ...state,
         chats: state.chats.map((chat) => {

@@ -58,21 +58,7 @@ function MyNetwork() {
                 </span>
               </button>
             </li>
-            <li>
-              {/* <button>
-                <div>
-                  <span className="logo">
-                    <FontAwesomeIcon icon="fa-solid fa-people-group" />
-                  </span>
-                  <span className="txt">
-                    <p>People I Follow</p>
-                  </span>
-                </div>
-                <span>
-                  <p>23</p>
-                </span>
-              </button> */}
-            </li>
+            <li></li>
           </ul>
         </div>
       </div>
@@ -82,7 +68,7 @@ function MyNetwork() {
           <div>
             <h3>Recommended for you</h3>
           </div>
-          {/* all connections: */}
+
           <ConnectionList users={users} />
         </div>
       </div>

@@ -38,7 +38,7 @@ export const RightSideBar = () => {
                   <div className="profession">
                     <p>{users[num]?.profession}</p>
                   </div>
-                  <div className="btn">{/* <button>Connect</button> */}</div>
+                  <div className="btn"></div>
                 </div>
               </div>
             ))}

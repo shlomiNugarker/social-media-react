@@ -110,10 +110,7 @@ function Map() {
     setIsMapClicked((prev) => !prev)
   }
 
-  const places = [{ lat: 30.911220168353783, lng: 58.405513914562775 }]
-
   return (
-    // Important! Always set the container height explicitly
     <section className="map-page ">
       <div className="map" style={{ height: '100%', width: '100%' }}>
         <GoogleMapReact
@@ -121,14 +118,7 @@ function Map() {
           defaultCenter={defaultProps.center}
           defaultZoom={defaultProps.zoom}
           yesIWantToUseGoogleMapApiInternals
-          // onGoogleApiLoaded={({ map, maps }) =>
-          //   handleApiLoaded(map, maps, places)
-          // }
-          // onChange={() => console.log('onBoundsChange')}
           onClick={(ev) => onClickMap(ev)}
-          // onDrag={(map) => console.log('onDrag')}
-          // onDragEnd={(map) => console.log('onDragEnd')}
-          // onRightClick={() => console.log('onRightClick')}
         >
           {users &&
             users.map((user) => (
@@ -184,20 +174,6 @@ function Map() {
           loggedInUser={loggedInUser}
         />
       )}
-      {/* <button
-        onClick={() =>
-          setDefaultProps({
-            center: {
-              lat: 32.29430021651131,
-              lng: 58.140507578610226,
-            },
-            zoom: 6,
-            yesIWantToUseGoogleMapApiInternals: true,
-          })
-        }
-      >
-        btn
-      </button> */}
     </section>
   )
 }

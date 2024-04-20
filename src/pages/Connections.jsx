@@ -44,7 +44,6 @@ function Connections() {
           </div>
 
           <div className="filter-container">
-            {/* <div className="sort-by">Sort by: </div> */}
             <div className="search">
               <FontAwesomeIcon className="search-icon" icon="fas fa-search" />
               <input
@@ -67,8 +66,6 @@ function Connections() {
               />
             ))}
           </div>
-
-          {/* <ConnectionList users={loggedInUser?.connections} /> */}
         </div>
       </div>
 

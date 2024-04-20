@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux'
 import { ReactSnip } from '@strg/react-snip'
 import { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
 import loadingGif from '../../assets/imgs/loading-circle.gif'
 
 export function MsgPreview({
@@ -14,14 +13,9 @@ export function MsgPreview({
   setChooseenChatId,
   getTheNotLoggedUserChat,
 }) {
-  const history = useHistory()
-  const params = useParams()
-
   const [theNotLoggedUserChat, setTheNotLoggedUserChat] = useState(null)
   const [unreadMsgsCount, setUnreadMsgsCount] = useState(0)
 
-  const loggedInUser = useSelector((state) => state.userModule.loggedInUser)
-  const { unreadActivities } = useSelector((state) => state.activityModule)
   const { unreadMessages } = useSelector((state) => state.activityModule)
 
   const getUnreadCountMsgs = () => {
@@ -46,9 +40,6 @@ export function MsgPreview({
     setMessagesToShow(chat.messages)
     setChatWith(theNotLoggedUserChat)
     setChooseenChatId(chat._id)
-    // if (theNotLoggedUserChat?._id !== params.userId) {
-    //   history.push(`/main/message/${theNotLoggedUserChat?._id}`)
-    // }
   }
 
   useEffect(() => {
@@ -65,8 +56,6 @@ export function MsgPreview({
 
   const isChatChooseen = chooseenChatId === chat._id ? 'chooseen-chat' : ''
   const containerStyle = `container ${isChatChooseen}`
-
-  // console.log('render MsgPreview')
 
   if (!theNotLoggedUserChat)
     return (
@@ -91,7 +80,6 @@ export function MsgPreview({
         <div className="details">
           <div className="fullname">
             <h1>{theNotLoggedUserChat?.fullname}</h1>
-            {/* <ReactSnip lines={1} method={'css'}></ReactSnip> */}
 
             <span title={dateToShow}>
               <ReactSnip lines={1} method={'css'}>

@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import { ListMsg } from './ListMsg'
 import { MessageThread } from './MessageThread'
 
@@ -15,8 +14,6 @@ export function Messaging({
   theNotLoggedUserChat,
   onSendMsg,
 }) {
-  const { loggedInUser } = useSelector((state) => state.userModule)
-
   return (
     <section className="messaging">
       <div className="container">

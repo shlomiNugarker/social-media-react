@@ -69,7 +69,6 @@ function Message() {
   const checkIfChatExist = () => {
     const promise = new Promise((resolve, reject) => {
       if (!chats) {
-        // console.log('no chats')
       } else {
         const isChatExist = chats.some((chat) => {
           return chat.userId === params.userId || chat.userId2 === params.userId
@@ -90,8 +89,6 @@ function Message() {
       setChooseenChatId(chatToShow._id)
       setMessagesToShow(chatToShow.messages)
     } else if (isUserChatExist === false) {
-      // OPEMIMG TEMP CHAT UNTIL THE FIRST MSG SENT,
-      // THEN SAVE IT IN MONGO- REMOVING THE ID BEFORE
       if (!params.userId || !chats) return
       const newChat = createChat(params.userId)
       dispatch(addTempChat(newChat))
@@ -101,8 +98,6 @@ function Message() {
       setMessagesToShow(newChat.messages)
     }
   }
-
-  useEffect(() => {}, [chats])
 
   const onSendMsg = (txt) => {
     const newMsg = createNewMsg(txt)
@@ -174,7 +169,6 @@ function Message() {
     return (await userService.getById(userId)) || null
   }
 
-  // console.log('render Message')
   if (!chats)
     return (
       <div className="message-page">

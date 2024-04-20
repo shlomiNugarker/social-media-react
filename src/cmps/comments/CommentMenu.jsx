@@ -8,7 +8,6 @@ export const CommentMenu = ({ toggleMenu, onRemoveComment, commentUserId }) => {
 
   const isLoggedInUserCanDelete = loggedInUser._id === commentUserId
 
-  // console.log('render CommentMenu')
   return (
     <section>
       <div

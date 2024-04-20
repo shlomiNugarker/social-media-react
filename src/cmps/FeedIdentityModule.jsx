@@ -40,27 +40,13 @@ export const FeedIdentityModule = (props) => {
         <div className="views">
           <div>
             <p>{loggedInUser?.connections?.length} connections</p>
-            {/* <span>245</span> */}
           </div>
 
-          <div>
-            {/* <p>Impressions of your post</p>
-            <span>2164</span> */}
-          </div>
+          <div></div>
         </div>
-
-        {/* <div className="to-premium">
-          <p>Access exclusive tools & insights</p>
-          <div>
-            <span className="logo">o</span>
-            <p>Try Premium for free</p>
-          </div>
-        </div> */}
 
         <div className="my-items">
           <div onClick={doLogout}>
-            {/* <span>o</span>
-            My items */}
             <p>Logout</p>
             <span>
               <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />

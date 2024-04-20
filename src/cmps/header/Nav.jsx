@@ -55,7 +55,7 @@ export const Nav = () => {
                 }
                 icon="fa-solid fa-map-location"
               />
-              {/* <FontAwesomeIcon className="nav-icon" icon="fas fa-suitcase" /> */}
+
               <span>Map</span>
             </p>
           </Link>
@@ -118,13 +118,7 @@ export const Nav = () => {
                   className="profile-icon"
                 />
               </span>
-              <span className="txt">
-                Me
-                {/* <FontAwesomeIcon
-                  className="down-icon"
-                  icon="fas fa-sort-down"
-                /> */}
-              </span>
+              <span className="txt">Me</span>
             </p>
           </Link>
         </li>

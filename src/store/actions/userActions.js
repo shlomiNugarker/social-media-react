@@ -24,7 +24,6 @@ export function setUsers(users) {
 }
 
 export function setFilterByUsers(filterByUsers) {
-  // console.log({ filterByUsers })
   return async (dispatch) => {
     dispatch({ type: 'SET_FILTER_BY_USERS', filterByUsers })
   }

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Header } from '../cmps/header/Header'
-import { Switch, Route } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 

@@ -116,7 +116,6 @@ export function saveComment(comment) {
         ? dispatch({ type: 'UPDATE_COMMENT', comment: savedComment })
         : dispatch({ type: 'ADD_COMMENT', comment: savedComment })
 
-      // TODO: ADD SOCKETS WHEN ADD/UPDATE COMMENT
       comment._id
         ? socketService.emit('comment-updated', savedComment)
         : socketService.emit('comment-added', savedComment)
@@ -176,7 +175,6 @@ export function removePostForSocket(postId) {
     }
   }
 }
-////
 
 export function updateCommentForSocket(comment) {
   return async (dispatch) => {

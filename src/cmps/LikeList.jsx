@@ -20,7 +20,7 @@ export function LikeList({ reactions, toggleLikes }) {
       </div>
       <div className="list">
         {reactions.map((reaction) => (
-          <LikePreview key={utilService.makeId()} reaction={reaction} /> // TODO: CHANGE THE KEY TO A UNIQE KEY
+          <LikePreview key={utilService.makeId()} reaction={reaction} />
         ))}
       </div>
     </section>

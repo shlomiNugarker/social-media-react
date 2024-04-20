@@ -39,7 +39,6 @@ function Profile() {
 
   useEffect(() => {
     checkIsConnected()
-    return () => {}
   }, [user])
 
   const loadUser = async () => {
@@ -94,8 +93,8 @@ function Profile() {
         fullname: connectionToAdd.fullname,
       })
 
-      await dispatch(updateUser(loggedInUserToUpdate))
-      await dispatch(updateUser(connectionToAdd))
+      dispatch(updateUser(loggedInUserToUpdate))
+      dispatch(updateUser(connectionToAdd))
       setUser(connectionToAdd)
     }
   }
@@ -110,7 +109,6 @@ function Profile() {
     }
     dispatch(setCurrPage('profile'))
     dispatch(setFilterByPosts(filterBy))
-    // dispatch(getPostsLength())
     loadUser()
     dispatch(loadPosts(filterBy))
     dispatch(getPostsLength())
@@ -131,7 +129,6 @@ function Profile() {
 
   const isLoggedInUserProfile = loggedInUser?._id === user?._id
 
-  // console.log('render profile')
   return (
     <section className="profile-page">
       <div className="left">
@@ -166,7 +163,6 @@ function Profile() {
                   </button>
                 )}
 
-                {/* <button className="follow">Follow</button> */}
                 <button className="message" onClick={() => moveToChat()}>
                   Message
                 </button>

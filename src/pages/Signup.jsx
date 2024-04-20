@@ -117,12 +117,6 @@ export const Signup = () => {
           <button className="sign-in-btn">
             {signin ? 'Sign in' : 'Sign up'}
           </button>
-          {/* <div className="divider-container">
-            <span></span>
-            <span>or</span>
-            <span></span>
-          </div>
-          <button className="sign-in-apple-btn">Sign in with Apple</button> */}
         </form>
         <div className="to-sign-up-container">
           <p>
@@ -140,10 +134,6 @@ export const Signup = () => {
           </p>
         </div>
       </div>
-
-      {/* <footer className="footer-container">
-        <div className="footer">footer</div>
-      </footer> */}
     </section>
   )
 }
