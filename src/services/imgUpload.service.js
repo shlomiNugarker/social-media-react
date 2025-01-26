@@ -11,6 +11,11 @@ const toBase64 = (file) =>
 export const uploadImg = async (ev) => {
   try {
     const file = ev.target.files[0];
+
+    if (!file) {
+      throw new Error("No file selected");
+    }
+
     const base64File = await toBase64(file);
 
     const response = await httpService.post("cloudinary/upload", {
@@ -20,7 +25,7 @@ export const uploadImg = async (ev) => {
 
     return response;
   } catch (err) {
-    console.error("Error uploading image:", err);
+    console.error("Error uploading image:", err?.message);
     throw err;
   }
 };
@@ -28,6 +33,11 @@ export const uploadImg = async (ev) => {
 export const uploadVid = async (ev) => {
   try {
     const file = ev.target.files[0];
+
+    if (!file) {
+      throw new Error("No file selected");
+    }
+
     const base64File = await toBase64(file);
 
     const response = await httpService.post("cloudinary/upload", {
@@ -37,7 +47,7 @@ export const uploadVid = async (ev) => {
 
     return response;
   } catch (err) {
-    console.error("Error uploading video:", err);
+    console.error("Error uploading video:", err?.message);
     throw err;
   }
 };
