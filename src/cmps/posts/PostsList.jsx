@@ -74,7 +74,7 @@ export const PostsList = () => {
             <img className="loading-gif" src={loadingGif} alt="" />
           </span>
         )}
-        {posts?.length === postsLength && <p>This is the end..</p>}
+        {posts?.length === postsLength && <p> No more posts</p>}
       </div>
     </section>
   )
