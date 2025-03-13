@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useCallback } from 'react'
 import { Header } from '../cmps/header/Header'
 import { Switch } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -62,6 +62,51 @@ export function Main() {
     }
   }, [activities, dispatch])
 
+
+  const addPost = useCallback((post) => {
+    dispatch(addPostForSocket(post))
+  }, [dispatch])
+
+  const updatePost = useCallback((post) => {
+    dispatch(updatePostForSocket(post))
+    dispatch(loadActivities())
+  }, [dispatch])
+
+  const removePost = useCallback((postId) => {
+    dispatch(removePostForSocket(postId))
+  }, [dispatch])
+
+  const addChat = useCallback((chat) => {
+    dispatch(addChatForSocket(chat))
+  }, [dispatch])
+
+  const updateChat = useCallback((chat) => {
+    dispatch(updateChatForSocket(chat))
+    dispatch(loadActivities())
+  }, [dispatch])
+
+  const addConnectedUsers = useCallback((connectedUsers) => {
+    dispatch(addConnectedUsersForSocket(connectedUsers))
+  }, [dispatch])
+
+  const addConnectedUser = useCallback((connectedUser) => {
+    dispatch(addConnectedUserForSocket(connectedUser))
+  }, [dispatch])
+
+  const addComment = useCallback((comment) => {
+    dispatch(addCommentForSocket(comment))
+    dispatch(loadActivities())
+  }, [dispatch])
+
+  const updateComment = useCallback((comment) => {
+    dispatch(updateCommentForSocket(comment))
+    dispatch(loadActivities())
+  }, [dispatch])
+
+  const removeComment = useCallback((comment) => {
+    dispatch(removeCommentForSocket(comment))
+  }, [dispatch])
+
   useEffect(() => {
     socketService.on('add-post', addPost)
     socketService.on('update-post', updatePost)
@@ -92,44 +137,8 @@ export function Main() {
       socketService.off('add-comment', addComment)
       socketService.off('remove-comment', removeComment)
     }
-  }, [])
+  }, [addChat, addComment, addConnectedUser, addConnectedUsers, addPost, removeComment, removePost, updateChat, updateComment, updatePost])
 
-  const addPost = (post) => {
-    dispatch(addPostForSocket(post))
-  }
-  const updatePost = (post) => {
-    dispatch(updatePostForSocket(post))
-    dispatch(loadActivities())
-  }
-  const removePost = (postId) => {
-    dispatch(removePostForSocket(postId))
-  }
-
-  const addChat = (chat) => {
-    dispatch(addChatForSocket(chat))
-  }
-  const updateChat = (chat) => {
-    dispatch(updateChatForSocket(chat))
-    dispatch(loadActivities())
-  }
-  const addConnectedUsers = (connectedUsers) => {
-    dispatch(addConnectedUsersForSocket(connectedUsers))
-  }
-  const addConnectedUser = (connectedUser) => {
-    dispatch(addConnectedUserForSocket(connectedUser))
-  }
-
-  const addComment = (comment) => {
-    dispatch(addCommentForSocket(comment))
-    dispatch(loadActivities())
-  }
-  const updateComment = (comment) => {
-    dispatch(updateCommentForSocket(comment))
-    dispatch(loadActivities())
-  }
-  const removeComment = (comment) => {
-    dispatch(removeCommentForSocket(comment))
-  }
 
   return (
     <div className="main-page container">
