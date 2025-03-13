@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 300px;
+    height: 350px;
+    overflow-y: auto;
     border: 1px solid $border;
     grid-area: right-side-bar;
     background-color: white;

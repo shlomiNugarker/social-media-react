@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import loadingCircle from '../../assets/imgs/loading-circle.gif'
@@ -7,22 +7,22 @@ import { updateUser } from '../../store/actions/userActions'
 export function ConnectionPreview({ user }) {
   const dispatch = useDispatch()
 
-  const [isConnected, setIsConnected] = useState(null)
+  const [isConnected, setIsConnected] = useState(false)
 
   const { loggedInUser } = useSelector((state) => state.userModule)
 
-  useEffect(() => {
-    checkIsConnected()
-    return () => {}
-  }, [user])
-
-  const checkIsConnected = () => {
+  const checkIsConnected = useCallback(() => {
     const isConnected = loggedInUser?.connections?.some(
       (connection) => connection?.userId === user?._id
     )
 
     setIsConnected(isConnected)
-  }
+  }, [loggedInUser, user])
+
+  useEffect(() => {
+    checkIsConnected()
+    return () => {}
+  }, [checkIsConnected])
 
   const connectProfile = async () => {
     if (!user) return
@@ -63,7 +63,7 @@ export function ConnectionPreview({ user }) {
     }
   }
 
-  if (!user) return
+  if (!user || isConnected) return
   return (
     <li className="connection-preview">
       <Link to={`/main/profile/${user?._id}`}>

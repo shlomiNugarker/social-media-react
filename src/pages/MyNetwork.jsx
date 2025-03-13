@@ -58,7 +58,6 @@ function MyNetwork() {
                 </span>
               </button>
             </li>
-            <li></li>
           </ul>
         </div>
       </div>

@@ -1,8 +1,6 @@
-import { useSelector } from 'react-redux'
 import { NotificaitonPreview } from './NotificaitonPreview'
 
-export function NotificationsList() {
-  const { activities } = useSelector((state) => state.activityModule)
+export function NotificationsList({activities}) {
 
   if (!activities?.length)
     return (

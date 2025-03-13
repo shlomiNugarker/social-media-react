@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { setCurrPage } from '../store/actions/postActions'
@@ -12,41 +12,45 @@ import {
 import { updateUser } from '../store/actions/userActions'
 
 function Notifications() {
+  const dispatch = useDispatch()
   const { loggedInUser } = useSelector((state) => state.userModule)
   const { activities } = useSelector((state) => state.activityModule)
 
-  const dispatch = useDispatch()
+  const [visibleCount, setVisibleCount] = useState(6)
 
   useEffect(() => {
     dispatch(setCurrPage('notifications'))
+
     if (loggedInUser?._id) {
-      const filterBy = {
-        userId: loggedInUser._id,
-      }
-      dispatch(setFilterByActivities(filterBy))
+      dispatch(setFilterByActivities({ userId: loggedInUser._id }))
       dispatch(loadActivities())
     }
 
-    return async () => {
-      await updateLastSeenLoggedUser()
-      dispatch(setUnreadActivitiesIds())
+    return () => {
+      if (loggedInUser?._id) {
+        updateLastSeenLoggedUser()
+        dispatch(setUnreadActivitiesIds())
+      }
     }
-  }, [])
+  }, [dispatch, loggedInUser?._id])
 
-  const updateLastSeenLoggedUser = async () => {
-    const lastSeenActivity = new Date().getTime()
-
-    await dispatch(updateUser({ ...loggedInUser, lastSeenActivity }))
+  const updateLastSeenLoggedUser = () => {
+    if (!loggedInUser) return
+    const lastSeenActivity = Date.now()
+    dispatch(updateUser({ ...loggedInUser, lastSeenActivity }))
   }
 
-  if (!activities)
+  if (!activities) {
     return (
       <div className="message-page">
         <div className="gif-container">
-          <img className="loading-gif" src={loadingGif} alt="" />
+          <img className="loading-gif" src={loadingGif} alt="Loading..." />
         </div>
       </div>
     )
+  }
+
+  const visibleActivities = activities.slice(0, visibleCount)
 
   return (
     <div className="notifications-page">
@@ -56,9 +60,18 @@ function Notifications() {
 
       <div className="main">
         <div className="container">
-          <NotificationsList />
+          <NotificationsList activities={visibleActivities} />
+          {visibleCount < activities.length && (
+            <button 
+              className="show-more-btn" 
+              onClick={() => setVisibleCount(prev => prev + 6)}
+            >
+              Show More
+            </button>
+          )}
         </div>
       </div>
+
       <div className="aside">
         <div className="container"></div>
       </div>

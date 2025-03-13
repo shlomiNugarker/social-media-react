@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect,useState ,useCallback} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { getUsers } from '../store/actions/userActions'
@@ -7,13 +7,34 @@ export const RightSideBar = () => {
   const { users } = useSelector((state) => state.userModule)
   const dispatch = useDispatch()
   const history = useHistory()
+  const { loggedInUser } = useSelector((state) => state.userModule)
+
+  const [filteredUsers, setFilteredUsers] = useState([])
+
+  const filterUsers = useCallback(() => {
+    if (users && loggedInUser) {
+      const notConnected = users.filter(
+        (user) =>
+          !loggedInUser.connections.some(
+            (connection) => connection.userId === user._id
+          )
+      )
+      setFilteredUsers(notConnected)
+    }
+  }, [users, loggedInUser])
+
+  useEffect(() => {
+    filterUsers()
+  }, [filterUsers])
+
+
 
   useEffect(() => {
     dispatch(getUsers())
   }, [dispatch])
 
   const lengtConections = [0, 1, 2]
-  return (
+  return filteredUsers.length > 0 && (
     <section className="right-side-bar">
       <div className="container">
         <div className="title">
@@ -21,22 +42,22 @@ export const RightSideBar = () => {
         </div>
         <br />
         <div className="list">
-          {users &&
+          {filteredUsers?.length &&
             lengtConections.map((num, idx) => (
               <div
-                key={users[num]?._id || idx}
+                key={filteredUsers[num]?._id || idx}
                 className="preview"
-                onClick={() => history.push(`profile/${users[num]?._id}`)}
+                onClick={() => history.push(`profile/${filteredUsers[num]?._id}`)}
               >
                 <div className="img-container">
-                  <img src={users[num]?.imgUrl} className="img" alt="" />
+                  <img src={filteredUsers[num]?.imgUrl} className="img" alt="" />
                 </div>
                 <div>
                   <div className="fullname">
-                    <p>{users[num]?.fullname}</p>
+                    <p>{filteredUsers[num]?.fullname}</p>
                   </div>
                   <div className="profession">
-                    <p>{users[num]?.profession}</p>
+                    <p>{filteredUsers[num]?.profession}</p>
                   </div>
                   <div className="btn"></div>
                 </div>
@@ -50,15 +71,15 @@ export const RightSideBar = () => {
         </div>
         <br />
         <div>
-          <p>Taskday is a project management system for collaboration.</p>
+          <p>Looking for a full-stack developer for your project or team? I'm open to collaboration and exciting challenges.</p>
         </div>
         <br />
         <div className="img-container">
-          <a href="https://fast-eyrie-76140.herokuapp.com/">
+          <a href="https://www.shlomi.dev/" target="_blank" rel="noreferrer">
             <img
-              src="https://res.cloudinary.com/duajg3ah1/image/upload/v1660916126/myPortfolio/qdtzolm9ldd5qlquq2aj.png"
+              src="https://res.cloudinary.com/duajg3ah1/image/upload/v1741866031/6ed80c70-7184-4e22-af43-c1b9357bfb2c.png"
               className="img"
-              alt=""
+              alt={''}
             />
           </a>
         </div>

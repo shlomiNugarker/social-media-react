@@ -58,8 +58,8 @@ export const PostsList = () => {
 
   return (
     <section className="posts-list">
-      {posts.map((post) => (
-        <PostPreview key={post._id} post={post} />
+      {posts.map((post,idx) => (
+        <PostPreview key={post._id+idx} post={post} />
       ))}
       <div onClick={onLoadNextPage} className="load-more">
         {!isPostsLoading && posts?.length < postsLength && (
@@ -74,7 +74,7 @@ export const PostsList = () => {
             <img className="loading-gif" src={loadingGif} alt="" />
           </span>
         )}
-        {posts?.length === postsLength && <p> No more posts</p>}
+        {posts?.length === postsLength &&  <p >No more posts</p>}
       </div>
     </section>
   )
