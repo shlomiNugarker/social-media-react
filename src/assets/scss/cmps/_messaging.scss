@@ -3,27 +3,41 @@
     height: 100%;
     grid-area: messaging;
     overflow-y: hidden;
+    margin-top: 1rem;
+    margin-left: 1rem;
 
     .container {
-      border-radius: 1px solid black;
+      display: flex;
+      border-radius: 8px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
     }
   }
 }
-@media (max-width: 630px) {
-  .messaging {
-    .container {
-      justify-content: center;
 
-      .message-thred {
-      }
-      .user-profile-details {
-        min-height: calc(100vh - 220px);
-      }
-      .message-open-style {
+@media (max-width: 920px) {
+  .message-page {
+    .messaging {
+      margin-left: 0;
+      
+      .container {
+        height: auto;
       }
     }
   }
+}
 
-  // .messaging .container .message-thread .user-profile-details {
-  // }
+@media (max-width: 630px) {
+  .messaging {
+    .container {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: auto;
+
+      .user-profile-details {
+        min-height: calc(100vh - 220px);
+      }
+    }
+  }
 }

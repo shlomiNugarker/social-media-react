@@ -5,45 +5,83 @@
     .list-msg {
       background-color: #ffffff;
       width: 30%;
-      height: 100%;
-      border-top-left-radius: 15px;
-      border-bottom-left-radius: 15px;
+      border-right: 1px solid $border;
+      display: flex;
+      flex-direction: column;
 
       .title-container {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 5px;
+        padding: 15px;
+        border-bottom: 1px solid $border;
+        
         p {
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
         }
 
         .logos {
           display: flex;
           align-items: center;
           color: #00000099;
+          
           span {
             margin: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+            
+            &:hover {
+              background-color: #f5f5f5;
+            }
+            
+            svg {
+              font-size: 18px;
+            }
           }
         }
       }
 
       .filter-container {
         width: 100%;
-        padding: 5px;
+        padding: 15px;
+        border-bottom: 1px solid $border;
 
         input {
           width: 100%;
-          border: none;
-          border-radius: 5px;
-          padding: 5px;
-          background-color: #eef3f8;
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          padding: 10px 15px;
+          background-color: #f5f5f5;
+          transition: all 0.2s;
+          
+          &:focus {
+            outline: none;
+            border-color: #0a66c2;
+            background-color: white;
+            box-shadow: 0 0 0 1px rgba(10, 102, 194, 0.2);
+          }
         }
       }
 
       .list {
         overflow-y: auto;
-        height: 100%;
-        height: calc(100vh - 155px);
+        flex: 1;
+        padding: 10px 0;
+        max-height: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .messaging {
+    .container {
+      .list-msg {
+        width: 35%;
       }
     }
   }
@@ -53,26 +91,19 @@
   .messaging {
     .container {
       .list-msg {
-        width: 90%;
-        height: 98%;
-        border-top-right-radius: 15px;
-        border-bottom-right-radius: 15px;
+        width: 100%;
+        
         .title-container {
-          p {
-          }
-
-          .logos {
-            span {
-            }
-          }
+          padding: 12px;
         }
 
         .filter-container {
-          input {
-          }
+          padding: 12px;
         }
 
         .list {
+          max-height: none;
+          overflow-y: visible;
         }
       }
     }

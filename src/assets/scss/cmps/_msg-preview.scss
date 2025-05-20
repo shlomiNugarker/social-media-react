@@ -1,16 +1,30 @@
 .msg-preview {
   background-color: #ffffff;
+  width: 100%;
 
   .loading-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    
     img {
-      height: 85px;
-      width: 85px;
+      height: 50px;
+      width: 50px;
     }
   }
 
   .container {
     cursor: pointer;
-    padding: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #f5f5f5;
+    }
 
     &.chooseen-chat {
       border-left: 3px solid #057642;
@@ -18,28 +32,36 @@
     }
 
     .img-container {
-      margin: 5px;
+      margin-right: 12px;
       position: relative;
+      flex-shrink: 0;
+      
       .img {
         width: 50px;
         height: 50px;
         border-radius: 50%;
         object-fit: cover;
+        border: 1px solid #f0f0f0;
       }
 
       .number {
         position: absolute;
-        right: 35px;
+        right: -5px;
+        bottom: -5px;
         color: white;
+        
         p {
-          width: 25px;
-          height: 25px;
+          width: 22px;
+          height: 22px;
           padding: 2px;
-          background-color: rgb(204 16 22);
+          background-color: #e11d48;
           border-radius: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
+          font-size: 12px;
+          font-weight: bold;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
       }
     }
@@ -53,13 +75,26 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        // width: 100%;
+        width: 100%;
+        margin-bottom: 5px;
+        
         h1 {
-          font-size: 18px;
+          font-size: 15px;
+          font-weight: 600;
+          color: #333;
         }
 
         span {
           margin-left: 3px;
+          font-size: 12px;
+          color: #777;
+        }
+      }
+      
+      .last-msg {
+        p {
+          color: #666;
+          font-size: 13px;
         }
       }
     }
@@ -69,18 +104,16 @@
 @media (max-width: 630px) {
   .msg-preview {
     display: flex;
-    .loading-circle {
-      img {
-      }
-    }
-
+    width: 100%;
+    
     .container {
       width: 100%;
-      &.chooseen-chat {
-      }
-
+      padding: 12px;
+      
       .img-container {
         .img {
+          width: 40px;
+          height: 40px;
         }
       }
 
@@ -88,10 +121,19 @@
         .fullname {
           width: 100%;
           justify-content: space-between;
+          
           h1 {
+            font-size: 14px;
           }
 
           span {
+            font-size: 11px;
+          }
+        }
+        
+        .last-msg {
+          p {
+            font-size: 12px;
           }
         }
       }

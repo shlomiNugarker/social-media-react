@@ -1,5 +1,5 @@
 .message-page {
-  height: 100vh;
+  height: calc(100vh - 60px);
   display: grid;
   grid-template-areas: 'messaging right-side-message';
   grid-template-columns: minmax(0, 17fr) minmax(300px, 7fr);
@@ -9,10 +9,33 @@
   grid-area: content;
   grid-template-rows: auto;
   row-gap: 2.4em;
+  background-color: #f3f2ef;
 
   .right-side-message {
     grid-area: right-side-message;
     border: 1px solid $border;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    height: fit-content;
+    max-height: 300px;
+  }
+
+  .gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .loading-gif {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
   }
 }
 
@@ -20,15 +43,17 @@
   .message-page {
     grid-template-areas: 'messaging';
     grid-template-columns: minmax(0, 1fr);
+    padding: 60px 1rem 0;
 
     .right-side-message {
       display: none;
     }
   }
 }
+
 @media (max-width: 630px) {
   .message-page {
-    .right-side-message {
-    }
+    padding: 60px 0.5rem 0;
+    height: calc(100vh - 60px);
   }
 }
