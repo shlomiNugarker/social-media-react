@@ -1,11 +1,9 @@
 import { useState } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
-
 import { login, setLogingLoading } from '../store/actions/userActions'
 import { useHistory } from 'react-router-dom'
-
 import loading from '../assets/imgs/loading-gif.gif'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Home = (props) => {
   const dispatch = useDispatch()
@@ -49,8 +47,9 @@ export const Home = (props) => {
   return (
     <section className="home-page">
       <header className="home-header">
-        <div>
+        <div className="brand-container">
           <div className="home-logo">T</div>
+          <span className="brand-name">TravelsIn</span>
         </div>
         <nav className="home-nav">
           <ul>
@@ -74,46 +73,119 @@ export const Home = (props) => {
         </nav>
       </header>
 
-      <div className="welcome-signin-container">
-        <form
-          onSubmit={(ev) => {
-            ev.preventDefault()
-            doLogin()
-          }}
-          className="form"
-        >
-          <h1 className="title">
-            Welcome to your <br /> traveler's community
-          </h1>
-          <input
-            onChange={handleChange}
-            type="text"
-            id="username"
-            name="username"
-            value={creds.username}
-            placeholder="Email or phone number"
-            required
-          />
-          <input
-            onChange={handleChange}
-            type="password"
-            id="password"
-            name="password"
-            value={creds.password}
-            placeholder="Passsword"
-            required
-          />
-
-          <div className="msg">
-            <p>{msg}</p>
+      <div className="hero-container">
+        <div className="hero-content">
+          <div className="welcome-text">
+            <h1>Connect with travelers<br/>around the world</h1>
+            <p>Join our community to share experiences, find travel companions, and discover new destinations.</p>
+            <button 
+              className="cta-button"
+              onClick={() => history.push(`/signup`)}
+            >
+              Get Started
+            </button>
           </div>
+          
+          <div className="login-card">
+            <form
+              onSubmit={(ev) => {
+                ev.preventDefault()
+                doLogin()
+              }}
+              className="login-form"
+            >
+              <h2>Welcome Back</h2>
+              <div className="input-group">
+                <label htmlFor="username">Username</label>
+                <div className="input-wrapper">
+                  <FontAwesomeIcon icon="user" className="input-icon" />
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={creds.username}
+                    placeholder="Email or username"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="input-group">
+                <label htmlFor="password">Password</label>
+                <div className="input-wrapper">
+                  <FontAwesomeIcon icon="lock" className="input-icon" />
+                  <input
+                    onChange={handleChange}
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={creds.password}
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+              </div>
 
-          <a onClick={() => history.push(`/signup`)}>Or sign-up</a>
-          <div>
-            <button>Sign in</button>
+              {msg && (
+                <div className="error-message">
+                  <FontAwesomeIcon icon="exclamation-circle" />
+                  <p>{msg}</p>
+                </div>
+              )}
+
+              <button type="submit" className="login-button">
+                Sign in
+              </button>
+              
+              <div className="login-footer">
+                <span>New to TravelsIn?</span>
+                <a onClick={() => history.push(`/signup`)}>Create account</a>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
+        
+        <div className="features-section">
+          <h2>Connect. Explore. Share.</h2>
+          <div className="feature-cards">
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FontAwesomeIcon icon="map-marked-alt" />
+              </div>
+              <h3>Interactive Maps</h3>
+              <p>Discover travel destinations and connect with travelers worldwide</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FontAwesomeIcon icon="comments" />
+              </div>
+              <h3>Real-time Messaging</h3>
+              <p>Connect with fellow travelers and share experiences instantly</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">
+                <FontAwesomeIcon icon="user-friends" />
+              </div>
+              <h3>Find Companions</h3>
+              <p>Connect with like-minded travelers for your next adventure</p>
+            </div>
+          </div>
+        </div>
       </div>
+      
+      <footer className="home-footer">
+        <div className="footer-content">
+          <p>&copy; 2023 TravelsIn. All rights reserved.</p>
+          <div className="footer-links">
+            <a href="#">About</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </footer>
+      
       {isLogingLoading && (
         <div className="loading-container">
           <img className="loading-logo" src={loading} alt="" />
