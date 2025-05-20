@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login, signup, logout } from '../store/actions/userActions'
 import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Logo } from '../assets/imgs/Logo'
 
 export const Signup = () => {
   const dispatch = useDispatch()
@@ -60,10 +61,7 @@ export const Signup = () => {
     return (
       <section className="sign-up-page">
         <header className="signup-header">
-          <div className="brand-container" onClick={() => history.push('/')}>
-            <div className="home-logo">T</div>
-            <span className="brand-name">TravelsIn</span>
-          </div>
+          <Logo />
         </header>
         
         <div className="logged-in-container">
@@ -94,10 +92,7 @@ export const Signup = () => {
   return (
     <section className="sign-up-page">
       <header className="signup-header">
-        <div className="brand-container" onClick={() => history.push('/')}>
-          <div className="home-logo">T</div>
-          <span className="brand-name">TravelsIn</span>
-        </div>
+        <Logo />
       </header>
       
       <div className="auth-container">

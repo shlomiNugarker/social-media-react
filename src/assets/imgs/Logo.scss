@@ -1,0 +1,58 @@
+// Variables
+$primary-color: #0073b1;
+$text-color: #333;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: $transition;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  .logo-icon {
+    font-size: 28px;
+    font-weight: bold;
+    color: $primary-color;
+    background-color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $card-shadow;
+    
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  .brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-left: 10px;
+    color: $text-color;
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .brand-container {
+    .logo-icon {
+      font-size: 24px;
+      width: 36px;
+      height: 36px;
+    }
+    
+    .brand-name {
+      font-size: 18px;
+    }
+  }
+} 

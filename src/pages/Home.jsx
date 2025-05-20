@@ -4,6 +4,7 @@ import { login, setLogingLoading } from '../store/actions/userActions'
 import { useHistory } from 'react-router-dom'
 import loading from '../assets/imgs/loading-gif.gif'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Logo } from '../assets/imgs/Logo'
 
 export const Home = (props) => {
   const dispatch = useDispatch()
@@ -47,10 +48,7 @@ export const Home = (props) => {
   return (
     <section className="home-page">
       <header className="home-header">
-        <div className="brand-container">
-          <div className="home-logo">T</div>
-          <span className="brand-name">TravelsIn</span>
-        </div>
+        <Logo />
         <nav className="home-nav">
           <ul>
             <li>
