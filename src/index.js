@@ -5,6 +5,9 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { store } from './store'
 
+// Import Tailwind CSS
+import './index.css'
+
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
