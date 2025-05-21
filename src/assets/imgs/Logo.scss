@@ -9,6 +9,7 @@ $transition: all 0.3s ease;
   align-items: center;
   cursor: pointer;
   transition: $transition;
+  margin-right: 10px;
   
   &:hover {
     opacity: 0.9;

@@ -8,7 +8,7 @@ export function Logo() {
       <div className="logo-icon">
         <span>T</span>
       </div>
-      <span className="brand-name">TravelsIn</span>
+      {/* <span className="brand-name">TravelsIn</span> */}
     </div>
   )
 }
